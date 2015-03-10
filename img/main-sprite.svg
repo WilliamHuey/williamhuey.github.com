@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="70px" height="170px" viewBox="0 0 70 170" enable-background="new 0 0 70 170" xml:space="preserve">
+<symbol  id="Deleted_Symbol_2" viewBox="-15 -15 30 30">
+	<polygon fill="#F9ED32" points="15,-15 -15,-15 -15,15 15,15 	"/>
+</symbol>
+<g id="Code">
+	<g>
+		<defs>
+			<rect id="SVGID_1_" x="40" y="139" width="30" height="30"/>
+		</defs>
+		<clipPath id="SVGID_2_">
+			<use xlink:href="#SVGID_1_"  overflow="visible"/>
+		</clipPath>
+		
+			<rect x="45.826" y="143.596" clip-path="url(#SVGID_2_)" fill="none" stroke="#CBCCCE" stroke-miterlimit="10" width="18.348" height="20.809"/>
+		<g clip-path="url(#SVGID_2_)">
+			<g>
+				<path fill="#CBCCCE" stroke="#CBCCCE" stroke-width="0.5" stroke-miterlimit="10" d="M48.606,154.002l3.25-1.674v0.484
+					l-2.739,1.372v0.015l2.739,1.372v0.483l-3.25-1.674V154.002z"/>
+				<path fill="#CBCCCE" stroke="#CBCCCE" stroke-width="0.5" stroke-miterlimit="10" d="M53.793,156.335l1.954-5.077h0.476
+					l-1.961,5.077H53.793z"/>
+				<path fill="#CBCCCE" stroke="#CBCCCE" stroke-width="0.5" stroke-miterlimit="10" d="M61.396,154.388l-3.25,1.667v-0.483
+					l2.76-1.372v-0.015l-2.76-1.372v-0.484l3.25,1.668V154.388z"/>
+			</g>
+		</g>
+	</g>
+</g>
+<g id="Archives:hover">
+	<rect x="1" y="1" fill="#5ABD78" width="30" height="30"/>
+	<rect x="6.826" y="5.596" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" width="18.348" height="20.809"/>
+	<rect x="9.826" y="9.149" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" width="12.348" height="4.771"/>
+	<rect x="9.826" y="18.053" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" width="12.348" height="4.771"/>
+	<line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="13.639" y1="11.535" x2="18.361" y2="11.535"/>
+	<line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="13.639" y1="20.438" x2="18.361" y2="20.438"/>
+</g>
+<g id="Archives">
+	<g>
+		<defs>
+			<rect id="SVGID_3_" x="40" width="30" height="30"/>
+		</defs>
+		<clipPath id="SVGID_4_">
+			<use xlink:href="#SVGID_3_"  overflow="visible"/>
+		</clipPath>
+		<g clip-path="url(#SVGID_4_)">
+			<rect x="46.326" y="5.096" fill="none" stroke="#C3C3C2" stroke-miterlimit="10" width="18.348" height="20.809"/>
+			<rect x="49.326" y="8.649" fill="none" stroke="#C3C3C2" stroke-miterlimit="10" width="12.348" height="4.771"/>
+			<rect x="49.326" y="17.553" fill="none" stroke="#C3C3C2" stroke-miterlimit="10" width="12.348" height="4.771"/>
+			<line fill="none" stroke="#C3C3C2" stroke-miterlimit="10" x1="53.139" y1="11.035" x2="57.861" y2="11.035"/>
+			<line fill="none" stroke="#C3C3C2" stroke-miterlimit="10" x1="53.139" y1="19.938" x2="57.861" y2="19.938"/>
+		</g>
+	</g>
+</g>
+<g id="Recent:hover">
+	
+		<use xlink:href="#Deleted_Symbol_2"  width="30" height="30" x="-15" y="-15" transform="matrix(1 0 0 -1 16 108.667)" overflow="visible"/>
+	<polygon fill="#FFFFFF" points="16,97.547 19.613,104.868 27.691,106.042 21.846,111.741 23.227,119.787 16,115.989 8.774,119.787 
+		10.154,111.741 4.308,106.042 12.387,104.868 	"/>
+</g>
+<g id="Recent">
+	<g>
+		<defs>
+			<rect id="SVGID_5_" x="40" y="93.333" width="30" height="30"/>
+		</defs>
+		<clipPath id="SVGID_6_">
+			<use xlink:href="#SVGID_5_"  overflow="visible"/>
+		</clipPath>
+		<g clip-path="url(#SVGID_6_)">
+			<polygon fill="#C4C4C3" points="55,97.213 58.613,104.534 66.691,105.708 60.846,111.407 62.227,119.453 55,115.655 
+				47.774,119.453 49.154,111.407 43.308,105.708 51.387,104.534 			"/>
+		</g>
+	</g>
+</g>
+<g id="Code:hover">
+	<rect x="1" y="139" fill="#EE4357" width="30" height="30"/>
+	<rect x="6.826" y="143.596" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" width="18.348" height="20.809"/>
+	<g>
+		<g>
+			<path fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" d="M9.606,154.002l3.25-1.674v0.484
+				l-2.739,1.372v0.015l2.739,1.372v0.483l-3.25-1.674V154.002z"/>
+			<path fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" d="M14.793,156.335l1.954-5.077h0.476
+				l-1.961,5.077H14.793z"/>
+			<path fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" d="M22.396,154.388l-3.25,1.667v-0.483
+				l2.76-1.372v-0.015l-2.76-1.372v-0.484l3.25,1.668V154.388z"/>
+		</g>
+	</g>
+</g>
+<g id="dotted-border">
+	<g>
+		<g>
+			<line fill="none" stroke="#C0C0C0" stroke-width="2" stroke-miterlimit="10" x1="45" y1="134.096" x2="46" y2="134.096"/>
+			
+				<line fill="none" stroke="#C0C0C0" stroke-width="2" stroke-miterlimit="10" stroke-dasharray="1.8947,4.7368" x1="50.736" y1="134.096" x2="61.632" y2="134.096"/>
+			<line fill="none" stroke="#C0C0C0" stroke-width="2" stroke-miterlimit="10" x1="64" y1="134.096" x2="65" y2="134.096"/>
+		</g>
+	</g>
+</g>
+<g id="Rss:hover">
+	<rect x="1" y="50" fill="#FFC919" width="30" height="30"/>
+	<g>
+		<path fill="#FFFFFF" d="M6.32,54.574v3.533c10.091,0.246,18.196,8.502,18.196,18.652h3.532
+			C28.049,64.658,18.362,54.82,6.32,54.574z"/>
+		<path fill="#FFFFFF" d="M17.185,76.76h3.698c0-8.143-6.479-14.773-14.563-15.018v4.152C12.32,65.895,17.185,70.76,17.185,76.76z"
+			/>
+		<circle fill="#FFFFFF" cx="9.47" cy="73.754" r="3.005"/>
+	</g>
+</g>
+<g id="Rss">
+	<polygon fill="none" points="40,50 40,51.121 40,54.664 40,80 44.314,80 44.836,80 70,80 70,77.425 70,75.824 70,54.664 70,51.121 
+		70,50 	"/>
+	<g>
+		<path fill="#C4C4C3" d="M46.326,54.737v3.481c9.943,0.242,17.93,8.377,17.93,18.379h3.48
+			C67.736,64.673,58.191,54.98,46.326,54.737z"/>
+		<path fill="#C4C4C3" d="M57.031,76.597h3.645c0-8.024-6.384-14.556-14.35-14.797v4.092C52.238,65.892,57.031,70.685,57.031,76.597
+			z"/>
+		<circle fill="#C4C4C3" cx="49.43" cy="73.636" r="2.961"/>
+	</g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+</svg>

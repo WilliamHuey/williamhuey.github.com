@@ -1,0 +1,402 @@
+
+
+
+
+
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Optional Options | Williamful</title>
+    <meta name="author" content="William Huey">
+    
+    <meta name="description" content="Jquery Boiler Plate">
+    
+    <meta name="keywords" content="javascript optional options boilerplate native combination callback">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="Optional Options"/>
+    <meta property="og:site_name" content="Williamful"/>
+
+    <meta name="google-site-verification" content="B2mK_j0pDOjJWR2qib5P5KJZ7Dm_D3eakVIvZJ6gME0" />
+
+    
+<script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-39929091-1', 'github.io');
+    ga('send', 'pageview');
+</script>
+
+
+    <link href="/favicon.ico?" type="image/x-icon" rel="shortcut icon">
+
+  <link rel="alternate" href="/atom.xml" title="Williamful" type="application/atom+xml">
+
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+<script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-39929091-1', 'github.io');
+    ga('send', 'pageview');
+</script>
+
+<link rel="apple-touch-icon" sizes="57x57" href="/img/LogoSlanted-57-outline.png" />
+<link rel="apple-touch-icon" sizes="75x75" href="/img/LogoSlanted-75-outline.png" />
+<link rel="apple-touch-icon" sizes="114x114" href="/img/LogoSlanted-114-outline.png" />
+<link rel="apple-touch-icon" sizes="144x144" href="/img/LogoSlanted-144-outline.png" />
+
+</head>
+
+
+<body>
+
+<hr id="top-of-page">
+<header id="header">
+    <div class="ym-wrapper">
+        <div class="ym-box">
+            <div id="main-header-wrapper" class="ym-clearfix">
+  <div id="main-logo-header">
+    <a title="Home is where the heart is." href="/">
+      <img id="main-logo" src="/img/logoSmall.png" alt="logo"/>
+    </a>
+  </div>
+  <div id="site-name" class="main-header-text">
+    <a title="Home is where the heart is." href="/">
+       Williamful
+    </a>
+  </div>
+  <div id="site-tagline" class="main-header-text">
+    <a title="Home is where the heart is." href="/">
+      Blogging and Beyond
+    </a>
+  </div>
+</div>
+
+<nav id="main-nav">
+    <ul id="main-nav-ul" class="ym-clearfix">
+
+    <li class="main-nav-li" id="rss-li">
+        <ul class="ym-clearfix">
+            <li class="nav-img">
+                <a id="Rss" href="/atom.xml"></a>
+            </li>
+            <li class="nav-word">
+                <a href="/atom.xml">RSS</a>
+            </li>
+        </ul>
+
+
+    </li>
+
+    <li class="main-nav-li" id="recent-li">
+        <ul class="ym-clearfix">
+            <li class="nav-img">
+                <a id="Recent" href="#recent"></a>
+            </li>
+            <li class="nav-word">
+                <a href="#recent">Recent</a>
+            </li>
+        </ul>
+    </li>
+
+    <li class="main-nav-li" id="archives-li">
+        <ul class="ym-clearfix">
+            <li class="nav-img">
+                <a id="Archives" href="/archives"></a>
+            </li>
+            <li class="nav-word">
+                <a href="/archives">Archives</a>
+            </li>
+        </ul>
+    </li>
+
+    <li class="main-nav-li" id="code-li">
+        <ul class="ym-clearfix">
+            <li class="nav-img">
+                <a id="Code" href="#"></a>
+            </li>
+            <li class="nav-word">
+                <a href="/code">Code</a>
+            </li>
+        </ul>
+    </li>
+
+
+</ul>
+</nav>
+
+        </div>
+    </div>
+
+</header>
+<main id="content">
+    <div id="main-col" class="ym-wrapper">
+        <div id="main-col-wrapper" class="ym-wbox">
+            <div id="post-div">
+    
+<article class="post">
+
+  <div class="post-content">
+    <header class="post-content-header">
+      
+        <time class="post-content-time" datetime="2013-09-13T06:47:00.000Z"><a href="/2013/09/12/optional-options/">9/12/2013</a></time>
+      
+      
+  
+    <h2 class="title">Optional Options</h2>
+  
+
+    </header>
+    <div class="post-content-entry">
+      
+        <h3 id="Common_Object_Format">Common Object Format</h3><p>Most JQuery plugins will use the common format of customizing by providing a plain object to the plugin handler. This is well suited for plugin that provide a widget to your page, where a callback might not be needed.</p>
+<figure class="highlight javascript"><figcaption><span>Options Object for Plugin</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="line">$(<span class="hljs-string">"#my-element"</span>).widgetLike(&#123;</span><br><span class="line">  firstOption: <span class="hljs-string">"setHigh"</span>,</span><br><span class="line">  secondOption: <span class="hljs-literal">false</span></span><br><span class="line">&#125;);</span><br></code></pre></td></tr></table></div></figure>
+<h3 id="Callback_Format">Callback Format</h3><p>However, there might be times where the plugin does not need options, or a callback is desired when a certain event happens. This format of plugin is very similar to the native JQuery event handlers.</p>
+<figure class="highlight javascript"><figcaption><span>Callback for the Plugin</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="line">$(<span class="hljs-string">"#my-element"</span>).alertWhenClickedTwice(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">  alert(<span class="hljs-string">"Be like the native Jquery event handler"</span>);</span><br><span class="line">&#125;);</span><br></code></pre></td></tr></table></div></figure>
+<h3 id="Hybrid_Format">Hybrid Format</h3><p>There are even times where a combination of the above two formats might be needed for some degree of customizing over a plain callback.</p>
+<figure class="highlight javascript"><figcaption><span>Callback with Options</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="line">$(<span class="hljs-string">"#my-element"</span>).optionsWithCallback(&#123;</span><br><span class="line">  firstOption: <span class="hljs-string">"setHigh"</span>,</span><br><span class="line">  secondOption: <span class="hljs-literal">false</span></span><br><span class="line">  &#125;,<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    alert(<span class="hljs-string">"Be like the native Jquery event handler"</span>);</span><br><span class="line">&#125;);</span><br></code></pre></td></tr></table></div></figure>
+<p>Below is a modified version of the <a href="http://jqueryboilerplate.com/" target="_blank" rel="external">JQuery Boilerplate</a>.</p>
+<p>In order for the callback function to work, the event must be triggered within the plugin itself. Look inside Plugin.prototype.init() for details.</p>
+<figure class="highlight javascript"><figcaption><span>Boilerplate - Optional Option</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="line">;(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($, window, document, undefined)</span> </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> pluginName = <span class="hljs-string">'optionsAreOptional'</span>,</span><br><span class="line">    defaults;</span><br><span class="line">  <span class="hljs-keyword">var</span> PluginWrapper = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(element, pluginInfo)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">var</span> Plugin = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">      <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">checkArgs</span><span class="hljs-params">(index)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">switch</span> (pluginInfo[index]) &#123;</span><br><span class="line">        <span class="hljs-keyword">case</span> <span class="hljs-string">'object'</span>:</span><br><span class="line">          <span class="hljs-comment">//Overwrite defaults if the args item is an object</span></span><br><span class="line">          Plugin.options = $.extend(&#123;&#125;, defaults, pluginInfo.args[index]);</span><br><span class="line">          <span class="hljs-keyword">break</span>;</span><br><span class="line">        <span class="hljs-keyword">case</span> <span class="hljs-string">'function'</span>:</span><br><span class="line">          <span class="hljs-comment">//Store the index of where the function location in args</span></span><br><span class="line">          pluginInfo.functionIndex = index;</span><br><span class="line">          <span class="hljs-keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="hljs-comment">//Check what type of arguments are supplied to</span></span><br><span class="line">      <span class="hljs-comment">//the first and second parameters</span></span><br><span class="line">      <span class="hljs-keyword">switch</span> (pluginInfo.argsLen) &#123;</span><br><span class="line">      <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:</span><br><span class="line">        checkArgs(<span class="hljs-number">0</span>);</span><br><span class="line">        <span class="hljs-keyword">break</span>;</span><br><span class="line">      <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>:</span><br><span class="line">        checkArgs(<span class="hljs-number">0</span>);</span><br><span class="line">        checkArgs(<span class="hljs-number">1</span>);</span><br><span class="line">        <span class="hljs-comment">//Should not have the same parameter types</span></span><br><span class="line">        <span class="hljs-keyword">if</span> (pluginInfo[<span class="hljs-number">0</span>] === pluginInfo[<span class="hljs-number">1</span>]) &#123;</span><br><span class="line">          <span class="hljs-keyword">throw</span> [<span class="hljs-string">'Can not have the first two parameters of the same type of '</span>, <span class="hljs-string">'"'</span>,</span><br><span class="line">          pluginInfo[<span class="hljs-number">0</span>], <span class="hljs-string">'"'</span>].join(<span class="hljs-string">''</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">break</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    Plugin.prototype = &#123;</span><br><span class="line">      init: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(pluginInfo)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-comment">//Do Stuff</span></span><br><span class="line">        <span class="hljs-keyword">this</span>.stuff();</span><br><span class="line">        <span class="hljs-keyword">var</span> $el = $(element);</span><br><span class="line">        <span class="hljs-comment">//Attaching event listener</span></span><br><span class="line">        $el.on(<span class="hljs-string">'optionsAreOptional'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(evt)</span> </span>&#123;</span><br><span class="line">          <span class="hljs-comment">//Make sure a function exists before executing one</span></span><br><span class="line">          <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> pluginInfo.functionIndex !== <span class="hljs-string">'undefined'</span>) &#123;</span><br><span class="line">            <span class="hljs-comment">//Preserve the event and context</span></span><br><span class="line">            pluginInfo.args[pluginInfo.functionIndex].call(<span class="hljs-keyword">this</span>, evt);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="hljs-comment">//Testing out the event listener</span></span><br><span class="line">        <span class="hljs-comment">//Use this upon a certain condition being met</span></span><br><span class="line">        $el.trigger(<span class="hljs-string">'optionsAreOptional'</span>);</span><br><span class="line">        <span class="hljs-comment">//Do more stuff here</span></span><br><span class="line">        <span class="hljs-keyword">this</span>.doMoreStuff();</span><br><span class="line">      &#125;,</span><br><span class="line">      stuff: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-comment">//Stuff to be done</span></span><br><span class="line">      &#125;,</span><br><span class="line">      doMoreStuff: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-comment">//Even more stuff to be done</span></span><br><span class="line">      &#125;</span><br><span class="line">      <span class="hljs-comment">//Add more functions here</span></span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="hljs-comment">//Initialize plugin</span></span><br><span class="line">    Plugin();</span><br><span class="line">    Plugin.prototype.init(pluginInfo);</span><br><span class="line">  &#125;</span><br><span class="line">  $.fn[pluginName] = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">var</span> args = <span class="hljs-built_in">Array</span>.prototype.slice.call(<span class="hljs-built_in">arguments</span>),</span><br><span class="line">      argsLen = args.length,</span><br><span class="line">      pluginInfo = &#123;&#125;;</span><br><span class="line">    pluginInfo.argsLen = argsLen;</span><br><span class="line">    pluginInfo.args = args;</span><br><br class="double"><span class="line">    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">checkArgs</span><span class="hljs-params">(theItem, index)</span> </span>&#123;</span><br><span class="line">      <span class="hljs-keyword">try</span> &#123;</span><br><span class="line">        <span class="hljs-comment">//Determine if item is a plain object</span></span><br><span class="line">        <span class="hljs-keyword">if</span> ($.isPlainObject(theItem)) &#123;</span><br><span class="line">          pluginInfo[index] = <span class="hljs-string">'object'</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125; <span class="hljs-keyword">catch</span> (error) &#123;</span><br><span class="line">        <span class="hljs-keyword">throw</span> <span class="hljs-string">'Not a proper object'</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="hljs-keyword">try</span> &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> ($.isFunction(theItem)) &#123;</span><br><span class="line">          <span class="hljs-comment">//Determine if item is a function</span></span><br><span class="line">          pluginInfo[index] = <span class="hljs-string">'function'</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125; <span class="hljs-keyword">catch</span> (error) &#123;</span><br><span class="line">        <span class="hljs-keyword">throw</span> <span class="hljs-string">'Not a proper function.'</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.each(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">      <span class="hljs-keyword">if</span> (!$.data(<span class="hljs-keyword">this</span>, <span class="hljs-string">'plugin_'</span> + pluginName)) &#123;</span><br><span class="line">        <span class="hljs-comment">//Check for the number of arguments for plugin</span></span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; pluginInfo.argsLen; i++) &#123;</span><br><span class="line">          checkArgs(pluginInfo.args[i], i);</span><br><span class="line">        &#125;</span><br><span class="line">        $.data(<span class="hljs-keyword">this</span>, <span class="hljs-string">'plugin_'</span> + pluginName, <span class="hljs-keyword">new</span> PluginWrapper(<span class="hljs-keyword">this</span>, pluginInfo));</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;)(jQuery, <span class="hljs-built_in">window</span>, <span class="hljs-built_in">document</span>);</span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight html"><figcaption><span>Accompanying Html</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="line"><span class="hljs-doctype">&lt;!DOCTYPE HTML&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-title">html</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-title">head</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-title">title</span>&gt;</span>Optional Options<span class="hljs-tag">&lt;/<span class="hljs-title">title</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-title">meta</span> <span class="hljs-attribute">charset</span>=<span class="hljs-value">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"jquery-1.10.2.min.js"</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"JqueryBoilerPlateOptionalOptions.js"</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;/<span class="hljs-title">head</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-title">script</span>&gt;</span><span class="javascript"></span><br><span class="line">      $(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>&#123;</span><br><br class="double"><span class="line">        <span class="hljs-comment">//1) Options Only</span></span><br><span class="line">        <span class="hljs-comment">//Only options provided to the plugin</span></span><br><span class="line">        <span class="hljs-comment">//This is what most JQuery plugin out there uses</span></span><br><span class="line">        $(<span class="hljs-string">"#only-options"</span>).optionsAreOptional(&#123;</span><br><span class="line">          stuff: <span class="hljs-string">"myThings"</span></span><br><span class="line">        &#125;);</span><br><br class="double"><span class="line">        <span class="hljs-comment">//2) Function Only</span></span><br><span class="line">        <span class="hljs-comment">//This format is similar to the native JQuery event handler</span></span><br><span class="line">        <span class="hljs-comment">//Use this if your plugin needs not to have any configuration options</span></span><br><span class="line">        <span class="hljs-comment">//In order for this to work, trigger the name of the plugin</span></span><br><span class="line">        <span class="hljs-comment">//ex. $('#only-function').trigger("optionsAreOptional")</span></span><br><span class="line">        <span class="hljs-comment">//inside your plugin to activate the event handler</span></span><br><span class="line">        $(<span class="hljs-string">'#only-function'</span>).optionsAreOptional(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">          <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Only a function'</span>);</span><br><span class="line">        &#125;);</span><br><br class="double"><span class="line">        <span class="hljs-comment">//3) Options and Function</span></span><br><span class="line">        <span class="hljs-comment">//Both option and function are provided for this one</span></span><br><span class="line">        <span class="hljs-comment">//Use this if a little configuration is needed over the</span></span><br><span class="line">        <span class="hljs-comment">//second option</span></span><br><span class="line">        $(<span class="hljs-string">"#options-function"</span>).optionsAreOptional(&#123;</span><br><span class="line">            moreStuff: <span class="hljs-string">"moreOfMyThings"</span></span><br><span class="line">          &#125;,</span><br><span class="line">          <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">		    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'My callback.'</span>);</span><br><span class="line">		  &#125;);</span><br><span class="line">      &#125;);</span><br><span class="line">    </span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>The following headers have attached event listeners:<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-title">h2</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"only-options"</span>&gt;</span>Only options provided for this header.<span class="hljs-tag">&lt;/<span class="hljs-title">h2</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-title">h2</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"only-function"</span>&gt;</span>A function attached to this header.<span class="hljs-tag">&lt;/<span class="hljs-title">h2</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-title">h2</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"options-function"</span>&gt;</span>This header has options and a function.<span class="hljs-tag">&lt;/<span class="hljs-title">h2</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-title">html</span>&gt;</span></span><br></code></pre></td></tr></table></div></figure>
+<p><a href="http://jsbin.com/otIsuta/3/" target="_blank" rel="external">Online Demo</a> | <a href="/demos/2013-09-12-optional-options.zip">Offline Demo</a></p>
+
+      
+
+
+    </div>
+    
+<footer class="post-content-footer">
+  
+  <div class="article-tags ym-clearfix">
+    <p>Tags: </p>
+    <a href="/tags/jQuery/">jQuery</a>, <a href="/tags/javascript/">javascript</a>
+  </div>
+</footer>
+
+
+      <div class="dotted-border"></div>
+  </div>
+
+</article>
+
+
+<nav class="article-pagination ym-clearfix">
+
+    
+    <a href="/2013/10/19/namespacing-event-handlers/" class="prev" title="Namespacing Event Handlers">« Namespacing Event Handlers</a>
+    
+    
+    <a href="/2013/08/16/javascript-quick-tips-number-4/" class="next" title="JavaScript Quick Tips #4">JavaScript Quick Tips #4 »</a>
+    
+</nav>
+
+
+
+<section id="comment">
+  <h1 class="title">Comments</h1>
+
+  
+<!--
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+-->
+    <div><!-- START: Livefyre Embed -->
+        <div id="livefyre-comments"></div>
+        <script type="text/javascript" src="http://zor.livefyre.com/wjs/v3.0/javascripts/livefyre.js"></script>
+        <script type="text/javascript">
+            (function () {
+                var articleId = fyre.conv.load.makeArticleId(null);
+                fyre.conv.load({}, [{
+                    el: 'livefyre-comments',
+                    network: "livefyre.com",
+                    siteId: "326354",
+                    articleId: articleId,
+                    signed: false,
+                    collectionMeta: {
+                        articleId: articleId,
+                        url: fyre.conv.load.makeCollectionUrl()
+                    }
+                }], function() {});
+            }());
+        </script>
+        <noscript>Please enable JavaScript to view the comments powered by LiveFyre</noscript>
+        <!-- END: Livefyre Embed --></div>
+
+  
+</section>
+
+
+</div>
+
+        </div>
+    </div>
+</main>
+<aside id="sidebar">
+    <div class="ym-wrapper">
+        <div class="ym-wbox">
+            <div id="aside-wrapper" class="ym-clearfix">
+                
+  
+<div class="widget tag" id="aside-tag">
+  <h3 class="title">Tags</h3>
+
+  
+
+    <ul class="entry">
+  
+    
+        <li><a href="/tags/cms/">cms</a></li>
+    
+        
+    
+        <li><a href="/tags/css/">css</a></li>
+    
+        
+    
+        <li><a href="/tags/emberjs/">emberjs</a></li>
+    
+        
+    
+        <li><a href="/tags/html/">html</a></li>
+    
+        
+    
+        <li><a href="/tags/jQuery/">jQuery</a></li>
+    
+        
+    
+        <li><a href="/tags/javascript/">javascript</a></li>
+    
+        
+    
+        <li><a href="/tags/meteorjs/">meteorjs</a></li>
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    </ul>
+
+    <ul class="entry">
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+            <li><a href="/tags/nodejs/">nodejs</a></li>
+        
+        
+        
+            <li><a href="/tags/octopress/">octopress</a></li>
+        
+        
+        
+            <li><a href="/tags/rails/">rails</a></li>
+        
+        
+        
+            <li><a href="/tags/rvm/">rvm</a></li>
+        
+        
+        
+            <li><a href="/tags/server/">server</a></li>
+        
+        
+        
+            <li><a href="/tags/shell/">shell</a></li>
+        
+        
+    </ul>
+
+</div>
+
+
+  
+<div class="widget tag" id="archive-recent">
+  <h3 id="recent" class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2015/02/14/Meteor-Quick-Tips-2/">Meteor - Quick Tips #2</a>
+      </li>
+    
+      <li>
+        <a href="/2015/01/19/Meteor-Quick-Tips-1/">Meteor - Quick Tips #1</a>
+      </li>
+    
+      <li>
+        <a href="/2014/12/24/Validating-Numbers/">Validating Numbers</a>
+      </li>
+    
+      <li>
+        <a href="/2014/11/26/WordPress-Mixed-Content-Warning/">WordPress - Mixed Content Warning</a>
+      </li>
+    
+      <li>
+        <a href="/2014/10/28/Bash-Clear-History-Upon-Exiting-Terminal/">Bash - Clear History Upon Exiting Terminal</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+<a id="top-of-page-link" href="#top-of-page">Top of Page</a>
+
+            </div>
+
+        </div>
+    </div>
+
+</aside>
+<footer id="main-footer">
+    <div class="ym-wrapper">
+        <div class="ym-wbox">
+            <p id="main-footer-text">
+  Copyright rightfully belongs here
+  
+  &copy; 2015 William Huey
+  
+  and proudly powered by <a href="http://hexo.io">Hexo</a> and
+  <a href="http://www.github.com/williamhuey">Github</a>
+</p>
+
+        </div>
+    </div>
+</footer>
+</body>
+</html>
+

@@ -1,0 +1,412 @@
+
+
+
+
+
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Simple Validator | Williamful</title>
+    <meta name="author" content="William Huey">
+    
+    <meta name="description" content="Simple Validator">
+    
+    <meta name="keywords" content="validation validate validating simple general">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="Simple Validator"/>
+    <meta property="og:site_name" content="Williamful"/>
+
+    <meta name="google-site-verification" content="B2mK_j0pDOjJWR2qib5P5KJZ7Dm_D3eakVIvZJ6gME0" />
+
+    
+<script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-39929091-1', 'github.io');
+    ga('send', 'pageview');
+</script>
+
+
+    <link href="/favicon.ico?" type="image/x-icon" rel="shortcut icon">
+
+  <link rel="alternate" href="/atom.xml" title="Williamful" type="application/atom+xml">
+
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+<script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-39929091-1', 'github.io');
+    ga('send', 'pageview');
+</script>
+
+<link rel="apple-touch-icon" sizes="57x57" href="/img/LogoSlanted-57-outline.png" />
+<link rel="apple-touch-icon" sizes="75x75" href="/img/LogoSlanted-75-outline.png" />
+<link rel="apple-touch-icon" sizes="114x114" href="/img/LogoSlanted-114-outline.png" />
+<link rel="apple-touch-icon" sizes="144x144" href="/img/LogoSlanted-144-outline.png" />
+
+</head>
+
+
+<body>
+
+<hr id="top-of-page">
+<header id="header">
+    <div class="ym-wrapper">
+        <div class="ym-box">
+            <div id="main-header-wrapper" class="ym-clearfix">
+  <div id="main-logo-header">
+    <a title="Home is where the heart is." href="/">
+      <img id="main-logo" src="/img/logoSmall.png" alt="logo"/>
+    </a>
+  </div>
+  <div id="site-name" class="main-header-text">
+    <a title="Home is where the heart is." href="/">
+       Williamful
+    </a>
+  </div>
+  <div id="site-tagline" class="main-header-text">
+    <a title="Home is where the heart is." href="/">
+      Blogging and Beyond
+    </a>
+  </div>
+</div>
+
+<nav id="main-nav">
+    <ul id="main-nav-ul" class="ym-clearfix">
+
+    <li class="main-nav-li" id="rss-li">
+        <ul class="ym-clearfix">
+            <li class="nav-img">
+                <a id="Rss" href="/atom.xml"></a>
+            </li>
+            <li class="nav-word">
+                <a href="/atom.xml">RSS</a>
+            </li>
+        </ul>
+
+
+    </li>
+
+    <li class="main-nav-li" id="recent-li">
+        <ul class="ym-clearfix">
+            <li class="nav-img">
+                <a id="Recent" href="#recent"></a>
+            </li>
+            <li class="nav-word">
+                <a href="#recent">Recent</a>
+            </li>
+        </ul>
+    </li>
+
+    <li class="main-nav-li" id="archives-li">
+        <ul class="ym-clearfix">
+            <li class="nav-img">
+                <a id="Archives" href="/archives"></a>
+            </li>
+            <li class="nav-word">
+                <a href="/archives">Archives</a>
+            </li>
+        </ul>
+    </li>
+
+    <li class="main-nav-li" id="code-li">
+        <ul class="ym-clearfix">
+            <li class="nav-img">
+                <a id="Code" href="#"></a>
+            </li>
+            <li class="nav-word">
+                <a href="/code">Code</a>
+            </li>
+        </ul>
+    </li>
+
+
+</ul>
+</nav>
+
+        </div>
+    </div>
+
+</header>
+<main id="content">
+    <div id="main-col" class="ym-wrapper">
+        <div id="main-col-wrapper" class="ym-wbox">
+            <div id="post-div">
+    
+<article class="post">
+
+  <div class="post-content">
+    <header class="post-content-header">
+      
+        <time class="post-content-time" datetime="2014-08-26T23:25:30.000Z"><a href="/2014/08/26/Simple-Validator/">8/26/2014</a></time>
+      
+      
+  
+    <h2 class="title">Simple Validator</h2>
+  
+
+    </header>
+    <div class="post-content-entry">
+      
+        <h3 id="Simply_Validating">Simply Validating</h3><p>Validation conjures up thoughts of input form validation, but validation could also pop up elsewhere when there is user input such as
+the case for parameters in jQuery plugins. </p>
+<p>The following article will describe a build-up of a modular validate function. </p>
+<p>The validation will perform as follows</p>
+<figure class="highlight js"><figcaption><span>Format and Example</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="line"><span class="hljs-comment">//validate(inputData, attr, attrRule, againstValue);</span></span><br><span class="line">ex: validate(<span class="hljs-number">10</span>, number, greaterThan, <span class="hljs-number">11</span>);</span><br></code></pre></td></tr></table></div></figure>
+<p>The example function will determine whether 10 as a number is greater than 11, which turns out to be false. The output of validate will be a string that states the error.</p>
+<p>We start off with the validate variable as an immediately-invoking function with the variables that are to be accepted in the validate function</p>
+<figure class="highlight js"><figcaption><span>Variables Accepted</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="line"><span class="hljs-keyword">var</span> validate = (<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> inputData, againstValue, attr, attrRule;  </span><br><span class="line">&#125;);</span><br></code></pre></td></tr></table></div></figure>
+<p>The validate function will have the blocks within</p>
+<figure class="highlight js"><figcaption><span>General Function Layout</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="line"><span class="hljs-keyword">var</span> validate = (<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> inputData, againstValue, attr, attrRule;</span><br><br class="double"><span class="line">  <span class="hljs-comment">//Validation Messages</span></span><br><span class="line">  <span class="hljs-keyword">var</span> validationMessage = &#123;&#125;;</span><br><br class="double"><span class="line">  <span class="hljs-comment">//Validation Definitions</span></span><br><span class="line">  <span class="hljs-keyword">var</span> validationDefinitions = &#123;&#125;;</span><br><br class="double"><span class="line">  <span class="hljs-comment">//Run Check</span></span><br><span class="line">  <span class="hljs-keyword">var</span> validationCheck = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>&#123;&#125;;</span><br><br class="double"><span class="line">  <span class="hljs-comment">//Input Gather</span></span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">  &#125;;</span><br><span class="line">&#125;);</span><br></code></pre></td></tr></table></div></figure>
+<h3 id="Accept_Variables_Input">Accept Variables Input</h3><p>The ‘Input Gather’ function will expose the arguments to the variables that are open within the validate function. The main comparision is done with the validationDefinition function, before its boolean outcome is handed off and check by validationCheck.</p>
+<figure class="highlight js"><figcaption><span>Input Gather</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="line"><span class="hljs-comment">//Start off the validation</span></span><br><span class="line"><span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> args = <span class="hljs-built_in">arguments</span>;</span><br><span class="line">  attr = args[<span class="hljs-number">1</span>];</span><br><span class="line">  attrRule = args[<span class="hljs-number">2</span>];</span><br><span class="line">  inputData = args[<span class="hljs-number">0</span>];</span><br><span class="line">  againstValue = args[<span class="hljs-number">3</span>]; </span><br><br class="double"><span class="line">  <span class="hljs-comment">//Kicks off the validation check with supplied data</span></span><br><span class="line">  <span class="hljs-keyword">return</span> validationCheck(validationDefinitions[attr][attrRule]());</span><br><span class="line">&#125;;</span><br></code></pre></td></tr></table></div></figure>
+<h3 id="Validation_Rules">Validation Rules</h3><p>The validationDefinitions variable is an object that has a mapping of attr: {attrRule: function(){}}. The actual validation process is done by calling upon the attrRule definition function.</p>
+<figure class="highlight js"><figcaption><span>Validation Definitions</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="line"><span class="hljs-comment">//Validation patterns</span></span><br><span class="line"><span class="hljs-comment">//Passed-in data are compared against the desired value (againstValue)</span></span><br><span class="line"><span class="hljs-keyword">var</span> validationDefinitions = &#123;</span><br><span class="line">  number: &#123;</span><br><span class="line">    greaterThan: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">      <span class="hljs-keyword">return</span> inputData &gt; againstValue;</span><br><span class="line">    &#125;       </span><br><span class="line">  &#125;  </span><br><span class="line">&#125;;</span><br></code></pre></td></tr></table></div></figure>
+<h3 id="Determining_Validness">Determining Validness</h3><p>The result of the validation helps determine if a validation message needs to be sent</p>
+<figure class="highlight js"><figcaption><span>Validation Check</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="line"><span class="hljs-comment">//Run the checks against the validation patterns</span></span><br><span class="line"><span class="hljs-keyword">var</span> validationCheck = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(passedCheck)</span> </span>&#123;</span><br><span class="line">  <span class="hljs-comment">//Only generate a message value was not validated</span></span><br><span class="line">  <span class="hljs-keyword">if</span>(!passedCheck) &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> validationMessage[attr][attrRule]();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></code></pre></td></tr></table></div></figure>
+<h3 id="Noting_the_Validation_Error">Noting the Validation Error</h3><p>The output of an invalid data input will result in a message being return.</p>
+<figure class="highlight js"><figcaption><span>Validation Messages</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="line"><span class="hljs-comment">//Determine which message type should be used</span></span><br><span class="line"><span class="hljs-keyword">var</span> validationMessage = &#123;</span><br><span class="line">  number: &#123;</span><br><span class="line">    <span class="hljs-comment">//Generate the message for a specific attrRule</span></span><br><span class="line">    greaterThan: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">      <span class="hljs-keyword">return</span> inputData + <span class="hljs-string">' is not greater than '</span> + againstValue;</span><br><span class="line">    &#125;     </span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></code></pre></td></tr></table></div></figure>
+<h3 id="All_Together">All Together</h3><p>The validate function is complete on the bottom. More validation definitions and messages be added in the proper blocks.</p>
+<figure class="highlight js"><figcaption><span>Complete Validation Function</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="line"><span class="hljs-keyword">var</span> validate = (<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>&#123;  </span><br><br class="double"><span class="line">  <span class="hljs-comment">//Make these variables accessible to all functions inside validator</span></span><br><span class="line">  <span class="hljs-keyword">var</span> inputData, againstValue, attr, attrRule;  </span><br><br class="double"><span class="line">  <span class="hljs-comment">//Determine which message type should be used</span></span><br><span class="line">  <span class="hljs-keyword">var</span> validationMessage = &#123;</span><br><span class="line">    number: &#123;</span><br><span class="line">      <span class="hljs-comment">//Generate the message for a specific attrRule</span></span><br><span class="line">      greaterThan: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> inputData + <span class="hljs-string">' is not greater than '</span> + againstValue;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="hljs-comment">/*</span><br><span class="line">      lessThan: function() &#123;</span><br><span class="line">        return inputData + ' is not less than ' + againstValue;</span><br><span class="line">      &#125;</span><br><span class="line">      //More messages here</span><br><span class="line">      */</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;  </span><br><br class="double"><span class="line">  <span class="hljs-comment">//Validation patterns</span></span><br><span class="line">  <span class="hljs-comment">//Passed-in data are compared against the desired value (againstValue)</span></span><br><span class="line">  <span class="hljs-keyword">var</span> validationDefinitions = &#123;</span><br><span class="line">    number: &#123;</span><br><span class="line">      greaterThan: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> inputData &gt; againstValue;</span><br><span class="line">      &#125; </span><br><span class="line">      <span class="hljs-comment">/*</span><br><span class="line">      ,lessThan: function() &#123;</span><br><span class="line">        return inputData &lt; againstValue;</span><br><span class="line">      &#125;</span><br><span class="line">      //More rules here</span><br><span class="line">      */</span></span><br><span class="line">    &#125;  </span><br><span class="line">  &#125;;</span><br><br class="double"><span class="line">  <span class="hljs-comment">//Run the checks against the validation patterns</span></span><br><span class="line">  <span class="hljs-keyword">var</span> validationCheck = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(passedCheck)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-comment">//Only generate a message value when not validated</span></span><br><span class="line">    <span class="hljs-keyword">if</span>(!passedCheck) &#123;</span><br><span class="line">      <span class="hljs-keyword">return</span> validationMessage[attr][attrRule]();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><br class="double"><span class="line">  <span class="hljs-comment">//Start off the validation</span></span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">var</span> args = <span class="hljs-built_in">arguments</span>;</span><br><span class="line">    attr = args[<span class="hljs-number">1</span>];</span><br><span class="line">    attrRule = args[<span class="hljs-number">2</span>];</span><br><span class="line">    inputData = args[<span class="hljs-number">0</span>];</span><br><span class="line">    againstValue = args[<span class="hljs-number">3</span>]; </span><br><br class="double"><span class="line">    <span class="hljs-comment">//Kicks off the validation check with supplied data</span></span><br><span class="line">    <span class="hljs-keyword">return</span> validationCheck(validationDefinitions[attr][attrRule]());</span><br><span class="line">  &#125;;    </span><br><span class="line">&#125;)();</span><br><br class="double"><span class="line"><span class="hljs-comment">//Usage: validate(inputData, 'number', 'greaterThan', 5);</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(validate(<span class="hljs-number">4</span>, <span class="hljs-string">'number'</span>, <span class="hljs-string">'greaterThan'</span>, <span class="hljs-number">5</span>));</span><br><span class="line"><span class="hljs-comment">//Output: '4 is not greater than 5'</span></span><br></code></pre></td></tr></table></div></figure>
+<p><a href="http://jsbin.com/hojovuhemimo/1" target="_blank" rel="external">Online Demo</a></p>
+
+      
+
+
+    </div>
+    
+<footer class="post-content-footer">
+  
+  <div class="article-tags ym-clearfix">
+    <p>Tags: </p>
+    <a href="/tags/javascript/">javascript</a>
+  </div>
+</footer>
+
+
+      <div class="dotted-border"></div>
+  </div>
+
+</article>
+
+
+<nav class="article-pagination ym-clearfix">
+
+    
+    <a href="/2014/09/25/WordPress-Quick-Tips-1/" class="prev" title="WordPress Quick Tips #1">« WordPress Quick Tips #1</a>
+    
+    
+    <a href="/2014/07/29/Namecheap-SSL-and-Nginx/" class="next" title="Namecheap SSL and Nginx">Namecheap SSL and Nginx »</a>
+    
+</nav>
+
+
+
+<section id="comment">
+  <h1 class="title">Comments</h1>
+
+  
+<!--
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+-->
+    <div><!-- START: Livefyre Embed -->
+        <div id="livefyre-comments"></div>
+        <script type="text/javascript" src="http://zor.livefyre.com/wjs/v3.0/javascripts/livefyre.js"></script>
+        <script type="text/javascript">
+            (function () {
+                var articleId = fyre.conv.load.makeArticleId(null);
+                fyre.conv.load({}, [{
+                    el: 'livefyre-comments',
+                    network: "livefyre.com",
+                    siteId: "326354",
+                    articleId: articleId,
+                    signed: false,
+                    collectionMeta: {
+                        articleId: articleId,
+                        url: fyre.conv.load.makeCollectionUrl()
+                    }
+                }], function() {});
+            }());
+        </script>
+        <noscript>Please enable JavaScript to view the comments powered by LiveFyre</noscript>
+        <!-- END: Livefyre Embed --></div>
+
+  
+</section>
+
+
+</div>
+
+        </div>
+    </div>
+</main>
+<aside id="sidebar">
+    <div class="ym-wrapper">
+        <div class="ym-wbox">
+            <div id="aside-wrapper" class="ym-clearfix">
+                
+  
+<div class="widget tag" id="aside-tag">
+  <h3 class="title">Tags</h3>
+
+  
+
+    <ul class="entry">
+  
+    
+        <li><a href="/tags/cms/">cms</a></li>
+    
+        
+    
+        <li><a href="/tags/css/">css</a></li>
+    
+        
+    
+        <li><a href="/tags/emberjs/">emberjs</a></li>
+    
+        
+    
+        <li><a href="/tags/html/">html</a></li>
+    
+        
+    
+        <li><a href="/tags/jQuery/">jQuery</a></li>
+    
+        
+    
+        <li><a href="/tags/javascript/">javascript</a></li>
+    
+        
+    
+        <li><a href="/tags/meteorjs/">meteorjs</a></li>
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    </ul>
+
+    <ul class="entry">
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+            <li><a href="/tags/nodejs/">nodejs</a></li>
+        
+        
+        
+            <li><a href="/tags/octopress/">octopress</a></li>
+        
+        
+        
+            <li><a href="/tags/rails/">rails</a></li>
+        
+        
+        
+            <li><a href="/tags/rvm/">rvm</a></li>
+        
+        
+        
+            <li><a href="/tags/server/">server</a></li>
+        
+        
+        
+            <li><a href="/tags/shell/">shell</a></li>
+        
+        
+    </ul>
+
+</div>
+
+
+  
+<div class="widget tag" id="archive-recent">
+  <h3 id="recent" class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2015/02/14/Meteor-Quick-Tips-2/">Meteor - Quick Tips #2</a>
+      </li>
+    
+      <li>
+        <a href="/2015/01/19/Meteor-Quick-Tips-1/">Meteor - Quick Tips #1</a>
+      </li>
+    
+      <li>
+        <a href="/2014/12/24/Validating-Numbers/">Validating Numbers</a>
+      </li>
+    
+      <li>
+        <a href="/2014/11/26/WordPress-Mixed-Content-Warning/">WordPress - Mixed Content Warning</a>
+      </li>
+    
+      <li>
+        <a href="/2014/10/28/Bash-Clear-History-Upon-Exiting-Terminal/">Bash - Clear History Upon Exiting Terminal</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+<a id="top-of-page-link" href="#top-of-page">Top of Page</a>
+
+            </div>
+
+        </div>
+    </div>
+
+</aside>
+<footer id="main-footer">
+    <div class="ym-wrapper">
+        <div class="ym-wbox">
+            <p id="main-footer-text">
+  Copyright rightfully belongs here
+  
+  &copy; 2015 William Huey
+  
+  and proudly powered by <a href="http://hexo.io">Hexo</a> and
+  <a href="http://www.github.com/williamhuey">Github</a>
+</p>
+
+        </div>
+    </div>
+</footer>
+</body>
+</html>
+

@@ -1,0 +1,536 @@
+
+
+
+
+
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Page 7 | Williamful</title>
+    <meta name="author" content="William Huey">
+    
+    <meta name="description" content="Blogging and Beyond">
+    
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    
+    <meta property="og:site_name" content="Williamful"/>
+
+    <meta name="google-site-verification" content="B2mK_j0pDOjJWR2qib5P5KJZ7Dm_D3eakVIvZJ6gME0" />
+
+    
+<script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-39929091-1', 'github.io');
+    ga('send', 'pageview');
+</script>
+
+
+    <link href="/favicon.ico?" type="image/x-icon" rel="shortcut icon">
+
+  <link rel="alternate" href="/atom.xml" title="Williamful" type="application/atom+xml">
+
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+<script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-39929091-1', 'github.io');
+    ga('send', 'pageview');
+</script>
+
+<link rel="apple-touch-icon" sizes="57x57" href="/img/LogoSlanted-57-outline.png" />
+<link rel="apple-touch-icon" sizes="75x75" href="/img/LogoSlanted-75-outline.png" />
+<link rel="apple-touch-icon" sizes="114x114" href="/img/LogoSlanted-114-outline.png" />
+<link rel="apple-touch-icon" sizes="144x144" href="/img/LogoSlanted-144-outline.png" />
+
+</head>
+
+
+<body id="posts">
+
+<hr id="top-of-page">
+<header id="header">
+    <div class="ym-wrapper">
+        <div class="ym-box">
+            <div id="main-header-wrapper" class="ym-clearfix">
+  <div id="main-logo-header">
+    <a title="Home is where the heart is." href="/">
+      <img id="main-logo" src="/img/logoSmall.png" alt="logo"/>
+    </a>
+  </div>
+  <div id="site-name" class="main-header-text">
+    <a title="Home is where the heart is." href="/">
+       Williamful
+    </a>
+  </div>
+  <div id="site-tagline" class="main-header-text">
+    <a title="Home is where the heart is." href="/">
+      Blogging and Beyond
+    </a>
+  </div>
+</div>
+
+<nav id="main-nav">
+    <ul id="main-nav-ul" class="ym-clearfix">
+
+    <li class="main-nav-li" id="rss-li">
+        <ul class="ym-clearfix">
+            <li class="nav-img">
+                <a id="Rss" href="/atom.xml"></a>
+            </li>
+            <li class="nav-word">
+                <a href="/atom.xml">RSS</a>
+            </li>
+        </ul>
+
+
+    </li>
+
+    <li class="main-nav-li" id="recent-li">
+        <ul class="ym-clearfix">
+            <li class="nav-img">
+                <a id="Recent" href="#recent"></a>
+            </li>
+            <li class="nav-word">
+                <a href="#recent">Recent</a>
+            </li>
+        </ul>
+    </li>
+
+    <li class="main-nav-li" id="archives-li">
+        <ul class="ym-clearfix">
+            <li class="nav-img">
+                <a id="Archives" href="/archives"></a>
+            </li>
+            <li class="nav-word">
+                <a href="/archives">Archives</a>
+            </li>
+        </ul>
+    </li>
+
+    <li class="main-nav-li" id="code-li">
+        <ul class="ym-clearfix">
+            <li class="nav-img">
+                <a id="Code" href="#"></a>
+            </li>
+            <li class="nav-word">
+                <a href="/code">Code</a>
+            </li>
+        </ul>
+    </li>
+
+
+</ul>
+</nav>
+
+        </div>
+    </div>
+
+</header>
+<main id="content">
+    <div id="main-col" class="ym-wrapper">
+        <div id="main-col-wrapper" class="ym-wbox">
+            
+  
+<article class="post">
+
+  <div class="post-content">
+    <header class="post-content-header">
+      
+        <time class="post-content-time" datetime="2013-04-24T23:58:00.000Z"><a href="/2013/04/24/checking-attribute-status-with-jquery/">4/24/2013</a></time>
+      
+      
+  
+    <h2 class="title"><a href="/2013/04/24/checking-attribute-status-with-jquery/">Checking Attribute Status with JQuery</a></h2>
+  
+
+    </header>
+    <div class="post-content-entry">
+      
+        <h3 id="Get_Element’s_Attribute_Value_or_Status">Get Element’s Attribute Value or Status</h3><p>With JQuery, you can do this $(‘#your-element’).hasClass(‘a-class’) to check if the element has a certain class. The problem is that you have to know the class name ahead of time when you use .hasClass. I wanted a general way to know if the class attribute actually exists on the element so I created the getAttrStat function for JQuery to see if the attribute in question on the element is undefined, empty, or has a value without knowing the attribute value ahead of time.</p>
+<figure class="highlight javascript"><figcaption><span>Function to Get Attribute Status</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="line"><span class="hljs-comment">//the return codes are arbitrary</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getAttrStat</span><span class="hljs-params">(elem, attr)</span> </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> attrValue = <span class="hljs-literal">null</span>,</span><br><span class="line">    attrStatus = (attrValue = elem.attr(attr)) || <span class="hljs-number">0</span>;</span><br><span class="line">  <span class="hljs-keyword">if</span> (attrStatus === <span class="hljs-number">0</span>) &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (attrValue === <span class="hljs-string">""</span>) &#123;</span><br><span class="line">      <span class="hljs-comment">//attr is empty</span></span><br><span class="line">      <span class="hljs-built_in">console</span>.log(elem.selector + <span class="hljs-string">" '"</span> + attr + <span class="hljs-string">"' is empty."</span>);</span><br><span class="line">      <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> attrValue == <span class="hljs-string">"undefined"</span>)</span><br><span class="line">    <span class="hljs-comment">//attr is undefined</span></span><br><span class="line">      <span class="hljs-built_in">console</span>.log(elem.selector + <span class="hljs-string">" '"</span> + attr + <span class="hljs-string">"' is undefined."</span>);</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">  &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">    <span class="hljs-comment">//attr has a value</span></span><br><span class="line">    <span class="hljs-built_in">console</span>.log(elem.selector + <span class="hljs-string">" '"</span> + attr + <span class="hljs-string">"' has a value: "</span> + attrValue);</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">2</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight javascript"><figcaption><span>Usage of Function</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="line"><span class="hljs-comment">//returns 0 and logs #a-id 'class' is undefined.</span></span><br><span class="line">getAttrStat($(<span class="hljs-string">'#a-id'</span>), <span class="hljs-string">"class"</span>)</span><br><br class="double"><span class="line"><span class="hljs-comment">//returns 1 and logs #b-id 'class' is undefined.</span></span><br><span class="line">getAttrStat($(<span class="hljs-string">'#b-id'</span>), <span class="hljs-string">"class"</span>)</span><br><br class="double"><span class="line"><span class="hljs-comment">//returns 2 and logs #c-id 'class' is undefined.</span></span><br><span class="line">getAttrStat($(<span class="hljs-string">'#c-id'</span>), <span class="hljs-string">"class"</span>)</span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight html"><figcaption><span>Divs with Attributes</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="line"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"a-id"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">""</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"b-id"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"c-class"</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"c-id"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></span><br></code></pre></td></tr></table></div></figure>
+<p><a href="http://jsbin.com/apodom/1/edit" target="_blank" rel="external">Demo</a></p>
+
+      
+
+
+    </div>
+    
+<footer class="post-content-footer">
+  
+  <div class="article-tags ym-clearfix">
+    <p>Tags: </p>
+    <a href="/tags/jQuery/">jQuery</a>, <a href="/tags/javascript/">javascript</a>
+  </div>
+</footer>
+
+
+      <div class="dotted-border"></div>
+  </div>
+
+</article>
+
+
+
+
+  
+<article class="post">
+
+  <div class="post-content">
+    <header class="post-content-header">
+      
+        <time class="post-content-time" datetime="2013-04-18T07:53:00.000Z"><a href="/2013/04/18/nested-divs-spaced-evenly/">4/18/2013</a></time>
+      
+      
+  
+    <h2 class="title"><a href="/2013/04/18/nested-divs-spaced-evenly/">Nested Divs Spaced Evenly</a></h2>
+  
+
+    </header>
+    <div class="post-content-entry">
+      
+        <h3 id="Get_Child_Divs_to_Align_Vertically_with_Spacing">Get Child Divs to Align Vertically with Spacing</h3><p>You may find yourself having to align fixed-height divs that are nested within a parent div. For example, you might have images that need equal spacing at the top and the bottom. In order to do this, set a margin-bottom on all of the child divs (B, C, D) within the the parent div (A).</p>
+<img src="/img/posts/2013-04-18-nested-divs-spaced-evenly-Margin-Bottom.png" class="center" title="nested-div-spaced-bottom nested-div-spaced-bottom">
+<p>Then set a margin-top for the first child (B). The first nested div is given an id and the css pseudo class of :first-child is applied. The reason I did it this way, instead of using margin-top on all the child divs with :last-child psuedo class on the last child div, is because the :first-child is supported in more older browsers.</p>
+<img src="/img/posts/2013-04-18-nested-divs-spaced-evenly-Last-Child-Margin-Bottom.png" class="center" title="nested-div-spaced-bottom nested-div-spaced-bottom">
+<p><a href="http://jsbin.com/uqileq/1/edit" target="_blank" rel="external">Demo</a> </p>
+
+      
+
+
+    </div>
+    
+<footer class="post-content-footer">
+  
+  <div class="article-tags ym-clearfix">
+    <p>Tags: </p>
+    <a href="/tags/css/">css</a>
+  </div>
+</footer>
+
+
+      <div class="dotted-border"></div>
+  </div>
+
+</article>
+
+
+
+
+  
+<article class="post">
+
+  <div class="post-content">
+    <header class="post-content-header">
+      
+        <time class="post-content-time" datetime="2013-04-14T17:16:00.000Z"><a href="/2013/04/14/javascript-quick-tips-number-1/">4/14/2013</a></time>
+      
+      
+  
+    <h2 class="title"><a href="/2013/04/14/javascript-quick-tips-number-1/">JavaScript Quick Tips #1</a></h2>
+  
+
+    </header>
+    <div class="post-content-entry">
+      
+        <h3 id="Solutions_to_Common_JavaScript_Problems">Solutions to Common JavaScript Problems</h3><h4 id="Problem">Problem</h4><p>Alerting an object returns [object Object].</p>
+<h4 id="Solution">Solution</h4><p>Use JSON.stringify on the object before alerting.</p>
+<figure class="highlight javascript"><figcaption><span>Convert Object to JSON for Alert</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="line"><span class="hljs-keyword">var</span> myVar = &#123;myKey: <span class="hljs-string">'myValue'</span>&#125;;</span><br><span class="line">alert(<span class="hljs-built_in">JSON</span>.stringify(myVar));</span><br></code></pre></td></tr></table></div></figure>
+<h4 id="Problem-1">Problem</h4><p>You want to use splice, but it is destructive.</p>
+<h4 id="Solution-1">Solution</h4><p>Use slice on the original array to make a copy. The spliced array will not affect the array created by slice.</p>
+<figure class="highlight javascript"><figcaption><span>Slice Before You Splice</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="line"><span class="hljs-keyword">var</span> myArray = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>],</span><br><span class="line">  copyArray = myArray.slice();</span><br><br class="double"><span class="line">myArray.splice(<span class="hljs-number">2</span>,<span class="hljs-number">1</span>);</span><br><br class="double"><span class="line"><span class="hljs-comment">//copyArray is your original</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(copyArray);</span><br><br class="double"><span class="line"><span class="hljs-comment">//myArray will be spliced</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(myArray);</span><br></code></pre></td></tr></table></div></figure>
+
+      
+
+
+    </div>
+    
+<footer class="post-content-footer">
+  
+  <div class="article-tags ym-clearfix">
+    <p>Tags: </p>
+    <a href="/tags/javascript/">javascript</a>
+  </div>
+</footer>
+
+
+      <div class="dotted-border"></div>
+  </div>
+
+</article>
+
+
+
+
+  
+<article class="post">
+
+  <div class="post-content">
+    <header class="post-content-header">
+      
+        <time class="post-content-time" datetime="2013-04-13T17:39:00.000Z"><a href="/2013/04/13/ember-routes-redirect/">4/13/2013</a></time>
+      
+      
+  
+    <h2 class="title"><a href="/2013/04/13/ember-routes-redirect/">Ember Routes Redirect</a></h2>
+  
+
+    </header>
+    <div class="post-content-entry">
+      
+        <h3 id="From_Index_to_Another_Route">From Index to Another Route</h3><p>You want your root index route to redirect to another route such as when you are on the index url (root_url) and you need to get to root_url/#/another_route. This may be useful because you wish to use the model information from another_route on initial page load. A downloadable demo is located below.</p>
+<figure class="highlight javascript"><figcaption><span>Index Route to Another Route</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="line">App.IndexRoute = Ember.Route.extend(&#123;</span><br><span class="line">  redirect: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-comment">//replace 'guitars' with your specific route name</span></span><br><span class="line">    <span class="hljs-keyword">this</span>.transitionTo(<span class="hljs-string">'guitars'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></code></pre></td></tr></table></div></figure>
+<p><a href="/demos/2013-04-13-ember-routes-redirect.zip">Download Demo</a></p>
+
+      
+
+
+    </div>
+    
+<footer class="post-content-footer">
+  
+  <div class="article-tags ym-clearfix">
+    <p>Tags: </p>
+    <a href="/tags/emberjs/">emberjs</a>, <a href="/tags/javascript/">javascript</a>
+  </div>
+</footer>
+
+
+      <div class="dotted-border"></div>
+  </div>
+
+</article>
+
+
+
+
+  
+<article class="post">
+
+  <div class="post-content">
+    <header class="post-content-header">
+      
+        <time class="post-content-time" datetime="2013-04-11T07:00:00.000Z"><a href="/2013/04/11/basic-gemset-management/">4/11/2013</a></time>
+      
+      
+  
+    <h2 class="title"><a href="/2013/04/11/basic-gemset-management/">Basic Gemset Management</a></h2>
+  
+
+    </header>
+    <div class="post-content-entry">
+      
+        <h3 id="CRUD_for_your_rvm_gemset">CRUD for your rvm gemset</h3><p>Rvm stands for ruby version manager. It is used to manage ruby environments with something called gemsets. More info can be found <a href="https://rvm.io/" target="_blank" rel="external">here</a>. Rvm comes in handy when your working with <a href="http://www.rubyonrails.org/" target="_blank" rel="external">Rails</a> because you can isolate ruby environments. Here are some snippets for common tasks when dealing with gemsets.</p>
+<figure class="highlight bash"><figcaption><span>Creating a Gemset</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="line"><span class="hljs-comment">#Format:</span></span><br><span class="line">rvm gemset create &lt;gemset_name&gt;</span><br><span class="line"><span class="hljs-comment">#fill in gemset name</span></span><br><br class="double"><span class="line"><span class="hljs-comment">#Example:</span></span><br><span class="line">rvm gemset create rails3.<span class="hljs-number">2.13</span></span><br><span class="line"><span class="hljs-comment">#gemset name is "rails3.2.13"</span></span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight bash"><figcaption><span>List Current Gemset Being Used</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="line">rvm gemset list</span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight bash"><figcaption><span>Using a Gemset</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="line"><span class="hljs-comment">#Format:</span></span><br><span class="line">rvm use &lt;ruby_version_number&gt;@&lt;gemset_name&gt;</span><br><span class="line"><span class="hljs-comment">#fill in ruby version number and gemset name of your choosing</span></span><br><br class="double"><span class="line"><span class="hljs-comment">#Example:</span></span><br><span class="line"><span class="hljs-comment">#uses ruby 1.9.3 with gemset name of "rails version 3.2.13"</span></span><br><span class="line">rvm use <span class="hljs-number">1.9</span>.<span class="hljs-number">3</span>@rails3.<span class="hljs-number">2.13</span> --default</span><br><span class="line"><span class="hljs-comment">#also using a default flag to set the gemset as the default</span></span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight bash"><figcaption><span>Deleting a Gemset</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="line"><span class="hljs-comment">#Format:</span></span><br><span class="line">rvm gemset delete &lt;gemset_name&gt;</span><br><span class="line"><span class="hljs-comment">#fill in gemset name</span></span><br><br class="double"><span class="line"><span class="hljs-comment">#Example:</span></span><br><span class="line">rvm gemset delete gemset_to_delete</span><br><span class="line"><span class="hljs-comment">#"gemset_to_delete" is the gemset that you want to delete</span></span><br></code></pre></td></tr></table></div></figure>
+
+      
+
+
+    </div>
+    
+<footer class="post-content-footer">
+  
+  <div class="article-tags ym-clearfix">
+    <p>Tags: </p>
+    <a href="/tags/rails/">rails</a>, <a href="/tags/rvm/">rvm</a>
+  </div>
+</footer>
+
+
+      <div class="dotted-border"></div>
+  </div>
+
+</article>
+
+
+
+
+
+<nav id="pagination">
+  <div id="pagination-wrapper" class="ym-clearfix">
+      
+        <a href="/page/6/" class="newer">« Newer</a>
+      
+      <span id="pagination-info">Page 7 of 8</span>
+      
+        <a href="/page/8/" class="older">Older »</a>
+      
+  </div>
+</nav>
+        </div>
+    </div>
+</main>
+<aside id="sidebar">
+    <div class="ym-wrapper">
+        <div class="ym-wbox">
+            <div id="aside-wrapper" class="ym-clearfix">
+                
+  
+<div class="widget tag" id="aside-tag">
+  <h3 class="title">Tags</h3>
+
+  
+
+    <ul class="entry">
+  
+    
+        <li><a href="/tags/cms/">cms</a></li>
+    
+        
+    
+        <li><a href="/tags/css/">css</a></li>
+    
+        
+    
+        <li><a href="/tags/emberjs/">emberjs</a></li>
+    
+        
+    
+        <li><a href="/tags/html/">html</a></li>
+    
+        
+    
+        <li><a href="/tags/jQuery/">jQuery</a></li>
+    
+        
+    
+        <li><a href="/tags/javascript/">javascript</a></li>
+    
+        
+    
+        <li><a href="/tags/meteorjs/">meteorjs</a></li>
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    </ul>
+
+    <ul class="entry">
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+            <li><a href="/tags/nodejs/">nodejs</a></li>
+        
+        
+        
+            <li><a href="/tags/octopress/">octopress</a></li>
+        
+        
+        
+            <li><a href="/tags/rails/">rails</a></li>
+        
+        
+        
+            <li><a href="/tags/rvm/">rvm</a></li>
+        
+        
+        
+            <li><a href="/tags/server/">server</a></li>
+        
+        
+        
+            <li><a href="/tags/shell/">shell</a></li>
+        
+        
+    </ul>
+
+</div>
+
+
+  
+<div class="widget tag" id="archive-recent">
+  <h3 id="recent" class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2015/02/14/Meteor-Quick-Tips-2/">Meteor - Quick Tips #2</a>
+      </li>
+    
+      <li>
+        <a href="/2015/01/19/Meteor-Quick-Tips-1/">Meteor - Quick Tips #1</a>
+      </li>
+    
+      <li>
+        <a href="/2014/12/24/Validating-Numbers/">Validating Numbers</a>
+      </li>
+    
+      <li>
+        <a href="/2014/11/26/WordPress-Mixed-Content-Warning/">WordPress - Mixed Content Warning</a>
+      </li>
+    
+      <li>
+        <a href="/2014/10/28/Bash-Clear-History-Upon-Exiting-Terminal/">Bash - Clear History Upon Exiting Terminal</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+<a id="top-of-page-link" href="#top-of-page">Top of Page</a>
+
+            </div>
+
+        </div>
+    </div>
+
+</aside>
+<footer id="main-footer">
+    <div class="ym-wrapper">
+        <div class="ym-wbox">
+            <p id="main-footer-text">
+  Copyright rightfully belongs here
+  
+  &copy; 2015 William Huey
+  
+  and proudly powered by <a href="http://hexo.io">Hexo</a> and
+  <a href="http://www.github.com/williamhuey">Github</a>
+</p>
+
+        </div>
+    </div>
+</footer>
+</body>
+</html>
+
