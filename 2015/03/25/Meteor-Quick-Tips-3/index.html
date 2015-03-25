@@ -9,15 +9,15 @@
 <head>
     <meta charset="utf-8">
     
-    <title>shell | Williamful</title>
+    <title>Meteor - Quick Tips #3 | Williamful</title>
     <meta name="author" content="William Huey">
     
-    <meta name="description" content="Blogging and Beyond">
+    <meta name="description" content="Meteor - Quick Tips">
     
-    
+    <meta name="keywords" content="meteorjs quick tips remove event listeners subscription data template helpers load">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    
+    <meta property="og:title" content="Meteor - Quick Tips #3"/>
     <meta property="og:site_name" content="Williamful"/>
 
     <meta name="google-site-verification" content="B2mK_j0pDOjJWR2qib5P5KJZ7Dm_D3eakVIvZJ6gME0" />
@@ -144,157 +144,99 @@
 <main id="content">
     <div id="main-col" class="ym-wrapper">
         <div id="main-col-wrapper" class="ym-wbox">
-            
-<div id="archive-page">
-<h1 class="archive-title tag">shell</h1>
-
-
-
-  
-
-
-
-  <div class="archive">
+            <div id="post-div">
     
+<article class="post">
 
-    
+  <div class="post-content">
+    <header class="post-content-header">
+      
+        <time class="post-content-time" datetime="2015-03-25T20:40:12.000Z"><a href="/2015/03/25/Meteor-Quick-Tips-3/">3/25/2015</a></time>
       
       
-        <h2 class="year">2014</h2>
+  
+    <h2 class="title">Meteor - Quick Tips #3</h2>
+  
+
+    </header>
+    <div class="post-content-entry">
       
+        <h3 id="Template_Helpers_and_Subscriptions">Template Helpers and Subscriptions</h3><p>Templates helpers format data onto your templates, but one must ensure that subscription data is fully loaded before the template helpers have a chance to render.</p>
+<p>With the help of <a href="https://github.com/iron-meteor/iron-router" target="_blank" rel="external">Iron Router</a>, use the ‘this.ready()’ check inside the data option.</p>
+<figure class="highlight js"><figcaption><span>Router.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="line">Router.route(<span class="hljs-string">'/post/:_id'</span>, &#123;</span><br><span class="line">  waitOn: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> Meteor.subscribe(<span class="hljs-string">'post'</span>, <span class="hljs-keyword">this</span>.params._id)</span><br><span class="line">  &#125;,</span><br><span class="line">  data: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>&#123; </span><br><span class="line">    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.ready()) &#123;</span><br><span class="line">      <span class="hljs-keyword">return</span> &#123; </span><br><span class="line">        post: Posts.findOne(&#123;_id: <span class="hljs-keyword">this</span>.params._id&#125;);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;    </span><br><span class="line">  &#125;  </span><br><span class="line">&#125;);</span><br></code></pre></td></tr></table></div></figure>
+<p>Once the above is in place, a template helper can now safely rendered the subscription data.</p>
+<figure class="highlight js"><figcaption><span>Template.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="line">Template.post.helpers(&#123;</span><br><span class="line">  post: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> Template.currentData().post;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></code></pre></td></tr></table></div></figure>
+<h3 id="Remove_Event_Listeners_From_Blaze_Templates">Remove Event Listeners From Blaze Templates</h3><p>As of Meteor 1.0.4.2, this can not be done. The <a href="http://docs.meteor.com/#/full/blaze_tohtml" target="_blank" rel="external">Blaze to HTML</a> looked promising, but this only creates static html element from a template, it does not provide the ability to render an active Blaze template inert.</p>
+<p>For example the following template has a click event listener attached, but there is not way to undo or remove the click event listener.</p>
+<figure class="highlight js"><figcaption><span>Click Event Listener</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="line">Template.my-template.events(&#123;</span><br><span class="line">  <span class="hljs-string">"click #container a"</span>: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(evt)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-comment">//do some stuff here</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></code></pre></td></tr></table></div></figure>
+
       
-      <article class="post archive-listing">
-        <div class="post-content">
-          <header class="ym-clearfix">
-            <time datetime="2014-10-29T03:59:34.000Z"><a href="/2014/10/28/Bash-Clear-History-Upon-Exiting-Terminal/">10/28/2014</a></time>
-            
-              <div class="title-and-tags ym-clearfix">
-                  <h3 class="title"><a href="/2014/10/28/Bash-Clear-History-Upon-Exiting-Terminal/">Bash - Clear History Upon Exiting Terminal</a></h3>
-                  
-
-  
-
-  
-
-  
-
-  
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
 
 
-
-    
-    
-    
-    <div class="archives-tags ym-clearfix">
-        
-        <p class="tag-mark">Tags:</p>
-        <div class="tag-items ym-clearfix">
-            <a href="/tags/shell" >
-                shell
-            </a>
-        </div>
     </div>
     
+<footer class="post-content-footer">
+  
+  <div class="article-tags ym-clearfix">
+    <p>Tags: </p>
+    <a href="/tags/javascript/">javascript</a>, <a href="/tags/meteorjs/">meteorjs</a>
+  </div>
+</footer>
 
-              </div>
-            
-          </header>
-        </div>
-      </article>
 
-
-    
+      <div class="dotted-border"></div>
   </div>
 
+</article>
+
+
+<nav class="article-pagination ym-clearfix">
+
+    
+    
+    <a href="/2015/02/14/Meteor-Quick-Tips-2/" class="next" title="Meteor - Quick Tips #2">Meteor - Quick Tips #2 »</a>
+    
+</nav>
+
+
+
+<section id="comment">
+  <h1 class="title">Comments</h1>
+
+  
+<!--
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+-->
+    <div><!-- START: Livefyre Embed -->
+        <div id="livefyre-comments"></div>
+        <script type="text/javascript" src="http://zor.livefyre.com/wjs/v3.0/javascripts/livefyre.js"></script>
+        <script type="text/javascript">
+            (function () {
+                var articleId = fyre.conv.load.makeArticleId(null);
+                fyre.conv.load({}, [{
+                    el: 'livefyre-comments',
+                    network: "livefyre.com",
+                    siteId: "326354",
+                    articleId: articleId,
+                    signed: false,
+                    collectionMeta: {
+                        articleId: articleId,
+                        url: fyre.conv.load.makeCollectionUrl()
+                    }
+                }], function() {});
+            }());
+        </script>
+        <noscript>Please enable JavaScript to view the comments powered by LiveFyre</noscript>
+        <!-- END: Livefyre Embed --></div>
+
+  
+</section>
+
+
 </div>
+
         </div>
     </div>
 </main>
