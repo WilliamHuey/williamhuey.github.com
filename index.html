@@ -151,6 +151,50 @@
   <div class="post-content">
     <header class="post-content-header">
       
+        <time class="post-content-time" datetime="2015-05-16T09:28:01.000Z"><a href="/2015/05/16/Meteor-Quick-Tips-4/">5/16/2015</a></time>
+      
+      
+  
+    <h2 class="title"><a href="/2015/05/16/Meteor-Quick-Tips-4/">Meteor - Quick Tips #4</a></h2>
+  
+
+    </header>
+    <div class="post-content-entry">
+      
+        <h3 id="Filtering_Differences_between_Minimongo_and_Mongo">Filtering Differences between Minimongo  and Mongo</h3><p>Minimongo is Meteor’s client-side implementation of Mongodb, while Mongodb is refer to as Mongo.</p>
+<p>In Mongo, when limiting the fields of the return documents, there are two parameters. Minimongo also takes two parameters, but the second parameter needs a field wrapper to denote the fields to return.</p>
+<figure class="highlight js"><figcaption><span>Cut Down Documents Field Return</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="line"><span class="hljs-comment">//Mongodb</span></span><br><span class="line">CollectionName.find(&#123;&#125;, &#123;<span class="hljs-string">'onlyThisField'</span>:<span class="hljs-number">1</span>&#125;);</span><br><br class="double"><span class="line"><span class="hljs-comment">//Minimongo</span></span><br><span class="line">CollectionName.find(&#123;&#125;, &#123;fields: &#123;<span class="hljs-string">'onlyThisField'</span>:<span class="hljs-number">1</span>&#125;&#125;);</span><br></code></pre></td></tr></table></div></figure>
+<h3 id="Return_Template_in_Template_Helper">Return Template in Template Helper</h3><p>Template helpers only return a string when outputting to the templates, so an object output is not possible. The closest thing to rendering a template out to another template is to use Blaze.toHTML. The spacebar template needs to have the triple braces for raw output to convert a string to an actual element.</p>
+<figure class="highlight js"><figcaption><span>Blaze Returns a Html String</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="line"><span class="hljs-comment">//Rendered</span></span><br><span class="line">Template.blank.onRendered(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">  <span class="hljs-keyword">this</span>.data.rv = <span class="hljs-keyword">new</span> ReactiveVar(<span class="hljs-string">""</span>);</span><br><span class="line">  <span class="hljs-keyword">this</span>.data.rv.set(Blaze.toHTML(Template.postInfo));</span><br><span class="line">&#125;);</span><br><br class="double"><span class="line"><span class="hljs-comment">//Helpers</span></span><br><span class="line">Template.post.helpers(&#123;</span><br><span class="line">  info: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> Template.instance().data.rv.get();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight html"><figcaption><span>Output the Html String</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="line"><span class="hljs-tag">&lt;<span class="hljs-title">template</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"post"</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"reading"</span>&gt;</span>&#123;&#123;&#123;info&#125;&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-title">template</span>&gt;</span></span><br></code></pre></td></tr></table></div></figure>
+      
+
+
+    </div>
+    
+<footer class="post-content-footer">
+  
+  <div class="article-tags ym-clearfix">
+    <p>Tags: </p>
+    <a href="/tags/javascript/">javascript</a>, <a href="/tags/meteorjs/">meteorjs</a>
+  </div>
+</footer>
+
+
+      <div class="dotted-border"></div>
+  </div>
+
+</article>
+
+
+
+
+  
+<article class="post">
+
+  <div class="post-content">
+    <header class="post-content-header">
+      
         <time class="post-content-time" datetime="2015-03-25T20:40:12.000Z"><a href="/2015/03/25/Meteor-Quick-Tips-3/">3/25/2015</a></time>
       
       
@@ -326,55 +370,6 @@ However, the input content will always be string when performing a check on an i
 
 
 
-  
-<article class="post">
-
-  <div class="post-content">
-    <header class="post-content-header">
-      
-        <time class="post-content-time" datetime="2014-11-27T07:04:35.000Z"><a href="/2014/11/26/WordPress-Mixed-Content-Warning/">11/26/2014</a></time>
-      
-      
-  
-    <h2 class="title"><a href="/2014/11/26/WordPress-Mixed-Content-Warning/">WordPress - Mixed Content Warning</a></h2>
-  
-
-    </header>
-    <div class="post-content-entry">
-      
-        <h3 id="Insecured_Content">Insecured Content</h3><p>Recently, when working with WordPress, I noticed that when using the <a href="https://wordpress.org/plugins/master-slider/" target="_blank" rel="external">Master Slider</a> plugin, a content slider/carousel plugin, Firefox was complaining about mixed content from the images. I was using ssl on the site.</p>
-<p>Initially I thought this was the wrongdoing of the plugin, but looking through the support pages for the plugin did not yield any immediate answers. The source did not yield any obvious error.</p>
-<p>While trying to figure out the problem with the slider, I also notice the warning of the mixed content from the media library of WordPress.</p>
-<p>This lead me to think that it may not be the plugin’s fault, and there might be something wrong with WordPress or with the configuration at least.</p>
-<p>Looking further into the situation lead me to figure out that I have forgotten to change the url settings in WordPress.</p>
-<p>To solve my problem I navigated to</p>
-<figure class="highlight mathematica"><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined"><span class="line">Settings &gt; <span class="hljs-keyword">General</span></span><br></code></pre></td></tr></table></div></figure>
-<p>Then changing </p>
-<figure class="highlight livecodeserver"><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs undefined"><span class="line">WordPress <span class="hljs-built_in">URL</span></span><br><span class="line">Site Address <span class="hljs-built_in">URL</span></span><br></code></pre></td></tr></table></div></figure>
-<p>values to use https for the domain to solve the problem.</p>
-
-      
-
-
-    </div>
-    
-<footer class="post-content-footer">
-  
-  <div class="article-tags ym-clearfix">
-    <p>Tags: </p>
-    <a href="/tags/cms/">cms</a>
-  </div>
-</footer>
-
-
-      <div class="dotted-border"></div>
-  </div>
-
-</article>
-
-
-
-
 
 <nav id="pagination">
   <div id="pagination-wrapper" class="ym-clearfix">
@@ -494,6 +489,10 @@ However, the input content will always be string when performing a check on an i
   <ul class="entry">
     
       <li>
+        <a href="/2015/05/16/Meteor-Quick-Tips-4/">Meteor - Quick Tips #4</a>
+      </li>
+    
+      <li>
         <a href="/2015/03/25/Meteor-Quick-Tips-3/">Meteor - Quick Tips #3</a>
       </li>
     
@@ -507,10 +506,6 @@ However, the input content will always be string when performing a check on an i
     
       <li>
         <a href="/2014/12/24/Validating-Numbers/">Validating Numbers</a>
-      </li>
-    
-      <li>
-        <a href="/2014/11/26/WordPress-Mixed-Content-Warning/">WordPress - Mixed Content Warning</a>
       </li>
     
   </ul>

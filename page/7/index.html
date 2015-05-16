@@ -151,6 +151,60 @@
   <div class="post-content">
     <header class="post-content-header">
       
+        <time class="post-content-time" datetime="2013-05-03T04:24:00.000Z"><a href="/2013/05/02/standalone-mocha-with-component/">5/2/2013</a></time>
+      
+      
+  
+    <h2 class="title"><a href="/2013/05/02/standalone-mocha-with-component/">Standalone Mocha with Component</a></h2>
+  
+
+    </header>
+    <div class="post-content-entry">
+      
+        <h3 id="Run_Mocha_on_the_Client_Side">Run Mocha on the Client Side</h3><p>Install Nvm to install Node by following instructions <a href="https://github.com/creationix/nvm" target="_blank" rel="external">here</a>. Nvm allows you to switch to different versions of Node to manage dependencies.
+Install Component after Node is properly setup from <a href="https://github.com/component/component" target="_blank" rel="external">here</a>. Component is an assets management tool for the client side.
+After Nvm, Node and Component are working properly, make a directory on the desktop and change to it.</p>
+<figure class="highlight bash"><figcaption><span>Make and Change to Directory</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="line"><span class="hljs-built_in">cd</span> Desktop</span><br><span class="line">mkdir standalone-mocha</span><br><span class="line"><span class="hljs-built_in">cd</span> standalone-mocha</span><br></code></pre></td></tr></table></div></figure>
+<p>Make an index.html and component.json file in the root of the folder.</p>
+<figure class="highlight bash"><figcaption><span>Create an Html and Json File</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="line">touch index.html</span><br><span class="line">touch component.json</span><br></code></pre></td></tr></table></div></figure>
+<p>Input the following to component.json. The name can be whatever you want it to be, but the important dependencies are in the development key. Component/assert is needed because Mocha does not have an assertion library by default.</p>
+<figure class="highlight javascript"><figcaption><span>Json Content</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="line">&#123;</span><br><span class="line">  <span class="hljs-string">"name"</span>: <span class="hljs-string">"a-standalone-mocha"</span>,</span><br><span class="line">  <span class="hljs-string">"development"</span>: &#123;</span><br><span class="line">    <span class="hljs-string">"component/assert"</span>: <span class="hljs-string">"*"</span>,</span><br><span class="line">    <span class="hljs-string">"visionmedia/mocha"</span>: <span class="hljs-string">"*"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></code></pre></td></tr></table></div></figure>
+<p>Input the following to index.html:</p>
+<figure class="highlight html"><figcaption><span>Html for Browser</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="line"><span class="hljs-tag">&lt;<span class="hljs-title">html</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-title">head</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">"stylesheet"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"build/build.css"</span> /&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;/<span class="hljs-title">head</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"mocha"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">'parent'</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">'child'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"build/build.js"</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-title">script</span>&gt;</span><span class="javascript"></span><br><span class="line">      assert = <span class="hljs-built_in">require</span>(<span class="hljs-string">'assert'</span>);</span><br><span class="line">      <span class="hljs-built_in">require</span>(<span class="hljs-string">'visionmedia-mocha'</span>);</span><br><span class="line">      mocha.setup(<span class="hljs-string">'bdd'</span>);</span><br><br class="double"><span class="line">      describe(<span class="hljs-string">'Array'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        describe(<span class="hljs-string">'#indexOf()'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">          it(<span class="hljs-string">'should return -1 when the value is not present'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">            assert(-<span class="hljs-number">1</span> === [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>].indexOf(<span class="hljs-number">5</span>));</span><br><span class="line">            assert(-<span class="hljs-number">1</span> === [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>].indexOf(<span class="hljs-number">0</span>));</span><br><span class="line">          &#125;)</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;)</span><br><span class="line">    </span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-title">script</span>&gt;</span><span class="javascript"></span><br><span class="line">      mocha.run();</span><br><span class="line">    </span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-title">html</span>&gt;</span></span><br></code></pre></td></tr></table></div></figure>
+<p>Install and build with component. The -d flag is used because mocha is intended for use in development mode.</p>
+<figure class="highlight bash"><figcaption><span>Tell Component to Generated Files</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="line">component install <span class="hljs-operator">-d</span></span><br><span class="line">component build <span class="hljs-operator">-d</span></span><br></code></pre></td></tr></table></div></figure>
+<p>Open the index.html file and you will be greeted with the following:</p>
+<img src="/img/posts/2013-05-02-standalone-mocha-with-component.png" class="center" title="standalone-mocha-with-component.png standalone-mocha-with-component.png">
+<p><a href="/demos/2013-05-02-standalone-mocha-with-component.zip">Offline Demo</a></p>
+
+      
+
+
+    </div>
+    
+<footer class="post-content-footer">
+  
+  <div class="article-tags ym-clearfix">
+    <p>Tags: </p>
+    <a href="/tags/javascript/">javascript</a>, <a href="/tags/nodejs/">nodejs</a>
+  </div>
+</footer>
+
+
+      <div class="dotted-border"></div>
+  </div>
+
+</article>
+
+
+
+
+  
+<article class="post">
+
+  <div class="post-content">
+    <header class="post-content-header">
+      
         <time class="post-content-time" datetime="2013-04-28T08:18:00.000Z"><a href="/2013/04/28/javascript-quick-tips-number-2/">4/28/2013</a></time>
       
       
@@ -324,48 +378,6 @@
 
 
 
-  
-<article class="post">
-
-  <div class="post-content">
-    <header class="post-content-header">
-      
-        <time class="post-content-time" datetime="2013-04-13T17:39:00.000Z"><a href="/2013/04/13/ember-routes-redirect/">4/13/2013</a></time>
-      
-      
-  
-    <h2 class="title"><a href="/2013/04/13/ember-routes-redirect/">Ember Routes Redirect</a></h2>
-  
-
-    </header>
-    <div class="post-content-entry">
-      
-        <h3 id="From_Index_to_Another_Route">From Index to Another Route</h3><p>You want your root index route to redirect to another route such as when you are on the index url (root_url) and you need to get to root_url/#/another_route. This may be useful because you wish to use the model information from another_route on initial page load. A downloadable demo is located below.</p>
-<figure class="highlight javascript"><figcaption><span>Index Route to Another Route</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="line">App.IndexRoute = Ember.Route.extend(&#123;</span><br><span class="line">  redirect: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-comment">//replace 'guitars' with your specific route name</span></span><br><span class="line">    <span class="hljs-keyword">this</span>.transitionTo(<span class="hljs-string">'guitars'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></code></pre></td></tr></table></div></figure>
-<p><a href="/demos/2013-04-13-ember-routes-redirect.zip">Download Demo</a></p>
-
-      
-
-
-    </div>
-    
-<footer class="post-content-footer">
-  
-  <div class="article-tags ym-clearfix">
-    <p>Tags: </p>
-    <a href="/tags/emberjs/">emberjs</a>, <a href="/tags/javascript/">javascript</a>
-  </div>
-</footer>
-
-
-      <div class="dotted-border"></div>
-  </div>
-
-</article>
-
-
-
-
 
 <nav id="pagination">
   <div id="pagination-wrapper" class="ym-clearfix">
@@ -487,6 +499,10 @@
   <ul class="entry">
     
       <li>
+        <a href="/2015/05/16/Meteor-Quick-Tips-4/">Meteor - Quick Tips #4</a>
+      </li>
+    
+      <li>
         <a href="/2015/03/25/Meteor-Quick-Tips-3/">Meteor - Quick Tips #3</a>
       </li>
     
@@ -500,10 +516,6 @@
     
       <li>
         <a href="/2014/12/24/Validating-Numbers/">Validating Numbers</a>
-      </li>
-    
-      <li>
-        <a href="/2014/11/26/WordPress-Mixed-Content-Warning/">WordPress - Mixed Content Warning</a>
       </li>
     
   </ul>
