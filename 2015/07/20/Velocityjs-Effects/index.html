@@ -9,15 +9,15 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Namespacing Event Handlers | Williamful</title>
+    <title>Velocityjs - Effects | Williamful</title>
     <meta name="author" content="William Huey">
     
-    <meta name="description" content="Namespacing Event Handlers">
+    <meta name="description" content="Blogging and Beyond">
     
-    <meta name="keywords" content="javascript namespacing namespace interfere event handlers prevent conflict off on selective selectively">
+    <meta name="keywords" content="animation, javascript, velocityjs, zoom, scale, pulsate, throb, show, rotate, stagger, duration, loop">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta property="og:title" content="Namespacing Event Handlers"/>
+    <meta property="og:title" content="Velocityjs - Effects"/>
     <meta property="og:site_name" content="Williamful"/>
 
     <meta name="google-site-verification" content="B2mK_j0pDOjJWR2qib5P5KJZ7Dm_D3eakVIvZJ6gME0" />
@@ -151,28 +151,23 @@
   <div class="post-content">
     <header class="post-content-header">
       
-        <time class="post-content-time" datetime="2013-10-19T07:11:00.000Z"><a href="/2013/10/19/namespacing-event-handlers/">10/19/2013</a></time>
+        <time class="post-content-time" datetime="2015-07-21T06:00:07.000Z"><a href="/2015/07/20/Velocityjs-Effects/">7/20/2015</a></time>
       
       
   
-    <h2 class="title">Namespacing Event Handlers</h2>
+    <h2 class="title">Velocityjs - Effects</h2>
   
 
     </header>
     <div class="post-content-entry">
       
-        <h3 id="Conflicting_Events_Handlers">Conflicting Events Handlers</h3><p>Use event namespacing when attaching or detaching event listeners. This reduces the possibility of you accidentally removing event listeners that was not intended to be removed. This is especially important if you plan to use someone else’s JQuery plugin that interacts with an element which you are also manipulating through your own event handler attachment or detachment. There could also be the opposite problem where someone else’s JQuery plugin removes your attached listeners. This is why namespacing events is a good practice.</p>
-<p>Not only can namespacing reduce conflicts of interest with other plugins, namespacing also allows for selective removal of your own event listeners.</p>
-<p>Supposedly two click handlers are attached to a textarea element</p>
-<figure class="highlight javascript"><figcaption><span>Two Click Handlers With No Namespacing</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="line">$(<span class="hljs-string">'textarea'</span>).on(<span class="hljs-string">'click'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">  alert(<span class="hljs-string">'Making a racket here.'</span>);</span><br><span class="line">&#125;).on(<span class="hljs-string">'click'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">  alert(<span class="hljs-string">'Just to annoy you.'</span>);</span><br><span class="line">&#125;);</span><br></code></pre></td></tr></table></div></figure>
-<p>Then you manipulate the element by removing the click handlers</p>
-<figure class="highlight javascript"><figcaption><span>No Control Event Handler Removal</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="line"><span class="hljs-comment">//This could be a very dangerous thing to do</span></span><br><span class="line"><span class="hljs-comment">//because all click handlers are indiscriminately taken out</span></span><br><span class="line">$(<span class="hljs-string">'textarea'</span>).off(<span class="hljs-string">'click'</span>);</span><br></code></pre></td></tr></table></div></figure>
-<p>However, sometimes you do not wish to remove all click listeners for a certain element. Let say that you would only like to remove the last one. You can accomplish this when a namespace is provided</p>
-<figure class="highlight javascript"><figcaption><span>Gave each Click Handler a Namespace</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="line"><span class="hljs-comment">//Each of the click handler has now suffix</span></span><br><span class="line"><span class="hljs-comment">//serving as a namespace</span></span><br><span class="line">$(<span class="hljs-string">'textarea'</span>).on(<span class="hljs-string">'click.first'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">  alert(<span class="hljs-string">'Making a racket here.'</span>);</span><br><span class="line">&#125;).on(<span class="hljs-string">'click.second'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">  alert(<span class="hljs-string">'Just to annoy you.'</span>);</span><br><span class="line">&#125;);</span><br></code></pre></td></tr></table></div></figure>
-<p>Remove only the second click handler as to preserve the first</p>
-<figure class="highlight javascript"><figcaption><span>Remove Event Handler Selectively</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="line">$(<span class="hljs-string">'textarea'</span>).off(<span class="hljs-string">'click.second'</span>);</span><br></code></pre></td></tr></table></div></figure>
-<p>Your first click handler should still be attached.</p>
-<p><a href="http://jsbin.com/ICEjoYo/1" target="_blank" rel="external">Demo</a></p>
+        <p>For your heavy-duty JavaScript animations, I recommend <a href="http://julian.com/research/velocity/" target="_blank" rel="external">Velocityjs</a>, since it has many features and great documentation. <br> Here are some simple effects that I find useful if you have chosen to use Velocityjs:</p>
+<h3 id="Pulsate_/_Throb">Pulsate / Throb</h3><figure class="highlight js"><figcaption><span>Grow and Shrink Element for Five Times</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="line">$(<span class="hljs-string">'#my-element'</span>).velocity(&#123; scale: <span class="hljs-number">2</span> &#125;, &#123; loop: <span class="hljs-number">5</span>&#125;);</span><br></code></pre></td></tr></table></div></figure>
+<p><a href="http://jsbin.com/gocinunome/1/" target="_blank" rel="external">Pulsate Demo</a></p>
+<h3 id="Show_and_Rotate">Show and Rotate</h3><figure class="highlight js"><figcaption><span>Appear, Spins, and Disappear</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="line"><span class="hljs-comment">//Complete animation within half a second</span></span><br><span class="line">$(<span class="hljs-string">'#my-element'</span>).velocity(&#123; scale: <span class="hljs-number">3</span>, opacity: <span class="hljs-number">1</span>, rotateZ: <span class="hljs-string">"360deg"</span> &#125;, &#123;duration: <span class="hljs-number">500</span>&#125;);</span><br></code></pre></td></tr></table></div></figure>
+<p><a href="http://jsbin.com/razexohare/2" target="_blank" rel="external">Spin Demo</a></p>
+<h3 id="Stagger_Elements">Stagger Elements</h3><figure class="highlight js"><figcaption><span>Group Zoom-in</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="line"><span class="hljs-comment">//Assumes that the UI Pack (velocity.ui.js) is in place</span></span><br><span class="line">$(<span class="hljs-string">'.group-of-elements'</span>).velocity(<span class="hljs-string">'transition.whirlIn'</span>, &#123;stagger: <span class="hljs-number">500</span>&#125;);</span><br></code></pre></td></tr></table></div></figure>
+<p><a href="http://jsbin.com/tezofuraqi/2/" target="_blank" rel="external">Stagger Group Demo</a></p>
 
       
 
@@ -183,7 +178,7 @@
   
   <div class="article-tags ym-clearfix">
     <p>Tags: </p>
-    <a href="/tags/jQuery/">jQuery</a>, <a href="/tags/javascript/">javascript</a>
+    <a href="/tags/javascript/">javascript</a>
   </div>
 </footer>
 
@@ -197,10 +192,8 @@
 <nav class="article-pagination ym-clearfix">
 
     
-    <a href="/2013/11/04/disable-stylesheets-with-javascript/" class="prev" title="Disable Stylesheets with JavaScript">« Disable Stylesheets with JavaScript</a>
     
-    
-    <a href="/2013/09/12/optional-options/" class="next" title="Optional Options">Optional Options »</a>
+    <a href="/2015/05/16/Meteor-Quick-Tips-4/" class="next" title="Meteor - Quick Tips #4">Meteor - Quick Tips #4 »</a>
     
 </nav>
 

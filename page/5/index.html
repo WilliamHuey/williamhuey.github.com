@@ -151,6 +151,55 @@
   <div class="post-content">
     <header class="post-content-header">
       
+        <time class="post-content-time" datetime="2014-02-14T03:50:00.000Z"><a href="/2014/02/13/sprites-and-link-padding/">2/13/2014</a></time>
+      
+      
+  
+    <h2 class="title"><a href="/2014/02/13/sprites-and-link-padding/">Sprites and Link Padding</a></h2>
+  
+
+    </header>
+    <div class="post-content-entry">
+      
+        <p>Sprites are often used to stylize ‘a’ tags. When a sprite sheet is used, a fixed width and height is used to specific the image on the sprite. </p>
+<p>Here is a common example of how a sprite is commonly used</p>
+<figure class="highlight css"><figcaption><span>Simple Sprite Css</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="line"><span class="hljs-id">#Square</span> <span class="hljs-rules">&#123;</span><br><span class="line">  <span class="hljs-rule"><span class="hljs-attribute">background</span>:<span class="hljs-value"> <span class="hljs-function">url</span>(sprite-test.png)</span></span>;</span><br><span class="line"><span class="hljs-rule">&#125;</span></span></span><br><br class="double"><span class="line"><span class="hljs-id">#Square</span> <span class="hljs-rules">&#123;</span><br><span class="line">  <span class="hljs-rule"><span class="hljs-attribute">background-position</span>:<span class="hljs-value"> -<span class="hljs-number">19px</span> -<span class="hljs-number">21px</span></span></span>;</span><br><span class="line">  <span class="hljs-rule"><span class="hljs-attribute">width</span>:<span class="hljs-value"> <span class="hljs-number">78px</span></span></span>;</span><br><span class="line">  <span class="hljs-rule"><span class="hljs-attribute">height</span>:<span class="hljs-value"> <span class="hljs-number">78px</span></span></span>;</span><br><span class="line"><span class="hljs-rule">&#125;</span></span></span><br><br class="double"><span class="line"><span class="hljs-tag">a</span> <span class="hljs-rules">&#123;</span><br><span class="line">  <span class="hljs-rule"><span class="hljs-attribute">text-indent</span>:<span class="hljs-value"> -<span class="hljs-number">99999px</span></span></span>;</span><br><span class="line">  <span class="hljs-rule"><span class="hljs-attribute">overflow</span>:<span class="hljs-value"> hidden</span></span>;</span><br><span class="line">  <span class="hljs-rule"><span class="hljs-attribute">background-repeat</span>:<span class="hljs-value"> no-repeat</span></span>;</span><br><span class="line">  <span class="hljs-rule"><span class="hljs-attribute">display</span>:<span class="hljs-value"> block</span></span>;</span><br><span class="line"><span class="hljs-rule">&#125;</span></span></span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight html"><figcaption><span>A link for the Sprite</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="line"><span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"#"</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"Square"</span>&gt;</span>A link<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span></span><br></code></pre></td></tr></table></div></figure>
+<p>In this example the referenced image on the sprite is sufficiently large to allow for easy clicking. There are however times where this is not the case. </p>
+<p>In other cases, padding is needed for the sprite image link to promote a greater clicking region for accessiblity. To achieve this, the markup must be changed such that the ‘a’ tag will have a ‘span’ and the id from the ‘a’ tag is placed on the ‘span tag’.</p>
+<figure class="highlight html"><figcaption><span>Span in Link</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="line"><span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"#"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"Square"</span>&gt;</span>A link<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span></span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight css"><figcaption><span>More Padding for Links</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="line"><span class="hljs-tag">span</span> <span class="hljs-rules">&#123;</span><br><span class="line">  <span class="hljs-rule"><span class="hljs-attribute">display</span>:<span class="hljs-value"> block</span></span>;    </span><br><span class="line"><span class="hljs-rule">&#125;</span></span></span><br><br class="double"><span class="line"><span class="hljs-tag">a</span> <span class="hljs-rules">&#123;</span><br><span class="line">  <span class="hljs-rule"><span class="hljs-attribute">padding</span>:<span class="hljs-value"> <span class="hljs-number">2em</span></span></span>;</span><br><span class="line"><span class="hljs-rule">&#125;</span></span></span><br></code></pre></td></tr></table></div></figure>
+<p>The span carries the image and the ‘a’ tag is now an expandable wrapper of ‘clickability’.</p>
+<p><a href="/demos/2014-02-14-sprite-padding.zip">Offline Demo</a></p>
+
+      
+
+
+    </div>
+    
+<footer class="post-content-footer">
+  
+  <div class="article-tags ym-clearfix">
+    <p>Tags: </p>
+    <a href="/tags/css/">css</a>, <a href="/tags/html/">html</a>
+  </div>
+</footer>
+
+
+      <div class="dotted-border"></div>
+  </div>
+
+</article>
+
+
+
+
+  
+<article class="post">
+
+  <div class="post-content">
+    <header class="post-content-header">
+      
         <time class="post-content-time" datetime="2014-01-14T02:38:00.000Z"><a href="/2014/01/13/removing-stylesheet-rules/">1/13/2014</a></time>
       
       
@@ -332,57 +381,6 @@ The chrome based browsers, Chrome and new Opera, perform the best with 6) ! is :
 
 
 
-  
-<article class="post">
-
-  <div class="post-content">
-    <header class="post-content-header">
-      
-        <time class="post-content-time" datetime="2013-10-19T07:11:00.000Z"><a href="/2013/10/19/namespacing-event-handlers/">10/19/2013</a></time>
-      
-      
-  
-    <h2 class="title"><a href="/2013/10/19/namespacing-event-handlers/">Namespacing Event Handlers</a></h2>
-  
-
-    </header>
-    <div class="post-content-entry">
-      
-        <h3 id="Conflicting_Events_Handlers">Conflicting Events Handlers</h3><p>Use event namespacing when attaching or detaching event listeners. This reduces the possibility of you accidentally removing event listeners that was not intended to be removed. This is especially important if you plan to use someone else’s JQuery plugin that interacts with an element which you are also manipulating through your own event handler attachment or detachment. There could also be the opposite problem where someone else’s JQuery plugin removes your attached listeners. This is why namespacing events is a good practice.</p>
-<p>Not only can namespacing reduce conflicts of interest with other plugins, namespacing also allows for selective removal of your own event listeners.</p>
-<p>Supposedly two click handlers are attached to a textarea element</p>
-<figure class="highlight javascript"><figcaption><span>Two Click Handlers With No Namespacing</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="line">$(<span class="hljs-string">'textarea'</span>).on(<span class="hljs-string">'click'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">  alert(<span class="hljs-string">'Making a racket here.'</span>);</span><br><span class="line">&#125;).on(<span class="hljs-string">'click'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">  alert(<span class="hljs-string">'Just to annoy you.'</span>);</span><br><span class="line">&#125;);</span><br></code></pre></td></tr></table></div></figure>
-<p>Then you manipulate the element by removing the click handlers</p>
-<figure class="highlight javascript"><figcaption><span>No Control Event Handler Removal</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="line"><span class="hljs-comment">//This could be a very dangerous thing to do</span></span><br><span class="line"><span class="hljs-comment">//because all click handlers are indiscriminately taken out</span></span><br><span class="line">$(<span class="hljs-string">'textarea'</span>).off(<span class="hljs-string">'click'</span>);</span><br></code></pre></td></tr></table></div></figure>
-<p>However, sometimes you do not wish to remove all click listeners for a certain element. Let say that you would only like to remove the last one. You can accomplish this when a namespace is provided</p>
-<figure class="highlight javascript"><figcaption><span>Gave each Click Handler a Namespace</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="line"><span class="hljs-comment">//Each of the click handler has now suffix</span></span><br><span class="line"><span class="hljs-comment">//serving as a namespace</span></span><br><span class="line">$(<span class="hljs-string">'textarea'</span>).on(<span class="hljs-string">'click.first'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">  alert(<span class="hljs-string">'Making a racket here.'</span>);</span><br><span class="line">&#125;).on(<span class="hljs-string">'click.second'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">  alert(<span class="hljs-string">'Just to annoy you.'</span>);</span><br><span class="line">&#125;);</span><br></code></pre></td></tr></table></div></figure>
-<p>Remove only the second click handler as to preserve the first</p>
-<figure class="highlight javascript"><figcaption><span>Remove Event Handler Selectively</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="line">$(<span class="hljs-string">'textarea'</span>).off(<span class="hljs-string">'click.second'</span>);</span><br></code></pre></td></tr></table></div></figure>
-<p>Your first click handler should still be attached.</p>
-<p><a href="http://jsbin.com/ICEjoYo/1" target="_blank" rel="external">Demo</a></p>
-
-      
-
-
-    </div>
-    
-<footer class="post-content-footer">
-  
-  <div class="article-tags ym-clearfix">
-    <p>Tags: </p>
-    <a href="/tags/jQuery/">jQuery</a>, <a href="/tags/javascript/">javascript</a>
-  </div>
-</footer>
-
-
-      <div class="dotted-border"></div>
-  </div>
-
-</article>
-
-
-
-
 
 <nav id="pagination">
   <div id="pagination-wrapper" class="ym-clearfix">
@@ -504,6 +502,10 @@ The chrome based browsers, Chrome and new Opera, perform the best with 6) ! is :
   <ul class="entry">
     
       <li>
+        <a href="/2015/07/20/Velocityjs-Effects/">Velocityjs - Effects</a>
+      </li>
+    
+      <li>
         <a href="/2015/05/16/Meteor-Quick-Tips-4/">Meteor - Quick Tips #4</a>
       </li>
     
@@ -517,10 +519,6 @@ The chrome based browsers, Chrome and new Opera, perform the best with 6) ! is :
     
       <li>
         <a href="/2015/01/19/Meteor-Quick-Tips-1/">Meteor - Quick Tips #1</a>
-      </li>
-    
-      <li>
-        <a href="/2014/12/24/Validating-Numbers/">Validating Numbers</a>
       </li>
     
   </ul>

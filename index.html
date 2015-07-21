@@ -151,6 +151,52 @@
   <div class="post-content">
     <header class="post-content-header">
       
+        <time class="post-content-time" datetime="2015-07-21T06:00:07.000Z"><a href="/2015/07/20/Velocityjs-Effects/">7/20/2015</a></time>
+      
+      
+  
+    <h2 class="title"><a href="/2015/07/20/Velocityjs-Effects/">Velocityjs - Effects</a></h2>
+  
+
+    </header>
+    <div class="post-content-entry">
+      
+        <p>For your heavy-duty JavaScript animations, I recommend <a href="http://julian.com/research/velocity/" target="_blank" rel="external">Velocityjs</a>, since it has many features and great documentation. <br> Here are some simple effects that I find useful if you have chosen to use Velocityjs:</p>
+<h3 id="Pulsate_/_Throb">Pulsate / Throb</h3><figure class="highlight js"><figcaption><span>Grow and Shrink Element for Five Times</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="line">$(<span class="hljs-string">'#my-element'</span>).velocity(&#123; scale: <span class="hljs-number">2</span> &#125;, &#123; loop: <span class="hljs-number">5</span>&#125;);</span><br></code></pre></td></tr></table></div></figure>
+<p><a href="http://jsbin.com/gocinunome/1/" target="_blank" rel="external">Pulsate Demo</a></p>
+<h3 id="Show_and_Rotate">Show and Rotate</h3><figure class="highlight js"><figcaption><span>Appear, Spins, and Disappear</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="line"><span class="hljs-comment">//Complete animation within half a second</span></span><br><span class="line">$(<span class="hljs-string">'#my-element'</span>).velocity(&#123; scale: <span class="hljs-number">3</span>, opacity: <span class="hljs-number">1</span>, rotateZ: <span class="hljs-string">"360deg"</span> &#125;, &#123;duration: <span class="hljs-number">500</span>&#125;);</span><br></code></pre></td></tr></table></div></figure>
+<p><a href="http://jsbin.com/razexohare/2" target="_blank" rel="external">Spin Demo</a></p>
+<h3 id="Stagger_Elements">Stagger Elements</h3><figure class="highlight js"><figcaption><span>Group Zoom-in</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="line"><span class="hljs-comment">//Assumes that the UI Pack (velocity.ui.js) is in place</span></span><br><span class="line">$(<span class="hljs-string">'.group-of-elements'</span>).velocity(<span class="hljs-string">'transition.whirlIn'</span>, &#123;stagger: <span class="hljs-number">500</span>&#125;);</span><br></code></pre></td></tr></table></div></figure>
+<p><a href="http://jsbin.com/tezofuraqi/2/" target="_blank" rel="external">Stagger Group Demo</a></p>
+
+      
+
+
+    </div>
+    
+<footer class="post-content-footer">
+  
+  <div class="article-tags ym-clearfix">
+    <p>Tags: </p>
+    <a href="/tags/javascript/">javascript</a>
+  </div>
+</footer>
+
+
+      <div class="dotted-border"></div>
+  </div>
+
+</article>
+
+
+
+
+  
+<article class="post">
+
+  <div class="post-content">
+    <header class="post-content-header">
+      
         <time class="post-content-time" datetime="2015-05-16T09:28:01.000Z"><a href="/2015/05/16/Meteor-Quick-Tips-4/">5/16/2015</a></time>
       
       
@@ -322,54 +368,6 @@
 
 
 
-  
-<article class="post">
-
-  <div class="post-content">
-    <header class="post-content-header">
-      
-        <time class="post-content-time" datetime="2014-12-24T08:12:43.000Z"><a href="/2014/12/24/Validating-Numbers/">12/24/2014</a></time>
-      
-      
-  
-    <h2 class="title"><a href="/2014/12/24/Validating-Numbers/">Validating Numbers</a></h2>
-  
-
-    </header>
-    <div class="post-content-entry">
-      
-        <h3 id="Is_the_content_intended_to_be_a_number?">Is the content intended to be a number?</h3><p>When dealing with validations in input forms, one occasionally has to determine if the content entered is actually a number.
-However, the input content will always be string when performing a check on an input.</p>
-<figure class="highlight js"><figcaption><span>Always a String</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="line">$(<span class="hljs-string">'input'</span>).on(<span class="hljs-string">'change'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">  <span class="hljs-comment">//Outputs 'string'</span></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> $(<span class="hljs-keyword">this</span>).val());</span><br><span class="line">&#125;);</span><br></code></pre></td></tr></table></div></figure>
-<p>Although this behavior is convenient for most situations, it could be a hassle for numbers.</p>
-<p>To solve this problem, parseInt will be used.</p>
-<figure class="highlight js"><figcaption><span>String to Number</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="line">$(<span class="hljs-string">'input'</span>).on(<span class="hljs-string">'change'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">  <span class="hljs-comment">//Outputs 'string'  </span></span><br><span class="line">  <span class="hljs-comment">//The '10' is for decimal form</span></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> <span class="hljs-built_in">parseInt</span>($(<span class="hljs-keyword">this</span>).val(), <span class="hljs-number">10</span>);</span><br><span class="line">&#125;);</span><br></code></pre></td></tr></table></div></figure>
-<p>Want to point out that my <a href="2014/08/26/Simple-Validator/">validator</a> function could be used in place of typeof.</p>
-<h3 id="Mathematically_Inclined_Cases">Mathematically Inclined Cases</h3><p>Besides representing numbers as integers or decimal, there are also situations where numbers could be <a href="//http://speakingjs.com/es5/ch11.html#two_zeros">negative or positive zero</a> or represented  in <a href="http://speakingjs.com/es5/ch11.html#_exponent" target="_blank" rel="external">exponential</a> form. There are even more extreme cases such as <a href="http://speakingjs.com/es5/ch11.html#infinity" target="_blank" rel="external">infinity</a>.</p>
-<p>For these cases, the numbers representations are valid, but may be unusual to the some individuals. It could be worthwhile to also validate  against these cases and to prevent a jarring user experience when inputting in forms.</p>
-
-      
-
-
-    </div>
-    
-<footer class="post-content-footer">
-  
-  <div class="article-tags ym-clearfix">
-    <p>Tags: </p>
-    <a href="/tags/jQuery/">jQuery</a>, <a href="/tags/javascript/">javascript</a>
-  </div>
-</footer>
-
-
-      <div class="dotted-border"></div>
-  </div>
-
-</article>
-
-
-
-
 
 <nav id="pagination">
   <div id="pagination-wrapper" class="ym-clearfix">
@@ -489,6 +487,10 @@ However, the input content will always be string when performing a check on an i
   <ul class="entry">
     
       <li>
+        <a href="/2015/07/20/Velocityjs-Effects/">Velocityjs - Effects</a>
+      </li>
+    
+      <li>
         <a href="/2015/05/16/Meteor-Quick-Tips-4/">Meteor - Quick Tips #4</a>
       </li>
     
@@ -502,10 +504,6 @@ However, the input content will always be string when performing a check on an i
     
       <li>
         <a href="/2015/01/19/Meteor-Quick-Tips-1/">Meteor - Quick Tips #1</a>
-      </li>
-    
-      <li>
-        <a href="/2014/12/24/Validating-Numbers/">Validating Numbers</a>
       </li>
     
   </ul>

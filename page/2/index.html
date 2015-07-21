@@ -151,6 +151,54 @@
   <div class="post-content">
     <header class="post-content-header">
       
+        <time class="post-content-time" datetime="2014-12-24T08:12:43.000Z"><a href="/2014/12/24/Validating-Numbers/">12/24/2014</a></time>
+      
+      
+  
+    <h2 class="title"><a href="/2014/12/24/Validating-Numbers/">Validating Numbers</a></h2>
+  
+
+    </header>
+    <div class="post-content-entry">
+      
+        <h3 id="Is_the_content_intended_to_be_a_number?">Is the content intended to be a number?</h3><p>When dealing with validations in input forms, one occasionally has to determine if the content entered is actually a number.
+However, the input content will always be string when performing a check on an input.</p>
+<figure class="highlight js"><figcaption><span>Always a String</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="line">$(<span class="hljs-string">'input'</span>).on(<span class="hljs-string">'change'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">  <span class="hljs-comment">//Outputs 'string'</span></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> $(<span class="hljs-keyword">this</span>).val());</span><br><span class="line">&#125;);</span><br></code></pre></td></tr></table></div></figure>
+<p>Although this behavior is convenient for most situations, it could be a hassle for numbers.</p>
+<p>To solve this problem, parseInt will be used.</p>
+<figure class="highlight js"><figcaption><span>String to Number</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="line">$(<span class="hljs-string">'input'</span>).on(<span class="hljs-string">'change'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">  <span class="hljs-comment">//Outputs 'string'  </span></span><br><span class="line">  <span class="hljs-comment">//The '10' is for decimal form</span></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> <span class="hljs-built_in">parseInt</span>($(<span class="hljs-keyword">this</span>).val(), <span class="hljs-number">10</span>);</span><br><span class="line">&#125;);</span><br></code></pre></td></tr></table></div></figure>
+<p>Want to point out that my <a href="2014/08/26/Simple-Validator/">validator</a> function could be used in place of typeof.</p>
+<h3 id="Mathematically_Inclined_Cases">Mathematically Inclined Cases</h3><p>Besides representing numbers as integers or decimal, there are also situations where numbers could be <a href="//http://speakingjs.com/es5/ch11.html#two_zeros">negative or positive zero</a> or represented  in <a href="http://speakingjs.com/es5/ch11.html#_exponent" target="_blank" rel="external">exponential</a> form. There are even more extreme cases such as <a href="http://speakingjs.com/es5/ch11.html#infinity" target="_blank" rel="external">infinity</a>.</p>
+<p>For these cases, the numbers representations are valid, but may be unusual to the some individuals. It could be worthwhile to also validate  against these cases and to prevent a jarring user experience when inputting in forms.</p>
+
+      
+
+
+    </div>
+    
+<footer class="post-content-footer">
+  
+  <div class="article-tags ym-clearfix">
+    <p>Tags: </p>
+    <a href="/tags/jQuery/">jQuery</a>, <a href="/tags/javascript/">javascript</a>
+  </div>
+</footer>
+
+
+      <div class="dotted-border"></div>
+  </div>
+
+</article>
+
+
+
+
+  
+<article class="post">
+
+  <div class="post-content">
+    <header class="post-content-header">
+      
         <time class="post-content-time" datetime="2014-11-27T07:04:35.000Z"><a href="/2014/11/26/WordPress-Mixed-Content-Warning/">11/26/2014</a></time>
       
       
@@ -344,79 +392,6 @@ the case for parameters in jQuery plugins. </p>
 
 
 
-  
-<article class="post">
-
-  <div class="post-content">
-    <header class="post-content-header">
-      
-        <time class="post-content-time" datetime="2014-07-29T23:49:14.000Z"><a href="/2014/07/29/Namecheap-SSL-and-Nginx/">7/29/2014</a></time>
-      
-      
-  
-    <h2 class="title"><a href="/2014/07/29/Namecheap-SSL-and-Nginx/">Namecheap SSL and Nginx</a></h2>
-  
-
-    </header>
-    <div class="post-content-entry">
-      
-        <h3 id="Namecheap_PositiveSSL">Namecheap PositiveSSL</h3><p>This post will explain the process of setting up your nginx-powered site to used namecheap’s comodo positivessl certificate.</p>
-<p>Navigate to a safe location where your nginx.conf file is able to reference the to-be-generated ssl key.</p>
-<p>Generate your site’s key in the safe location</p>
-<figure class="highlight bash"><figcaption><span>SSL Certificates</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="line">openssl req -nodes -newkey rsa:<span class="hljs-number">2048</span> -keyout mydomain_com.key -out mydomain_com.csr</span><br></code></pre></td></tr></table></div></figure>
-<p>You will be prompted to enter some information. Do make sure to fill out this important information.</p>
-<figure class="highlight"><figcaption><span>Additional Information</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs lang-none"><span class="line">Country:       mycountry&#10;State:         mystate&#10;Email:         myemail@myemailprovider.com&#10;Common Name:   mydomain_com&#10;Organisation:  mycompanyname</span><br></code></pre></td></tr></table></div></figure>
-<p>Skip entering a ‘challenge password’, as it does not add to security.</p>
-<h3 id="Login_to_your_Namecheap_Account">Login to your Namecheap Account</h3><p>Navigate to ‘Manage Domains’ and select your domain that will require the ssl certificate.</p>
-<p>Ensure that the namecheap dns servers are used or else your choice of forwarding email address can not be used to verify the confirmation email.
-You can tell if you are using another dns if you can see ‘Transfer DNS back’ on the left sidebar (do select that option if you see it).</p>
-<p>Now for the ssl configuration</p>
-<p>For the server, choose ‘apache2’ and then enter the contents of your ‘mydomain_com.csr’ into the textarea.</p>
-<p>On the second page, the confirmation email is required to confirm a ssl issuance.</p>
-<p>Do this by setting up the forwarding email that you can access</p>
-<p>Navigate to ‘Email Forwarding Setup’ and change ‘USER NAME’ to ‘admin’</p>
-<figure class="highlight"><figcaption><span>Confirmation Email</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs lang-none"><span class="line">UserName:        admin&#10;ForwardedTo:     myemail@myemailprovider.com</span><br></code></pre></td></tr></table></div></figure>
-<p>As for the forward email, try to not use a gmail account as I found out that there were some problems receiving emails.</p>
-<p>Fill in the ‘administrator’ account information if not complete.</p>
-<h3 id="Receiving_Confirmation_Email">Receiving Confirmation Email</h3><p>A Comodo security services email will be delivered shortly to your ‘ForwardedTo’ email account. Once you receive that, confirm with the link by the validation code that was sent in that email.</p>
-<p>The zip file containing your certificates will go to your ‘administrator’ account, the account that you sign up with namecheap.
-Note that the ‘ForwardedTo’ may not be the same as your ‘administrator’ account email, if you configured it that way.</p>
-<h3 id="Unzip_Certificates">Unzip Certificates</h3><p>Unzip the file to a temp directory and combine the three files into one. The order is important.</p>
-<figure class="highlight bash"><figcaption><span>Combine Certificates</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="line">cat MyDomain_com.crt COMODORSADomainValidationSecureServerCA.crt \</span><br><span class="line">    COMODORSAAddTrustCA.crt &gt; comdo-certs.combined</span><br></code></pre></td></tr></table></div></figure>
-<h3 id="Setup_Nginx">Setup Nginx</h3><p>Copy or move the ‘comodo-certs.combined’ file to the same folder as your ‘mydomain_com.key’ file.</p>
-<p>Add or modify the following in your nginx.conf file</p>
-<figure class="highlight"><figcaption><span>Nginx.conf</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text"><span class="line">server &#123;&#10;  listen 80;&#10;  server_name .my_domain.com;&#10;  rewrite ^ https://$host$request_uri permanent;&#10;&#125;&#10;&#10;server &#123;&#10;  listen 443;&#10;&#10;  ssl on;&#10;&#10;  ssl_protocols TLSv1 TLSv1.1 TLSv1.2;&#10;  ssl_ciphers &#39;ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:ECDHE-RSA-RC4-SHA:ECDHE-ECDSA-RC4-SHA:RC4-SHA:HIGH:!aNULL:!eNULL:!EXPORT:!DES:!3DES:!MD5:!PSK&#39;;&#10;&#10;  ssl_prefer_server_ciphers on;&#10;&#10;  ssl_certificate /path/where/nginx/references/comodo-certs.combined;&#10;  ssl_certificate_key /path/where/nginx/references/mydomain_com.key;&#10;&#125;</span><br></code></pre></td></tr></table></div></figure>
-<p>The first server block will redirect all variants of non-secured versions of your site to the secured version.</p>
-<p>All the following</p>
-<figure class="highlight stylus"><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs undefined"><span class="line">www<span class="hljs-class">.my_domain</span><span class="hljs-class">.com</span></span><br><span class="line">my_domain<span class="hljs-class">.com</span></span><br><span class="line">http:<span class="hljs-comment">//my_domain.com</span></span><br><span class="line">http:<span class="hljs-comment">//www.my_domain.com</span></span><br></code></pre></td></tr></table></div></figure>
-<p>will be redirected to</p>
-<figure class="highlight groovy"><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined"><span class="line"><span class="hljs-string">https:</span><span class="hljs-comment">//www.my_domain.com</span></span><br></code></pre></td></tr></table></div></figure>
-<p>Now to test the changes made to nginx by</p>
-<figure class="highlight bash"><figcaption><span>Test First</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="line">sudo service nginx configtest</span><br></code></pre></td></tr></table></div></figure>
-<p>Finally, start or restart your nginx server to apply the changes.</p>
-<figure class="highlight bash"><figcaption><span>Now for Liftoff</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="line">sudo service nginx reload</span><br></code></pre></td></tr></table></div></figure>
-      
-
-
-    </div>
-    
-<footer class="post-content-footer">
-  
-  <div class="article-tags ym-clearfix">
-    <p>Tags: </p>
-    <a href="/tags/server/">server</a>
-  </div>
-</footer>
-
-
-      <div class="dotted-border"></div>
-  </div>
-
-</article>
-
-
-
-
 
 <nav id="pagination">
   <div id="pagination-wrapper" class="ym-clearfix">
@@ -538,6 +513,10 @@ Note that the ‘ForwardedTo’ may not be the same as your ‘administrator’ 
   <ul class="entry">
     
       <li>
+        <a href="/2015/07/20/Velocityjs-Effects/">Velocityjs - Effects</a>
+      </li>
+    
+      <li>
         <a href="/2015/05/16/Meteor-Quick-Tips-4/">Meteor - Quick Tips #4</a>
       </li>
     
@@ -551,10 +530,6 @@ Note that the ‘ForwardedTo’ may not be the same as your ‘administrator’ 
     
       <li>
         <a href="/2015/01/19/Meteor-Quick-Tips-1/">Meteor - Quick Tips #1</a>
-      </li>
-    
-      <li>
-        <a href="/2014/12/24/Validating-Numbers/">Validating Numbers</a>
       </li>
     
   </ul>

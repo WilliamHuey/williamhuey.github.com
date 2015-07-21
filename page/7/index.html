@@ -151,6 +151,51 @@
   <div class="post-content">
     <header class="post-content-header">
       
+        <time class="post-content-time" datetime="2013-05-09T19:28:00.000Z"><a href="/2013/05/09/get-device-width/">5/9/2013</a></time>
+      
+      
+  
+    <h2 class="title"><a href="/2013/05/09/get-device-width/">Get Device Width</a></h2>
+  
+
+    </header>
+    <div class="post-content-entry">
+      
+        <h3 id="Detect_Max_Screen_Width">Detect Max Screen Width</h3><p>When a browser is zoomed in or resized, the reported maximum device screen width may not be what you expect. For example, you have a 1280px by 800px screen and fully maximized browser screen at 100% zoom level, but when you zoom into the page and use window.innerWidth to determine the max width, the value may not be 1280px.</p>
+<p>To get around this limitation, <a href="https://developer.mozilla.org/en-US/docs/DOM/window.matchMedia" target="_blank" rel="external">matchMedia</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Media_queries" target="_blank" rel="external">media queries</a> can be used to detect the max device width. Here is a something that allows you to do so:</p>
+<figure class="highlight javascript"><figcaption><span>Get Max-Device-Width</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getDeviceWidth</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> isFound = <span class="hljs-literal">false</span>,</span><br><span class="line">    commonResolutions = [<span class="hljs-number">360</span>, <span class="hljs-number">480</span>, <span class="hljs-number">640</span>, <span class="hljs-number">800</span>,</span><br><span class="line">      <span class="hljs-number">960</span>, <span class="hljs-number">1024</span>, <span class="hljs-number">1280</span>,</span><br><span class="line">      <span class="hljs-number">1360</span>, <span class="hljs-number">1366</span>, <span class="hljs-number">1440</span>, <span class="hljs-number">1600</span>,</span><br><span class="line">      <span class="hljs-number">1680</span>, <span class="hljs-number">1920</span>, <span class="hljs-number">2560</span></span><br><span class="line">    ];</span><br><span class="line">  crLen = commonResolutions.length;</span><br><span class="line">  i = <span class="hljs-number">1</span>;</span><br><span class="line">  <span class="hljs-comment">//for browsers that support matchMedia</span></span><br><span class="line">  <span class="hljs-keyword">if</span> ((<span class="hljs-keyword">typeof</span> <span class="hljs-built_in">window</span>.matchMedia) != <span class="hljs-string">"undefined"</span>) &#123;</span><br><span class="line">    i = <span class="hljs-number">1</span>;</span><br><span class="line">    <span class="hljs-keyword">while</span> (isFound === <span class="hljs-literal">false</span>) &#123;</span><br><span class="line">      <span class="hljs-keyword">if</span> (<span class="hljs-built_in">window</span>.matchMedia(<span class="hljs-string">'(max-device-width: '</span> + i + <span class="hljs-string">'px)'</span>).matches) &#123;</span><br><span class="line">        isFound = <span class="hljs-literal">true</span>;</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'MatchMedia detects max device width as '</span> + i + <span class="hljs-string">'px.'</span>);</span><br><span class="line">        <span class="hljs-built_in">document</span>.write(<span class="hljs-string">'MatchMedia detects max device width as '</span> + i + <span class="hljs-string">'px.'</span>);</span><br><span class="line">      &#125;</span><br><span class="line">      i++</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">    <span class="hljs-comment">//check screen size against common resolutions</span></span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> j = <span class="hljs-number">0</span>; j &lt; crLen; j++) &#123;</span><br><span class="line">      <span class="hljs-keyword">if</span> (Modernizr.mq(<span class="hljs-string">'screen and (max-device-width: '</span> + commonResolutions[j] + <span class="hljs-string">'px)'</span>)) &#123;</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Modernizr detects max device width at '</span> + commonResolutions[j] + <span class="hljs-string">'px.'</span>);</span><br><span class="line">        <span class="hljs-built_in">document</span>.write(<span class="hljs-string">'Modernizr detects max device width at '</span> + commonResolutions[j] + <span class="hljs-string">'px.'</span>);</span><br><span class="line">        j = crLen;</span><br><span class="line">        isFound = <span class="hljs-literal">true</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-comment">//use more exhaustive approach if width is not found in common resolutions</span></span><br><span class="line">    <span class="hljs-keyword">while</span> (isFound === <span class="hljs-literal">false</span>) &#123;</span><br><span class="line">      <span class="hljs-keyword">if</span> (Modernizr.mq(<span class="hljs-string">'screen and (max-device-width: '</span> + i + <span class="hljs-string">'px)'</span>)) &#123;</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Modernizr detects max device width at '</span> + i + <span class="hljs-string">'px.'</span>);</span><br><span class="line">        <span class="hljs-built_in">document</span>.write(<span class="hljs-string">'Modernizr detects max device width at '</span> + commonResolutions[j] + <span class="hljs-string">'px.'</span>);</span><br><span class="line">        isFound = <span class="hljs-literal">true</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      i++</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></code></pre></td></tr></table></div></figure>
+<p>The media queries portion of the function relies on <a href="http://modernizr.com/download/" target="_blank" rel="external">modernizr</a>, a feature detection library, to work. You can get a custom build of modernizr to include only the media queries detection.</p>
+<p>This function will work when the browser supports matchMedia and will fallback to using media queries if it does not. If your browser does not support either matchMedia and media queries then the function will not work. This function is tested with Opera 12.15, Chrome 26.0.1410.64, and IE 10. Firefox 20.0, however does not report the proper max-device-width when the browser window is zoomed or resized.</p>
+<p><a href="http://jsbin.com/iwumid/1" target="_blank" rel="external">Demo</a></p>
+
+      
+
+
+    </div>
+    
+<footer class="post-content-footer">
+  
+  <div class="article-tags ym-clearfix">
+    <p>Tags: </p>
+    <a href="/tags/javascript/">javascript</a>
+  </div>
+</footer>
+
+
+      <div class="dotted-border"></div>
+  </div>
+
+</article>
+
+
+
+
+  
+<article class="post">
+
+  <div class="post-content">
+    <header class="post-content-header">
+      
         <time class="post-content-time" datetime="2013-05-03T04:24:00.000Z"><a href="/2013/05/02/standalone-mocha-with-component/">5/2/2013</a></time>
       
       
@@ -333,51 +378,6 @@ After Nvm, Node and Component are working properly, make a directory on the desk
 
 
 
-  
-<article class="post">
-
-  <div class="post-content">
-    <header class="post-content-header">
-      
-        <time class="post-content-time" datetime="2013-04-14T17:16:00.000Z"><a href="/2013/04/14/javascript-quick-tips-number-1/">4/14/2013</a></time>
-      
-      
-  
-    <h2 class="title"><a href="/2013/04/14/javascript-quick-tips-number-1/">JavaScript Quick Tips #1</a></h2>
-  
-
-    </header>
-    <div class="post-content-entry">
-      
-        <h3 id="Solutions_to_Common_JavaScript_Problems">Solutions to Common JavaScript Problems</h3><h4 id="Problem">Problem</h4><p>Alerting an object returns [object Object].</p>
-<h4 id="Solution">Solution</h4><p>Use JSON.stringify on the object before alerting.</p>
-<figure class="highlight javascript"><figcaption><span>Convert Object to JSON for Alert</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="line"><span class="hljs-keyword">var</span> myVar = &#123;myKey: <span class="hljs-string">'myValue'</span>&#125;;</span><br><span class="line">alert(<span class="hljs-built_in">JSON</span>.stringify(myVar));</span><br></code></pre></td></tr></table></div></figure>
-<h4 id="Problem-1">Problem</h4><p>You want to use splice, but it is destructive.</p>
-<h4 id="Solution-1">Solution</h4><p>Use slice on the original array to make a copy. The spliced array will not affect the array created by slice.</p>
-<figure class="highlight javascript"><figcaption><span>Slice Before You Splice</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="line"><span class="hljs-keyword">var</span> myArray = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>],</span><br><span class="line">  copyArray = myArray.slice();</span><br><br class="double"><span class="line">myArray.splice(<span class="hljs-number">2</span>,<span class="hljs-number">1</span>);</span><br><br class="double"><span class="line"><span class="hljs-comment">//copyArray is your original</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(copyArray);</span><br><br class="double"><span class="line"><span class="hljs-comment">//myArray will be spliced</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(myArray);</span><br></code></pre></td></tr></table></div></figure>
-
-      
-
-
-    </div>
-    
-<footer class="post-content-footer">
-  
-  <div class="article-tags ym-clearfix">
-    <p>Tags: </p>
-    <a href="/tags/javascript/">javascript</a>
-  </div>
-</footer>
-
-
-      <div class="dotted-border"></div>
-  </div>
-
-</article>
-
-
-
-
 
 <nav id="pagination">
   <div id="pagination-wrapper" class="ym-clearfix">
@@ -499,6 +499,10 @@ After Nvm, Node and Component are working properly, make a directory on the desk
   <ul class="entry">
     
       <li>
+        <a href="/2015/07/20/Velocityjs-Effects/">Velocityjs - Effects</a>
+      </li>
+    
+      <li>
         <a href="/2015/05/16/Meteor-Quick-Tips-4/">Meteor - Quick Tips #4</a>
       </li>
     
@@ -512,10 +516,6 @@ After Nvm, Node and Component are working properly, make a directory on the desk
     
       <li>
         <a href="/2015/01/19/Meteor-Quick-Tips-1/">Meteor - Quick Tips #1</a>
-      </li>
-    
-      <li>
-        <a href="/2014/12/24/Validating-Numbers/">Validating Numbers</a>
       </li>
     
   </ul>
