@@ -151,7 +151,51 @@
   <div class="post-content">
     <header class="post-content-header">
       
-        <time class="post-content-time" datetime="2013-04-14T17:16:00.000Z"><a href="/2013/04/14/javascript-quick-tips-number-1/">4/14/2013</a></time>
+        <time class="post-content-time" datetime="2013-04-18T04:53:00.000Z"><a href="/2013/04/18/nested-divs-spaced-evenly/">4/18/2013</a></time>
+      
+      
+  
+    <h2 class="title"><a href="/2013/04/18/nested-divs-spaced-evenly/">Nested Divs Spaced Evenly</a></h2>
+  
+
+    </header>
+    <div class="post-content-entry">
+      
+        <h3 id="Get-Child-Divs-to-Align-Vertically-with-Spacing"><a href="#Get-Child-Divs-to-Align-Vertically-with-Spacing" class="headerlink" title="Get Child Divs to Align Vertically with Spacing"></a>Get Child Divs to Align Vertically with Spacing</h3><p>You may find yourself having to align fixed-height divs that are nested within a parent div. For example, you might have images that need equal spacing at the top and the bottom. In order to do this, set a margin-bottom on all of the child divs (B, C, D) within the the parent div (A).</p>
+<img src="/img/posts/2013-04-18-nested-divs-spaced-evenly-Margin-Bottom.png" class="center" title="nested-div-spaced-bottom nested-div-spaced-bottom">
+<p>Then set a margin-top for the first child (B). The first nested div is given an id and the css pseudo class of :first-child is applied. The reason I did it this way, instead of using margin-top on all the child divs with :last-child psuedo class on the last child div, is because the :first-child is supported in more older browsers.</p>
+<img src="/img/posts/2013-04-18-nested-divs-spaced-evenly-Last-Child-Margin-Bottom.png" class="center" title="nested-div-spaced-bottom nested-div-spaced-bottom">
+<p><a href="http://jsbin.com/uqileq/1/edit" target="_blank" rel="external">Demo</a> </p>
+
+      
+
+
+    </div>
+    
+<footer class="post-content-footer">
+  
+  <div class="article-tags ym-clearfix">
+    <p>Tags: </p>
+    <a href="/tags/css/">css</a>
+  </div>
+</footer>
+
+
+      <div class="dotted-border"></div>
+  </div>
+
+</article>
+
+
+
+
+  
+<article class="post">
+
+  <div class="post-content">
+    <header class="post-content-header">
+      
+        <time class="post-content-time" datetime="2013-04-14T14:16:00.000Z"><a href="/2013/04/14/javascript-quick-tips-number-1/">4/14/2013</a></time>
       
       
   
@@ -161,12 +205,12 @@
     </header>
     <div class="post-content-entry">
       
-        <h3 id="Solutions_to_Common_JavaScript_Problems">Solutions to Common JavaScript Problems</h3><h4 id="Problem">Problem</h4><p>Alerting an object returns [object Object].</p>
-<h4 id="Solution">Solution</h4><p>Use JSON.stringify on the object before alerting.</p>
-<figure class="highlight javascript"><figcaption><span>Convert Object to JSON for Alert</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="line"><span class="hljs-keyword">var</span> myVar = &#123;myKey: <span class="hljs-string">'myValue'</span>&#125;;</span><br><span class="line">alert(<span class="hljs-built_in">JSON</span>.stringify(myVar));</span><br></code></pre></td></tr></table></div></figure>
-<h4 id="Problem-1">Problem</h4><p>You want to use splice, but it is destructive.</p>
-<h4 id="Solution-1">Solution</h4><p>Use slice on the original array to make a copy. The spliced array will not affect the array created by slice.</p>
-<figure class="highlight javascript"><figcaption><span>Slice Before You Splice</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="line"><span class="hljs-keyword">var</span> myArray = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>],</span><br><span class="line">  copyArray = myArray.slice();</span><br><br class="double"><span class="line">myArray.splice(<span class="hljs-number">2</span>,<span class="hljs-number">1</span>);</span><br><br class="double"><span class="line"><span class="hljs-comment">//copyArray is your original</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(copyArray);</span><br><br class="double"><span class="line"><span class="hljs-comment">//myArray will be spliced</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(myArray);</span><br></code></pre></td></tr></table></div></figure>
+        <h3 id="Solutions-to-Common-JavaScript-Problems"><a href="#Solutions-to-Common-JavaScript-Problems" class="headerlink" title="Solutions to Common JavaScript Problems"></a>Solutions to Common JavaScript Problems</h3><h3 id="Problem"><a href="#Problem" class="headerlink" title="#Problem"></a>#Problem</h3><p>Alerting an object returns [object Object].</p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="#Solution"></a>#Solution</h3><p>Use JSON.stringify on the object before alerting.</p>
+<figure class="highlight javascript"><figcaption><span>Convert Object to JSON for Alert</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-keyword">var</span> myVar = &#123;myKey: <span class="hljs-string">'myValue'</span>&#125;;</span><br><span class="line">alert(<span class="hljs-built_in">JSON</span>.stringify(myVar));</span><br></code></pre></td></tr></table></div></figure>
+<h3 id="Problem-1"><a href="#Problem-1" class="headerlink" title="#Problem"></a>#Problem</h3><p>You want to use splice, but it is destructive.</p>
+<h3 id="Solution-1"><a href="#Solution-1" class="headerlink" title="#Solution"></a>#Solution</h3><p>Use slice on the original array to make a copy. The spliced array will not affect the array created by slice.</p>
+<figure class="highlight javascript"><figcaption><span>Slice Before You Splice</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-keyword">var</span> myArray = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>],</span><br><span class="line">  copyArray = myArray.slice();</span><br><span class="line"></span><br><span class="line">myArray.splice(<span class="hljs-number">2</span>,<span class="hljs-number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//copyArray is your original</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(copyArray);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//myArray will be spliced</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(myArray);</span><br></code></pre></td></tr></table></div></figure>
 
       
 
@@ -196,7 +240,7 @@
   <div class="post-content">
     <header class="post-content-header">
       
-        <time class="post-content-time" datetime="2013-04-13T17:39:00.000Z"><a href="/2013/04/13/ember-routes-redirect/">4/13/2013</a></time>
+        <time class="post-content-time" datetime="2013-04-13T14:39:00.000Z"><a href="/2013/04/13/ember-routes-redirect/">4/13/2013</a></time>
       
       
   
@@ -206,8 +250,8 @@
     </header>
     <div class="post-content-entry">
       
-        <h3 id="From_Index_to_Another_Route">From Index to Another Route</h3><p>You want your root index route to redirect to another route such as when you are on the index url (root_url) and you need to get to root_url/#/another_route. This may be useful because you wish to use the model information from another_route on initial page load. A downloadable demo is located below.</p>
-<figure class="highlight javascript"><figcaption><span>Index Route to Another Route</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="line">App.IndexRoute = Ember.Route.extend(&#123;</span><br><span class="line">  redirect: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-comment">//replace 'guitars' with your specific route name</span></span><br><span class="line">    <span class="hljs-keyword">this</span>.transitionTo(<span class="hljs-string">'guitars'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></code></pre></td></tr></table></div></figure>
+        <h3 id="From-Index-to-Another-Route"><a href="#From-Index-to-Another-Route" class="headerlink" title="From Index to Another Route"></a>From Index to Another Route</h3><p>You want your root index route to redirect to another route such as when you are on the index url (root_url) and you need to get to root_url/#/another_route. This may be useful because you wish to use the model information from another_route on initial page load. A downloadable demo is located below.</p>
+<figure class="highlight javascript"><figcaption><span>Index Route to Another Route</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line">App.IndexRoute = Ember.Route.extend(&#123;</span><br><span class="line">  redirect: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-comment">//replace 'guitars' with your specific route name</span></span><br><span class="line">    <span class="hljs-keyword">this</span>.transitionTo(<span class="hljs-string">'guitars'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></code></pre></td></tr></table></div></figure>
 <p><a href="/demos/2013-04-13-ember-routes-redirect.zip">Download Demo</a></p>
 
       
@@ -219,7 +263,7 @@
   
   <div class="article-tags ym-clearfix">
     <p>Tags: </p>
-    <a href="/tags/emberjs/">emberjs</a>, <a href="/tags/javascript/">javascript</a>
+    <a href="/tags/javascript/">javascript</a>, <a href="/tags/emberjs/">emberjs</a>
   </div>
 </footer>
 
@@ -238,7 +282,7 @@
   <div class="post-content">
     <header class="post-content-header">
       
-        <time class="post-content-time" datetime="2013-04-11T07:00:00.000Z"><a href="/2013/04/11/basic-gemset-management/">4/11/2013</a></time>
+        <time class="post-content-time" datetime="2013-04-11T04:00:00.000Z"><a href="/2013/04/11/basic-gemset-management/">4/11/2013</a></time>
       
       
   
@@ -248,11 +292,11 @@
     </header>
     <div class="post-content-entry">
       
-        <h3 id="CRUD_for_your_rvm_gemset">CRUD for your rvm gemset</h3><p>Rvm stands for ruby version manager. It is used to manage ruby environments with something called gemsets. More info can be found <a href="https://rvm.io/" target="_blank" rel="external">here</a>. Rvm comes in handy when your working with <a href="http://www.rubyonrails.org/" target="_blank" rel="external">Rails</a> because you can isolate ruby environments. Here are some snippets for common tasks when dealing with gemsets.</p>
-<figure class="highlight bash"><figcaption><span>Creating a Gemset</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="line"><span class="hljs-comment">#Format:</span></span><br><span class="line">rvm gemset create &lt;gemset_name&gt;</span><br><span class="line"><span class="hljs-comment">#fill in gemset name</span></span><br><br class="double"><span class="line"><span class="hljs-comment">#Example:</span></span><br><span class="line">rvm gemset create rails3.<span class="hljs-number">2.13</span></span><br><span class="line"><span class="hljs-comment">#gemset name is "rails3.2.13"</span></span><br></code></pre></td></tr></table></div></figure>
-<figure class="highlight bash"><figcaption><span>List Current Gemset Being Used</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="line">rvm gemset list</span><br></code></pre></td></tr></table></div></figure>
-<figure class="highlight bash"><figcaption><span>Using a Gemset</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="line"><span class="hljs-comment">#Format:</span></span><br><span class="line">rvm use &lt;ruby_version_number&gt;@&lt;gemset_name&gt;</span><br><span class="line"><span class="hljs-comment">#fill in ruby version number and gemset name of your choosing</span></span><br><br class="double"><span class="line"><span class="hljs-comment">#Example:</span></span><br><span class="line"><span class="hljs-comment">#uses ruby 1.9.3 with gemset name of "rails version 3.2.13"</span></span><br><span class="line">rvm use <span class="hljs-number">1.9</span>.<span class="hljs-number">3</span>@rails3.<span class="hljs-number">2.13</span> --default</span><br><span class="line"><span class="hljs-comment">#also using a default flag to set the gemset as the default</span></span><br></code></pre></td></tr></table></div></figure>
-<figure class="highlight bash"><figcaption><span>Deleting a Gemset</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="line"><span class="hljs-comment">#Format:</span></span><br><span class="line">rvm gemset delete &lt;gemset_name&gt;</span><br><span class="line"><span class="hljs-comment">#fill in gemset name</span></span><br><br class="double"><span class="line"><span class="hljs-comment">#Example:</span></span><br><span class="line">rvm gemset delete gemset_to_delete</span><br><span class="line"><span class="hljs-comment">#"gemset_to_delete" is the gemset that you want to delete</span></span><br></code></pre></td></tr></table></div></figure>
+        <h3 id="CRUD-for-your-rvm-gemset"><a href="#CRUD-for-your-rvm-gemset" class="headerlink" title="CRUD for your rvm gemset"></a>CRUD for your rvm gemset</h3><p>Rvm stands for ruby version manager. It is used to manage ruby environments with something called gemsets. More info can be found <a href="https://rvm.io/" target="_blank" rel="external">here</a>. Rvm comes in handy when your working with <a href="http://www.rubyonrails.org/" target="_blank" rel="external">Rails</a> because you can isolate ruby environments. Here are some snippets for common tasks when dealing with gemsets.</p>
+<figure class="highlight bash"><figcaption><span>Creating a Gemset</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-comment">#Format:</span></span><br><span class="line">rvm gemset create &lt;gemset_name&gt;</span><br><span class="line"><span class="hljs-comment">#fill in gemset name</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">#Example:</span></span><br><span class="line">rvm gemset create rails3.2.13</span><br><span class="line"><span class="hljs-comment">#gemset name is "rails3.2.13"</span></span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight bash"><figcaption><span>List Current Gemset Being Used</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line">rvm gemset list</span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight bash"><figcaption><span>Using a Gemset</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-comment">#Format:</span></span><br><span class="line">rvm use &lt;ruby_version_number&gt;@&lt;gemset_name&gt;</span><br><span class="line"><span class="hljs-comment">#fill in ruby version number and gemset name of your choosing</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">#Example:</span></span><br><span class="line"><span class="hljs-comment">#uses ruby 1.9.3 with gemset name of "rails version 3.2.13"</span></span><br><span class="line">rvm use 1.9.3@rails3.2.13 --default</span><br><span class="line"><span class="hljs-comment">#also using a default flag to set the gemset as the default</span></span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight bash"><figcaption><span>Deleting a Gemset</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-comment">#Format:</span></span><br><span class="line">rvm gemset delete &lt;gemset_name&gt;</span><br><span class="line"><span class="hljs-comment">#fill in gemset name</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">#Example:</span></span><br><span class="line">rvm gemset delete gemset_to_delete</span><br><span class="line"><span class="hljs-comment">#"gemset_to_delete" is the gemset that you want to delete</span></span><br></code></pre></td></tr></table></div></figure>
 
       
 
@@ -282,7 +326,7 @@
   <div class="post-content">
     <header class="post-content-header">
       
-        <time class="post-content-time" datetime="2013-04-04T05:45:00.000Z"><a href="/2013/04/03/whole-header-region-clickable/">4/3/2013</a></time>
+        <time class="post-content-time" datetime="2013-04-04T02:45:00.000Z"><a href="/2013/04/03/whole-header-region-clickable/">4/3/2013</a></time>
       
       
   
@@ -292,11 +336,12 @@
     </header>
     <div class="post-content-entry">
       
-        <h2 id="Header_Text_and_Image_are_Clickable">Header Text and Image are Clickable</h2><p>On the majority the sites out there, the click on the upper-left hand side where logo and text is situated, will take you to the home page. Take for example <a href="https://trello.com/" target="_blank" rel="external">Trello</a> or <a href="http://www.pcworld.com/" target="_blank" rel="external">PcWorld</a>. However, I do not have a small logo on the upper-left of the site because I want my whole header region to lead to the home page.</p>
+        <p>##Header Text and Image are Clickable</p>
+<p>On the majority the sites out there, the click on the upper-left hand side where logo and text is situated, will take you to the home page. Take for example <a href="https://trello.com/" target="_blank" rel="external">Trello</a> or <a href="http://www.pcworld.com/" target="_blank" rel="external">PcWorld</a>. However, I do not have a small logo on the upper-left of the site because I want my whole header region to lead to the home page.</p>
 <p>The general idea on how to do this is to make a header tag that will contain all header text and logo along with a link. To illustrate this, I will use my site as an example. If you want to make changes in your Octopress blog, I am modifying my source/_includes/custom/header.html file.</p>
-<figure class="highlight html"><figcaption><span>Header Region</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="line"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">title</span>=<span class="hljs-value">"Home is where the heart is."</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"main-header-container"</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"top-header-area"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"main-header"</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;<span class="hljs-title">img</span> <span class="hljs-attribute">alt</span>=<span class="hljs-value">"my-main-logo"</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"my-main-logo"</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"&#123;&#123; root_url &#125;&#125;/images/logoSmall.png"</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;<span class="hljs-title">h1</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"site-title-header"</span>&gt;</span>&#123;&#123; site.title &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"home-link"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"/"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight html"><figcaption><span>Header Region</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">title</span>=<span class="hljs-string">"Home is where the heart is."</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"main-header-container"</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"top-header-area"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"main-header"</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">"my-main-logo"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"my-main-logo"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"&#123;&#123; root_url &#125;&#125;/images/logoSmall.png"</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"site-title-header"</span>&gt;</span>&#123;&#123; site.title &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"home-link"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"/"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br></code></pre></td></tr></table></div></figure>
 <p>To make the link work for all browsers, which includes IE, there is an additional css trick.  The A tag needs to have a background color (it does not matter which color) and set the opacity of the A tag to zero.</p>
-<figure class="highlight css"><figcaption><span>Absolute Position the A Tag</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="line"><span class="hljs-id">#home-link</span> <span class="hljs-rules">&#123;</span><br><span class="line">  <span class="hljs-rule"><span class="hljs-attribute">position</span>:<span class="hljs-value"> absolute</span></span>;</span><br><span class="line">  <span class="hljs-rule"><span class="hljs-attribute">top</span>:<span class="hljs-value"> <span class="hljs-number">0</span></span></span>;</span><br><span class="line">  <span class="hljs-rule"><span class="hljs-attribute">height</span>:<span class="hljs-value"> <span class="hljs-number">100%</span></span></span>;</span><br><span class="line">  <span class="hljs-rule"><span class="hljs-attribute">width</span>:<span class="hljs-value"> <span class="hljs-number">100%</span></span></span>;</span><br><span class="line">  <span class="hljs-rule"><span class="hljs-attribute">background-color</span>:<span class="hljs-value"> <span class="hljs-hexcolor">#fff</span></span></span>;</span><br><span class="line">  <span class="hljs-rule"><span class="hljs-attribute">-ms-filter</span>:<span class="hljs-value"><span class="hljs-string">"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"</span></span></span>;</span><br><span class="line">  <span class="hljs-rule"><span class="hljs-attribute">filter</span>:<span class="hljs-value"> <span class="hljs-function">alpha</span>(opacity=<span class="hljs-number">0</span>)</span></span>;</span><br><span class="line">  <span class="hljs-rule"><span class="hljs-attribute">opacity</span>:<span class="hljs-value"> <span class="hljs-number">0</span></span></span>;</span><br><span class="line"><span class="hljs-rule">&#125;</span></span></span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight css"><figcaption><span>Absolute Position the A Tag</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-selector-id">#home-link</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">position</span>: absolute;</span><br><span class="line">  <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>;</span><br><span class="line">  <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;</span><br><span class="line">  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;</span><br><span class="line">  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#fff</span>;</span><br><span class="line">  <span class="hljs-attribute">-ms-filter</span>:<span class="hljs-string">"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"</span>;</span><br><span class="line">  <span class="hljs-attribute">filter</span>: <span class="hljs-built_in">alpha</span>(opacity=0);</span><br><span class="line">  <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></code></pre></td></tr></table></div></figure>
 
       
 
@@ -320,67 +365,15 @@
 
 
 
-  
-<article class="post">
-
-  <div class="post-content">
-    <header class="post-content-header">
-      
-        <time class="post-content-time" datetime="2013-03-24T17:33:00.000Z"><a href="/2013/03/24/first-official-post/">3/24/2013</a></time>
-      
-      
-  
-    <h2 class="title"><a href="/2013/03/24/first-official-post/">First Official Post</a></h2>
-  
-
-    </header>
-    <div class="post-content-entry">
-      
-        <h2 id="Customizing_Octopress_Default_Theme">Customizing Octopress Default Theme</h2><h3 id="Change_Default_Theme_CSS">Change Default Theme CSS</h3><p>In your sass/custom/_colors.scss file define the values for the items below. I’m using the following colors for my theme, but feel free to change them to whatever you want them to be.</p>
-<h4 id="Header_Colors">Header Colors</h4><figure class="highlight css"><figcaption><span>Header Background and Subtitle Color</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="line">$<span class="hljs-tag">header-bg</span>: <span class="hljs-id">#1a1a1a</span>;</span><br><span class="line">$<span class="hljs-tag">subtitle-color</span>: <span class="hljs-id">#c4c4c4</span> !<span class="hljs-tag">default</span>;</span><br></code></pre></td></tr></table></div></figure>
-<h4 id="Text_Colors">Text Colors</h4><figure class="highlight css"><figcaption><span>Text Regular and Text Light Colors</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="line">$<span class="hljs-tag">text-color</span>: <span class="hljs-id">#fafafa</span> !<span class="hljs-tag">default</span>;</span><br><span class="line">$<span class="hljs-tag">text-color-light</span>: <span class="hljs-id">#919191</span> !<span class="hljs-tag">default</span>;</span><br></code></pre></td></tr></table></div></figure>
-<h4 id="Link_Colors">Link Colors</h4><figure class="highlight css"><figcaption><span>Link State Colors</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="line">$<span class="hljs-tag">link-color</span>: <span class="hljs-id">#FFFFFA</span> !<span class="hljs-tag">default</span>;</span><br><span class="line">$<span class="hljs-tag">link-color-hover</span>: <span class="hljs-id">#c4c4c4</span> !<span class="hljs-tag">default</span>;</span><br><span class="line">$<span class="hljs-tag">link-color-visited</span>: <span class="hljs-id">#a8a8a8</span> !<span class="hljs-tag">default</span>;</span><br></code></pre></td></tr></table></div></figure>
-<h4 id="Nav_Background_Colors">Nav Background Colors</h4><figure class="highlight css"><figcaption><span>Nav Foreground and Background Color</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="line">$<span class="hljs-tag">nav-bg-front</span>: <span class="hljs-tag">background-color</span>(<span class="hljs-tag">none</span>) !<span class="hljs-tag">default</span>;</span><br><span class="line">$<span class="hljs-tag">nav-bg-back</span>: <span class="hljs-tag">background-color</span>(<span class="hljs-tag">none</span>) !<span class="hljs-tag">default</span>;</span><br></code></pre></td></tr></table></div></figure>
-<h3 id="Cut_Out_Google_Fonts">Cut Out Google Fonts</h3><p>Reduce the number of requests that you make to get your site to load faster. Follow the directions on the <a href="http://blog.bigdinosaur.org/using-at-font-face-with-octopress/" target="_blank" rel="external">big dinosaur blog.</a></p>
-<h3 id="Removing_Default_Javascript">Removing Default Javascript</h3><p>In the /source/_include/head.html file, remove any unwanted javascript. I decided to do this because having dom manipulation or feature detection javascript libraries were not critical to consuming the information on my blog.</p>
-<h3 id="Adding_a_Custom_Favicon">Adding a Custom Favicon</h3><p>Navigate to source/_include/custom/head.html and insert these lines:</p>
-<figure class="highlight html"><figcaption><span>Adding Favicon in Ico and Png Format</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="line"><span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"&#123;&#123; root_url &#125;&#125;/favicon.ico"</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">"shortcut icon"</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">'image/x-icon'</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"&#123;&#123; root_url &#125;&#125;/favicon.png"</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">"shortcut icon"</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">'image/x-icon'</span>&gt;</span></span><br></code></pre></td></tr></table></div></figure>
-<p>Make sure to include the favicon.ico and favicon.png to source/_includes directory for this to work. Before including the lines below, be sure to open the ico file in a couple of different browsers to check if the ico is loaded properly and there are no visual defects on your ico file.</p>
-<p>I used a online tool to convert my png file to an ico over at <a href="http://www.rw-designer.com/image-to-icon" target="_blank" rel="external">rw-designer.com</a>. The default settings should work ok.</p>
-<p>On another note you may also want to include additional icons for <a href="http://hiltmon.com/blog/2013/02/10/add-web-clip-icons-to-octopress/" target="_blank" rel="external">Apple devices</a>.</p>
-<h3 id="Settings_in__config-yml">Settings in _config.yml</h3><figure class="highlight"><figcaption><span>Some Changes to _config.yml</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="line">#change the date format for posts to mm/dd/yyyy&#10;date: &#34;%m/%d/%Y&#34;&#10;&#10;#remove the recent post sidebar on the right&#10;#recent posts will now appear on the bottom&#10;sidebar: collapse</span><br></code></pre></td></tr></table></div></figure>
-<h3 id="Minifying_Content">Minifying Content</h3><p>Install <a href="https://github.com/stereobooster/jekyll-press" target="_blank" rel="external">jekyll-press</a> to minify your html, css and javascript. Detailed instructions are on the github page.</p>
-<h3 id="Use_Monokai_Syntax_Highlighting_Scheme">Use Monokai Syntax Highlighting Scheme</h3><p>Go to <a href="https://github.com/sanukcode/Monokai-Sublime-Text-Octopress" target="_blank" rel="external">https://github.com/sanukcode/Monokai-Sublime-Text-Octopress</a> and follow the instructions.</p>
-
-      
-
-
-    </div>
-    
-<footer class="post-content-footer">
-  
-  <div class="article-tags ym-clearfix">
-    <p>Tags: </p>
-    <a href="/tags/octopress/">octopress</a>
-  </div>
-</footer>
-
-
-      <div class="dotted-border"></div>
-  </div>
-
-</article>
-
-
-
-
 
 <nav id="pagination">
   <div id="pagination-wrapper" class="ym-clearfix">
       
         <a href="/page/7/" class="newer">« Newer</a>
       
-      <span id="pagination-info">Page 8 of 8</span>
+      <span id="pagination-info">Page 8 of 9</span>
+      
+        <a href="/page/9/" class="older">Older »</a>
       
   </div>
 </nav>
@@ -493,6 +486,10 @@
   <ul class="entry">
     
       <li>
+        <a href="/2016/04/17/nodejs-quick-tips-2/">Nodejs - Quick Tips #2</a>
+      </li>
+    
+      <li>
         <a href="/2015/07/20/Velocityjs-Effects/">Velocityjs - Effects</a>
       </li>
     
@@ -506,10 +503,6 @@
     
       <li>
         <a href="/2015/02/14/Meteor-Quick-Tips-2/">Meteor - Quick Tips #2</a>
-      </li>
-    
-      <li>
-        <a href="/2015/01/19/Meteor-Quick-Tips-1/">Meteor - Quick Tips #1</a>
       </li>
     
   </ul>
@@ -530,7 +523,7 @@
             <p id="main-footer-text">
   Copyright rightfully belongs here
   
-  &copy; 2015 William Huey
+  &copy; 2016 William Huey
   
   and proudly powered by <a href="http://hexo.io">Hexo</a> and
   <a href="http://www.github.com/williamhuey">Github</a>

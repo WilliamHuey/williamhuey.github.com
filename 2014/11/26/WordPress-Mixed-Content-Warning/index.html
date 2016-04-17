@@ -151,7 +151,7 @@
   <div class="post-content">
     <header class="post-content-header">
       
-        <time class="post-content-time" datetime="2014-11-27T07:04:35.000Z"><a href="/2014/11/26/WordPress-Mixed-Content-Warning/">11/26/2014</a></time>
+        <time class="post-content-time" datetime="2014-11-27T04:04:35.000Z"><a href="/2014/11/26/WordPress-Mixed-Content-Warning/">11/26/2014</a></time>
       
       
   
@@ -161,15 +161,15 @@
     </header>
     <div class="post-content-entry">
       
-        <h3 id="Insecured_Content">Insecured Content</h3><p>Recently, when working with WordPress, I noticed that when using the <a href="https://wordpress.org/plugins/master-slider/" target="_blank" rel="external">Master Slider</a> plugin, a content slider/carousel plugin, Firefox was complaining about mixed content from the images. I was using ssl on the site.</p>
+        <h3 id="Insecured-Content"><a href="#Insecured-Content" class="headerlink" title="Insecured Content"></a>Insecured Content</h3><p>Recently, when working with WordPress, I noticed that when using the <a href="https://wordpress.org/plugins/master-slider/" target="_blank" rel="external">Master Slider</a> plugin, a content slider/carousel plugin, Firefox was complaining about mixed content from the images. I was using ssl on the site.</p>
 <p>Initially I thought this was the wrongdoing of the plugin, but looking through the support pages for the plugin did not yield any immediate answers. The source did not yield any obvious error.</p>
 <p>While trying to figure out the problem with the slider, I also notice the warning of the mixed content from the media library of WordPress.</p>
 <p>This lead me to think that it may not be the plugin’s fault, and there might be something wrong with WordPress or with the configuration at least.</p>
 <p>Looking further into the situation lead me to figure out that I have forgotten to change the url settings in WordPress.</p>
 <p>To solve my problem I navigated to</p>
-<figure class="highlight mathematica"><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined"><span class="line">Settings &gt; <span class="hljs-keyword">General</span></span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight plain"><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line">Settings &gt; General</span><br></code></pre></td></tr></table></div></figure>
 <p>Then changing </p>
-<figure class="highlight livecodeserver"><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs undefined"><span class="line">WordPress <span class="hljs-built_in">URL</span></span><br><span class="line">Site Address <span class="hljs-built_in">URL</span></span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight plain"><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line">WordPress URL</span><br><span class="line">Site Address URL</span><br></code></pre></td></tr></table></div></figure>
 <p>values to use https for the domain to solve the problem.</p>
 
       
@@ -350,6 +350,10 @@
   <ul class="entry">
     
       <li>
+        <a href="/2016/04/17/nodejs-quick-tips-2/">Nodejs - Quick Tips #2</a>
+      </li>
+    
+      <li>
         <a href="/2015/07/20/Velocityjs-Effects/">Velocityjs - Effects</a>
       </li>
     
@@ -363,10 +367,6 @@
     
       <li>
         <a href="/2015/02/14/Meteor-Quick-Tips-2/">Meteor - Quick Tips #2</a>
-      </li>
-    
-      <li>
-        <a href="/2015/01/19/Meteor-Quick-Tips-1/">Meteor - Quick Tips #1</a>
       </li>
     
   </ul>
@@ -387,7 +387,7 @@
             <p id="main-footer-text">
   Copyright rightfully belongs here
   
-  &copy; 2015 William Huey
+  &copy; 2016 William Huey
   
   and proudly powered by <a href="http://hexo.io">Hexo</a> and
   <a href="http://www.github.com/williamhuey">Github</a>

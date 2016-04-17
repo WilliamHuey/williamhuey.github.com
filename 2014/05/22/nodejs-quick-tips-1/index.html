@@ -151,7 +151,7 @@
   <div class="post-content">
     <header class="post-content-header">
       
-        <time class="post-content-time" datetime="2014-05-22T18:00:15.000Z"><a href="/2014/05/22/nodejs-quick-tips-1/">5/22/2014</a></time>
+        <time class="post-content-time" datetime="2014-05-22T15:00:15.000Z"><a href="/2014/05/22/nodejs-quick-tips-1/">5/22/2014</a></time>
       
       
   
@@ -161,12 +161,12 @@
     </header>
     <div class="post-content-entry">
       
-        <h3 id="Creating_Multiple_Files">Creating Multiple Files</h3><p>Unfortunately, the fs.writeFile does not accept an array for creating a bunch of files at once.
+        <h3 id="Creating-Multiple-Files"><a href="#Creating-Multiple-Files" class="headerlink" title="Creating Multiple Files"></a>Creating Multiple Files</h3><p>Unfortunately, the fs.writeFile does not accept an array for creating a bunch of files at once.
 To solve this problem, put all files in an array and loop through
 them to create the files.</p>
-<figure class="highlight js"><figcaption><span>More than One File at Once</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="line"><span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>);</span><br><br class="double"><span class="line"><span class="hljs-comment">//Use an array to house all files to be created</span></span><br><span class="line">[<span class="hljs-string">'thing.txt'</span>, <span class="hljs-string">'thing2.txt'</span>,</span><br><span class="line"><span class="hljs-string">'otherFile.txt'</span>, <span class="hljs-string">'abc.txt'</span>,</span><br><span class="line"><span class="hljs-string">'def.txt'</span>, <span class="hljs-string">'ghi.txt'</span>].forEach(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(value)</span> </span>&#123;</span><br><span class="line">  fs.writeFile(value, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(err)</span></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (err) <span class="hljs-keyword">throw</span> err;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></code></pre></td></tr></table></div></figure>
-<h3 id="Get_Path_of_Directory_One_Up_from_Current">Get Path of Directory One Up from Current</h3><p>Using the ‘path’ variable along with some array operations, the folder one level above the current directory could be found. The value of ‘1’ goes up one level, but this value could be changed to go up as many level as desired.</p>
-<figure class="highlight js"><figcaption><span>One Directory Up</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="line"><span class="hljs-keyword">var</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">'path'</span>);</span><br><br class="double"><span class="line"><span class="hljs-comment">//Using this path for example</span></span><br><span class="line"><span class="hljs-comment">// /home/williamhuey/Desktop/CodeStuff/</span></span><br><span class="line"><span class="hljs-keyword">var</span> cwd = process.cwd();</span><br><br class="double"><span class="line"><span class="hljs-comment">// [ '', 'home', 'williamhuey', 'Desktop', 'CodeStuff']</span></span><br><span class="line"><span class="hljs-keyword">var</span> pathSep = cwd.split(path.sep);</span><br><br class="double"><span class="line"><span class="hljs-comment">// [ '', 'home', 'williamhuey', 'Desktop']</span></span><br><span class="line"><span class="hljs-keyword">var</span> slicedPath = pathSep.slice(<span class="hljs-number">0</span>,pathSep.length - <span class="hljs-number">1</span>);</span><br><br class="double"><span class="line"><span class="hljs-comment">// /home/williamhuey/Desktop/</span></span><br><span class="line"><span class="hljs-keyword">var</span> oneUpDirectory = slicedPath.join(path.sep);</span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight js"><figcaption><span>More than One File at Once</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//Use an array to house all files to be created</span></span><br><span class="line">[<span class="hljs-string">'thing.txt'</span>, <span class="hljs-string">'thing2.txt'</span>,</span><br><span class="line"><span class="hljs-string">'otherFile.txt'</span>, <span class="hljs-string">'abc.txt'</span>,</span><br><span class="line"><span class="hljs-string">'def.txt'</span>, <span class="hljs-string">'ghi.txt'</span>].forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">value</span>) </span>&#123;</span><br><span class="line">  fs.writeFile(value, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>)</span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (err) <span class="hljs-keyword">throw</span> err;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></code></pre></td></tr></table></div></figure>
+<h3 id="Get-Path-of-Directory-One-Up-from-Current"><a href="#Get-Path-of-Directory-One-Up-from-Current" class="headerlink" title="Get Path of Directory One Up from Current"></a>Get Path of Directory One Up from Current</h3><p>Using the ‘path’ variable along with some array operations, the folder one level above the current directory could be found. The value of ‘1’ goes up one level, but this value could be changed to go up as many level as desired.</p>
+<figure class="highlight js"><figcaption><span>One Directory Up</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-keyword">var</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">'path'</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//Using this path for example</span></span><br><span class="line"><span class="hljs-comment">// /home/williamhuey/Desktop/CodeStuff/</span></span><br><span class="line"><span class="hljs-keyword">var</span> cwd = process.cwd();</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// [ '', 'home', 'williamhuey', 'Desktop', 'CodeStuff']</span></span><br><span class="line"><span class="hljs-keyword">var</span> pathSep = cwd.split(path.sep);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// [ '', 'home', 'williamhuey', 'Desktop']</span></span><br><span class="line"><span class="hljs-keyword">var</span> slicedPath = pathSep.slice(<span class="hljs-number">0</span>,pathSep.length - <span class="hljs-number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// /home/williamhuey/Desktop/</span></span><br><span class="line"><span class="hljs-keyword">var</span> oneUpDirectory = slicedPath.join(path.sep);</span><br></code></pre></td></tr></table></div></figure>
       
 
 
@@ -345,6 +345,10 @@ them to create the files.</p>
   <ul class="entry">
     
       <li>
+        <a href="/2016/04/17/nodejs-quick-tips-2/">Nodejs - Quick Tips #2</a>
+      </li>
+    
+      <li>
         <a href="/2015/07/20/Velocityjs-Effects/">Velocityjs - Effects</a>
       </li>
     
@@ -358,10 +362,6 @@ them to create the files.</p>
     
       <li>
         <a href="/2015/02/14/Meteor-Quick-Tips-2/">Meteor - Quick Tips #2</a>
-      </li>
-    
-      <li>
-        <a href="/2015/01/19/Meteor-Quick-Tips-1/">Meteor - Quick Tips #1</a>
       </li>
     
   </ul>
@@ -382,7 +382,7 @@ them to create the files.</p>
             <p id="main-footer-text">
   Copyright rightfully belongs here
   
-  &copy; 2015 William Huey
+  &copy; 2016 William Huey
   
   and proudly powered by <a href="http://hexo.io">Hexo</a> and
   <a href="http://www.github.com/williamhuey">Github</a>

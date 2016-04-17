@@ -151,7 +151,7 @@
   <div class="post-content">
     <header class="post-content-header">
       
-        <time class="post-content-time" datetime="2015-03-25T20:40:12.000Z"><a href="/2015/03/25/Meteor-Quick-Tips-3/">3/25/2015</a></time>
+        <time class="post-content-time" datetime="2015-03-25T17:40:12.000Z"><a href="/2015/03/25/Meteor-Quick-Tips-3/">3/25/2015</a></time>
       
       
   
@@ -161,14 +161,14 @@
     </header>
     <div class="post-content-entry">
       
-        <h3 id="Template_Helpers_and_Subscriptions">Template Helpers and Subscriptions</h3><p>Templates helpers format data onto your templates, but one must ensure that subscription data is fully loaded before the template helpers have a chance to render.</p>
+        <h3 id="Template-Helpers-and-Subscriptions"><a href="#Template-Helpers-and-Subscriptions" class="headerlink" title="Template Helpers and Subscriptions"></a>Template Helpers and Subscriptions</h3><p>Templates helpers format data onto your templates, but one must ensure that subscription data is fully loaded before the template helpers have a chance to render.</p>
 <p>With the help of <a href="https://github.com/iron-meteor/iron-router" target="_blank" rel="external">Iron Router</a>, use the ‘this.ready()’ check inside the data option.</p>
-<figure class="highlight js"><figcaption><span>Router.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="line">Router.route(<span class="hljs-string">'/post/:_id'</span>, &#123;</span><br><span class="line">  waitOn: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> Meteor.subscribe(<span class="hljs-string">'post'</span>, <span class="hljs-keyword">this</span>.params._id)</span><br><span class="line">  &#125;,</span><br><span class="line">  data: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>&#123; </span><br><span class="line">    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.ready()) &#123;</span><br><span class="line">      <span class="hljs-keyword">return</span> &#123; </span><br><span class="line">        post: Posts.findOne(&#123;_id: <span class="hljs-keyword">this</span>.params._id&#125;);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;    </span><br><span class="line">  &#125;  </span><br><span class="line">&#125;);</span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight js"><figcaption><span>Router.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line">Router.route(<span class="hljs-string">'/post/:_id'</span>, &#123;</span><br><span class="line">  waitOn: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> Meteor.subscribe(<span class="hljs-string">'post'</span>, <span class="hljs-keyword">this</span>.params._id)</span><br><span class="line">  &#125;,</span><br><span class="line">  data: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123; </span><br><span class="line">    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.ready()) &#123;</span><br><span class="line">      <span class="hljs-keyword">return</span> &#123; </span><br><span class="line">        post: Posts.findOne(&#123;_id: <span class="hljs-keyword">this</span>.params._id&#125;);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;    </span><br><span class="line">  &#125;  </span><br><span class="line">&#125;);</span><br></code></pre></td></tr></table></div></figure>
 <p>Once the above is in place, a template helper can now safely rendered the subscription data.</p>
-<figure class="highlight js"><figcaption><span>Template.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="line">Template.post.helpers(&#123;</span><br><span class="line">  post: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> Template.currentData().post;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></code></pre></td></tr></table></div></figure>
-<h3 id="Remove_Event_Listeners_From_Blaze_Templates">Remove Event Listeners From Blaze Templates</h3><p>As of Meteor 1.0.4.2, this can not be done. The <a href="http://docs.meteor.com/#/full/blaze_tohtml" target="_blank" rel="external">Blaze to HTML</a> looked promising, but this only creates static html element from a template, it does not provide the ability to render an active Blaze template inert.</p>
+<figure class="highlight js"><figcaption><span>Template.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line">Template.post.helpers(&#123;</span><br><span class="line">  post: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> Template.currentData().post;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></code></pre></td></tr></table></div></figure>
+<h3 id="Remove-Event-Listeners-From-Blaze-Templates"><a href="#Remove-Event-Listeners-From-Blaze-Templates" class="headerlink" title="Remove Event Listeners From Blaze Templates"></a>Remove Event Listeners From Blaze Templates</h3><p>As of Meteor 1.0.4.2, this can not be done. The <a href="http://docs.meteor.com/#/full/blaze_tohtml" target="_blank" rel="external">Blaze to HTML</a> looked promising, but this only creates static html element from a template, it does not provide the ability to render an active Blaze template inert.</p>
 <p>For example the following template has a click event listener attached, but there is not way to undo or remove the click event listener.</p>
-<figure class="highlight js"><figcaption><span>Click Event Listener</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="line">Template.my-template.events(&#123;</span><br><span class="line">  <span class="hljs-string">"click #container a"</span>: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(evt)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-comment">//do some stuff here</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight js"><figcaption><span>Click Event Listener</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line">Template.my-template.events(&#123;</span><br><span class="line">  <span class="hljs-string">"click #container a"</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">evt</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-comment">//do some stuff here</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></code></pre></td></tr></table></div></figure>
 
       
 
@@ -348,6 +348,10 @@
   <ul class="entry">
     
       <li>
+        <a href="/2016/04/17/nodejs-quick-tips-2/">Nodejs - Quick Tips #2</a>
+      </li>
+    
+      <li>
         <a href="/2015/07/20/Velocityjs-Effects/">Velocityjs - Effects</a>
       </li>
     
@@ -361,10 +365,6 @@
     
       <li>
         <a href="/2015/02/14/Meteor-Quick-Tips-2/">Meteor - Quick Tips #2</a>
-      </li>
-    
-      <li>
-        <a href="/2015/01/19/Meteor-Quick-Tips-1/">Meteor - Quick Tips #1</a>
       </li>
     
   </ul>
@@ -385,7 +385,7 @@
             <p id="main-footer-text">
   Copyright rightfully belongs here
   
-  &copy; 2015 William Huey
+  &copy; 2016 William Huey
   
   and proudly powered by <a href="http://hexo.io">Hexo</a> and
   <a href="http://www.github.com/williamhuey">Github</a>

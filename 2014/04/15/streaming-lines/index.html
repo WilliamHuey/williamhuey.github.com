@@ -151,7 +151,7 @@
   <div class="post-content">
     <header class="post-content-header">
       
-        <time class="post-content-time" datetime="2014-04-16T04:52:01.000Z"><a href="/2014/04/15/streaming-lines/">4/15/2014</a></time>
+        <time class="post-content-time" datetime="2014-04-16T01:52:01.000Z"><a href="/2014/04/15/streaming-lines/">4/15/2014</a></time>
       
       
   
@@ -161,7 +161,7 @@
     </header>
     <div class="post-content-entry">
       
-        <h3 id="Line_by_Line">Line by Line</h3><p>There are many streaming modules on npm to read lines from text files,
+        <h3 id="Line-by-Line"><a href="#Line-by-Line" class="headerlink" title="Line by Line"></a>Line by Line</h3><p>There are many streaming modules on npm to read lines from text files,
 but many are inaccurate and slow. Inaccurate means that there is a failure to read many lines and
 slow means that files with a lot of text per line will cause the modules to crawl.</p>
 <p>Below are the lines counts and timings for reading a large json file, ‘bird.json’ with 909 lines.
@@ -178,7 +178,8 @@ This text file has 65008 lines.</p>
 <img src="/img/posts/2014-04-15-war-and-peace-lc.png" class="center" title="2014-04-15-war-and-peace-lc.png 2014-04-15-war-and-peace-lc.png">
 <p>Linebyline errored out with ‘RangeError: Maximum call stack size exceeded’, while most of the stream readers are in the neighborhood of 300ms.</p>
 <p>The files for the above benchmark is <a href="/demos/2014-04-15-Streaming-Lines.7z">here</a>.</p>
-<h2 id="Conclusion">Conclusion</h2><p>It was surprising to see that some modules misread lines by a significant amount for ‘bird.json’ while 
+<p>##Conclusion</p>
+<p>It was surprising to see that some modules misread lines by a significant amount for ‘bird.json’ while 
 almost all modules misreport the line count. The last line on both the json and text file is a blank line and often this is not read.</p>
 <p>Most stream readers were not adept at reading the ‘bird.json’ file.</p>
 <p>The more reliable streaming line reader module that I recommend would be ‘split2’ or ‘split’,
@@ -362,6 +363,10 @@ almost all modules misreport the line count. The last line on both the json and 
   <ul class="entry">
     
       <li>
+        <a href="/2016/04/17/nodejs-quick-tips-2/">Nodejs - Quick Tips #2</a>
+      </li>
+    
+      <li>
         <a href="/2015/07/20/Velocityjs-Effects/">Velocityjs - Effects</a>
       </li>
     
@@ -375,10 +380,6 @@ almost all modules misreport the line count. The last line on both the json and 
     
       <li>
         <a href="/2015/02/14/Meteor-Quick-Tips-2/">Meteor - Quick Tips #2</a>
-      </li>
-    
-      <li>
-        <a href="/2015/01/19/Meteor-Quick-Tips-1/">Meteor - Quick Tips #1</a>
       </li>
     
   </ul>
@@ -399,7 +400,7 @@ almost all modules misreport the line count. The last line on both the json and 
             <p id="main-footer-text">
   Copyright rightfully belongs here
   
-  &copy; 2015 William Huey
+  &copy; 2016 William Huey
   
   and proudly powered by <a href="http://hexo.io">Hexo</a> and
   <a href="http://www.github.com/williamhuey">Github</a>

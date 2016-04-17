@@ -151,7 +151,7 @@
   <div class="post-content">
     <header class="post-content-header">
       
-        <time class="post-content-time" datetime="2014-09-25T23:33:11.000Z"><a href="/2014/09/25/WordPress-Quick-Tips-1/">9/25/2014</a></time>
+        <time class="post-content-time" datetime="2014-09-25T20:33:11.000Z"><a href="/2014/09/25/WordPress-Quick-Tips-1/">9/25/2014</a></time>
       
       
   
@@ -161,9 +161,9 @@
     </header>
     <div class="post-content-entry">
       
-        <h3 id="Enqueue_Multiple_Google_Fonts_into_One_Stylesheet">Enqueue Multiple Google Fonts into One Stylesheet</h3><p>Taking the twenty-fourteen theme for example, modify the ‘functions.php’ by separate the differents fonts that is to be used with a pipe character in the twentyfourteen_font_url function.</p>
-<figure class="highlight php"><figcaption><span>Single Stylesheet for a Group of Fonts</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">twentyfourteen_font_url</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">  <span class="hljs-variable">$font_url</span> = <span class="hljs-string">''</span>;</span><br><br class="double"><span class="line">  <span class="hljs-keyword">if</span> ( <span class="hljs-string">'off'</span> !== _x( <span class="hljs-string">'on'</span>, <span class="hljs-string">'Oswald font: on or off'</span>, <span class="hljs-string">'twentyfourteen'</span> ) ) &#123;</span><br><span class="line">    <span class="hljs-variable">$font_url</span> = add_query_arg( <span class="hljs-string">'family'</span>, urlencode( <span class="hljs-string">'Oswald:400|Droid Sans:400'</span>), <span class="hljs-string">"//fonts.googleapis.com/css"</span> );</span><br><span class="line">  &#125;</span><br><br class="double"><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-variable">$font_url</span>;</span><br><span class="line">&#125;</span><br><br class="double"><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">twentyfourteen_scripts</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">  wp_enqueue_style( <span class="hljs-string">'googlefont-oswald-and-opensans'</span>, twentyfourteen_font_url(), <span class="hljs-keyword">array</span>(), <span class="hljs-keyword">null</span> );</span><br><br class="double"><span class="line">  <span class="hljs-comment">//...</span></span><br><span class="line">&#125;</span><br><br class="double"><span class="line">add_action( <span class="hljs-string">'wp_enqueue_scripts'</span>, <span class="hljs-string">'twentyfourteen_scripts'</span> );</span><br></code></pre></td></tr></table></div></figure>
-<h3 id="Bouncing_Contact_Form_7_Emails">Bouncing Contact Form 7 Emails</h3><p>If you wish to receive messages from the Contact Form 7 form to your personal email, but the behavior is spotty (emails not being sent to you), then it would help to install the <a href="https://wordpress.org/plugins/flamingo/" target="_blank" rel="external">Flamingo plugin</a>. This plugin will save messages in WordPress, such that messages will be accessible from the WordPress dashboard.</p>
+        <h3 id="Enqueue-Multiple-Google-Fonts-into-One-Stylesheet"><a href="#Enqueue-Multiple-Google-Fonts-into-One-Stylesheet" class="headerlink" title="Enqueue Multiple Google Fonts into One Stylesheet"></a>Enqueue Multiple Google Fonts into One Stylesheet</h3><p>Taking the twenty-fourteen theme for example, modify the ‘functions.php’ by separate the differents fonts that is to be used with a pipe character in the twentyfourteen_font_url function.</p>
+<figure class="highlight php"><figcaption><span>Single Stylesheet for a Group of Fonts</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">twentyfourteen_font_url</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">  $font_url = <span class="hljs-string">''</span>;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">if</span> ( <span class="hljs-string">'off'</span> !== _x( <span class="hljs-string">'on'</span>, <span class="hljs-string">'Oswald font: on or off'</span>, <span class="hljs-string">'twentyfourteen'</span> ) ) &#123;</span><br><span class="line">    $font_url = add_query_arg( <span class="hljs-string">'family'</span>, urlencode( <span class="hljs-string">'Oswald:400|Droid Sans:400'</span>), <span class="hljs-string">"//fonts.googleapis.com/css"</span> );</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">return</span> $font_url;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">twentyfourteen_scripts</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">  wp_enqueue_style( <span class="hljs-string">'googlefont-oswald-and-opensans'</span>, twentyfourteen_font_url(), <span class="hljs-keyword">array</span>(), <span class="hljs-keyword">null</span> );</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">//...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">add_action( <span class="hljs-string">'wp_enqueue_scripts'</span>, <span class="hljs-string">'twentyfourteen_scripts'</span> );</span><br></code></pre></td></tr></table></div></figure>
+<h3 id="Bouncing-Contact-Form-7-Emails"><a href="#Bouncing-Contact-Form-7-Emails" class="headerlink" title="Bouncing Contact Form 7 Emails"></a>Bouncing Contact Form 7 Emails</h3><p>If you wish to receive messages from the Contact Form 7 form to your personal email, but the behavior is spotty (emails not being sent to you), then it would help to install the <a href="https://wordpress.org/plugins/flamingo/" target="_blank" rel="external">Flamingo plugin</a>. This plugin will save messages in WordPress, such that messages will be accessible from the WordPress dashboard.</p>
 
       
 
@@ -343,6 +343,10 @@
   <ul class="entry">
     
       <li>
+        <a href="/2016/04/17/nodejs-quick-tips-2/">Nodejs - Quick Tips #2</a>
+      </li>
+    
+      <li>
         <a href="/2015/07/20/Velocityjs-Effects/">Velocityjs - Effects</a>
       </li>
     
@@ -356,10 +360,6 @@
     
       <li>
         <a href="/2015/02/14/Meteor-Quick-Tips-2/">Meteor - Quick Tips #2</a>
-      </li>
-    
-      <li>
-        <a href="/2015/01/19/Meteor-Quick-Tips-1/">Meteor - Quick Tips #1</a>
       </li>
     
   </ul>
@@ -380,7 +380,7 @@
             <p id="main-footer-text">
   Copyright rightfully belongs here
   
-  &copy; 2015 William Huey
+  &copy; 2016 William Huey
   
   and proudly powered by <a href="http://hexo.io">Hexo</a> and
   <a href="http://www.github.com/williamhuey">Github</a>

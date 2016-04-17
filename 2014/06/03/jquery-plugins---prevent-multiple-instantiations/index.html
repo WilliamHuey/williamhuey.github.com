@@ -151,7 +151,7 @@
   <div class="post-content">
     <header class="post-content-header">
       
-        <time class="post-content-time" datetime="2014-06-04T04:19:21.000Z"><a href="/2014/06/03/jquery-plugins---prevent-multiple-instantiations/">6/3/2014</a></time>
+        <time class="post-content-time" datetime="2014-06-04T01:19:21.000Z"><a href="/2014/06/03/jquery-plugins---prevent-multiple-instantiations/">6/3/2014</a></time>
       
       
   
@@ -161,16 +161,17 @@
     </header>
     <div class="post-content-entry">
       
-        <h2 id="Script_Loading_Safety">Script Loading Safety</h2><p>The <a href="https://github.com/jquery-boilerplate/jquery-boilerplate" target="_blank" rel="external">jQuery Boilerplate</a> is a popular boilerplate and provides a safety
+        <p>##Script Loading Safety</p>
+<p>The <a href="https://github.com/jquery-boilerplate/jquery-boilerplate" target="_blank" rel="external">jQuery Boilerplate</a> is a popular boilerplate and provides a safety
  net for double instantiation of a jQuery object with this code</p>
-<figure class="highlight js"><figcaption><span>Prevent Double Instantation on jQuery Object</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="line"><span class="hljs-keyword">if</span> (!$.data(<span class="hljs-keyword">this</span>, <span class="hljs-string">"plugin_"</span> + pluginName)) &#123;</span><br><span class="line">  $.data(<span class="hljs-keyword">this</span>, <span class="hljs-string">"plugin_"</span> + pluginName, <span class="hljs-keyword">new</span> Plugin(<span class="hljs-keyword">this</span>, options));</span><br><span class="line">&#125;</span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight js"><figcaption><span>Prevent Double Instantation on jQuery Object</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-keyword">if</span> (!$.data(<span class="hljs-keyword">this</span>, <span class="hljs-string">"plugin_"</span> + pluginName)) &#123;</span><br><span class="line">  $.data(<span class="hljs-keyword">this</span>, <span class="hljs-string">"plugin_"</span> + pluginName, <span class="hljs-keyword">new</span> Plugin(<span class="hljs-keyword">this</span>, options));</span><br><span class="line">&#125;</span><br></code></pre></td></tr></table></div></figure>
 <p>This is good safeguard for your jQuery objects, but what happens if
 your plugin script gets load twice?</p>
-<figure class="highlight html"><figcaption><span>Accidental Reloading of Plugin Script</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="line"><span class="hljs-tag">&lt;<span class="hljs-title">head</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-title">title</span>&gt;</span>TakeOut<span class="hljs-tag">&lt;/<span class="hljs-title">title</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-title">meta</span> <span class="hljs-attribute">charset</span>=<span class="hljs-value">"UTF-8"</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"assets/vendor/js/jquery-1.11.1.min.js"</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"text/javascript"</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"src/TakeOut.js"</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"text/javascript"</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"src/TakeOut.js"</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"text/javascript"</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-title">head</span>&gt;</span></span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight html"><figcaption><span>Accidental Reloading of Plugin Script</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>TakeOut<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"assets/vendor/js/jquery-1.11.1.min.js"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"src/TakeOut.js"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"src/TakeOut.js"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span></span><br></code></pre></td></tr></table></div></figure>
 <p>This is unlikely to happen, but this problem could manifest in more devious or and less apparent ways, such as when project files are minify and concatenated.</p>
 <p>This might cause some unexpected behaviors if the plugin attaches event
 listeners by default. In order to protect your page, do the following</p>
-<figure class="highlight js"><figcaption><span>Attachment Check</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="line">(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($, window, document, undefined)</span> </span>&#123;</span><br><br class="double"><span class="line">  <span class="hljs-keyword">var</span> pluginName = <span class="hljs-string">"MyMagnificentJQueryPlugin"</span>;</span><br><br class="double"><span class="line">  <span class="hljs-comment">//Only allow for one instantiation of this script</span></span><br><span class="line">  <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> $.fn[pluginName] !== <span class="hljs-string">'undefined'</span>) &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span>;</span><br><span class="line">  &#125;</span><br><br class="double"><span class="line">  <span class="hljs-comment">//Rest of your jQuery plugin logic here</span></span><br><span class="line">&#125;)(jQuery, <span class="hljs-built_in">window</span>, <span class="hljs-built_in">document</span>);</span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight js"><figcaption><span>Attachment Check</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line">(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">$, window, document, undefined</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">var</span> pluginName = <span class="hljs-string">"MyMagnificentJQueryPlugin"</span>;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">//Only allow for one instantiation of this script</span></span><br><span class="line">  <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> $.fn[pluginName] !== <span class="hljs-string">'undefined'</span>) &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">//Rest of your jQuery plugin logic here</span></span><br><span class="line">&#125;)(jQuery, <span class="hljs-built_in">window</span>, <span class="hljs-built_in">document</span>);</span><br></code></pre></td></tr></table></div></figure>
 <p>There is a check in the beginning of the script to see if the plugin
 has already attach itself to the jQuery object.</p>
 
@@ -183,7 +184,7 @@ has already attach itself to the jQuery object.</p>
   
   <div class="article-tags ym-clearfix">
     <p>Tags: </p>
-    <a href="/tags/jQuery/">jQuery</a>, <a href="/tags/javascript/">javascript</a>
+    <a href="/tags/javascript/">javascript</a>, <a href="/tags/jQuery/">jQuery</a>
   </div>
 </footer>
 
@@ -352,6 +353,10 @@ has already attach itself to the jQuery object.</p>
   <ul class="entry">
     
       <li>
+        <a href="/2016/04/17/nodejs-quick-tips-2/">Nodejs - Quick Tips #2</a>
+      </li>
+    
+      <li>
         <a href="/2015/07/20/Velocityjs-Effects/">Velocityjs - Effects</a>
       </li>
     
@@ -365,10 +370,6 @@ has already attach itself to the jQuery object.</p>
     
       <li>
         <a href="/2015/02/14/Meteor-Quick-Tips-2/">Meteor - Quick Tips #2</a>
-      </li>
-    
-      <li>
-        <a href="/2015/01/19/Meteor-Quick-Tips-1/">Meteor - Quick Tips #1</a>
       </li>
     
   </ul>
@@ -389,7 +390,7 @@ has already attach itself to the jQuery object.</p>
             <p id="main-footer-text">
   Copyright rightfully belongs here
   
-  &copy; 2015 William Huey
+  &copy; 2016 William Huey
   
   and proudly powered by <a href="http://hexo.io">Hexo</a> and
   <a href="http://www.github.com/williamhuey">Github</a>

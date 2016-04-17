@@ -151,7 +151,51 @@
   <div class="post-content">
     <header class="post-content-header">
       
-        <time class="post-content-time" datetime="2014-05-06T22:01:51.000Z"><a href="/2014/05/06/private-instance-method-variables/">5/6/2014</a></time>
+        <time class="post-content-time" datetime="2014-05-22T15:00:15.000Z"><a href="/2014/05/22/nodejs-quick-tips-1/">5/22/2014</a></time>
+      
+      
+  
+    <h2 class="title"><a href="/2014/05/22/nodejs-quick-tips-1/">Nodejs Quick Tips #1</a></h2>
+  
+
+    </header>
+    <div class="post-content-entry">
+      
+        <h3 id="Creating-Multiple-Files"><a href="#Creating-Multiple-Files" class="headerlink" title="Creating Multiple Files"></a>Creating Multiple Files</h3><p>Unfortunately, the fs.writeFile does not accept an array for creating a bunch of files at once.
+To solve this problem, put all files in an array and loop through
+them to create the files.</p>
+<figure class="highlight js"><figcaption><span>More than One File at Once</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//Use an array to house all files to be created</span></span><br><span class="line">[<span class="hljs-string">'thing.txt'</span>, <span class="hljs-string">'thing2.txt'</span>,</span><br><span class="line"><span class="hljs-string">'otherFile.txt'</span>, <span class="hljs-string">'abc.txt'</span>,</span><br><span class="line"><span class="hljs-string">'def.txt'</span>, <span class="hljs-string">'ghi.txt'</span>].forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">value</span>) </span>&#123;</span><br><span class="line">  fs.writeFile(value, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>)</span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (err) <span class="hljs-keyword">throw</span> err;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></code></pre></td></tr></table></div></figure>
+<h3 id="Get-Path-of-Directory-One-Up-from-Current"><a href="#Get-Path-of-Directory-One-Up-from-Current" class="headerlink" title="Get Path of Directory One Up from Current"></a>Get Path of Directory One Up from Current</h3><p>Using the ‘path’ variable along with some array operations, the folder one level above the current directory could be found. The value of ‘1’ goes up one level, but this value could be changed to go up as many level as desired.</p>
+<figure class="highlight js"><figcaption><span>One Directory Up</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-keyword">var</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">'path'</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//Using this path for example</span></span><br><span class="line"><span class="hljs-comment">// /home/williamhuey/Desktop/CodeStuff/</span></span><br><span class="line"><span class="hljs-keyword">var</span> cwd = process.cwd();</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// [ '', 'home', 'williamhuey', 'Desktop', 'CodeStuff']</span></span><br><span class="line"><span class="hljs-keyword">var</span> pathSep = cwd.split(path.sep);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// [ '', 'home', 'williamhuey', 'Desktop']</span></span><br><span class="line"><span class="hljs-keyword">var</span> slicedPath = pathSep.slice(<span class="hljs-number">0</span>,pathSep.length - <span class="hljs-number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// /home/williamhuey/Desktop/</span></span><br><span class="line"><span class="hljs-keyword">var</span> oneUpDirectory = slicedPath.join(path.sep);</span><br></code></pre></td></tr></table></div></figure>
+      
+
+
+    </div>
+    
+<footer class="post-content-footer">
+  
+  <div class="article-tags ym-clearfix">
+    <p>Tags: </p>
+    <a href="/tags/javascript/">javascript</a>, <a href="/tags/nodejs/">nodejs</a>
+  </div>
+</footer>
+
+
+      <div class="dotted-border"></div>
+  </div>
+
+</article>
+
+
+
+
+  
+<article class="post">
+
+  <div class="post-content">
+    <header class="post-content-header">
+      
+        <time class="post-content-time" datetime="2014-05-06T19:01:51.000Z"><a href="/2014/05/06/private-instance-method-variables/">5/6/2014</a></time>
       
       
   
@@ -161,12 +205,12 @@
     </header>
     <div class="post-content-entry">
       
-        <h3 id="Instances_Methods_and_Their_Personal_State">Instances Methods and Their Personal State</h3><p>This post is for intended for JavaScript (not Java).</p>
+        <h3 id="Instances-Methods-and-Their-Personal-State"><a href="#Instances-Methods-and-Their-Personal-State" class="headerlink" title="Instances Methods and Their Personal State"></a>Instances Methods and Their Personal State</h3><p>This post is for intended for JavaScript (not Java).</p>
 <p>One may put instance method variables within an instance method to provide encapsulation, but what do you do when you want to maintain a private state for each instance method on each instance method execution?</p>
 <p>The technique in achieving such a task involves wrapping an instance method and its variable within a function as shown below. The result will produce instance method variables that are truly private to the instance method.</p>
 <p>The instance method gets attached to the constructor by using the ‘this’ reference to the constructor.</p>
 <p>Each instance function is then placed into an internal array and the array is looped over to execute and initialize each wrapper function and its corresponding static methods and variables.</p>
-<figure class="highlight js"><figcaption><span>Instance Variables</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="line"><span class="hljs-keyword">var</span> Time = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">  <span class="hljs-comment">//Reference the context</span></span><br><span class="line">  <span class="hljs-keyword">var</span> _this = <span class="hljs-keyword">this</span>;</span><br><br class="double"><span class="line">  <span class="hljs-comment">//Internal array which houses all instance methods</span></span><br><span class="line">  <span class="hljs-comment">//Wrapping all instance methods in a function to</span></span><br><span class="line">  <span class="hljs-comment">//contain its private variables for instance methods</span></span><br><span class="line">  <span class="hljs-keyword">var</span> _time = [</span><br><br class="double"><span class="line">    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>&#123;</span><br><br class="double"><span class="line">      <span class="hljs-comment">//Private variables for instance</span></span><br><span class="line">      <span class="hljs-keyword">var</span> privateStaticVar = <span class="hljs-string">'Time in milliseconds is '</span>;</span><br><br class="double"><span class="line">      <span class="hljs-comment">//A instance method of the Time constructor</span></span><br><span class="line">      _this.getTimeInMilliseconds = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> privateStaticVar + <span class="hljs-built_in">Date</span>.now();</span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-comment">//Add more functions within this array</span></span><br><span class="line">    <span class="hljs-comment">//for other instance methods</span></span><br><span class="line">  ];</span><br><br class="double"><span class="line">  <span class="hljs-comment">//Initialize all instance methods</span></span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; _time.length; i++) &#123;</span><br><span class="line">    _time[i]();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><br class="double"><span class="line"><span class="hljs-keyword">var</span> time = <span class="hljs-keyword">new</span> Time();</span><br><br class="double"><span class="line"><span class="hljs-built_in">console</span>.log(time.getTimeInMilliseconds());</span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight js"><figcaption><span>Instance Variables</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-keyword">var</span> Time = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-comment">//Reference the context</span></span><br><span class="line">  <span class="hljs-keyword">var</span> _this = <span class="hljs-keyword">this</span>;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">//Internal array which houses all instance methods</span></span><br><span class="line">  <span class="hljs-comment">//Wrapping all instance methods in a function to</span></span><br><span class="line">  <span class="hljs-comment">//contain its private variables for instance methods</span></span><br><span class="line">  <span class="hljs-keyword">var</span> _time = [</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">      <span class="hljs-comment">//Private variables for instance</span></span><br><span class="line">      <span class="hljs-keyword">var</span> privateStaticVar = <span class="hljs-string">'Time in milliseconds is '</span>;</span><br><span class="line"></span><br><span class="line">      <span class="hljs-comment">//A instance method of the Time constructor</span></span><br><span class="line">      _this.getTimeInMilliseconds = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> privateStaticVar + <span class="hljs-built_in">Date</span>.now();</span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-comment">//Add more functions within this array</span></span><br><span class="line">    <span class="hljs-comment">//for other instance methods</span></span><br><span class="line">  ];</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">//Initialize all instance methods</span></span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; _time.length; i++) &#123;</span><br><span class="line">    _time[i]();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">var</span> time = <span class="hljs-keyword">new</span> Time();</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(time.getTimeInMilliseconds());</span><br></code></pre></td></tr></table></div></figure>
       
 
 
@@ -195,7 +239,7 @@
   <div class="post-content">
     <header class="post-content-header">
       
-        <time class="post-content-time" datetime="2014-05-01T22:34:05.000Z"><a href="/2014/05/01/pubsub-lists/">5/1/2014</a></time>
+        <time class="post-content-time" datetime="2014-05-01T19:34:05.000Z"><a href="/2014/05/01/pubsub-lists/">5/1/2014</a></time>
       
       
   
@@ -205,26 +249,26 @@
     </header>
     <div class="post-content-entry">
       
-        <h3 id="Publish_and_Subscribe">Publish and Subscribe</h3><p>One way of emitting events is by using trigger on a jQuery element.</p>
-<figure class="highlight js"><figcaption><span>Event Emitting from Element</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="line">$(<span class="hljs-string">'#my-element-id'</span>).trigger(<span class="hljs-string">'my-beautiful-event'</span>);</span><br></code></pre></td></tr></table></div></figure>
+        <h3 id="Publish-and-Subscribe"><a href="#Publish-and-Subscribe" class="headerlink" title="Publish and Subscribe"></a>Publish and Subscribe</h3><p>One way of emitting events is by using trigger on a jQuery element.</p>
+<figure class="highlight js"><figcaption><span>Event Emitting from Element</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line">$(<span class="hljs-string">'#my-element-id'</span>).trigger(<span class="hljs-string">'my-beautiful-event'</span>);</span><br></code></pre></td></tr></table></div></figure>
 <p>This is okay if we only wanted to trigger an event from a specific element, but what happens if we want a generic way of doing things, such as without referring to an element when triggering?</p>
 <p>The way to do this is to use <a href="https://api.jquery.com/jQuery.Callbacks/" target="_blank" rel="external">jQuery.Callbacks()</a> to create a pubsub system.</p>
 <p>An instance of jQuery.Callbacks accumulates functions, and runs one functions after another when the “fire” method is call upon. The property of jQuery.Callbacks that is of interest in the pubsub system, is the ability to fire(call) the functions when needed, whereas the ability to accumulate multiple functions is not as critical to the pubsub system.</p>
 <p>To demonstrate pubsub, our example will have three select lists, where each subscribes and publishes to one another.</p>
 <p>The code from the jQuery api page will be used</p>
-<figure class="highlight js"><figcaption><span>Pubsub</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="line"><span class="hljs-comment">//Adapted from jQuery api page (only variable renames)</span></span><br><span class="line"><span class="hljs-comment">//https://api.jquery.com/jQuery.Callbacks/</span></span><br><span class="line"><span class="hljs-keyword">var</span> classGroups = &#123;&#125;;</span><br><span class="line"><span class="hljs-keyword">var</span> pubsubNameSpace = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(id)</span> </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> callbacks,</span><br><span class="line">    classGroup = id &amp;&amp; classGroups[id];</span><br><span class="line">  <span class="hljs-keyword">if</span> (!classGroup) &#123;</span><br><span class="line">    callbacks = $.Callbacks();</span><br><span class="line">    classGroup = &#123;</span><br><span class="line">      publish: callbacks.fire,</span><br><span class="line">      subscribe: callbacks.add,</span><br><span class="line">      unsubscribe: callbacks.remove</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="hljs-keyword">if</span> (id) &#123;</span><br><span class="line">      classGroups[id] = classGroup;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">return</span> classGroup;</span><br><span class="line">&#125;;</span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight js"><figcaption><span>Pubsub</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-comment">//Adapted from jQuery api page (only variable renames)</span></span><br><span class="line"><span class="hljs-comment">//https://api.jquery.com/jQuery.Callbacks/</span></span><br><span class="line"><span class="hljs-keyword">var</span> classGroups = &#123;&#125;;</span><br><span class="line"><span class="hljs-keyword">var</span> pubsubNameSpace = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">id</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> callbacks,</span><br><span class="line">    classGroup = id &amp;&amp; classGroups[id];</span><br><span class="line">  <span class="hljs-keyword">if</span> (!classGroup) &#123;</span><br><span class="line">    callbacks = $.Callbacks();</span><br><span class="line">    classGroup = &#123;</span><br><span class="line">      publish: callbacks.fire,</span><br><span class="line">      subscribe: callbacks.add,</span><br><span class="line">      unsubscribe: callbacks.remove</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="hljs-keyword">if</span> (id) &#123;</span><br><span class="line">      classGroups[id] = classGroup;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">return</span> classGroup;</span><br><span class="line">&#125;;</span><br></code></pre></td></tr></table></div></figure>
 <p>The main point of this code, is that ‘pubsubNameSpace’ will create a namespace for a string that is passed in as ‘id’. The ‘id’ is a key in the ‘classGroups’ object. The ‘classGroup’ is an object that is the return value of ‘pubsubNameSpace’ which has a ‘publish’, ‘subscribe’, and ‘unsubscribe’ key that refer to the jQuery Callbacks methods.</p>
 <p>Once we have this code, the following can be called like so</p>
-<figure class="highlight js"><figcaption><span>Pubsub Usage</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="line"><span class="hljs-comment">//Create a namespace</span></span><br><span class="line"><span class="hljs-keyword">var</span> ns = pubsubNameSpace(<span class="hljs-string">'my-creative-namespace-name'</span>);</span><br><br class="double"><span class="line"><span class="hljs-comment">//Subscribe to the Namespace</span></span><br><span class="line">ns.subscribe(myFunction);</span><br><br class="double"><span class="line"><span class="hljs-comment">//Publish within the Namespace</span></span><br><span class="line">ns.publish(&#123;</span><br><span class="line">  data: <span class="hljs-string">'just-a-string'</span></span><br><span class="line">&#125;);</span><br><br class="double"><span class="line"><span class="hljs-comment">//Subscribe's function</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">myFunction</span><span class="hljs-params">()</span>  </span>&#123;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">arguments</span>[<span class="hljs-number">0</span>]);</span><br><span class="line">&#125;</span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight js"><figcaption><span>Pubsub Usage</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-comment">//Create a namespace</span></span><br><span class="line"><span class="hljs-keyword">var</span> ns = pubsubNameSpace(<span class="hljs-string">'my-creative-namespace-name'</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//Subscribe to the Namespace</span></span><br><span class="line">ns.subscribe(myFunction);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//Publish within the Namespace</span></span><br><span class="line">ns.publish(&#123;</span><br><span class="line">  data: <span class="hljs-string">'just-a-string'</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//Subscribe's function</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">myFunction</span>(<span class="hljs-params"></span>)  </span>&#123;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">arguments</span>[<span class="hljs-number">0</span>]);</span><br><span class="line">&#125;</span><br></code></pre></td></tr></table></div></figure>
 <p>When publishing, one can pass in any data, but with the subscribe call, a function must be use as a funnel for the data that has been published.</p>
 <p>To start the example, the initial variable declarations:</p>
-<figure class="highlight js"><figcaption><span>Select List New Namespace</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="line"><span class="hljs-keyword">var</span> $select = $(<span class="hljs-string">'select.classy'</span>),</span><br><span class="line">  className = $select.prop(<span class="hljs-string">'class'</span>),</span><br><span class="line">  ns = pubsubNameSpace(className),</span><br><span class="line">  $info = $(<span class="hljs-string">'#info'</span>);</span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight js"><figcaption><span>Select List New Namespace</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-keyword">var</span> $select = $(<span class="hljs-string">'select.classy'</span>),</span><br><span class="line">  className = $select.prop(<span class="hljs-string">'class'</span>),</span><br><span class="line">  ns = pubsubNameSpace(className),</span><br><span class="line">  $info = $(<span class="hljs-string">'#info'</span>);</span><br></code></pre></td></tr></table></div></figure>
 <p>The class name of the select lists is used as the name space for the pubsub. ‘$info’ is the div for displaying messages.</p>
 <p>The main logic for publishing and subscribing for the select lists.</p>
-<figure class="highlight js"><figcaption><span>Select Lists Pubsub</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="line"><span class="hljs-keyword">var</span> id = -<span class="hljs-number">1</span>;</span><br><span class="line">$select.each(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">  <span class="hljs-comment">//To id each select list</span></span><br><span class="line">  id++;</span><br><span class="line">  <span class="hljs-keyword">var</span> $<span class="hljs-keyword">this</span> = $(<span class="hljs-keyword">this</span>);</span><br><span class="line">  $<span class="hljs-keyword">this</span>.data(<span class="hljs-string">'id'</span>, id);</span><br><br class="double"><span class="line">  <span class="hljs-comment">//Reset each list</span></span><br><span class="line">  $<span class="hljs-keyword">this</span>.prop(<span class="hljs-string">'selectedIndex'</span>, <span class="hljs-number">0</span>);</span><br><br class="double"><span class="line">  <span class="hljs-comment">//Listen to the selection changes for each list</span></span><br><span class="line">  $<span class="hljs-keyword">this</span>.on(<span class="hljs-string">'change'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">var</span> $selected = $<span class="hljs-keyword">this</span>.children(<span class="hljs-string">'option:selected'</span>);</span><br><br class="double"><span class="line">    <span class="hljs-comment">//Tell all members of the same class of change</span></span><br><span class="line">    ns.publish(&#123;</span><br><span class="line">      selected: $selected.text(),</span><br><span class="line">      id: $<span class="hljs-keyword">this</span>.data(<span class="hljs-string">'id'</span>)</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><br class="double"><span class="line">  <span class="hljs-comment">//Listen for changes within the same class</span></span><br><span class="line">  ns.subscribe($.proxy(explain, $<span class="hljs-keyword">this</span>));</span><br><span class="line">&#125;);</span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight js"><figcaption><span>Select Lists Pubsub</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-keyword">var</span> id = <span class="hljs-number">-1</span>;</span><br><span class="line">$select.each(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-comment">//To id each select list</span></span><br><span class="line">  id++;</span><br><span class="line">  <span class="hljs-keyword">var</span> $<span class="hljs-keyword">this</span> = $(<span class="hljs-keyword">this</span>);</span><br><span class="line">  $<span class="hljs-keyword">this</span>.data(<span class="hljs-string">'id'</span>, id);</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">//Reset each list</span></span><br><span class="line">  $<span class="hljs-keyword">this</span>.prop(<span class="hljs-string">'selectedIndex'</span>, <span class="hljs-number">0</span>);</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">//Listen to the selection changes for each list</span></span><br><span class="line">  $<span class="hljs-keyword">this</span>.on(<span class="hljs-string">'change'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">var</span> $selected = $<span class="hljs-keyword">this</span>.children(<span class="hljs-string">'option:selected'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">//Tell all members of the same class of change</span></span><br><span class="line">    ns.publish(&#123;</span><br><span class="line">      selected: $selected.text(),</span><br><span class="line">      id: $<span class="hljs-keyword">this</span>.data(<span class="hljs-string">'id'</span>)</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">//Listen for changes within the same class</span></span><br><span class="line">  ns.subscribe($.proxy(explain, $<span class="hljs-keyword">this</span>));</span><br><span class="line">&#125;);</span><br></code></pre></td></tr></table></div></figure>
 <p>Iterate through each select list and associate them with an id. Attach a ‘change’ event handler to each list and within it, publish the selected value with the select list id. Also subscribe to messages from the same class.</p>
 <p>Now finally for subscribe’s function</p>
-<figure class="highlight js"><figcaption><span>Logging Function</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="line"><span class="hljs-comment">//Log info for subscribe function</span></span><br><span class="line"><span class="hljs-keyword">var</span> explain = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.data(<span class="hljs-string">'id'</span>) !== <span class="hljs-built_in">arguments</span>[<span class="hljs-number">0</span>].id) &#123;</span><br><span class="line">    <span class="hljs-comment">//Display the info in div</span></span><br><span class="line">    <span class="hljs-keyword">var</span> msg = <span class="hljs-string">'List '</span> + <span class="hljs-keyword">this</span>.data(<span class="hljs-string">'id'</span>) +</span><br><span class="line">      <span class="hljs-string">' heard from List '</span> + <span class="hljs-built_in">arguments</span>[<span class="hljs-number">0</span>].id +</span><br><span class="line">      <span class="hljs-string">'. The value selected was '</span> + <span class="hljs-string">'"'</span> +</span><br><span class="line">      <span class="hljs-built_in">arguments</span>[<span class="hljs-number">0</span>].selected + <span class="hljs-string">'"'</span>;</span><br><span class="line">    $info.prepend(<span class="hljs-string">'&lt;p&gt;'</span> + msg + <span class="hljs-string">'&lt;/p&gt;'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight js"><figcaption><span>Logging Function</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-comment">//Log info for subscribe function</span></span><br><span class="line"><span class="hljs-keyword">var</span> explain = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.data(<span class="hljs-string">'id'</span>) !== <span class="hljs-built_in">arguments</span>[<span class="hljs-number">0</span>].id) &#123;</span><br><span class="line">    <span class="hljs-comment">//Display the info in div</span></span><br><span class="line">    <span class="hljs-keyword">var</span> msg = <span class="hljs-string">'List '</span> + <span class="hljs-keyword">this</span>.data(<span class="hljs-string">'id'</span>) +</span><br><span class="line">      <span class="hljs-string">' heard from List '</span> + <span class="hljs-built_in">arguments</span>[<span class="hljs-number">0</span>].id +</span><br><span class="line">      <span class="hljs-string">'. The value selected was '</span> + <span class="hljs-string">'"'</span> +</span><br><span class="line">      <span class="hljs-built_in">arguments</span>[<span class="hljs-number">0</span>].selected + <span class="hljs-string">'"'</span>;</span><br><span class="line">    $info.prepend(<span class="hljs-string">'&lt;p&gt;'</span> + msg + <span class="hljs-string">'&lt;/p&gt;'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></code></pre></td></tr></table></div></figure>
 <p>Note that there needs to be a check for whether or not the published data id is the same as the current list element’s id to ensure that our list does not listen to its own published message. This is because all select lists listens subscribe to the same class namespace.</p>
 <p><a href="http://jsbin.com/yexiseke/1" target="_blank" rel="external">Online Demo</a> | <a href="/demos/2014-05-01-pubsub-lists.zip">Offline Demo</a></p>
 
@@ -237,7 +281,7 @@
   
   <div class="article-tags ym-clearfix">
     <p>Tags: </p>
-    <a href="/tags/jQuery/">jQuery</a>, <a href="/tags/javascript/">javascript</a>
+    <a href="/tags/javascript/">javascript</a>, <a href="/tags/jQuery/">jQuery</a>
   </div>
 </footer>
 
@@ -256,7 +300,7 @@
   <div class="post-content">
     <header class="post-content-header">
       
-        <time class="post-content-time" datetime="2014-04-22T23:49:05.000Z"><a href="/2014/04/22/readable-stream/">4/22/2014</a></time>
+        <time class="post-content-time" datetime="2014-04-22T20:49:05.000Z"><a href="/2014/04/22/readable-stream/">4/22/2014</a></time>
       
       
   
@@ -266,9 +310,9 @@
     </header>
     <div class="post-content-entry">
       
-        <h3 id="Streaming_Consistency">Streaming Consistency</h3><p>Since Node’s streaming api is still changing and is in ‘unstable’ category, writing a npm module using streams may cause some unexpected behaviors on older versions of Node. To ensure that streams are compatible with older versions of Node, a drop-in replacement for stream is available called ‘readable-stream’.</p>
+        <h3 id="Streaming-Consistency"><a href="#Streaming-Consistency" class="headerlink" title="Streaming Consistency"></a>Streaming Consistency</h3><p>Since Node’s streaming api is still changing and is in ‘unstable’ category, writing a npm module using streams may cause some unexpected behaviors on older versions of Node. To ensure that streams are compatible with older versions of Node, a drop-in replacement for stream is available called ‘readable-stream’.</p>
 <p>The following example uses the ‘readable’ event, which is not present on Node versions &lt; 0.10, but the readable-stream module is handling this inconsistency which means that this example will work with Node versions &lt; 0.10.</p>
-<figure class="highlight js"><figcaption><span>Wrapping fs.createReadStream</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="line"><span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>),</span><br><span class="line">  Readable = <span class="hljs-built_in">require</span>(<span class="hljs-string">'readable-stream'</span>).Readable,</span><br><span class="line">  reader = <span class="hljs-keyword">new</span> Readable();</span><br><br class="double"><span class="line">reader.wrap(fs.createReadStream(<span class="hljs-string">'./test.txt'</span>))</span><br><span class="line">  .on(<span class="hljs-string">'readable'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.read().toString());</span><br><span class="line">  &#125;).on(<span class="hljs-string">'end'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Finished reading stream'</span>);</span><br><span class="line">  &#125;);</span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight js"><figcaption><span>Wrapping fs.createReadStream</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>),</span><br><span class="line">  Readable = <span class="hljs-built_in">require</span>(<span class="hljs-string">'readable-stream'</span>).Readable,</span><br><span class="line">  reader = <span class="hljs-keyword">new</span> Readable();</span><br><span class="line"></span><br><span class="line">reader.wrap(fs.createReadStream(<span class="hljs-string">'./test.txt'</span>))</span><br><span class="line">  .on(<span class="hljs-string">'readable'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.read().toString());</span><br><span class="line">  &#125;).on(<span class="hljs-string">'end'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Finished reading stream'</span>);</span><br><span class="line">  &#125;);</span><br></code></pre></td></tr></table></div></figure>
       
 
 
@@ -297,7 +341,7 @@
   <div class="post-content">
     <header class="post-content-header">
       
-        <time class="post-content-time" datetime="2014-04-16T04:52:01.000Z"><a href="/2014/04/15/streaming-lines/">4/15/2014</a></time>
+        <time class="post-content-time" datetime="2014-04-16T01:52:01.000Z"><a href="/2014/04/15/streaming-lines/">4/15/2014</a></time>
       
       
   
@@ -307,7 +351,7 @@
     </header>
     <div class="post-content-entry">
       
-        <h3 id="Line_by_Line">Line by Line</h3><p>There are many streaming modules on npm to read lines from text files,
+        <h3 id="Line-by-Line"><a href="#Line-by-Line" class="headerlink" title="Line by Line"></a>Line by Line</h3><p>There are many streaming modules on npm to read lines from text files,
 but many are inaccurate and slow. Inaccurate means that there is a failure to read many lines and
 slow means that files with a lot of text per line will cause the modules to crawl.</p>
 <p>Below are the lines counts and timings for reading a large json file, ‘bird.json’ with 909 lines.
@@ -324,7 +368,8 @@ This text file has 65008 lines.</p>
 <img src="/img/posts/2014-04-15-war-and-peace-lc.png" class="center" title="2014-04-15-war-and-peace-lc.png 2014-04-15-war-and-peace-lc.png">
 <p>Linebyline errored out with ‘RangeError: Maximum call stack size exceeded’, while most of the stream readers are in the neighborhood of 300ms.</p>
 <p>The files for the above benchmark is <a href="/demos/2014-04-15-Streaming-Lines.7z">here</a>.</p>
-<h2 id="Conclusion">Conclusion</h2><p>It was surprising to see that some modules misread lines by a significant amount for ‘bird.json’ while 
+<p>##Conclusion</p>
+<p>It was surprising to see that some modules misread lines by a significant amount for ‘bird.json’ while 
 almost all modules misreport the line count. The last line on both the json and text file is a blank line and often this is not read.</p>
 <p>Most stream readers were not adept at reading the ‘bird.json’ file.</p>
 <p>The more reliable streaming line reader module that I recommend would be ‘split2’ or ‘split’,
@@ -352,58 +397,13 @@ almost all modules misreport the line count. The last line on both the json and 
 
 
 
-  
-<article class="post">
-
-  <div class="post-content">
-    <header class="post-content-header">
-      
-        <time class="post-content-time" datetime="2014-03-12T22:33:21.000Z"><a href="/2014/03/12/simple-server/">3/12/2014</a></time>
-      
-      
-  
-    <h2 class="title"><a href="/2014/03/12/simple-server/">Simple Server</a></h2>
-  
-
-    </header>
-    <div class="post-content-entry">
-      
-        <h3 id="No_nodejs_required">No nodejs required</h3><p>Many times there are code samples on Github that have simple static files that you would want to run on a server, such as the case if there are ajax calls in javascript files.</p>
-<p>Nodejs could have been an alternative, but python provides a simple and fast method to run a server on your machine with a single command line.</p>
-<p>Using python3, run this command in the directory of the static files</p>
-<figure class="highlight bash"><figcaption><span>With Python3 Installed</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="line">python -m http.server</span><br></code></pre></td></tr></table></div></figure>
-<p>If using python2, use</p>
-<figure class="highlight bash"><figcaption><span>With Python2</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="line">python -m SimpleHTTPServer [port]</span><br></code></pre></td></tr></table></div></figure>
-
-      
-
-
-    </div>
-    
-<footer class="post-content-footer">
-  
-  <div class="article-tags ym-clearfix">
-    <p>Tags: </p>
-    <a href="/tags/server/">server</a>
-  </div>
-</footer>
-
-
-      <div class="dotted-border"></div>
-  </div>
-
-</article>
-
-
-
-
 
 <nav id="pagination">
   <div id="pagination-wrapper" class="ym-clearfix">
       
         <a href="/page/3/" class="newer">« Newer</a>
       
-      <span id="pagination-info">Page 4 of 8</span>
+      <span id="pagination-info">Page 4 of 9</span>
       
         <a href="/page/5/" class="older">Older »</a>
       
@@ -518,6 +518,10 @@ almost all modules misreport the line count. The last line on both the json and 
   <ul class="entry">
     
       <li>
+        <a href="/2016/04/17/nodejs-quick-tips-2/">Nodejs - Quick Tips #2</a>
+      </li>
+    
+      <li>
         <a href="/2015/07/20/Velocityjs-Effects/">Velocityjs - Effects</a>
       </li>
     
@@ -531,10 +535,6 @@ almost all modules misreport the line count. The last line on both the json and 
     
       <li>
         <a href="/2015/02/14/Meteor-Quick-Tips-2/">Meteor - Quick Tips #2</a>
-      </li>
-    
-      <li>
-        <a href="/2015/01/19/Meteor-Quick-Tips-1/">Meteor - Quick Tips #1</a>
       </li>
     
   </ul>
@@ -555,7 +555,7 @@ almost all modules misreport the line count. The last line on both the json and 
             <p id="main-footer-text">
   Copyright rightfully belongs here
   
-  &copy; 2015 William Huey
+  &copy; 2016 William Huey
   
   and proudly powered by <a href="http://hexo.io">Hexo</a> and
   <a href="http://www.github.com/williamhuey">Github</a>

@@ -1,0 +1,396 @@
+
+
+
+
+
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Nodejs - Quick Tips #2 | Williamful</title>
+    <meta name="author" content="William Huey">
+    
+    <meta name="description" content="Quick Tips for Nodejs">
+    
+    <meta name="keywords" content="javascript nodejs tips">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="Nodejs - Quick Tips #2"/>
+    <meta property="og:site_name" content="Williamful"/>
+
+    <meta name="google-site-verification" content="B2mK_j0pDOjJWR2qib5P5KJZ7Dm_D3eakVIvZJ6gME0" />
+
+    
+<script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-39929091-1', 'github.io');
+    ga('send', 'pageview');
+</script>
+
+
+    <link href="/favicon.ico?" type="image/x-icon" rel="shortcut icon">
+
+  <link rel="alternate" href="/atom.xml" title="Williamful" type="application/atom+xml">
+
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+<script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-39929091-1', 'github.io');
+    ga('send', 'pageview');
+</script>
+
+<link rel="apple-touch-icon" sizes="57x57" href="/img/LogoSlanted-57-outline.png" />
+<link rel="apple-touch-icon" sizes="75x75" href="/img/LogoSlanted-75-outline.png" />
+<link rel="apple-touch-icon" sizes="114x114" href="/img/LogoSlanted-114-outline.png" />
+<link rel="apple-touch-icon" sizes="144x144" href="/img/LogoSlanted-144-outline.png" />
+
+</head>
+
+
+<body>
+
+<hr id="top-of-page">
+<header id="header">
+    <div class="ym-wrapper">
+        <div class="ym-box">
+            <div id="main-header-wrapper" class="ym-clearfix">
+  <div id="main-logo-header">
+    <a title="Home is where the heart is." href="/">
+      <img id="main-logo" src="/img/logoSmall.png" alt="logo"/>
+    </a>
+  </div>
+  <div id="site-name" class="main-header-text">
+    <a title="Home is where the heart is." href="/">
+       Williamful
+    </a>
+  </div>
+  <div id="site-tagline" class="main-header-text">
+    <a title="Home is where the heart is." href="/">
+      Blogging and Beyond
+    </a>
+  </div>
+</div>
+
+<nav id="main-nav">
+    <ul id="main-nav-ul" class="ym-clearfix">
+
+    <li class="main-nav-li" id="rss-li">
+        <ul class="ym-clearfix">
+            <li class="nav-img">
+                <a id="Rss" href="/atom.xml"></a>
+            </li>
+            <li class="nav-word">
+                <a href="/atom.xml">RSS</a>
+            </li>
+        </ul>
+
+
+    </li>
+
+    <li class="main-nav-li" id="recent-li">
+        <ul class="ym-clearfix">
+            <li class="nav-img">
+                <a id="Recent" href="#recent"></a>
+            </li>
+            <li class="nav-word">
+                <a href="#recent">Recent</a>
+            </li>
+        </ul>
+    </li>
+
+    <li class="main-nav-li" id="archives-li">
+        <ul class="ym-clearfix">
+            <li class="nav-img">
+                <a id="Archives" href="/archives"></a>
+            </li>
+            <li class="nav-word">
+                <a href="/archives">Archives</a>
+            </li>
+        </ul>
+    </li>
+
+    <li class="main-nav-li" id="code-li">
+        <ul class="ym-clearfix">
+            <li class="nav-img">
+                <a id="Code" href="#"></a>
+            </li>
+            <li class="nav-word">
+                <a href="/code">Code</a>
+            </li>
+        </ul>
+    </li>
+
+
+</ul>
+</nav>
+
+        </div>
+    </div>
+
+</header>
+<main id="content">
+    <div id="main-col" class="ym-wrapper">
+        <div id="main-col-wrapper" class="ym-wbox">
+            <div id="post-div">
+    
+<article class="post">
+
+  <div class="post-content">
+    <header class="post-content-header">
+      
+        <time class="post-content-time" datetime="2016-04-17T04:29:18.000Z"><a href="/2016/04/17/nodejs-quick-tips-2/">4/17/2016</a></time>
+      
+      
+  
+    <h2 class="title">Nodejs - Quick Tips #2</h2>
+  
+
+    </header>
+    <div class="post-content-entry">
+      
+        <h3 id="Process-Exit-and-Time-Elapse"><a href="#Process-Exit-and-Time-Elapse" class="headerlink" title="Process Exit and Time Elapse"></a>Process Exit and Time Elapse</h3><p>When performing a long-running operation in the terminal, such as file generation, a user would like to know how long the task has ran.</p>
+<p>A simple way to determine how much time has elapsed in general will be to listen to ‘exit’ event on the process object. This can be combined with the ‘hrtime’ method on the process object to provide a detailed time interval.</p>
+<figure class="highlight js"><figcaption><span>Using Built-In Nodejs Functions for Timing</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-keyword">let</span> time = process.hrtime();</span><br><span class="line"></span><br><span class="line">process.on(<span class="hljs-string">'exit'</span>, () =&gt; &#123;</span><br><span class="line">  <span class="hljs-keyword">let</span> timeDiff = process.hrtime(time);</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Time elapsed for file(s) and folder(s) generation: %d nanoseconds'</span>, timeDiff[<span class="hljs-number">0</span>] * <span class="hljs-number">1e9</span> + timeDiff[<span class="hljs-number">1</span>]);</span><br><span class="line">&#125;);</span><br></code></pre></td></tr></table></div></figure>
+<h3 id="Babel-Webpack-Eslint-Boilerplate"><a href="#Babel-Webpack-Eslint-Boilerplate" class="headerlink" title="Babel Webpack Eslint Boilerplate"></a>Babel Webpack Eslint Boilerplate</h3><p>Since Babel is widely used today, here is a simple config for creating a starter JavaScript project.</p>
+<figure class="highlight json"><figcaption><span>package.json</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line">&#123;</span><br><span class="line">  <span class="hljs-attr">"name"</span>: <span class="hljs-string">"my-great-module"</span>,</span><br><span class="line">  <span class="hljs-attr">"version"</span>: <span class="hljs-string">"1.0.0"</span>,</span><br><span class="line">  <span class="hljs-attr">"description"</span>: <span class="hljs-string">""</span>,</span><br><span class="line">  <span class="hljs-attr">"main"</span>: <span class="hljs-string">"index.js"</span>,</span><br><span class="line">  <span class="hljs-attr">"scripts"</span>: &#123;</span><br><span class="line">    <span class="hljs-attr">"start"</span>: <span class="hljs-string">"node_modules/webpack/bin/webpack.js --watch"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="hljs-attr">"author"</span>: <span class="hljs-string">""</span>,</span><br><span class="line">  <span class="hljs-attr">"license"</span>: <span class="hljs-string">"ISC"</span>,</span><br><span class="line">  <span class="hljs-attr">"dependencies"</span>: &#123;</span><br><span class="line">    <span class="hljs-attr">"babel"</span>: <span class="hljs-string">"^6.5.2"</span>,</span><br><span class="line">    <span class="hljs-attr">"babel-core"</span>: <span class="hljs-string">"^6.7.2"</span>,</span><br><span class="line">    <span class="hljs-attr">"babel-eslint"</span>: <span class="hljs-string">"^6.0.0-beta.1"</span>,</span><br><span class="line">    <span class="hljs-attr">"babel-loader"</span>: <span class="hljs-string">"^6.2.4"</span>,</span><br><span class="line">    <span class="hljs-attr">"babel-plugin-syntax-async-functions"</span>: <span class="hljs-string">"^6.5.0"</span>,</span><br><span class="line">    <span class="hljs-attr">"babel-plugin-transform-runtime"</span>: <span class="hljs-string">"^6.6.0"</span>,</span><br><span class="line">    <span class="hljs-attr">"babel-preset-es2015"</span>: <span class="hljs-string">"^6.6.0"</span>,</span><br><span class="line">    <span class="hljs-attr">"babel-preset-stage-3"</span>: <span class="hljs-string">"^6.5.0"</span>,</span><br><span class="line">    <span class="hljs-attr">"webpack"</span>: <span class="hljs-string">"^1.12.14"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></code></pre></td></tr></table></div></figure>
+<p>Now for the webpack.config.js file</p>
+<figure class="highlight js"><figcaption><span>webpack.config.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-keyword">var</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">'path'</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">module</span>.exports = &#123;</span><br><span class="line">  entry: <span class="hljs-string">'./the-main-input-file.js'</span>,</span><br><span class="line">  output: &#123;</span><br><span class="line">    path: path.join(__dirname, <span class="hljs-string">'/dist/'</span>),</span><br><span class="line">    filename: <span class="hljs-string">'my-output-file.js'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="hljs-built_in">module</span>: &#123;</span><br><span class="line">    loaders: [&#123;</span><br><span class="line">      test: <span class="hljs-regexp">/\.js$/</span>,</span><br><span class="line">      exclude: <span class="hljs-regexp">/node_modules/</span>,</span><br><span class="line">      loader: <span class="hljs-string">"babel-loader"</span></span><br><span class="line">    &#125;]</span><br><span class="line">  &#125;,</span><br><span class="line">  resolve: &#123;</span><br><span class="line">    extensions: [<span class="hljs-string">''</span>, <span class="hljs-string">'.config.js'</span>, <span class="hljs-string">'.js'</span>]</span><br><span class="line">  &#125;,</span><br><span class="line">  eslint: &#123;</span><br><span class="line">    configFile: <span class="hljs-string">'./.eslintrc.json'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  babel: &#123;</span><br><span class="line">    presets: [<span class="hljs-string">'es2015'</span>, <span class="hljs-string">'stage-3'</span>]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></code></pre></td></tr></table></div></figure>
+
+      
+
+
+    </div>
+    
+<footer class="post-content-footer">
+  
+  <div class="article-tags ym-clearfix">
+    <p>Tags: </p>
+    <a href="/tags/javascript/">javascript</a>, <a href="/tags/nodejs/">nodejs</a>
+  </div>
+</footer>
+
+
+      <div class="dotted-border"></div>
+  </div>
+
+</article>
+
+
+<nav class="article-pagination ym-clearfix">
+
+    
+    
+    <a href="/2015/07/20/Velocityjs-Effects/" class="next" title="Velocityjs - Effects">Velocityjs - Effects »</a>
+    
+</nav>
+
+
+
+<section id="comment">
+  <h1 class="title">Comments</h1>
+
+  
+<!--
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+-->
+    <div><!-- START: Livefyre Embed -->
+        <div id="livefyre-comments"></div>
+        <script type="text/javascript" src="http://zor.livefyre.com/wjs/v3.0/javascripts/livefyre.js"></script>
+        <script type="text/javascript">
+            (function () {
+                var articleId = fyre.conv.load.makeArticleId(null);
+                fyre.conv.load({}, [{
+                    el: 'livefyre-comments',
+                    network: "livefyre.com",
+                    siteId: "326354",
+                    articleId: articleId,
+                    signed: false,
+                    collectionMeta: {
+                        articleId: articleId,
+                        url: fyre.conv.load.makeCollectionUrl()
+                    }
+                }], function() {});
+            }());
+        </script>
+        <noscript>Please enable JavaScript to view the comments powered by LiveFyre</noscript>
+        <!-- END: Livefyre Embed --></div>
+
+  
+</section>
+
+
+</div>
+
+        </div>
+    </div>
+</main>
+<aside id="sidebar">
+    <div class="ym-wrapper">
+        <div class="ym-wbox">
+            <div id="aside-wrapper" class="ym-clearfix">
+                
+  
+<div class="widget tag" id="aside-tag">
+  <h3 class="title">Tags</h3>
+
+  
+
+    <ul class="entry">
+  
+    
+        <li><a href="/tags/cms/">cms</a></li>
+    
+        
+    
+        <li><a href="/tags/css/">css</a></li>
+    
+        
+    
+        <li><a href="/tags/emberjs/">emberjs</a></li>
+    
+        
+    
+        <li><a href="/tags/html/">html</a></li>
+    
+        
+    
+        <li><a href="/tags/jQuery/">jQuery</a></li>
+    
+        
+    
+        <li><a href="/tags/javascript/">javascript</a></li>
+    
+        
+    
+        <li><a href="/tags/meteorjs/">meteorjs</a></li>
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    </ul>
+
+    <ul class="entry">
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+            <li><a href="/tags/nodejs/">nodejs</a></li>
+        
+        
+        
+            <li><a href="/tags/octopress/">octopress</a></li>
+        
+        
+        
+            <li><a href="/tags/rails/">rails</a></li>
+        
+        
+        
+            <li><a href="/tags/rvm/">rvm</a></li>
+        
+        
+        
+            <li><a href="/tags/server/">server</a></li>
+        
+        
+        
+            <li><a href="/tags/shell/">shell</a></li>
+        
+        
+    </ul>
+
+</div>
+
+
+  
+<div class="widget tag" id="archive-recent">
+  <h3 id="recent" class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2016/04/17/nodejs-quick-tips-2/">Nodejs - Quick Tips #2</a>
+      </li>
+    
+      <li>
+        <a href="/2015/07/20/Velocityjs-Effects/">Velocityjs - Effects</a>
+      </li>
+    
+      <li>
+        <a href="/2015/05/16/Meteor-Quick-Tips-4/">Meteor - Quick Tips #4</a>
+      </li>
+    
+      <li>
+        <a href="/2015/03/25/Meteor-Quick-Tips-3/">Meteor - Quick Tips #3</a>
+      </li>
+    
+      <li>
+        <a href="/2015/02/14/Meteor-Quick-Tips-2/">Meteor - Quick Tips #2</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+<a id="top-of-page-link" href="#top-of-page">Top of Page</a>
+
+            </div>
+
+        </div>
+    </div>
+
+</aside>
+<footer id="main-footer">
+    <div class="ym-wrapper">
+        <div class="ym-wbox">
+            <p id="main-footer-text">
+  Copyright rightfully belongs here
+  
+  &copy; 2016 William Huey
+  
+  and proudly powered by <a href="http://hexo.io">Hexo</a> and
+  <a href="http://www.github.com/williamhuey">Github</a>
+</p>
+
+        </div>
+    </div>
+</footer>
+</body>
+</html>
+

@@ -151,7 +151,7 @@
   <div class="post-content">
     <header class="post-content-header">
       
-        <time class="post-content-time" datetime="2013-06-20T02:07:00.000Z"><a href="/2013/06/19/javascript-quick-tips-number-3/">6/19/2013</a></time>
+        <time class="post-content-time" datetime="2013-06-19T23:07:00.000Z"><a href="/2013/06/19/javascript-quick-tips-number-3/">6/19/2013</a></time>
       
       
   
@@ -161,15 +161,15 @@
     </header>
     <div class="post-content-entry">
       
-        <h3 id="Function_Parameters_from_Array_Values">Function Parameters from Array Values</h3><p>Suppose we have a function with parameters and an array:</p>
-<figure class="highlight javascript"><figcaption><span>A Function and an Array</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">doSomething</span><span class="hljs-params">(stuff, thing1, thing2)</span> </span>&#123;</span><br><span class="line"> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'params were concatenated:'</span> + <span class="hljs-string">' '</span> + stuff + thing1 + thing2);</span><br><span class="line">&#125;</span><br><br class="double"><span class="line"><span class="hljs-keyword">var</span> justAnArray = [<span class="hljs-string">'a'</span>, <span class="hljs-string">'b'</span>, <span class="hljs-string">'c'</span>];</span><br></code></pre></td></tr></table></div></figure>
+        <h3 id="Function-Parameters-from-Array-Values"><a href="#Function-Parameters-from-Array-Values" class="headerlink" title="Function Parameters from Array Values"></a>Function Parameters from Array Values</h3><p>Suppose we have a function with parameters and an array:</p>
+<figure class="highlight javascript"><figcaption><span>A Function and an Array</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">doSomething</span>(<span class="hljs-params">stuff, thing1, thing2</span>) </span>&#123;</span><br><span class="line"> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'params were concatenated:'</span> + <span class="hljs-string">' '</span> + stuff + thing1 + thing2);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">var</span> justAnArray = [<span class="hljs-string">'a'</span>, <span class="hljs-string">'b'</span>, <span class="hljs-string">'c'</span>];</span><br></code></pre></td></tr></table></div></figure>
 <p>We want to pass the function parameters the values from the array. So ‘a’, ‘b’, ‘c’ will correspond to stuff, thing1, and thing2.</p>
 <p>Instead of iterating through the array to get the items into the function or doing manual array index reference, you can use JavaScript’s apply function.</p>
-<figure class="highlight javascript"><figcaption><span>Example of Using Apply</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="line"><span class="hljs-comment">//the pattern for using apply</span></span><br><span class="line"><span class="hljs-comment">//theFunction belongs to theContext</span></span><br><span class="line"><span class="hljs-comment">//theFunction.apply(theContext, theArray);</span></span><br><br class="double"><span class="line"><span class="hljs-comment">//in our example, theContext is undefined</span></span><br><span class="line"><span class="hljs-comment">//because theContext refers to an object</span></span><br><span class="line"><span class="hljs-comment">//but we do not have one</span></span><br><br class="double"><span class="line"><span class="hljs-comment">//logs out 'params were concatenated: abc'</span></span><br><span class="line">doSomething.apply(<span class="hljs-literal">undefined</span>, justAnArray);</span><br></code></pre></td></tr></table></div></figure>
-<h3 id="Alternative_to_Using_Push_for_Arrays">Alternative to Using Push for Arrays</h3><p>The usual way of adding an item to an array is to use push something to an array:</p>
-<figure class="highlight javascript"><figcaption><span>Common Push Operation for Arrays</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="line"><span class="hljs-keyword">var</span> friendlyNeighborhoodArray = [];</span><br><span class="line">friendlyNeighborhoodArray.push(<span class="hljs-string">'Mr. Rogers'</span>);</span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight javascript"><figcaption><span>Example of Using Apply</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-comment">//the pattern for using apply</span></span><br><span class="line"><span class="hljs-comment">//theFunction belongs to theContext</span></span><br><span class="line"><span class="hljs-comment">//theFunction.apply(theContext, theArray);</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//in our example, theContext is undefined</span></span><br><span class="line"><span class="hljs-comment">//because theContext refers to an object</span></span><br><span class="line"><span class="hljs-comment">//but we do not have one</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//logs out 'params were concatenated: abc'</span></span><br><span class="line">doSomething.apply(<span class="hljs-literal">undefined</span>, justAnArray);</span><br></code></pre></td></tr></table></div></figure>
+<h3 id="Alternative-to-Using-Push-for-Arrays"><a href="#Alternative-to-Using-Push-for-Arrays" class="headerlink" title="Alternative to Using Push for Arrays"></a>Alternative to Using Push for Arrays</h3><p>The usual way of adding an item to an array is to use push something to an array:</p>
+<figure class="highlight javascript"><figcaption><span>Common Push Operation for Arrays</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-keyword">var</span> friendlyNeighborhoodArray = [];</span><br><span class="line">friendlyNeighborhoodArray.push(<span class="hljs-string">'Mr. Rogers'</span>);</span><br></code></pre></td></tr></table></div></figure>
 <p>Another way to perform a push is to get the length of array and use that value as an the index to set a value:</p>
-<figure class="highlight javascript"><figcaption><span>Use Array Length to Add Items to Array</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="line"><span class="hljs-keyword">var</span> friendlyNeighborhoodArray = [],</span><br><span class="line">  arrayLength = friendlyNeighborhoodArray.length;</span><br><br class="double"><span class="line">friendlyNeighborhoodArray[arrayLength] = <span class="hljs-string">'Mr. Rogers'</span>;</span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight javascript"><figcaption><span>Use Array Length to Add Items to Array</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-keyword">var</span> friendlyNeighborhoodArray = [],</span><br><span class="line">  arrayLength = friendlyNeighborhoodArray.length;</span><br><span class="line"></span><br><span class="line">friendlyNeighborhoodArray[arrayLength] = <span class="hljs-string">'Mr. Rogers'</span>;</span><br></code></pre></td></tr></table></div></figure>
 <p>This way is a not as clean as using push, but it looks to <a href="http://jsperf.com/array-push-vs-calculated-direct-assignment/2" target="_blank" rel="external">perform better</a> than the native push.</p>
 
       
@@ -350,6 +350,10 @@
   <ul class="entry">
     
       <li>
+        <a href="/2016/04/17/nodejs-quick-tips-2/">Nodejs - Quick Tips #2</a>
+      </li>
+    
+      <li>
         <a href="/2015/07/20/Velocityjs-Effects/">Velocityjs - Effects</a>
       </li>
     
@@ -363,10 +367,6 @@
     
       <li>
         <a href="/2015/02/14/Meteor-Quick-Tips-2/">Meteor - Quick Tips #2</a>
-      </li>
-    
-      <li>
-        <a href="/2015/01/19/Meteor-Quick-Tips-1/">Meteor - Quick Tips #1</a>
       </li>
     
   </ul>
@@ -387,7 +387,7 @@
             <p id="main-footer-text">
   Copyright rightfully belongs here
   
-  &copy; 2015 William Huey
+  &copy; 2016 William Huey
   
   and proudly powered by <a href="http://hexo.io">Hexo</a> and
   <a href="http://www.github.com/williamhuey">Github</a>

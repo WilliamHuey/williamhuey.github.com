@@ -146,30 +146,25 @@
         <div id="main-col-wrapper" class="ym-wbox">
             
   
-<article class="post">
+<article class="posts">
 
   <div class="post-content">
     <header class="post-content-header">
       
-        <time class="post-content-time" datetime="2014-12-24T08:12:43.000Z"><a href="/2014/12/24/Validating-Numbers/">12/24/2014</a></time>
+        <time class="post-content-time" datetime="2015-01-19T06:13:31.000Z"><a href="/2015/01/19/Meteor-Quick-Tips-1/">1/19/2015</a></time>
       
       
   
-    <h2 class="title"><a href="/2014/12/24/Validating-Numbers/">Validating Numbers</a></h2>
+    <h2 class="title"><a href="/2015/01/19/Meteor-Quick-Tips-1/">Meteor - Quick Tips #1</a></h2>
   
 
     </header>
     <div class="post-content-entry">
       
-        <h3 id="Is_the_content_intended_to_be_a_number?">Is the content intended to be a number?</h3><p>When dealing with validations in input forms, one occasionally has to determine if the content entered is actually a number.
-However, the input content will always be string when performing a check on an input.</p>
-<figure class="highlight js"><figcaption><span>Always a String</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="line">$(<span class="hljs-string">'input'</span>).on(<span class="hljs-string">'change'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">  <span class="hljs-comment">//Outputs 'string'</span></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> $(<span class="hljs-keyword">this</span>).val());</span><br><span class="line">&#125;);</span><br></code></pre></td></tr></table></div></figure>
-<p>Although this behavior is convenient for most situations, it could be a hassle for numbers.</p>
-<p>To solve this problem, parseInt will be used.</p>
-<figure class="highlight js"><figcaption><span>String to Number</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="line">$(<span class="hljs-string">'input'</span>).on(<span class="hljs-string">'change'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">  <span class="hljs-comment">//Outputs 'string'  </span></span><br><span class="line">  <span class="hljs-comment">//The '10' is for decimal form</span></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> <span class="hljs-built_in">parseInt</span>($(<span class="hljs-keyword">this</span>).val(), <span class="hljs-number">10</span>);</span><br><span class="line">&#125;);</span><br></code></pre></td></tr></table></div></figure>
-<p>Want to point out that my <a href="2014/08/26/Simple-Validator/">validator</a> function could be used in place of typeof.</p>
-<h3 id="Mathematically_Inclined_Cases">Mathematically Inclined Cases</h3><p>Besides representing numbers as integers or decimal, there are also situations where numbers could be <a href="//http://speakingjs.com/es5/ch11.html#two_zeros">negative or positive zero</a> or represented  in <a href="http://speakingjs.com/es5/ch11.html#_exponent" target="_blank" rel="external">exponential</a> form. There are even more extreme cases such as <a href="http://speakingjs.com/es5/ch11.html#infinity" target="_blank" rel="external">infinity</a>.</p>
-<p>For these cases, the numbers representations are valid, but may be unusual to the some individuals. It could be worthwhile to also validate  against these cases and to prevent a jarring user experience when inputting in forms.</p>
+        <h3 id="Redirecting-for-Non-Logged-In-Users"><a href="#Redirecting-for-Non-Logged-In-Users" class="headerlink" title="Redirecting for Non-Logged-In Users"></a>Redirecting for Non-Logged-In Users</h3><p>When an app has more than one url and any other url other than the /home url is restricted for logged in users, than this requireLogin function will direct users back to the home url when the user is not logged in. This is assuming that the IronRouter package is used.</p>
+<figure class="highlight js"><figcaption><span>Force Login for Privileged Areas</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-keyword">var</span> requireLogin = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">if</span>(!Meteor.user()) &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span>(!Meteor.loggingIn())&#123;  </span><br><span class="line">      <span class="hljs-keyword">this</span>.redirect(<span class="hljs-string">'home'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">this</span>.next();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Router.onBeforeAction(requireLogin, &#123;except: <span class="hljs-string">'home'</span>&#125;);</span><br></code></pre></td></tr></table></div></figure>
+<h3 id="JSON-Data-for-Fixtures"><a href="#JSON-Data-for-Fixtures" class="headerlink" title="JSON Data for Fixtures"></a>JSON Data for Fixtures</h3><p>Assuming that “exercise.json” is stored in your /private directory in the root of the Meteor project, the fixture.js file in your /server folder makes use of Assets.getText in conjunction with JSON.parse to get the data in a form that can be readily accessed.</p>
+<figure class="highlight js"><figcaption><span>Get Private JSON Data</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-keyword">var</span> exercises = <span class="hljs-built_in">JSON</span>.parse(Assets.getText(<span class="hljs-string">"exercises.json"</span>));</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>, len = exercises.length; i &lt; len; i++) &#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> exercise = exercises[i];</span><br><span class="line"></span><br><span class="line">  Exercises.insert(&#123;</span><br><span class="line">    name: exercise.name,   </span><br><span class="line">    type: exercise.type</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></code></pre></td></tr></table></div></figure>
 
       
 
@@ -180,7 +175,7 @@ However, the input content will always be string when performing a check on an i
   
   <div class="article-tags ym-clearfix">
     <p>Tags: </p>
-    <a href="/tags/jQuery/">jQuery</a>, <a href="/tags/javascript/">javascript</a>
+    <a href="/tags/javascript/">javascript</a>, <a href="/tags/meteorjs/">meteorjs</a>
   </div>
 </footer>
 
@@ -199,7 +194,55 @@ However, the input content will always be string when performing a check on an i
   <div class="post-content">
     <header class="post-content-header">
       
-        <time class="post-content-time" datetime="2014-11-27T07:04:35.000Z"><a href="/2014/11/26/WordPress-Mixed-Content-Warning/">11/26/2014</a></time>
+        <time class="post-content-time" datetime="2014-12-24T05:12:43.000Z"><a href="/2014/12/24/Validating-Numbers/">12/24/2014</a></time>
+      
+      
+  
+    <h2 class="title"><a href="/2014/12/24/Validating-Numbers/">Validating Numbers</a></h2>
+  
+
+    </header>
+    <div class="post-content-entry">
+      
+        <h3 id="Is-the-content-intended-to-be-a-number"><a href="#Is-the-content-intended-to-be-a-number" class="headerlink" title="Is the content intended to be a number?"></a>Is the content intended to be a number?</h3><p>When dealing with validations in input forms, one occasionally has to determine if the content entered is actually a number.
+However, the input content will always be string when performing a check on an input.</p>
+<figure class="highlight js"><figcaption><span>Always a String</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line">$(<span class="hljs-string">'input'</span>).on(<span class="hljs-string">'change'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-comment">//Outputs 'string'</span></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> $(<span class="hljs-keyword">this</span>).val());</span><br><span class="line">&#125;);</span><br></code></pre></td></tr></table></div></figure>
+<p>Although this behavior is convenient for most situations, it could be a hassle for numbers.</p>
+<p>To solve this problem, parseInt will be used.</p>
+<figure class="highlight js"><figcaption><span>String to Number</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line">$(<span class="hljs-string">'input'</span>).on(<span class="hljs-string">'change'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-comment">//Outputs 'string'  </span></span><br><span class="line">  <span class="hljs-comment">//The '10' is for decimal form</span></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> <span class="hljs-built_in">parseInt</span>($(<span class="hljs-keyword">this</span>).val(), <span class="hljs-number">10</span>);</span><br><span class="line">&#125;);</span><br></code></pre></td></tr></table></div></figure>
+<p>Want to point out that my <a href="2014/08/26/Simple-Validator/">validator</a> function could be used in place of typeof.</p>
+<h3 id="Mathematically-Inclined-Cases"><a href="#Mathematically-Inclined-Cases" class="headerlink" title="Mathematically Inclined Cases"></a>Mathematically Inclined Cases</h3><p>Besides representing numbers as integers or decimal, there are also situations where numbers could be <a href="//http://speakingjs.com/es5/ch11.html#two_zeros">negative or positive zero</a> or represented  in <a href="http://speakingjs.com/es5/ch11.html#_exponent" target="_blank" rel="external">exponential</a> form. There are even more extreme cases such as <a href="http://speakingjs.com/es5/ch11.html#infinity" target="_blank" rel="external">infinity</a>.</p>
+<p>For these cases, the numbers representations are valid, but may be unusual to the some individuals. It could be worthwhile to also validate  against these cases and to prevent a jarring user experience when inputting in forms.</p>
+
+      
+
+
+    </div>
+    
+<footer class="post-content-footer">
+  
+  <div class="article-tags ym-clearfix">
+    <p>Tags: </p>
+    <a href="/tags/javascript/">javascript</a>, <a href="/tags/jQuery/">jQuery</a>
+  </div>
+</footer>
+
+
+      <div class="dotted-border"></div>
+  </div>
+
+</article>
+
+
+
+
+  
+<article class="post">
+
+  <div class="post-content">
+    <header class="post-content-header">
+      
+        <time class="post-content-time" datetime="2014-11-27T04:04:35.000Z"><a href="/2014/11/26/WordPress-Mixed-Content-Warning/">11/26/2014</a></time>
       
       
   
@@ -209,15 +252,15 @@ However, the input content will always be string when performing a check on an i
     </header>
     <div class="post-content-entry">
       
-        <h3 id="Insecured_Content">Insecured Content</h3><p>Recently, when working with WordPress, I noticed that when using the <a href="https://wordpress.org/plugins/master-slider/" target="_blank" rel="external">Master Slider</a> plugin, a content slider/carousel plugin, Firefox was complaining about mixed content from the images. I was using ssl on the site.</p>
+        <h3 id="Insecured-Content"><a href="#Insecured-Content" class="headerlink" title="Insecured Content"></a>Insecured Content</h3><p>Recently, when working with WordPress, I noticed that when using the <a href="https://wordpress.org/plugins/master-slider/" target="_blank" rel="external">Master Slider</a> plugin, a content slider/carousel plugin, Firefox was complaining about mixed content from the images. I was using ssl on the site.</p>
 <p>Initially I thought this was the wrongdoing of the plugin, but looking through the support pages for the plugin did not yield any immediate answers. The source did not yield any obvious error.</p>
 <p>While trying to figure out the problem with the slider, I also notice the warning of the mixed content from the media library of WordPress.</p>
 <p>This lead me to think that it may not be the plugin’s fault, and there might be something wrong with WordPress or with the configuration at least.</p>
 <p>Looking further into the situation lead me to figure out that I have forgotten to change the url settings in WordPress.</p>
 <p>To solve my problem I navigated to</p>
-<figure class="highlight mathematica"><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined"><span class="line">Settings &gt; <span class="hljs-keyword">General</span></span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight plain"><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line">Settings &gt; General</span><br></code></pre></td></tr></table></div></figure>
 <p>Then changing </p>
-<figure class="highlight livecodeserver"><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs undefined"><span class="line">WordPress <span class="hljs-built_in">URL</span></span><br><span class="line">Site Address <span class="hljs-built_in">URL</span></span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight plain"><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line">WordPress URL</span><br><span class="line">Site Address URL</span><br></code></pre></td></tr></table></div></figure>
 <p>values to use https for the domain to solve the problem.</p>
 
       
@@ -248,7 +291,7 @@ However, the input content will always be string when performing a check on an i
   <div class="post-content">
     <header class="post-content-header">
       
-        <time class="post-content-time" datetime="2014-10-29T03:59:34.000Z"><a href="/2014/10/28/Bash-Clear-History-Upon-Exiting-Terminal/">10/28/2014</a></time>
+        <time class="post-content-time" datetime="2014-10-29T00:59:34.000Z"><a href="/2014/10/28/Bash-Clear-History-Upon-Exiting-Terminal/">10/28/2014</a></time>
       
       
   
@@ -258,14 +301,14 @@ However, the input content will always be string when performing a check on an i
     </header>
     <div class="post-content-entry">
       
-        <h3 id="Cleaning_terminal_history">Cleaning terminal history</h3><p>Whether you want to have some sense of privacy or a sense of cleanliness, working with the terminal leaves a history that you might want to remove.</p>
+        <h3 id="Cleaning-terminal-history"><a href="#Cleaning-terminal-history" class="headerlink" title="Cleaning terminal history"></a>Cleaning terminal history</h3><p>Whether you want to have some sense of privacy or a sense of cleanliness, working with the terminal leaves a history that you might want to remove.</p>
 <p>Removing the .bash_history upon exiting the terminal is the goal for this post.</p>
 <p>Create a .rm_terminal_history.sh file in the directory that .bashrc file is in.</p>
-<figure class="highlight bash"><figcaption><span>.rm_terminal_history.sh</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="line"><span class="hljs-function"><span class="hljs-title">rm_hist</span></span>()&#123;  </span><br><span class="line">  <span class="hljs-keyword">if</span> [ <span class="hljs-operator">-f</span> ~/.bash_<span class="hljs-built_in">history</span> ]</span><br><span class="line">  <span class="hljs-keyword">then</span></span><br><span class="line">    rm ~/.bash_<span class="hljs-built_in">history</span></span><br><span class="line">    <span class="hljs-built_in">history</span> -c</span><br><span class="line">    <span class="hljs-built_in">echo</span> <span class="hljs-string">".bash_history removed."</span></span><br><span class="line">    <span class="hljs-built_in">exit</span> <span class="hljs-number">0</span></span><br><span class="line">  <span class="hljs-keyword">else</span></span><br><span class="line">    <span class="hljs-built_in">echo</span> <span class="hljs-string">".bash_history can not be found."</span></span><br><span class="line">    <span class="hljs-built_in">exit</span> <span class="hljs-number">1</span></span><br><span class="line">  <span class="hljs-keyword">fi</span></span><br><span class="line">&#125;</span><br><br class="double"><span class="line"><span class="hljs-built_in">trap</span> rm_hist EXIT</span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight bash"><figcaption><span>.rm_terminal_history.sh</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-function"><span class="hljs-title">rm_hist</span></span>()&#123;  </span><br><span class="line">  <span class="hljs-keyword">if</span> [ <span class="hljs-_">-f</span> ~/.bash_<span class="hljs-built_in">history</span> ]</span><br><span class="line">  <span class="hljs-keyword">then</span></span><br><span class="line">    rm ~/.bash_<span class="hljs-built_in">history</span></span><br><span class="line">    <span class="hljs-built_in">history</span> -c</span><br><span class="line">    <span class="hljs-built_in">echo</span> <span class="hljs-string">".bash_history removed."</span></span><br><span class="line">    <span class="hljs-built_in">exit</span> 0</span><br><span class="line">  <span class="hljs-keyword">else</span></span><br><span class="line">    <span class="hljs-built_in">echo</span> <span class="hljs-string">".bash_history can not be found."</span></span><br><span class="line">    <span class="hljs-built_in">exit</span> 1</span><br><span class="line">  <span class="hljs-keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">trap</span> rm_hist EXIT</span><br></code></pre></td></tr></table></div></figure>
 <p>After the script is created, give it executable privileges.</p>
-<figure class="highlight bash"><figcaption><span>Make Script Executable</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="line">chmod +x .rm_terminal_history.sh</span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight bash"><figcaption><span>Make Script Executable</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line">chmod +x .rm_terminal_history.sh</span><br></code></pre></td></tr></table></div></figure>
 <p>Now add a reference to your .bashrc file for the script to run</p>
-<figure class="highlight bash"><figcaption><span>Add Entry to .bashrc</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="line"><span class="hljs-comment">#Add following line to .bashrc</span></span><br><span class="line"><span class="hljs-built_in">source</span> ~/.rm_terminal_history.sh</span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight bash"><figcaption><span>Add Entry to .bashrc</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-comment">#Add following line to .bashrc</span></span><br><span class="line"><span class="hljs-built_in">source</span> ~/.rm_terminal_history.sh</span><br></code></pre></td></tr></table></div></figure>
 <p>The .bash_history file will be remove when exiting the terminal at any time.</p>
 
       
@@ -296,7 +339,7 @@ However, the input content will always be string when performing a check on an i
   <div class="post-content">
     <header class="post-content-header">
       
-        <time class="post-content-time" datetime="2014-09-25T23:33:11.000Z"><a href="/2014/09/25/WordPress-Quick-Tips-1/">9/25/2014</a></time>
+        <time class="post-content-time" datetime="2014-09-25T20:33:11.000Z"><a href="/2014/09/25/WordPress-Quick-Tips-1/">9/25/2014</a></time>
       
       
   
@@ -306,9 +349,9 @@ However, the input content will always be string when performing a check on an i
     </header>
     <div class="post-content-entry">
       
-        <h3 id="Enqueue_Multiple_Google_Fonts_into_One_Stylesheet">Enqueue Multiple Google Fonts into One Stylesheet</h3><p>Taking the twenty-fourteen theme for example, modify the ‘functions.php’ by separate the differents fonts that is to be used with a pipe character in the twentyfourteen_font_url function.</p>
-<figure class="highlight php"><figcaption><span>Single Stylesheet for a Group of Fonts</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">twentyfourteen_font_url</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">  <span class="hljs-variable">$font_url</span> = <span class="hljs-string">''</span>;</span><br><br class="double"><span class="line">  <span class="hljs-keyword">if</span> ( <span class="hljs-string">'off'</span> !== _x( <span class="hljs-string">'on'</span>, <span class="hljs-string">'Oswald font: on or off'</span>, <span class="hljs-string">'twentyfourteen'</span> ) ) &#123;</span><br><span class="line">    <span class="hljs-variable">$font_url</span> = add_query_arg( <span class="hljs-string">'family'</span>, urlencode( <span class="hljs-string">'Oswald:400|Droid Sans:400'</span>), <span class="hljs-string">"//fonts.googleapis.com/css"</span> );</span><br><span class="line">  &#125;</span><br><br class="double"><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-variable">$font_url</span>;</span><br><span class="line">&#125;</span><br><br class="double"><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">twentyfourteen_scripts</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">  wp_enqueue_style( <span class="hljs-string">'googlefont-oswald-and-opensans'</span>, twentyfourteen_font_url(), <span class="hljs-keyword">array</span>(), <span class="hljs-keyword">null</span> );</span><br><br class="double"><span class="line">  <span class="hljs-comment">//...</span></span><br><span class="line">&#125;</span><br><br class="double"><span class="line">add_action( <span class="hljs-string">'wp_enqueue_scripts'</span>, <span class="hljs-string">'twentyfourteen_scripts'</span> );</span><br></code></pre></td></tr></table></div></figure>
-<h3 id="Bouncing_Contact_Form_7_Emails">Bouncing Contact Form 7 Emails</h3><p>If you wish to receive messages from the Contact Form 7 form to your personal email, but the behavior is spotty (emails not being sent to you), then it would help to install the <a href="https://wordpress.org/plugins/flamingo/" target="_blank" rel="external">Flamingo plugin</a>. This plugin will save messages in WordPress, such that messages will be accessible from the WordPress dashboard.</p>
+        <h3 id="Enqueue-Multiple-Google-Fonts-into-One-Stylesheet"><a href="#Enqueue-Multiple-Google-Fonts-into-One-Stylesheet" class="headerlink" title="Enqueue Multiple Google Fonts into One Stylesheet"></a>Enqueue Multiple Google Fonts into One Stylesheet</h3><p>Taking the twenty-fourteen theme for example, modify the ‘functions.php’ by separate the differents fonts that is to be used with a pipe character in the twentyfourteen_font_url function.</p>
+<figure class="highlight php"><figcaption><span>Single Stylesheet for a Group of Fonts</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">twentyfourteen_font_url</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">  $font_url = <span class="hljs-string">''</span>;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">if</span> ( <span class="hljs-string">'off'</span> !== _x( <span class="hljs-string">'on'</span>, <span class="hljs-string">'Oswald font: on or off'</span>, <span class="hljs-string">'twentyfourteen'</span> ) ) &#123;</span><br><span class="line">    $font_url = add_query_arg( <span class="hljs-string">'family'</span>, urlencode( <span class="hljs-string">'Oswald:400|Droid Sans:400'</span>), <span class="hljs-string">"//fonts.googleapis.com/css"</span> );</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">return</span> $font_url;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">twentyfourteen_scripts</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">  wp_enqueue_style( <span class="hljs-string">'googlefont-oswald-and-opensans'</span>, twentyfourteen_font_url(), <span class="hljs-keyword">array</span>(), <span class="hljs-keyword">null</span> );</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">//...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">add_action( <span class="hljs-string">'wp_enqueue_scripts'</span>, <span class="hljs-string">'twentyfourteen_scripts'</span> );</span><br></code></pre></td></tr></table></div></figure>
+<h3 id="Bouncing-Contact-Form-7-Emails"><a href="#Bouncing-Contact-Form-7-Emails" class="headerlink" title="Bouncing Contact Form 7 Emails"></a>Bouncing Contact Form 7 Emails</h3><p>If you wish to receive messages from the Contact Form 7 form to your personal email, but the behavior is spotty (emails not being sent to you), then it would help to install the <a href="https://wordpress.org/plugins/flamingo/" target="_blank" rel="external">Flamingo plugin</a>. This plugin will save messages in WordPress, such that messages will be accessible from the WordPress dashboard.</p>
 
       
 
@@ -332,73 +375,13 @@ However, the input content will always be string when performing a check on an i
 
 
 
-  
-<article class="post">
-
-  <div class="post-content">
-    <header class="post-content-header">
-      
-        <time class="post-content-time" datetime="2014-08-26T23:25:30.000Z"><a href="/2014/08/26/Simple-Validator/">8/26/2014</a></time>
-      
-      
-  
-    <h2 class="title"><a href="/2014/08/26/Simple-Validator/">Simple Validator</a></h2>
-  
-
-    </header>
-    <div class="post-content-entry">
-      
-        <h3 id="Simply_Validating">Simply Validating</h3><p>Validation conjures up thoughts of input form validation, but validation could also pop up elsewhere when there is user input such as
-the case for parameters in jQuery plugins. </p>
-<p>The following article will describe a build-up of a modular validate function. </p>
-<p>The validation will perform as follows</p>
-<figure class="highlight js"><figcaption><span>Format and Example</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="line"><span class="hljs-comment">//validate(inputData, attr, attrRule, againstValue);</span></span><br><span class="line">ex: validate(<span class="hljs-number">10</span>, number, greaterThan, <span class="hljs-number">11</span>);</span><br></code></pre></td></tr></table></div></figure>
-<p>The example function will determine whether 10 as a number is greater than 11, which turns out to be false. The output of validate will be a string that states the error.</p>
-<p>We start off with the validate variable as an immediately-invoking function with the variables that are to be accepted in the validate function</p>
-<figure class="highlight js"><figcaption><span>Variables Accepted</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="line"><span class="hljs-keyword">var</span> validate = (<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> inputData, againstValue, attr, attrRule;  </span><br><span class="line">&#125;);</span><br></code></pre></td></tr></table></div></figure>
-<p>The validate function will have the blocks within</p>
-<figure class="highlight js"><figcaption><span>General Function Layout</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="line"><span class="hljs-keyword">var</span> validate = (<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> inputData, againstValue, attr, attrRule;</span><br><br class="double"><span class="line">  <span class="hljs-comment">//Validation Messages</span></span><br><span class="line">  <span class="hljs-keyword">var</span> validationMessage = &#123;&#125;;</span><br><br class="double"><span class="line">  <span class="hljs-comment">//Validation Definitions</span></span><br><span class="line">  <span class="hljs-keyword">var</span> validationDefinitions = &#123;&#125;;</span><br><br class="double"><span class="line">  <span class="hljs-comment">//Run Check</span></span><br><span class="line">  <span class="hljs-keyword">var</span> validationCheck = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>&#123;&#125;;</span><br><br class="double"><span class="line">  <span class="hljs-comment">//Input Gather</span></span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">  &#125;;</span><br><span class="line">&#125;);</span><br></code></pre></td></tr></table></div></figure>
-<h3 id="Accept_Variables_Input">Accept Variables Input</h3><p>The ‘Input Gather’ function will expose the arguments to the variables that are open within the validate function. The main comparision is done with the validationDefinition function, before its boolean outcome is handed off and check by validationCheck.</p>
-<figure class="highlight js"><figcaption><span>Input Gather</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="line"><span class="hljs-comment">//Start off the validation</span></span><br><span class="line"><span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> args = <span class="hljs-built_in">arguments</span>;</span><br><span class="line">  attr = args[<span class="hljs-number">1</span>];</span><br><span class="line">  attrRule = args[<span class="hljs-number">2</span>];</span><br><span class="line">  inputData = args[<span class="hljs-number">0</span>];</span><br><span class="line">  againstValue = args[<span class="hljs-number">3</span>]; </span><br><br class="double"><span class="line">  <span class="hljs-comment">//Kicks off the validation check with supplied data</span></span><br><span class="line">  <span class="hljs-keyword">return</span> validationCheck(validationDefinitions[attr][attrRule]());</span><br><span class="line">&#125;;</span><br></code></pre></td></tr></table></div></figure>
-<h3 id="Validation_Rules">Validation Rules</h3><p>The validationDefinitions variable is an object that has a mapping of attr: {attrRule: function(){}}. The actual validation process is done by calling upon the attrRule definition function.</p>
-<figure class="highlight js"><figcaption><span>Validation Definitions</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="line"><span class="hljs-comment">//Validation patterns</span></span><br><span class="line"><span class="hljs-comment">//Passed-in data are compared against the desired value (againstValue)</span></span><br><span class="line"><span class="hljs-keyword">var</span> validationDefinitions = &#123;</span><br><span class="line">  number: &#123;</span><br><span class="line">    greaterThan: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">      <span class="hljs-keyword">return</span> inputData &gt; againstValue;</span><br><span class="line">    &#125;       </span><br><span class="line">  &#125;  </span><br><span class="line">&#125;;</span><br></code></pre></td></tr></table></div></figure>
-<h3 id="Determining_Validness">Determining Validness</h3><p>The result of the validation helps determine if a validation message needs to be sent</p>
-<figure class="highlight js"><figcaption><span>Validation Check</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="line"><span class="hljs-comment">//Run the checks against the validation patterns</span></span><br><span class="line"><span class="hljs-keyword">var</span> validationCheck = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(passedCheck)</span> </span>&#123;</span><br><span class="line">  <span class="hljs-comment">//Only generate a message value was not validated</span></span><br><span class="line">  <span class="hljs-keyword">if</span>(!passedCheck) &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> validationMessage[attr][attrRule]();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></code></pre></td></tr></table></div></figure>
-<h3 id="Noting_the_Validation_Error">Noting the Validation Error</h3><p>The output of an invalid data input will result in a message being return.</p>
-<figure class="highlight js"><figcaption><span>Validation Messages</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="line"><span class="hljs-comment">//Determine which message type should be used</span></span><br><span class="line"><span class="hljs-keyword">var</span> validationMessage = &#123;</span><br><span class="line">  number: &#123;</span><br><span class="line">    <span class="hljs-comment">//Generate the message for a specific attrRule</span></span><br><span class="line">    greaterThan: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">      <span class="hljs-keyword">return</span> inputData + <span class="hljs-string">' is not greater than '</span> + againstValue;</span><br><span class="line">    &#125;     </span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></code></pre></td></tr></table></div></figure>
-<h3 id="All_Together">All Together</h3><p>The validate function is complete on the bottom. More validation definitions and messages be added in the proper blocks.</p>
-<figure class="highlight js"><figcaption><span>Complete Validation Function</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="line"><span class="hljs-keyword">var</span> validate = (<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>&#123;  </span><br><br class="double"><span class="line">  <span class="hljs-comment">//Make these variables accessible to all functions inside validator</span></span><br><span class="line">  <span class="hljs-keyword">var</span> inputData, againstValue, attr, attrRule;  </span><br><br class="double"><span class="line">  <span class="hljs-comment">//Determine which message type should be used</span></span><br><span class="line">  <span class="hljs-keyword">var</span> validationMessage = &#123;</span><br><span class="line">    number: &#123;</span><br><span class="line">      <span class="hljs-comment">//Generate the message for a specific attrRule</span></span><br><span class="line">      greaterThan: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> inputData + <span class="hljs-string">' is not greater than '</span> + againstValue;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="hljs-comment">/*</span><br><span class="line">      lessThan: function() &#123;</span><br><span class="line">        return inputData + ' is not less than ' + againstValue;</span><br><span class="line">      &#125;</span><br><span class="line">      //More messages here</span><br><span class="line">      */</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;  </span><br><br class="double"><span class="line">  <span class="hljs-comment">//Validation patterns</span></span><br><span class="line">  <span class="hljs-comment">//Passed-in data are compared against the desired value (againstValue)</span></span><br><span class="line">  <span class="hljs-keyword">var</span> validationDefinitions = &#123;</span><br><span class="line">    number: &#123;</span><br><span class="line">      greaterThan: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> inputData &gt; againstValue;</span><br><span class="line">      &#125; </span><br><span class="line">      <span class="hljs-comment">/*</span><br><span class="line">      ,lessThan: function() &#123;</span><br><span class="line">        return inputData &lt; againstValue;</span><br><span class="line">      &#125;</span><br><span class="line">      //More rules here</span><br><span class="line">      */</span></span><br><span class="line">    &#125;  </span><br><span class="line">  &#125;;</span><br><br class="double"><span class="line">  <span class="hljs-comment">//Run the checks against the validation patterns</span></span><br><span class="line">  <span class="hljs-keyword">var</span> validationCheck = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(passedCheck)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-comment">//Only generate a message value when not validated</span></span><br><span class="line">    <span class="hljs-keyword">if</span>(!passedCheck) &#123;</span><br><span class="line">      <span class="hljs-keyword">return</span> validationMessage[attr][attrRule]();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><br class="double"><span class="line">  <span class="hljs-comment">//Start off the validation</span></span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">var</span> args = <span class="hljs-built_in">arguments</span>;</span><br><span class="line">    attr = args[<span class="hljs-number">1</span>];</span><br><span class="line">    attrRule = args[<span class="hljs-number">2</span>];</span><br><span class="line">    inputData = args[<span class="hljs-number">0</span>];</span><br><span class="line">    againstValue = args[<span class="hljs-number">3</span>]; </span><br><br class="double"><span class="line">    <span class="hljs-comment">//Kicks off the validation check with supplied data</span></span><br><span class="line">    <span class="hljs-keyword">return</span> validationCheck(validationDefinitions[attr][attrRule]());</span><br><span class="line">  &#125;;    </span><br><span class="line">&#125;)();</span><br><br class="double"><span class="line"><span class="hljs-comment">//Usage: validate(inputData, 'number', 'greaterThan', 5);</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(validate(<span class="hljs-number">4</span>, <span class="hljs-string">'number'</span>, <span class="hljs-string">'greaterThan'</span>, <span class="hljs-number">5</span>));</span><br><span class="line"><span class="hljs-comment">//Output: '4 is not greater than 5'</span></span><br></code></pre></td></tr></table></div></figure>
-<p><a href="http://jsbin.com/hojovuhemimo/1" target="_blank" rel="external">Online Demo</a></p>
-
-      
-
-
-    </div>
-    
-<footer class="post-content-footer">
-  
-  <div class="article-tags ym-clearfix">
-    <p>Tags: </p>
-    <a href="/tags/javascript/">javascript</a>
-  </div>
-</footer>
-
-
-      <div class="dotted-border"></div>
-  </div>
-
-</article>
-
-
-
-
 
 <nav id="pagination">
   <div id="pagination-wrapper" class="ym-clearfix">
       
         <a href="/" class="newer">« Newer</a>
       
-      <span id="pagination-info">Page 2 of 8</span>
+      <span id="pagination-info">Page 2 of 9</span>
       
         <a href="/page/3/" class="older">Older »</a>
       
@@ -513,6 +496,10 @@ the case for parameters in jQuery plugins. </p>
   <ul class="entry">
     
       <li>
+        <a href="/2016/04/17/nodejs-quick-tips-2/">Nodejs - Quick Tips #2</a>
+      </li>
+    
+      <li>
         <a href="/2015/07/20/Velocityjs-Effects/">Velocityjs - Effects</a>
       </li>
     
@@ -526,10 +513,6 @@ the case for parameters in jQuery plugins. </p>
     
       <li>
         <a href="/2015/02/14/Meteor-Quick-Tips-2/">Meteor - Quick Tips #2</a>
-      </li>
-    
-      <li>
-        <a href="/2015/01/19/Meteor-Quick-Tips-1/">Meteor - Quick Tips #1</a>
       </li>
     
   </ul>
@@ -550,7 +533,7 @@ the case for parameters in jQuery plugins. </p>
             <p id="main-footer-text">
   Copyright rightfully belongs here
   
-  &copy; 2015 William Huey
+  &copy; 2016 William Huey
   
   and proudly powered by <a href="http://hexo.io">Hexo</a> and
   <a href="http://www.github.com/williamhuey">Github</a>

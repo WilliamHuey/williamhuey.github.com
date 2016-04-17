@@ -151,7 +151,53 @@
   <div class="post-content">
     <header class="post-content-header">
       
-        <time class="post-content-time" datetime="2015-07-21T06:00:07.000Z"><a href="/2015/07/20/Velocityjs-Effects/">7/20/2015</a></time>
+        <time class="post-content-time" datetime="2016-04-17T04:29:18.000Z"><a href="/2016/04/17/nodejs-quick-tips-2/">4/17/2016</a></time>
+      
+      
+  
+    <h2 class="title"><a href="/2016/04/17/nodejs-quick-tips-2/">Nodejs - Quick Tips #2</a></h2>
+  
+
+    </header>
+    <div class="post-content-entry">
+      
+        <h3 id="Process-Exit-and-Time-Elapse"><a href="#Process-Exit-and-Time-Elapse" class="headerlink" title="Process Exit and Time Elapse"></a>Process Exit and Time Elapse</h3><p>When performing a long-running operation in the terminal, such as file generation, a user would like to know how long the task has ran.</p>
+<p>A simple way to determine how much time has elapsed in general will be to listen to ‘exit’ event on the process object. This can be combined with the ‘hrtime’ method on the process object to provide a detailed time interval.</p>
+<figure class="highlight js"><figcaption><span>Using Built-In Nodejs Functions for Timing</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-keyword">let</span> time = process.hrtime();</span><br><span class="line"></span><br><span class="line">process.on(<span class="hljs-string">'exit'</span>, () =&gt; &#123;</span><br><span class="line">  <span class="hljs-keyword">let</span> timeDiff = process.hrtime(time);</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Time elapsed for file(s) and folder(s) generation: %d nanoseconds'</span>, timeDiff[<span class="hljs-number">0</span>] * <span class="hljs-number">1e9</span> + timeDiff[<span class="hljs-number">1</span>]);</span><br><span class="line">&#125;);</span><br></code></pre></td></tr></table></div></figure>
+<h3 id="Babel-Webpack-Eslint-Boilerplate"><a href="#Babel-Webpack-Eslint-Boilerplate" class="headerlink" title="Babel Webpack Eslint Boilerplate"></a>Babel Webpack Eslint Boilerplate</h3><p>Since Babel is widely used today, here is a simple config for creating a starter JavaScript project.</p>
+<figure class="highlight json"><figcaption><span>package.json</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line">&#123;</span><br><span class="line">  <span class="hljs-attr">"name"</span>: <span class="hljs-string">"my-great-module"</span>,</span><br><span class="line">  <span class="hljs-attr">"version"</span>: <span class="hljs-string">"1.0.0"</span>,</span><br><span class="line">  <span class="hljs-attr">"description"</span>: <span class="hljs-string">""</span>,</span><br><span class="line">  <span class="hljs-attr">"main"</span>: <span class="hljs-string">"index.js"</span>,</span><br><span class="line">  <span class="hljs-attr">"scripts"</span>: &#123;</span><br><span class="line">    <span class="hljs-attr">"start"</span>: <span class="hljs-string">"node_modules/webpack/bin/webpack.js --watch"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="hljs-attr">"author"</span>: <span class="hljs-string">""</span>,</span><br><span class="line">  <span class="hljs-attr">"license"</span>: <span class="hljs-string">"ISC"</span>,</span><br><span class="line">  <span class="hljs-attr">"dependencies"</span>: &#123;</span><br><span class="line">    <span class="hljs-attr">"babel"</span>: <span class="hljs-string">"^6.5.2"</span>,</span><br><span class="line">    <span class="hljs-attr">"babel-core"</span>: <span class="hljs-string">"^6.7.2"</span>,</span><br><span class="line">    <span class="hljs-attr">"babel-eslint"</span>: <span class="hljs-string">"^6.0.0-beta.1"</span>,</span><br><span class="line">    <span class="hljs-attr">"babel-loader"</span>: <span class="hljs-string">"^6.2.4"</span>,</span><br><span class="line">    <span class="hljs-attr">"babel-plugin-syntax-async-functions"</span>: <span class="hljs-string">"^6.5.0"</span>,</span><br><span class="line">    <span class="hljs-attr">"babel-plugin-transform-runtime"</span>: <span class="hljs-string">"^6.6.0"</span>,</span><br><span class="line">    <span class="hljs-attr">"babel-preset-es2015"</span>: <span class="hljs-string">"^6.6.0"</span>,</span><br><span class="line">    <span class="hljs-attr">"babel-preset-stage-3"</span>: <span class="hljs-string">"^6.5.0"</span>,</span><br><span class="line">    <span class="hljs-attr">"webpack"</span>: <span class="hljs-string">"^1.12.14"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></code></pre></td></tr></table></div></figure>
+<p>Now for the webpack.config.js file</p>
+<figure class="highlight js"><figcaption><span>webpack.config.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-keyword">var</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">'path'</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">module</span>.exports = &#123;</span><br><span class="line">  entry: <span class="hljs-string">'./the-main-input-file.js'</span>,</span><br><span class="line">  output: &#123;</span><br><span class="line">    path: path.join(__dirname, <span class="hljs-string">'/dist/'</span>),</span><br><span class="line">    filename: <span class="hljs-string">'my-output-file.js'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="hljs-built_in">module</span>: &#123;</span><br><span class="line">    loaders: [&#123;</span><br><span class="line">      test: <span class="hljs-regexp">/\.js$/</span>,</span><br><span class="line">      exclude: <span class="hljs-regexp">/node_modules/</span>,</span><br><span class="line">      loader: <span class="hljs-string">"babel-loader"</span></span><br><span class="line">    &#125;]</span><br><span class="line">  &#125;,</span><br><span class="line">  resolve: &#123;</span><br><span class="line">    extensions: [<span class="hljs-string">''</span>, <span class="hljs-string">'.config.js'</span>, <span class="hljs-string">'.js'</span>]</span><br><span class="line">  &#125;,</span><br><span class="line">  eslint: &#123;</span><br><span class="line">    configFile: <span class="hljs-string">'./.eslintrc.json'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  babel: &#123;</span><br><span class="line">    presets: [<span class="hljs-string">'es2015'</span>, <span class="hljs-string">'stage-3'</span>]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></code></pre></td></tr></table></div></figure>
+
+      
+
+
+    </div>
+    
+<footer class="post-content-footer">
+  
+  <div class="article-tags ym-clearfix">
+    <p>Tags: </p>
+    <a href="/tags/javascript/">javascript</a>, <a href="/tags/nodejs/">nodejs</a>
+  </div>
+</footer>
+
+
+      <div class="dotted-border"></div>
+  </div>
+
+</article>
+
+
+
+
+  
+<article class="post">
+
+  <div class="post-content">
+    <header class="post-content-header">
+      
+        <time class="post-content-time" datetime="2015-07-21T03:00:07.000Z"><a href="/2015/07/20/Velocityjs-Effects/">7/20/2015</a></time>
       
       
   
@@ -162,11 +208,11 @@
     <div class="post-content-entry">
       
         <p>For your heavy-duty JavaScript animations, I recommend <a href="http://julian.com/research/velocity/" target="_blank" rel="external">Velocityjs</a>, since it has many features and great documentation. <br> Here are some simple effects that I find useful if you have chosen to use Velocityjs:</p>
-<h3 id="Pulsate_/_Throb">Pulsate / Throb</h3><figure class="highlight js"><figcaption><span>Grow and Shrink Element for Five Times</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="line">$(<span class="hljs-string">'#my-element'</span>).velocity(&#123; scale: <span class="hljs-number">2</span> &#125;, &#123; loop: <span class="hljs-number">5</span>&#125;);</span><br></code></pre></td></tr></table></div></figure>
+<h3 id="Pulsate-Throb"><a href="#Pulsate-Throb" class="headerlink" title="Pulsate / Throb"></a>Pulsate / Throb</h3><figure class="highlight js"><figcaption><span>Grow and Shrink Element for Five Times</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line">$(<span class="hljs-string">'#my-element'</span>).velocity(&#123; scale: <span class="hljs-number">2</span> &#125;, &#123; loop: <span class="hljs-number">5</span>&#125;);</span><br></code></pre></td></tr></table></div></figure>
 <p><a href="http://jsbin.com/gocinunome/1/" target="_blank" rel="external">Pulsate Demo</a></p>
-<h3 id="Show_and_Rotate">Show and Rotate</h3><figure class="highlight js"><figcaption><span>Appear, Spins, and Disappear</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="line"><span class="hljs-comment">//Complete animation within half a second</span></span><br><span class="line">$(<span class="hljs-string">'#my-element'</span>).velocity(&#123; scale: <span class="hljs-number">3</span>, opacity: <span class="hljs-number">1</span>, rotateZ: <span class="hljs-string">"360deg"</span> &#125;, &#123;duration: <span class="hljs-number">500</span>&#125;);</span><br></code></pre></td></tr></table></div></figure>
+<h3 id="Show-and-Rotate"><a href="#Show-and-Rotate" class="headerlink" title="Show and Rotate"></a>Show and Rotate</h3><figure class="highlight js"><figcaption><span>Appear, Spins, and Disappear</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-comment">//Complete animation within half a second</span></span><br><span class="line">$(<span class="hljs-string">'#my-element'</span>).velocity(&#123; scale: <span class="hljs-number">3</span>, opacity: <span class="hljs-number">1</span>, rotateZ: <span class="hljs-string">"360deg"</span> &#125;, &#123;duration: <span class="hljs-number">500</span>&#125;);</span><br></code></pre></td></tr></table></div></figure>
 <p><a href="http://jsbin.com/razexohare/2" target="_blank" rel="external">Spin Demo</a></p>
-<h3 id="Stagger_Elements">Stagger Elements</h3><figure class="highlight js"><figcaption><span>Group Zoom-in</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="line"><span class="hljs-comment">//Assumes that the UI Pack (velocity.ui.js) is in place</span></span><br><span class="line">$(<span class="hljs-string">'.group-of-elements'</span>).velocity(<span class="hljs-string">'transition.whirlIn'</span>, &#123;stagger: <span class="hljs-number">500</span>&#125;);</span><br></code></pre></td></tr></table></div></figure>
+<h3 id="Stagger-Elements"><a href="#Stagger-Elements" class="headerlink" title="Stagger Elements"></a>Stagger Elements</h3><figure class="highlight js"><figcaption><span>Group Zoom-in</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-comment">//Assumes that the UI Pack (velocity.ui.js) is in place</span></span><br><span class="line">$(<span class="hljs-string">'.group-of-elements'</span>).velocity(<span class="hljs-string">'transition.whirlIn'</span>, &#123;stagger: <span class="hljs-number">500</span>&#125;);</span><br></code></pre></td></tr></table></div></figure>
 <p><a href="http://jsbin.com/tezofuraqi/2/" target="_blank" rel="external">Stagger Group Demo</a></p>
 
       
@@ -197,7 +243,7 @@
   <div class="post-content">
     <header class="post-content-header">
       
-        <time class="post-content-time" datetime="2015-05-16T09:28:01.000Z"><a href="/2015/05/16/Meteor-Quick-Tips-4/">5/16/2015</a></time>
+        <time class="post-content-time" datetime="2015-05-16T06:28:01.000Z"><a href="/2015/05/16/Meteor-Quick-Tips-4/">5/16/2015</a></time>
       
       
   
@@ -207,12 +253,12 @@
     </header>
     <div class="post-content-entry">
       
-        <h3 id="Filtering_Differences_between_Minimongo_and_Mongo">Filtering Differences between Minimongo  and Mongo</h3><p>Minimongo is Meteor’s client-side implementation of Mongodb, while Mongodb is refer to as Mongo.</p>
+        <h3 id="Filtering-Differences-between-Minimongo-and-Mongo"><a href="#Filtering-Differences-between-Minimongo-and-Mongo" class="headerlink" title="Filtering Differences between Minimongo  and Mongo"></a>Filtering Differences between Minimongo  and Mongo</h3><p>Minimongo is Meteor’s client-side implementation of Mongodb, while Mongodb is refer to as Mongo.</p>
 <p>In Mongo, when limiting the fields of the return documents, there are two parameters. Minimongo also takes two parameters, but the second parameter needs a field wrapper to denote the fields to return.</p>
-<figure class="highlight js"><figcaption><span>Cut Down Documents Field Return</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="line"><span class="hljs-comment">//Mongodb</span></span><br><span class="line">CollectionName.find(&#123;&#125;, &#123;<span class="hljs-string">'onlyThisField'</span>:<span class="hljs-number">1</span>&#125;);</span><br><br class="double"><span class="line"><span class="hljs-comment">//Minimongo</span></span><br><span class="line">CollectionName.find(&#123;&#125;, &#123;fields: &#123;<span class="hljs-string">'onlyThisField'</span>:<span class="hljs-number">1</span>&#125;&#125;);</span><br></code></pre></td></tr></table></div></figure>
-<h3 id="Return_Template_in_Template_Helper">Return Template in Template Helper</h3><p>Template helpers only return a string when outputting to the templates, so an object output is not possible. The closest thing to rendering a template out to another template is to use Blaze.toHTML. The spacebar template needs to have the triple braces for raw output to convert a string to an actual element.</p>
-<figure class="highlight js"><figcaption><span>Blaze Returns a Html String</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="line"><span class="hljs-comment">//Rendered</span></span><br><span class="line">Template.blank.onRendered(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">  <span class="hljs-keyword">this</span>.data.rv = <span class="hljs-keyword">new</span> ReactiveVar(<span class="hljs-string">""</span>);</span><br><span class="line">  <span class="hljs-keyword">this</span>.data.rv.set(Blaze.toHTML(Template.postInfo));</span><br><span class="line">&#125;);</span><br><br class="double"><span class="line"><span class="hljs-comment">//Helpers</span></span><br><span class="line">Template.post.helpers(&#123;</span><br><span class="line">  info: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> Template.instance().data.rv.get();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></code></pre></td></tr></table></div></figure>
-<figure class="highlight html"><figcaption><span>Output the Html String</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="line"><span class="hljs-tag">&lt;<span class="hljs-title">template</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"post"</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"reading"</span>&gt;</span>&#123;&#123;&#123;info&#125;&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-title">template</span>&gt;</span></span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight js"><figcaption><span>Cut Down Documents Field Return</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-comment">//Mongodb</span></span><br><span class="line">CollectionName.find(&#123;&#125;, &#123;<span class="hljs-string">'onlyThisField'</span>:<span class="hljs-number">1</span>&#125;);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//Minimongo</span></span><br><span class="line">CollectionName.find(&#123;&#125;, &#123;fields: &#123;<span class="hljs-string">'onlyThisField'</span>:<span class="hljs-number">1</span>&#125;&#125;);</span><br></code></pre></td></tr></table></div></figure>
+<h3 id="Return-Template-in-Template-Helper"><a href="#Return-Template-in-Template-Helper" class="headerlink" title="Return Template in Template Helper"></a>Return Template in Template Helper</h3><p>Template helpers only return a string when outputting to the templates, so an object output is not possible. The closest thing to rendering a template out to another template is to use Blaze.toHTML. The spacebar template needs to have the triple braces for raw output to convert a string to an actual element.</p>
+<figure class="highlight js"><figcaption><span>Blaze Returns a Html String</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-comment">//Rendered</span></span><br><span class="line">Template.blank.onRendered(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">  <span class="hljs-keyword">this</span>.data.rv = <span class="hljs-keyword">new</span> ReactiveVar(<span class="hljs-string">""</span>);</span><br><span class="line">  <span class="hljs-keyword">this</span>.data.rv.set(Blaze.toHTML(Template.postInfo));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//Helpers</span></span><br><span class="line">Template.post.helpers(&#123;</span><br><span class="line">  info: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> Template.instance().data.rv.get();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight html"><figcaption><span>Output the Html String</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"post"</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"reading"</span>&gt;</span>&#123;&#123;&#123;info&#125;&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span><br></code></pre></td></tr></table></div></figure>
       
 
 
@@ -241,7 +287,7 @@
   <div class="post-content">
     <header class="post-content-header">
       
-        <time class="post-content-time" datetime="2015-03-25T20:40:12.000Z"><a href="/2015/03/25/Meteor-Quick-Tips-3/">3/25/2015</a></time>
+        <time class="post-content-time" datetime="2015-03-25T17:40:12.000Z"><a href="/2015/03/25/Meteor-Quick-Tips-3/">3/25/2015</a></time>
       
       
   
@@ -251,14 +297,14 @@
     </header>
     <div class="post-content-entry">
       
-        <h3 id="Template_Helpers_and_Subscriptions">Template Helpers and Subscriptions</h3><p>Templates helpers format data onto your templates, but one must ensure that subscription data is fully loaded before the template helpers have a chance to render.</p>
+        <h3 id="Template-Helpers-and-Subscriptions"><a href="#Template-Helpers-and-Subscriptions" class="headerlink" title="Template Helpers and Subscriptions"></a>Template Helpers and Subscriptions</h3><p>Templates helpers format data onto your templates, but one must ensure that subscription data is fully loaded before the template helpers have a chance to render.</p>
 <p>With the help of <a href="https://github.com/iron-meteor/iron-router" target="_blank" rel="external">Iron Router</a>, use the ‘this.ready()’ check inside the data option.</p>
-<figure class="highlight js"><figcaption><span>Router.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="line">Router.route(<span class="hljs-string">'/post/:_id'</span>, &#123;</span><br><span class="line">  waitOn: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> Meteor.subscribe(<span class="hljs-string">'post'</span>, <span class="hljs-keyword">this</span>.params._id)</span><br><span class="line">  &#125;,</span><br><span class="line">  data: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>&#123; </span><br><span class="line">    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.ready()) &#123;</span><br><span class="line">      <span class="hljs-keyword">return</span> &#123; </span><br><span class="line">        post: Posts.findOne(&#123;_id: <span class="hljs-keyword">this</span>.params._id&#125;);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;    </span><br><span class="line">  &#125;  </span><br><span class="line">&#125;);</span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight js"><figcaption><span>Router.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line">Router.route(<span class="hljs-string">'/post/:_id'</span>, &#123;</span><br><span class="line">  waitOn: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> Meteor.subscribe(<span class="hljs-string">'post'</span>, <span class="hljs-keyword">this</span>.params._id)</span><br><span class="line">  &#125;,</span><br><span class="line">  data: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123; </span><br><span class="line">    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.ready()) &#123;</span><br><span class="line">      <span class="hljs-keyword">return</span> &#123; </span><br><span class="line">        post: Posts.findOne(&#123;_id: <span class="hljs-keyword">this</span>.params._id&#125;);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;    </span><br><span class="line">  &#125;  </span><br><span class="line">&#125;);</span><br></code></pre></td></tr></table></div></figure>
 <p>Once the above is in place, a template helper can now safely rendered the subscription data.</p>
-<figure class="highlight js"><figcaption><span>Template.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="line">Template.post.helpers(&#123;</span><br><span class="line">  post: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> Template.currentData().post;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></code></pre></td></tr></table></div></figure>
-<h3 id="Remove_Event_Listeners_From_Blaze_Templates">Remove Event Listeners From Blaze Templates</h3><p>As of Meteor 1.0.4.2, this can not be done. The <a href="http://docs.meteor.com/#/full/blaze_tohtml" target="_blank" rel="external">Blaze to HTML</a> looked promising, but this only creates static html element from a template, it does not provide the ability to render an active Blaze template inert.</p>
+<figure class="highlight js"><figcaption><span>Template.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line">Template.post.helpers(&#123;</span><br><span class="line">  post: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> Template.currentData().post;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></code></pre></td></tr></table></div></figure>
+<h3 id="Remove-Event-Listeners-From-Blaze-Templates"><a href="#Remove-Event-Listeners-From-Blaze-Templates" class="headerlink" title="Remove Event Listeners From Blaze Templates"></a>Remove Event Listeners From Blaze Templates</h3><p>As of Meteor 1.0.4.2, this can not be done. The <a href="http://docs.meteor.com/#/full/blaze_tohtml" target="_blank" rel="external">Blaze to HTML</a> looked promising, but this only creates static html element from a template, it does not provide the ability to render an active Blaze template inert.</p>
 <p>For example the following template has a click event listener attached, but there is not way to undo or remove the click event listener.</p>
-<figure class="highlight js"><figcaption><span>Click Event Listener</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="line">Template.my-template.events(&#123;</span><br><span class="line">  <span class="hljs-string">"click #container a"</span>: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(evt)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-comment">//do some stuff here</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight js"><figcaption><span>Click Event Listener</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line">Template.my-template.events(&#123;</span><br><span class="line">  <span class="hljs-string">"click #container a"</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">evt</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-comment">//do some stuff here</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></code></pre></td></tr></table></div></figure>
 
       
 
@@ -288,7 +334,7 @@
   <div class="post-content">
     <header class="post-content-header">
       
-        <time class="post-content-time" datetime="2015-02-14T10:04:40.000Z"><a href="/2015/02/14/Meteor-Quick-Tips-2/">2/14/2015</a></time>
+        <time class="post-content-time" datetime="2015-02-14T07:04:40.000Z"><a href="/2015/02/14/Meteor-Quick-Tips-2/">2/14/2015</a></time>
       
       
   
@@ -298,54 +344,11 @@
     </header>
     <div class="post-content-entry">
       
-        <h3 id="Blaze_Template_Removal">Blaze Template Removal</h3><p>Instead of using jQuery to perform DOM removal operations, Meteor’s Blaze remove can do the same thing with the following</p>
-<figure class="highlight js"><figcaption><span>Remove Element with Blaze</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="line">Blaze.remove(Template.instance().view);</span><br></code></pre></td></tr></table></div></figure>
+        <h3 id="Blaze-Template-Removal"><a href="#Blaze-Template-Removal" class="headerlink" title="Blaze Template Removal"></a>Blaze Template Removal</h3><p>Instead of using jQuery to perform DOM removal operations, Meteor’s Blaze remove can do the same thing with the following</p>
+<figure class="highlight js"><figcaption><span>Remove Element with Blaze</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line">Blaze.remove(Template.instance().view);</span><br></code></pre></td></tr></table></div></figure>
 <p>The above can be ran in the Template’s render function or in a Template event handler. Most likely, the removal will take place in an event handler.</p>
-<h3 id="Attach_Template’s_Local_Variables_to_Template_Instance">Attach Template’s Local Variables to Template Instance</h3><p>Since all Templates files variables are encapsulated within a closure, there might be possibilities of memory leaks. To ensure that local variables are properly cleaned up, attached a data store object to the Template instance. When the Template instance is destroy so will all the references to it variables.</p>
-<figure class="highlight js"><figcaption><span>DataStore Object on Template Instance</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="line"><span class="hljs-keyword">var</span> ds = &#123;</span><br><span class="line">  thing1: <span class="hljs-number">1</span>,</span><br><span class="line">  thing2: <span class="hljs-number">2</span></span><br><span class="line">&#125;;</span><br><br class="double"><span class="line">Template.myTemplate.created = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">this</span>.ds = ds;</span><br><span class="line">&#125;;</span><br></code></pre></td></tr></table></div></figure>
-      
-
-
-    </div>
-    
-<footer class="post-content-footer">
-  
-  <div class="article-tags ym-clearfix">
-    <p>Tags: </p>
-    <a href="/tags/javascript/">javascript</a>, <a href="/tags/meteorjs/">meteorjs</a>
-  </div>
-</footer>
-
-
-      <div class="dotted-border"></div>
-  </div>
-
-</article>
-
-
-
-
-  
-<article class="posts">
-
-  <div class="post-content">
-    <header class="post-content-header">
-      
-        <time class="post-content-time" datetime="2015-01-19T09:13:31.000Z"><a href="/2015/01/19/Meteor-Quick-Tips-1/">1/19/2015</a></time>
-      
-      
-  
-    <h2 class="title"><a href="/2015/01/19/Meteor-Quick-Tips-1/">Meteor - Quick Tips #1</a></h2>
-  
-
-    </header>
-    <div class="post-content-entry">
-      
-        <h3 id="Redirecting_for_Non-Logged-In_Users">Redirecting for Non-Logged-In Users</h3><p>When an app has more than one url and any other url other than the /home url is restricted for logged in users, than this requireLogin function will direct users back to the home url when the user is not logged in. This is assuming that the IronRouter package is used.</p>
-<figure class="highlight js"><figcaption><span>Force Login for Privileged Areas</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="line"><span class="hljs-keyword">var</span> requireLogin = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">if</span>(!Meteor.user()) &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span>(!Meteor.loggingIn())&#123;  </span><br><span class="line">      <span class="hljs-keyword">this</span>.redirect(<span class="hljs-string">'home'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">this</span>.next();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><br class="double"><span class="line">Router.onBeforeAction(requireLogin, &#123;except: <span class="hljs-string">'home'</span>&#125;);</span><br></code></pre></td></tr></table></div></figure>
-<h3 id="JSON_Data_for_Fixtures">JSON Data for Fixtures</h3><p>Assuming that “exercise.json” is stored in your /private directory in the root of the Meteor project, the fixture.js file in your /server folder makes use of Assets.getText in conjunction with JSON.parse to get the data in a form that can be readily accessed.</p>
-<figure class="highlight js"><figcaption><span>Get Private JSON Data</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="line"><span class="hljs-keyword">var</span> exercises = <span class="hljs-built_in">JSON</span>.parse(Assets.getText(<span class="hljs-string">"exercises.json"</span>));</span><br><br class="double"><span class="line"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>, len = exercises.length; i &lt; len; i++) &#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> exercise = exercises[i];</span><br><br class="double"><span class="line">  Exercises.insert(&#123;</span><br><span class="line">    name: exercise.name,   </span><br><span class="line">    type: exercise.type</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></code></pre></td></tr></table></div></figure>
-
+<h3 id="Attach-Template’s-Local-Variables-to-Template-Instance"><a href="#Attach-Template’s-Local-Variables-to-Template-Instance" class="headerlink" title="Attach Template’s Local Variables to Template Instance"></a>Attach Template’s Local Variables to Template Instance</h3><p>Since all Templates files variables are encapsulated within a closure, there might be possibilities of memory leaks. To ensure that local variables are properly cleaned up, attached a data store object to the Template instance. When the Template instance is destroy so will all the references to it variables.</p>
+<figure class="highlight js"><figcaption><span>DataStore Object on Template Instance</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-keyword">var</span> ds = &#123;</span><br><span class="line">  thing1: <span class="hljs-number">1</span>,</span><br><span class="line">  thing2: <span class="hljs-number">2</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Template.myTemplate.created = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">this</span>.ds = ds;</span><br><span class="line">&#125;;</span><br></code></pre></td></tr></table></div></figure>
       
 
 
@@ -372,7 +375,7 @@
 <nav id="pagination">
   <div id="pagination-wrapper" class="ym-clearfix">
       
-      <span id="pagination-info">Page 1 of 8</span>
+      <span id="pagination-info">Page 1 of 9</span>
       
         <a href="/page/2/" class="older">Older »</a>
       
@@ -487,6 +490,10 @@
   <ul class="entry">
     
       <li>
+        <a href="/2016/04/17/nodejs-quick-tips-2/">Nodejs - Quick Tips #2</a>
+      </li>
+    
+      <li>
         <a href="/2015/07/20/Velocityjs-Effects/">Velocityjs - Effects</a>
       </li>
     
@@ -500,10 +507,6 @@
     
       <li>
         <a href="/2015/02/14/Meteor-Quick-Tips-2/">Meteor - Quick Tips #2</a>
-      </li>
-    
-      <li>
-        <a href="/2015/01/19/Meteor-Quick-Tips-1/">Meteor - Quick Tips #1</a>
       </li>
     
   </ul>
@@ -524,7 +527,7 @@
             <p id="main-footer-text">
   Copyright rightfully belongs here
   
-  &copy; 2015 William Huey
+  &copy; 2016 William Huey
   
   and proudly powered by <a href="http://hexo.io">Hexo</a> and
   <a href="http://www.github.com/williamhuey">Github</a>

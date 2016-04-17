@@ -151,7 +151,7 @@
   <div class="post-content">
     <header class="post-content-header">
       
-        <time class="post-content-time" datetime="2013-04-11T07:00:00.000Z"><a href="/2013/04/11/basic-gemset-management/">4/11/2013</a></time>
+        <time class="post-content-time" datetime="2013-04-11T04:00:00.000Z"><a href="/2013/04/11/basic-gemset-management/">4/11/2013</a></time>
       
       
   
@@ -161,11 +161,11 @@
     </header>
     <div class="post-content-entry">
       
-        <h3 id="CRUD_for_your_rvm_gemset">CRUD for your rvm gemset</h3><p>Rvm stands for ruby version manager. It is used to manage ruby environments with something called gemsets. More info can be found <a href="https://rvm.io/" target="_blank" rel="external">here</a>. Rvm comes in handy when your working with <a href="http://www.rubyonrails.org/" target="_blank" rel="external">Rails</a> because you can isolate ruby environments. Here are some snippets for common tasks when dealing with gemsets.</p>
-<figure class="highlight bash"><figcaption><span>Creating a Gemset</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="line"><span class="hljs-comment">#Format:</span></span><br><span class="line">rvm gemset create &lt;gemset_name&gt;</span><br><span class="line"><span class="hljs-comment">#fill in gemset name</span></span><br><br class="double"><span class="line"><span class="hljs-comment">#Example:</span></span><br><span class="line">rvm gemset create rails3.<span class="hljs-number">2.13</span></span><br><span class="line"><span class="hljs-comment">#gemset name is "rails3.2.13"</span></span><br></code></pre></td></tr></table></div></figure>
-<figure class="highlight bash"><figcaption><span>List Current Gemset Being Used</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="line">rvm gemset list</span><br></code></pre></td></tr></table></div></figure>
-<figure class="highlight bash"><figcaption><span>Using a Gemset</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="line"><span class="hljs-comment">#Format:</span></span><br><span class="line">rvm use &lt;ruby_version_number&gt;@&lt;gemset_name&gt;</span><br><span class="line"><span class="hljs-comment">#fill in ruby version number and gemset name of your choosing</span></span><br><br class="double"><span class="line"><span class="hljs-comment">#Example:</span></span><br><span class="line"><span class="hljs-comment">#uses ruby 1.9.3 with gemset name of "rails version 3.2.13"</span></span><br><span class="line">rvm use <span class="hljs-number">1.9</span>.<span class="hljs-number">3</span>@rails3.<span class="hljs-number">2.13</span> --default</span><br><span class="line"><span class="hljs-comment">#also using a default flag to set the gemset as the default</span></span><br></code></pre></td></tr></table></div></figure>
-<figure class="highlight bash"><figcaption><span>Deleting a Gemset</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="line"><span class="hljs-comment">#Format:</span></span><br><span class="line">rvm gemset delete &lt;gemset_name&gt;</span><br><span class="line"><span class="hljs-comment">#fill in gemset name</span></span><br><br class="double"><span class="line"><span class="hljs-comment">#Example:</span></span><br><span class="line">rvm gemset delete gemset_to_delete</span><br><span class="line"><span class="hljs-comment">#"gemset_to_delete" is the gemset that you want to delete</span></span><br></code></pre></td></tr></table></div></figure>
+        <h3 id="CRUD-for-your-rvm-gemset"><a href="#CRUD-for-your-rvm-gemset" class="headerlink" title="CRUD for your rvm gemset"></a>CRUD for your rvm gemset</h3><p>Rvm stands for ruby version manager. It is used to manage ruby environments with something called gemsets. More info can be found <a href="https://rvm.io/" target="_blank" rel="external">here</a>. Rvm comes in handy when your working with <a href="http://www.rubyonrails.org/" target="_blank" rel="external">Rails</a> because you can isolate ruby environments. Here are some snippets for common tasks when dealing with gemsets.</p>
+<figure class="highlight bash"><figcaption><span>Creating a Gemset</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-comment">#Format:</span></span><br><span class="line">rvm gemset create &lt;gemset_name&gt;</span><br><span class="line"><span class="hljs-comment">#fill in gemset name</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">#Example:</span></span><br><span class="line">rvm gemset create rails3.2.13</span><br><span class="line"><span class="hljs-comment">#gemset name is "rails3.2.13"</span></span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight bash"><figcaption><span>List Current Gemset Being Used</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line">rvm gemset list</span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight bash"><figcaption><span>Using a Gemset</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-comment">#Format:</span></span><br><span class="line">rvm use &lt;ruby_version_number&gt;@&lt;gemset_name&gt;</span><br><span class="line"><span class="hljs-comment">#fill in ruby version number and gemset name of your choosing</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">#Example:</span></span><br><span class="line"><span class="hljs-comment">#uses ruby 1.9.3 with gemset name of "rails version 3.2.13"</span></span><br><span class="line">rvm use 1.9.3@rails3.2.13 --default</span><br><span class="line"><span class="hljs-comment">#also using a default flag to set the gemset as the default</span></span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight bash"><figcaption><span>Deleting a Gemset</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-comment">#Format:</span></span><br><span class="line">rvm gemset delete &lt;gemset_name&gt;</span><br><span class="line"><span class="hljs-comment">#fill in gemset name</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">#Example:</span></span><br><span class="line">rvm gemset delete gemset_to_delete</span><br><span class="line"><span class="hljs-comment">#"gemset_to_delete" is the gemset that you want to delete</span></span><br></code></pre></td></tr></table></div></figure>
 
       
 
@@ -345,6 +345,10 @@
   <ul class="entry">
     
       <li>
+        <a href="/2016/04/17/nodejs-quick-tips-2/">Nodejs - Quick Tips #2</a>
+      </li>
+    
+      <li>
         <a href="/2015/07/20/Velocityjs-Effects/">Velocityjs - Effects</a>
       </li>
     
@@ -358,10 +362,6 @@
     
       <li>
         <a href="/2015/02/14/Meteor-Quick-Tips-2/">Meteor - Quick Tips #2</a>
-      </li>
-    
-      <li>
-        <a href="/2015/01/19/Meteor-Quick-Tips-1/">Meteor - Quick Tips #1</a>
       </li>
     
   </ul>
@@ -382,7 +382,7 @@
             <p id="main-footer-text">
   Copyright rightfully belongs here
   
-  &copy; 2015 William Huey
+  &copy; 2016 William Huey
   
   and proudly powered by <a href="http://hexo.io">Hexo</a> and
   <a href="http://www.github.com/williamhuey">Github</a>

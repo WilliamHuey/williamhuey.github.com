@@ -151,7 +151,7 @@
   <div class="post-content">
     <header class="post-content-header">
       
-        <time class="post-content-time" datetime="2015-01-19T09:13:31.000Z"><a href="/2015/01/19/Meteor-Quick-Tips-1/">1/19/2015</a></time>
+        <time class="post-content-time" datetime="2015-01-19T06:13:31.000Z"><a href="/2015/01/19/Meteor-Quick-Tips-1/">1/19/2015</a></time>
       
       
   
@@ -161,10 +161,10 @@
     </header>
     <div class="post-content-entry">
       
-        <h3 id="Redirecting_for_Non-Logged-In_Users">Redirecting for Non-Logged-In Users</h3><p>When an app has more than one url and any other url other than the /home url is restricted for logged in users, than this requireLogin function will direct users back to the home url when the user is not logged in. This is assuming that the IronRouter package is used.</p>
-<figure class="highlight js"><figcaption><span>Force Login for Privileged Areas</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="line"><span class="hljs-keyword">var</span> requireLogin = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">if</span>(!Meteor.user()) &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span>(!Meteor.loggingIn())&#123;  </span><br><span class="line">      <span class="hljs-keyword">this</span>.redirect(<span class="hljs-string">'home'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">this</span>.next();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><br class="double"><span class="line">Router.onBeforeAction(requireLogin, &#123;except: <span class="hljs-string">'home'</span>&#125;);</span><br></code></pre></td></tr></table></div></figure>
-<h3 id="JSON_Data_for_Fixtures">JSON Data for Fixtures</h3><p>Assuming that “exercise.json” is stored in your /private directory in the root of the Meteor project, the fixture.js file in your /server folder makes use of Assets.getText in conjunction with JSON.parse to get the data in a form that can be readily accessed.</p>
-<figure class="highlight js"><figcaption><span>Get Private JSON Data</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="line"><span class="hljs-keyword">var</span> exercises = <span class="hljs-built_in">JSON</span>.parse(Assets.getText(<span class="hljs-string">"exercises.json"</span>));</span><br><br class="double"><span class="line"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>, len = exercises.length; i &lt; len; i++) &#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> exercise = exercises[i];</span><br><br class="double"><span class="line">  Exercises.insert(&#123;</span><br><span class="line">    name: exercise.name,   </span><br><span class="line">    type: exercise.type</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></code></pre></td></tr></table></div></figure>
+        <h3 id="Redirecting-for-Non-Logged-In-Users"><a href="#Redirecting-for-Non-Logged-In-Users" class="headerlink" title="Redirecting for Non-Logged-In Users"></a>Redirecting for Non-Logged-In Users</h3><p>When an app has more than one url and any other url other than the /home url is restricted for logged in users, than this requireLogin function will direct users back to the home url when the user is not logged in. This is assuming that the IronRouter package is used.</p>
+<figure class="highlight js"><figcaption><span>Force Login for Privileged Areas</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-keyword">var</span> requireLogin = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">if</span>(!Meteor.user()) &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span>(!Meteor.loggingIn())&#123;  </span><br><span class="line">      <span class="hljs-keyword">this</span>.redirect(<span class="hljs-string">'home'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">this</span>.next();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Router.onBeforeAction(requireLogin, &#123;except: <span class="hljs-string">'home'</span>&#125;);</span><br></code></pre></td></tr></table></div></figure>
+<h3 id="JSON-Data-for-Fixtures"><a href="#JSON-Data-for-Fixtures" class="headerlink" title="JSON Data for Fixtures"></a>JSON Data for Fixtures</h3><p>Assuming that “exercise.json” is stored in your /private directory in the root of the Meteor project, the fixture.js file in your /server folder makes use of Assets.getText in conjunction with JSON.parse to get the data in a form that can be readily accessed.</p>
+<figure class="highlight js"><figcaption><span>Get Private JSON Data</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-keyword">var</span> exercises = <span class="hljs-built_in">JSON</span>.parse(Assets.getText(<span class="hljs-string">"exercises.json"</span>));</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>, len = exercises.length; i &lt; len; i++) &#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> exercise = exercises[i];</span><br><span class="line"></span><br><span class="line">  Exercises.insert(&#123;</span><br><span class="line">    name: exercise.name,   </span><br><span class="line">    type: exercise.type</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></code></pre></td></tr></table></div></figure>
 
       
 
@@ -344,6 +344,10 @@
   <ul class="entry">
     
       <li>
+        <a href="/2016/04/17/nodejs-quick-tips-2/">Nodejs - Quick Tips #2</a>
+      </li>
+    
+      <li>
         <a href="/2015/07/20/Velocityjs-Effects/">Velocityjs - Effects</a>
       </li>
     
@@ -357,10 +361,6 @@
     
       <li>
         <a href="/2015/02/14/Meteor-Quick-Tips-2/">Meteor - Quick Tips #2</a>
-      </li>
-    
-      <li>
-        <a href="/2015/01/19/Meteor-Quick-Tips-1/">Meteor - Quick Tips #1</a>
       </li>
     
   </ul>
@@ -381,7 +381,7 @@
             <p id="main-footer-text">
   Copyright rightfully belongs here
   
-  &copy; 2015 William Huey
+  &copy; 2016 William Huey
   
   and proudly powered by <a href="http://hexo.io">Hexo</a> and
   <a href="http://www.github.com/williamhuey">Github</a>

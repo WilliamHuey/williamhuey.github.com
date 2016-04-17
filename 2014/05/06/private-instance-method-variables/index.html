@@ -151,7 +151,7 @@
   <div class="post-content">
     <header class="post-content-header">
       
-        <time class="post-content-time" datetime="2014-05-06T22:01:51.000Z"><a href="/2014/05/06/private-instance-method-variables/">5/6/2014</a></time>
+        <time class="post-content-time" datetime="2014-05-06T19:01:51.000Z"><a href="/2014/05/06/private-instance-method-variables/">5/6/2014</a></time>
       
       
   
@@ -161,12 +161,12 @@
     </header>
     <div class="post-content-entry">
       
-        <h3 id="Instances_Methods_and_Their_Personal_State">Instances Methods and Their Personal State</h3><p>This post is for intended for JavaScript (not Java).</p>
+        <h3 id="Instances-Methods-and-Their-Personal-State"><a href="#Instances-Methods-and-Their-Personal-State" class="headerlink" title="Instances Methods and Their Personal State"></a>Instances Methods and Their Personal State</h3><p>This post is for intended for JavaScript (not Java).</p>
 <p>One may put instance method variables within an instance method to provide encapsulation, but what do you do when you want to maintain a private state for each instance method on each instance method execution?</p>
 <p>The technique in achieving such a task involves wrapping an instance method and its variable within a function as shown below. The result will produce instance method variables that are truly private to the instance method.</p>
 <p>The instance method gets attached to the constructor by using the ‘this’ reference to the constructor.</p>
 <p>Each instance function is then placed into an internal array and the array is looped over to execute and initialize each wrapper function and its corresponding static methods and variables.</p>
-<figure class="highlight js"><figcaption><span>Instance Variables</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="line"><span class="hljs-keyword">var</span> Time = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">  <span class="hljs-comment">//Reference the context</span></span><br><span class="line">  <span class="hljs-keyword">var</span> _this = <span class="hljs-keyword">this</span>;</span><br><br class="double"><span class="line">  <span class="hljs-comment">//Internal array which houses all instance methods</span></span><br><span class="line">  <span class="hljs-comment">//Wrapping all instance methods in a function to</span></span><br><span class="line">  <span class="hljs-comment">//contain its private variables for instance methods</span></span><br><span class="line">  <span class="hljs-keyword">var</span> _time = [</span><br><br class="double"><span class="line">    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>&#123;</span><br><br class="double"><span class="line">      <span class="hljs-comment">//Private variables for instance</span></span><br><span class="line">      <span class="hljs-keyword">var</span> privateStaticVar = <span class="hljs-string">'Time in milliseconds is '</span>;</span><br><br class="double"><span class="line">      <span class="hljs-comment">//A instance method of the Time constructor</span></span><br><span class="line">      _this.getTimeInMilliseconds = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> privateStaticVar + <span class="hljs-built_in">Date</span>.now();</span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-comment">//Add more functions within this array</span></span><br><span class="line">    <span class="hljs-comment">//for other instance methods</span></span><br><span class="line">  ];</span><br><br class="double"><span class="line">  <span class="hljs-comment">//Initialize all instance methods</span></span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; _time.length; i++) &#123;</span><br><span class="line">    _time[i]();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><br class="double"><span class="line"><span class="hljs-keyword">var</span> time = <span class="hljs-keyword">new</span> Time();</span><br><br class="double"><span class="line"><span class="hljs-built_in">console</span>.log(time.getTimeInMilliseconds());</span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight js"><figcaption><span>Instance Variables</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-keyword">var</span> Time = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-comment">//Reference the context</span></span><br><span class="line">  <span class="hljs-keyword">var</span> _this = <span class="hljs-keyword">this</span>;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">//Internal array which houses all instance methods</span></span><br><span class="line">  <span class="hljs-comment">//Wrapping all instance methods in a function to</span></span><br><span class="line">  <span class="hljs-comment">//contain its private variables for instance methods</span></span><br><span class="line">  <span class="hljs-keyword">var</span> _time = [</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">      <span class="hljs-comment">//Private variables for instance</span></span><br><span class="line">      <span class="hljs-keyword">var</span> privateStaticVar = <span class="hljs-string">'Time in milliseconds is '</span>;</span><br><span class="line"></span><br><span class="line">      <span class="hljs-comment">//A instance method of the Time constructor</span></span><br><span class="line">      _this.getTimeInMilliseconds = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> privateStaticVar + <span class="hljs-built_in">Date</span>.now();</span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-comment">//Add more functions within this array</span></span><br><span class="line">    <span class="hljs-comment">//for other instance methods</span></span><br><span class="line">  ];</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">//Initialize all instance methods</span></span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; _time.length; i++) &#123;</span><br><span class="line">    _time[i]();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">var</span> time = <span class="hljs-keyword">new</span> Time();</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(time.getTimeInMilliseconds());</span><br></code></pre></td></tr></table></div></figure>
       
 
 
@@ -345,6 +345,10 @@
   <ul class="entry">
     
       <li>
+        <a href="/2016/04/17/nodejs-quick-tips-2/">Nodejs - Quick Tips #2</a>
+      </li>
+    
+      <li>
         <a href="/2015/07/20/Velocityjs-Effects/">Velocityjs - Effects</a>
       </li>
     
@@ -358,10 +362,6 @@
     
       <li>
         <a href="/2015/02/14/Meteor-Quick-Tips-2/">Meteor - Quick Tips #2</a>
-      </li>
-    
-      <li>
-        <a href="/2015/01/19/Meteor-Quick-Tips-1/">Meteor - Quick Tips #1</a>
       </li>
     
   </ul>
@@ -382,7 +382,7 @@
             <p id="main-footer-text">
   Copyright rightfully belongs here
   
-  &copy; 2015 William Huey
+  &copy; 2016 William Huey
   
   and proudly powered by <a href="http://hexo.io">Hexo</a> and
   <a href="http://www.github.com/williamhuey">Github</a>
