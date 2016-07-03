@@ -146,6 +146,49 @@
         <div id="main-col-wrapper" class="ym-wbox">
             
   
+<article class="post">
+
+  <div class="post-content">
+    <header class="post-content-header">
+      
+        <time class="post-content-time" datetime="2015-02-14T07:04:40.000Z"><a href="/2015/02/14/Meteor-Quick-Tips-2/">2/14/2015</a></time>
+      
+      
+  
+    <h2 class="title"><a href="/2015/02/14/Meteor-Quick-Tips-2/">Meteor - Quick Tips #2</a></h2>
+  
+
+    </header>
+    <div class="post-content-entry">
+      
+        <h3 id="Blaze-Template-Removal"><a href="#Blaze-Template-Removal" class="headerlink" title="Blaze Template Removal"></a>Blaze Template Removal</h3><p>Instead of using jQuery to perform DOM removal operations, Meteor’s Blaze remove can do the same thing with the following</p>
+<figure class="highlight js"><figcaption><span>Remove Element with Blaze</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Blaze.remove(Template.instance().view);</span><br></pre></td></tr></table></div></figure>
+<p>The above can be ran in the Template’s render function or in a Template event handler. Most likely, the removal will take place in an event handler.</p>
+<h3 id="Attach-Template’s-Local-Variables-to-Template-Instance"><a href="#Attach-Template’s-Local-Variables-to-Template-Instance" class="headerlink" title="Attach Template’s Local Variables to Template Instance"></a>Attach Template’s Local Variables to Template Instance</h3><p>Since all Templates files variables are encapsulated within a closure, there might be possibilities of memory leaks. To ensure that local variables are properly cleaned up, attached a data store object to the Template instance. When the Template instance is destroy so will all the references to it variables.</p>
+<figure class="highlight js"><figcaption><span>DataStore Object on Template Instance</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> ds = &#123;</span><br><span class="line">  thing1: <span class="hljs-number">1</span>,</span><br><span class="line">  thing2: <span class="hljs-number">2</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Template.myTemplate.created = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">this</span>.ds = ds;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></div></figure>
+      
+
+
+    </div>
+    
+<footer class="post-content-footer">
+  
+  <div class="article-tags ym-clearfix">
+    <p>Tags: </p>
+    <a href="/tags/javascript/">javascript</a>, <a href="/tags/meteorjs/">meteorjs</a>
+  </div>
+</footer>
+
+
+      <div class="dotted-border"></div>
+  </div>
+
+</article>
+
+
+
+
+  
 <article class="posts">
 
   <div class="post-content">
@@ -162,9 +205,9 @@
     <div class="post-content-entry">
       
         <h3 id="Redirecting-for-Non-Logged-In-Users"><a href="#Redirecting-for-Non-Logged-In-Users" class="headerlink" title="Redirecting for Non-Logged-In Users"></a>Redirecting for Non-Logged-In Users</h3><p>When an app has more than one url and any other url other than the /home url is restricted for logged in users, than this requireLogin function will direct users back to the home url when the user is not logged in. This is assuming that the IronRouter package is used.</p>
-<figure class="highlight js"><figcaption><span>Force Login for Privileged Areas</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-keyword">var</span> requireLogin = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">if</span>(!Meteor.user()) &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span>(!Meteor.loggingIn())&#123;  </span><br><span class="line">      <span class="hljs-keyword">this</span>.redirect(<span class="hljs-string">'home'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">this</span>.next();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Router.onBeforeAction(requireLogin, &#123;except: <span class="hljs-string">'home'</span>&#125;);</span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight js"><figcaption><span>Force Login for Privileged Areas</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> requireLogin = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">if</span>(!Meteor.user()) &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span>(!Meteor.loggingIn())&#123;  </span><br><span class="line">      <span class="hljs-keyword">this</span>.redirect(<span class="hljs-string">'home'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">this</span>.next();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Router.onBeforeAction(requireLogin, &#123;except: <span class="hljs-string">'home'</span>&#125;);</span><br></pre></td></tr></table></div></figure>
 <h3 id="JSON-Data-for-Fixtures"><a href="#JSON-Data-for-Fixtures" class="headerlink" title="JSON Data for Fixtures"></a>JSON Data for Fixtures</h3><p>Assuming that “exercise.json” is stored in your /private directory in the root of the Meteor project, the fixture.js file in your /server folder makes use of Assets.getText in conjunction with JSON.parse to get the data in a form that can be readily accessed.</p>
-<figure class="highlight js"><figcaption><span>Get Private JSON Data</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-keyword">var</span> exercises = <span class="hljs-built_in">JSON</span>.parse(Assets.getText(<span class="hljs-string">"exercises.json"</span>));</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>, len = exercises.length; i &lt; len; i++) &#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> exercise = exercises[i];</span><br><span class="line"></span><br><span class="line">  Exercises.insert(&#123;</span><br><span class="line">    name: exercise.name,   </span><br><span class="line">    type: exercise.type</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight js"><figcaption><span>Get Private JSON Data</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> exercises = <span class="hljs-built_in">JSON</span>.parse(Assets.getText(<span class="hljs-string">"exercises.json"</span>));</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>, len = exercises.length; i &lt; len; i++) &#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> exercise = exercises[i];</span><br><span class="line"></span><br><span class="line">  Exercises.insert(&#123;</span><br><span class="line">    name: exercise.name,   </span><br><span class="line">    type: exercise.type</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
 
       
 
@@ -206,10 +249,10 @@
       
         <h3 id="Is-the-content-intended-to-be-a-number"><a href="#Is-the-content-intended-to-be-a-number" class="headerlink" title="Is the content intended to be a number?"></a>Is the content intended to be a number?</h3><p>When dealing with validations in input forms, one occasionally has to determine if the content entered is actually a number.
 However, the input content will always be string when performing a check on an input.</p>
-<figure class="highlight js"><figcaption><span>Always a String</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line">$(<span class="hljs-string">'input'</span>).on(<span class="hljs-string">'change'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-comment">//Outputs 'string'</span></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> $(<span class="hljs-keyword">this</span>).val());</span><br><span class="line">&#125;);</span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight js"><figcaption><span>Always a String</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="hljs-string">'input'</span>).on(<span class="hljs-string">'change'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-comment">//Outputs 'string'</span></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> $(<span class="hljs-keyword">this</span>).val());</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></div></figure>
 <p>Although this behavior is convenient for most situations, it could be a hassle for numbers.</p>
 <p>To solve this problem, parseInt will be used.</p>
-<figure class="highlight js"><figcaption><span>String to Number</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line">$(<span class="hljs-string">'input'</span>).on(<span class="hljs-string">'change'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-comment">//Outputs 'string'  </span></span><br><span class="line">  <span class="hljs-comment">//The '10' is for decimal form</span></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> <span class="hljs-built_in">parseInt</span>($(<span class="hljs-keyword">this</span>).val(), <span class="hljs-number">10</span>);</span><br><span class="line">&#125;);</span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight js"><figcaption><span>String to Number</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="hljs-string">'input'</span>).on(<span class="hljs-string">'change'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-comment">//Outputs 'string'  </span></span><br><span class="line">  <span class="hljs-comment">//The '10' is for decimal form</span></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> <span class="hljs-built_in">parseInt</span>($(<span class="hljs-keyword">this</span>).val(), <span class="hljs-number">10</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></div></figure>
 <p>Want to point out that my <a href="2014/08/26/Simple-Validator/">validator</a> function could be used in place of typeof.</p>
 <h3 id="Mathematically-Inclined-Cases"><a href="#Mathematically-Inclined-Cases" class="headerlink" title="Mathematically Inclined Cases"></a>Mathematically Inclined Cases</h3><p>Besides representing numbers as integers or decimal, there are also situations where numbers could be <a href="//http://speakingjs.com/es5/ch11.html#two_zeros">negative or positive zero</a> or represented  in <a href="http://speakingjs.com/es5/ch11.html#_exponent" target="_blank" rel="external">exponential</a> form. There are even more extreme cases such as <a href="http://speakingjs.com/es5/ch11.html#infinity" target="_blank" rel="external">infinity</a>.</p>
 <p>For these cases, the numbers representations are valid, but may be unusual to the some individuals. It could be worthwhile to also validate  against these cases and to prevent a jarring user experience when inputting in forms.</p>
@@ -258,9 +301,9 @@ However, the input content will always be string when performing a check on an i
 <p>This lead me to think that it may not be the plugin’s fault, and there might be something wrong with WordPress or with the configuration at least.</p>
 <p>Looking further into the situation lead me to figure out that I have forgotten to change the url settings in WordPress.</p>
 <p>To solve my problem I navigated to</p>
-<figure class="highlight plain"><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line">Settings &gt; General</span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight plain"><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Settings &gt; General</span><br></pre></td></tr></table></div></figure>
 <p>Then changing </p>
-<figure class="highlight plain"><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line">WordPress URL</span><br><span class="line">Site Address URL</span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight plain"><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">WordPress URL</span><br><span class="line">Site Address URL</span><br></pre></td></tr></table></div></figure>
 <p>values to use https for the domain to solve the problem.</p>
 
       
@@ -304,11 +347,11 @@ However, the input content will always be string when performing a check on an i
         <h3 id="Cleaning-terminal-history"><a href="#Cleaning-terminal-history" class="headerlink" title="Cleaning terminal history"></a>Cleaning terminal history</h3><p>Whether you want to have some sense of privacy or a sense of cleanliness, working with the terminal leaves a history that you might want to remove.</p>
 <p>Removing the .bash_history upon exiting the terminal is the goal for this post.</p>
 <p>Create a .rm_terminal_history.sh file in the directory that .bashrc file is in.</p>
-<figure class="highlight bash"><figcaption><span>.rm_terminal_history.sh</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-function"><span class="hljs-title">rm_hist</span></span>()&#123;  </span><br><span class="line">  <span class="hljs-keyword">if</span> [ <span class="hljs-_">-f</span> ~/.bash_<span class="hljs-built_in">history</span> ]</span><br><span class="line">  <span class="hljs-keyword">then</span></span><br><span class="line">    rm ~/.bash_<span class="hljs-built_in">history</span></span><br><span class="line">    <span class="hljs-built_in">history</span> -c</span><br><span class="line">    <span class="hljs-built_in">echo</span> <span class="hljs-string">".bash_history removed."</span></span><br><span class="line">    <span class="hljs-built_in">exit</span> 0</span><br><span class="line">  <span class="hljs-keyword">else</span></span><br><span class="line">    <span class="hljs-built_in">echo</span> <span class="hljs-string">".bash_history can not be found."</span></span><br><span class="line">    <span class="hljs-built_in">exit</span> 1</span><br><span class="line">  <span class="hljs-keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">trap</span> rm_hist EXIT</span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight bash"><figcaption><span>.rm_terminal_history.sh</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-title">rm_hist</span></span>()&#123;  </span><br><span class="line">  <span class="hljs-keyword">if</span> [ <span class="hljs-_">-f</span> ~/.bash_<span class="hljs-built_in">history</span> ]</span><br><span class="line">  <span class="hljs-keyword">then</span></span><br><span class="line">    rm ~/.bash_<span class="hljs-built_in">history</span></span><br><span class="line">    <span class="hljs-built_in">history</span> -c</span><br><span class="line">    <span class="hljs-built_in">echo</span> <span class="hljs-string">".bash_history removed."</span></span><br><span class="line">    <span class="hljs-built_in">exit</span> 0</span><br><span class="line">  <span class="hljs-keyword">else</span></span><br><span class="line">    <span class="hljs-built_in">echo</span> <span class="hljs-string">".bash_history can not be found."</span></span><br><span class="line">    <span class="hljs-built_in">exit</span> 1</span><br><span class="line">  <span class="hljs-keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">trap</span> rm_hist EXIT</span><br></pre></td></tr></table></div></figure>
 <p>After the script is created, give it executable privileges.</p>
-<figure class="highlight bash"><figcaption><span>Make Script Executable</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line">chmod +x .rm_terminal_history.sh</span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight bash"><figcaption><span>Make Script Executable</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x .rm_terminal_history.sh</span><br></pre></td></tr></table></div></figure>
 <p>Now add a reference to your .bashrc file for the script to run</p>
-<figure class="highlight bash"><figcaption><span>Add Entry to .bashrc</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-comment">#Add following line to .bashrc</span></span><br><span class="line"><span class="hljs-built_in">source</span> ~/.rm_terminal_history.sh</span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight bash"><figcaption><span>Add Entry to .bashrc</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">#Add following line to .bashrc</span></span><br><span class="line"><span class="hljs-built_in">source</span> ~/.rm_terminal_history.sh</span><br></pre></td></tr></table></div></figure>
 <p>The .bash_history file will be remove when exiting the terminal at any time.</p>
 
       
@@ -321,48 +364,6 @@ However, the input content will always be string when performing a check on an i
   <div class="article-tags ym-clearfix">
     <p>Tags: </p>
     <a href="/tags/shell/">shell</a>
-  </div>
-</footer>
-
-
-      <div class="dotted-border"></div>
-  </div>
-
-</article>
-
-
-
-
-  
-<article class="post">
-
-  <div class="post-content">
-    <header class="post-content-header">
-      
-        <time class="post-content-time" datetime="2014-09-25T20:33:11.000Z"><a href="/2014/09/25/WordPress-Quick-Tips-1/">9/25/2014</a></time>
-      
-      
-  
-    <h2 class="title"><a href="/2014/09/25/WordPress-Quick-Tips-1/">WordPress Quick Tips #1</a></h2>
-  
-
-    </header>
-    <div class="post-content-entry">
-      
-        <h3 id="Enqueue-Multiple-Google-Fonts-into-One-Stylesheet"><a href="#Enqueue-Multiple-Google-Fonts-into-One-Stylesheet" class="headerlink" title="Enqueue Multiple Google Fonts into One Stylesheet"></a>Enqueue Multiple Google Fonts into One Stylesheet</h3><p>Taking the twenty-fourteen theme for example, modify the ‘functions.php’ by separate the differents fonts that is to be used with a pipe character in the twentyfourteen_font_url function.</p>
-<figure class="highlight php"><figcaption><span>Single Stylesheet for a Group of Fonts</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">twentyfourteen_font_url</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">  $font_url = <span class="hljs-string">''</span>;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">if</span> ( <span class="hljs-string">'off'</span> !== _x( <span class="hljs-string">'on'</span>, <span class="hljs-string">'Oswald font: on or off'</span>, <span class="hljs-string">'twentyfourteen'</span> ) ) &#123;</span><br><span class="line">    $font_url = add_query_arg( <span class="hljs-string">'family'</span>, urlencode( <span class="hljs-string">'Oswald:400|Droid Sans:400'</span>), <span class="hljs-string">"//fonts.googleapis.com/css"</span> );</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">return</span> $font_url;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">twentyfourteen_scripts</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">  wp_enqueue_style( <span class="hljs-string">'googlefont-oswald-and-opensans'</span>, twentyfourteen_font_url(), <span class="hljs-keyword">array</span>(), <span class="hljs-keyword">null</span> );</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">//...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">add_action( <span class="hljs-string">'wp_enqueue_scripts'</span>, <span class="hljs-string">'twentyfourteen_scripts'</span> );</span><br></code></pre></td></tr></table></div></figure>
-<h3 id="Bouncing-Contact-Form-7-Emails"><a href="#Bouncing-Contact-Form-7-Emails" class="headerlink" title="Bouncing Contact Form 7 Emails"></a>Bouncing Contact Form 7 Emails</h3><p>If you wish to receive messages from the Contact Form 7 form to your personal email, but the behavior is spotty (emails not being sent to you), then it would help to install the <a href="https://wordpress.org/plugins/flamingo/" target="_blank" rel="external">Flamingo plugin</a>. This plugin will save messages in WordPress, such that messages will be accessible from the WordPress dashboard.</p>
-
-      
-
-
-    </div>
-    
-<footer class="post-content-footer">
-  
-  <div class="article-tags ym-clearfix">
-    <p>Tags: </p>
-    <a href="/tags/cms/">cms</a>
   </div>
 </footer>
 
@@ -496,7 +497,11 @@ However, the input content will always be string when performing a check on an i
   <ul class="entry">
     
       <li>
-        <a href="/2016/04/17/nodejs-quick-tips-2/">Nodejs - Quick Tips #2</a>
+        <a href="/2016/07/03/Nodejs-Quick-Tips-6/">Nodejs - Quick Tips #6</a>
+      </li>
+    
+      <li>
+        <a href="/2016/04/17/nodejs-quick-tips-5/">Nodejs - Quick Tips #5</a>
       </li>
     
       <li>
@@ -509,10 +514,6 @@ However, the input content will always be string when performing a check on an i
     
       <li>
         <a href="/2015/03/25/Meteor-Quick-Tips-3/">Meteor - Quick Tips #3</a>
-      </li>
-    
-      <li>
-        <a href="/2015/02/14/Meteor-Quick-Tips-2/">Meteor - Quick Tips #2</a>
       </li>
     
   </ul>

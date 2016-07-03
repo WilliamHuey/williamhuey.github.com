@@ -163,7 +163,7 @@
       
         <h3 id="Streaming-Consistency"><a href="#Streaming-Consistency" class="headerlink" title="Streaming Consistency"></a>Streaming Consistency</h3><p>Since Node’s streaming api is still changing and is in ‘unstable’ category, writing a npm module using streams may cause some unexpected behaviors on older versions of Node. To ensure that streams are compatible with older versions of Node, a drop-in replacement for stream is available called ‘readable-stream’.</p>
 <p>The following example uses the ‘readable’ event, which is not present on Node versions &lt; 0.10, but the readable-stream module is handling this inconsistency which means that this example will work with Node versions &lt; 0.10.</p>
-<figure class="highlight js"><figcaption><span>Wrapping fs.createReadStream</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>),</span><br><span class="line">  Readable = <span class="hljs-built_in">require</span>(<span class="hljs-string">'readable-stream'</span>).Readable,</span><br><span class="line">  reader = <span class="hljs-keyword">new</span> Readable();</span><br><span class="line"></span><br><span class="line">reader.wrap(fs.createReadStream(<span class="hljs-string">'./test.txt'</span>))</span><br><span class="line">  .on(<span class="hljs-string">'readable'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.read().toString());</span><br><span class="line">  &#125;).on(<span class="hljs-string">'end'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Finished reading stream'</span>);</span><br><span class="line">  &#125;);</span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight js"><figcaption><span>Wrapping fs.createReadStream</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>),</span><br><span class="line">  Readable = <span class="hljs-built_in">require</span>(<span class="hljs-string">'readable-stream'</span>).Readable,</span><br><span class="line">  reader = <span class="hljs-keyword">new</span> Readable();</span><br><span class="line"></span><br><span class="line">reader.wrap(fs.createReadStream(<span class="hljs-string">'./test.txt'</span>))</span><br><span class="line">  .on(<span class="hljs-string">'readable'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.read().toString());</span><br><span class="line">  &#125;).on(<span class="hljs-string">'end'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Finished reading stream'</span>);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></div></figure>
       
 
 
@@ -342,7 +342,11 @@
   <ul class="entry">
     
       <li>
-        <a href="/2016/04/17/nodejs-quick-tips-2/">Nodejs - Quick Tips #2</a>
+        <a href="/2016/07/03/Nodejs-Quick-Tips-6/">Nodejs - Quick Tips #6</a>
+      </li>
+    
+      <li>
+        <a href="/2016/04/17/nodejs-quick-tips-5/">Nodejs - Quick Tips #5</a>
       </li>
     
       <li>
@@ -355,10 +359,6 @@
     
       <li>
         <a href="/2015/03/25/Meteor-Quick-Tips-3/">Meteor - Quick Tips #3</a>
-      </li>
-    
-      <li>
-        <a href="/2015/02/14/Meteor-Quick-Tips-2/">Meteor - Quick Tips #2</a>
       </li>
     
   </ul>

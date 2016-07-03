@@ -163,10 +163,10 @@
       
         <h3 id="Solutions-to-Common-JavaScript-Problems"><a href="#Solutions-to-Common-JavaScript-Problems" class="headerlink" title="Solutions to Common JavaScript Problems"></a>Solutions to Common JavaScript Problems</h3><h3 id="Problem"><a href="#Problem" class="headerlink" title="#Problem"></a>#Problem</h3><p>Alerting an object returns [object Object].</p>
 <h3 id="Solution"><a href="#Solution" class="headerlink" title="#Solution"></a>#Solution</h3><p>Use JSON.stringify on the object before alerting.</p>
-<figure class="highlight javascript"><figcaption><span>Convert Object to JSON for Alert</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-keyword">var</span> myVar = &#123;myKey: <span class="hljs-string">'myValue'</span>&#125;;</span><br><span class="line">alert(<span class="hljs-built_in">JSON</span>.stringify(myVar));</span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight javascript"><figcaption><span>Convert Object to JSON for Alert</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> myVar = &#123;myKey: <span class="hljs-string">'myValue'</span>&#125;;</span><br><span class="line">alert(<span class="hljs-built_in">JSON</span>.stringify(myVar));</span><br></pre></td></tr></table></div></figure>
 <h3 id="Problem-1"><a href="#Problem-1" class="headerlink" title="#Problem"></a>#Problem</h3><p>You want to use splice, but it is destructive.</p>
 <h3 id="Solution-1"><a href="#Solution-1" class="headerlink" title="#Solution"></a>#Solution</h3><p>Use slice on the original array to make a copy. The spliced array will not affect the array created by slice.</p>
-<figure class="highlight javascript"><figcaption><span>Slice Before You Splice</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-keyword">var</span> myArray = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>],</span><br><span class="line">  copyArray = myArray.slice();</span><br><span class="line"></span><br><span class="line">myArray.splice(<span class="hljs-number">2</span>,<span class="hljs-number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//copyArray is your original</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(copyArray);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//myArray will be spliced</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(myArray);</span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight javascript"><figcaption><span>Slice Before You Splice</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> myArray = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>],</span><br><span class="line">  copyArray = myArray.slice();</span><br><span class="line"></span><br><span class="line">myArray.splice(<span class="hljs-number">2</span>,<span class="hljs-number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//copyArray is your original</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(copyArray);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//myArray will be spliced</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(myArray);</span><br></pre></td></tr></table></div></figure>
 
       
 
@@ -346,7 +346,11 @@
   <ul class="entry">
     
       <li>
-        <a href="/2016/04/17/nodejs-quick-tips-2/">Nodejs - Quick Tips #2</a>
+        <a href="/2016/07/03/Nodejs-Quick-Tips-6/">Nodejs - Quick Tips #6</a>
+      </li>
+    
+      <li>
+        <a href="/2016/04/17/nodejs-quick-tips-5/">Nodejs - Quick Tips #5</a>
       </li>
     
       <li>
@@ -359,10 +363,6 @@
     
       <li>
         <a href="/2015/03/25/Meteor-Quick-Tips-3/">Meteor - Quick Tips #3</a>
-      </li>
-    
-      <li>
-        <a href="/2015/02/14/Meteor-Quick-Tips-2/">Meteor - Quick Tips #2</a>
       </li>
     
   </ul>

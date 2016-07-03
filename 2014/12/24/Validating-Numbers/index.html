@@ -163,10 +163,10 @@
       
         <h3 id="Is-the-content-intended-to-be-a-number"><a href="#Is-the-content-intended-to-be-a-number" class="headerlink" title="Is the content intended to be a number?"></a>Is the content intended to be a number?</h3><p>When dealing with validations in input forms, one occasionally has to determine if the content entered is actually a number.
 However, the input content will always be string when performing a check on an input.</p>
-<figure class="highlight js"><figcaption><span>Always a String</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line">$(<span class="hljs-string">'input'</span>).on(<span class="hljs-string">'change'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-comment">//Outputs 'string'</span></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> $(<span class="hljs-keyword">this</span>).val());</span><br><span class="line">&#125;);</span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight js"><figcaption><span>Always a String</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="hljs-string">'input'</span>).on(<span class="hljs-string">'change'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-comment">//Outputs 'string'</span></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> $(<span class="hljs-keyword">this</span>).val());</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></div></figure>
 <p>Although this behavior is convenient for most situations, it could be a hassle for numbers.</p>
 <p>To solve this problem, parseInt will be used.</p>
-<figure class="highlight js"><figcaption><span>String to Number</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line">$(<span class="hljs-string">'input'</span>).on(<span class="hljs-string">'change'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-comment">//Outputs 'string'  </span></span><br><span class="line">  <span class="hljs-comment">//The '10' is for decimal form</span></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> <span class="hljs-built_in">parseInt</span>($(<span class="hljs-keyword">this</span>).val(), <span class="hljs-number">10</span>);</span><br><span class="line">&#125;);</span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight js"><figcaption><span>String to Number</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="hljs-string">'input'</span>).on(<span class="hljs-string">'change'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-comment">//Outputs 'string'  </span></span><br><span class="line">  <span class="hljs-comment">//The '10' is for decimal form</span></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> <span class="hljs-built_in">parseInt</span>($(<span class="hljs-keyword">this</span>).val(), <span class="hljs-number">10</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></div></figure>
 <p>Want to point out that my <a href="2014/08/26/Simple-Validator/">validator</a> function could be used in place of typeof.</p>
 <h3 id="Mathematically-Inclined-Cases"><a href="#Mathematically-Inclined-Cases" class="headerlink" title="Mathematically Inclined Cases"></a>Mathematically Inclined Cases</h3><p>Besides representing numbers as integers or decimal, there are also situations where numbers could be <a href="//http://speakingjs.com/es5/ch11.html#two_zeros">negative or positive zero</a> or represented  in <a href="http://speakingjs.com/es5/ch11.html#_exponent" target="_blank" rel="external">exponential</a> form. There are even more extreme cases such as <a href="http://speakingjs.com/es5/ch11.html#infinity" target="_blank" rel="external">infinity</a>.</p>
 <p>For these cases, the numbers representations are valid, but may be unusual to the some individuals. It could be worthwhile to also validate  against these cases and to prevent a jarring user experience when inputting in forms.</p>
@@ -349,7 +349,11 @@ However, the input content will always be string when performing a check on an i
   <ul class="entry">
     
       <li>
-        <a href="/2016/04/17/nodejs-quick-tips-2/">Nodejs - Quick Tips #2</a>
+        <a href="/2016/07/03/Nodejs-Quick-Tips-6/">Nodejs - Quick Tips #6</a>
+      </li>
+    
+      <li>
+        <a href="/2016/04/17/nodejs-quick-tips-5/">Nodejs - Quick Tips #5</a>
       </li>
     
       <li>
@@ -362,10 +366,6 @@ However, the input content will always be string when performing a check on an i
     
       <li>
         <a href="/2015/03/25/Meteor-Quick-Tips-3/">Meteor - Quick Tips #3</a>
-      </li>
-    
-      <li>
-        <a href="/2015/02/14/Meteor-Quick-Tips-2/">Meteor - Quick Tips #2</a>
       </li>
     
   </ul>

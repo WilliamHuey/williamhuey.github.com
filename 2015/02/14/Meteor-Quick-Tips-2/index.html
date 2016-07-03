@@ -162,10 +162,10 @@
     <div class="post-content-entry">
       
         <h3 id="Blaze-Template-Removal"><a href="#Blaze-Template-Removal" class="headerlink" title="Blaze Template Removal"></a>Blaze Template Removal</h3><p>Instead of using jQuery to perform DOM removal operations, Meteor’s Blaze remove can do the same thing with the following</p>
-<figure class="highlight js"><figcaption><span>Remove Element with Blaze</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line">Blaze.remove(Template.instance().view);</span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight js"><figcaption><span>Remove Element with Blaze</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Blaze.remove(Template.instance().view);</span><br></pre></td></tr></table></div></figure>
 <p>The above can be ran in the Template’s render function or in a Template event handler. Most likely, the removal will take place in an event handler.</p>
 <h3 id="Attach-Template’s-Local-Variables-to-Template-Instance"><a href="#Attach-Template’s-Local-Variables-to-Template-Instance" class="headerlink" title="Attach Template’s Local Variables to Template Instance"></a>Attach Template’s Local Variables to Template Instance</h3><p>Since all Templates files variables are encapsulated within a closure, there might be possibilities of memory leaks. To ensure that local variables are properly cleaned up, attached a data store object to the Template instance. When the Template instance is destroy so will all the references to it variables.</p>
-<figure class="highlight js"><figcaption><span>DataStore Object on Template Instance</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-keyword">var</span> ds = &#123;</span><br><span class="line">  thing1: <span class="hljs-number">1</span>,</span><br><span class="line">  thing2: <span class="hljs-number">2</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Template.myTemplate.created = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">this</span>.ds = ds;</span><br><span class="line">&#125;;</span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight js"><figcaption><span>DataStore Object on Template Instance</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> ds = &#123;</span><br><span class="line">  thing1: <span class="hljs-number">1</span>,</span><br><span class="line">  thing2: <span class="hljs-number">2</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Template.myTemplate.created = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">this</span>.ds = ds;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></div></figure>
       
 
 
@@ -344,7 +344,11 @@
   <ul class="entry">
     
       <li>
-        <a href="/2016/04/17/nodejs-quick-tips-2/">Nodejs - Quick Tips #2</a>
+        <a href="/2016/07/03/Nodejs-Quick-Tips-6/">Nodejs - Quick Tips #6</a>
+      </li>
+    
+      <li>
+        <a href="/2016/04/17/nodejs-quick-tips-5/">Nodejs - Quick Tips #5</a>
       </li>
     
       <li>
@@ -357,10 +361,6 @@
     
       <li>
         <a href="/2015/03/25/Meteor-Quick-Tips-3/">Meteor - Quick Tips #3</a>
-      </li>
-    
-      <li>
-        <a href="/2015/02/14/Meteor-Quick-Tips-2/">Meteor - Quick Tips #2</a>
       </li>
     
   </ul>

@@ -151,6 +151,50 @@
   <div class="post-content">
     <header class="post-content-header">
       
+        <time class="post-content-time" datetime="2013-04-24T20:58:00.000Z"><a href="/2013/04/24/checking-attribute-status-with-jquery/">4/24/2013</a></time>
+      
+      
+  
+    <h2 class="title"><a href="/2013/04/24/checking-attribute-status-with-jquery/">Checking Attribute Status with JQuery</a></h2>
+  
+
+    </header>
+    <div class="post-content-entry">
+      
+        <h3 id="Get-Element’s-Attribute-Value-or-Status"><a href="#Get-Element’s-Attribute-Value-or-Status" class="headerlink" title="Get Element’s Attribute Value or Status"></a>Get Element’s Attribute Value or Status</h3><p>With JQuery, you can do this $(‘#your-element’).hasClass(‘a-class’) to check if the element has a certain class. The problem is that you have to know the class name ahead of time when you use .hasClass. I wanted a general way to know if the class attribute actually exists on the element so I created the getAttrStat function for JQuery to see if the attribute in question on the element is undefined, empty, or has a value without knowing the attribute value ahead of time.</p>
+<figure class="highlight javascript"><figcaption><span>Function to Get Attribute Status</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//the return codes are arbitrary</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getAttrStat</span>(<span class="hljs-params">elem, attr</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> attrValue = <span class="hljs-literal">null</span>,</span><br><span class="line">    attrStatus = (attrValue = elem.attr(attr)) || <span class="hljs-number">0</span>;</span><br><span class="line">  <span class="hljs-keyword">if</span> (attrStatus === <span class="hljs-number">0</span>) &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (attrValue === <span class="hljs-string">""</span>) &#123;</span><br><span class="line">      <span class="hljs-comment">//attr is empty</span></span><br><span class="line">      <span class="hljs-built_in">console</span>.log(elem.selector + <span class="hljs-string">" '"</span> + attr + <span class="hljs-string">"' is empty."</span>);</span><br><span class="line">      <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> attrValue == <span class="hljs-string">"undefined"</span>)</span><br><span class="line">    <span class="hljs-comment">//attr is undefined</span></span><br><span class="line">      <span class="hljs-built_in">console</span>.log(elem.selector + <span class="hljs-string">" '"</span> + attr + <span class="hljs-string">"' is undefined."</span>);</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">  &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">    <span class="hljs-comment">//attr has a value</span></span><br><span class="line">    <span class="hljs-built_in">console</span>.log(elem.selector + <span class="hljs-string">" '"</span> + attr + <span class="hljs-string">"' has a value: "</span> + attrValue);</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">2</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight javascript"><figcaption><span>Usage of Function</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//returns 0 and logs #a-id 'class' is undefined.</span></span><br><span class="line">getAttrStat($(<span class="hljs-string">'#a-id'</span>), <span class="hljs-string">"class"</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//returns 1 and logs #b-id 'class' is undefined.</span></span><br><span class="line">getAttrStat($(<span class="hljs-string">'#b-id'</span>), <span class="hljs-string">"class"</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//returns 2 and logs #c-id 'class' is undefined.</span></span><br><span class="line">getAttrStat($(<span class="hljs-string">'#c-id'</span>), <span class="hljs-string">"class"</span>)</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight html"><figcaption><span>Divs with Attributes</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"a-id"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">""</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"b-id"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"c-class"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"c-id"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br></pre></td></tr></table></div></figure>
+<p><a href="http://jsbin.com/apodom/1/edit" target="_blank" rel="external">Demo</a></p>
+
+      
+
+
+    </div>
+    
+<footer class="post-content-footer">
+  
+  <div class="article-tags ym-clearfix">
+    <p>Tags: </p>
+    <a href="/tags/javascript/">javascript</a>, <a href="/tags/jQuery/">jQuery</a>
+  </div>
+</footer>
+
+
+      <div class="dotted-border"></div>
+  </div>
+
+</article>
+
+
+
+
+  
+<article class="post">
+
+  <div class="post-content">
+    <header class="post-content-header">
+      
         <time class="post-content-time" datetime="2013-04-18T04:53:00.000Z"><a href="/2013/04/18/nested-divs-spaced-evenly/">4/18/2013</a></time>
       
       
@@ -207,10 +251,10 @@
       
         <h3 id="Solutions-to-Common-JavaScript-Problems"><a href="#Solutions-to-Common-JavaScript-Problems" class="headerlink" title="Solutions to Common JavaScript Problems"></a>Solutions to Common JavaScript Problems</h3><h3 id="Problem"><a href="#Problem" class="headerlink" title="#Problem"></a>#Problem</h3><p>Alerting an object returns [object Object].</p>
 <h3 id="Solution"><a href="#Solution" class="headerlink" title="#Solution"></a>#Solution</h3><p>Use JSON.stringify on the object before alerting.</p>
-<figure class="highlight javascript"><figcaption><span>Convert Object to JSON for Alert</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-keyword">var</span> myVar = &#123;myKey: <span class="hljs-string">'myValue'</span>&#125;;</span><br><span class="line">alert(<span class="hljs-built_in">JSON</span>.stringify(myVar));</span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight javascript"><figcaption><span>Convert Object to JSON for Alert</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> myVar = &#123;myKey: <span class="hljs-string">'myValue'</span>&#125;;</span><br><span class="line">alert(<span class="hljs-built_in">JSON</span>.stringify(myVar));</span><br></pre></td></tr></table></div></figure>
 <h3 id="Problem-1"><a href="#Problem-1" class="headerlink" title="#Problem"></a>#Problem</h3><p>You want to use splice, but it is destructive.</p>
 <h3 id="Solution-1"><a href="#Solution-1" class="headerlink" title="#Solution"></a>#Solution</h3><p>Use slice on the original array to make a copy. The spliced array will not affect the array created by slice.</p>
-<figure class="highlight javascript"><figcaption><span>Slice Before You Splice</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-keyword">var</span> myArray = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>],</span><br><span class="line">  copyArray = myArray.slice();</span><br><span class="line"></span><br><span class="line">myArray.splice(<span class="hljs-number">2</span>,<span class="hljs-number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//copyArray is your original</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(copyArray);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//myArray will be spliced</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(myArray);</span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight javascript"><figcaption><span>Slice Before You Splice</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> myArray = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>],</span><br><span class="line">  copyArray = myArray.slice();</span><br><span class="line"></span><br><span class="line">myArray.splice(<span class="hljs-number">2</span>,<span class="hljs-number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//copyArray is your original</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(copyArray);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//myArray will be spliced</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(myArray);</span><br></pre></td></tr></table></div></figure>
 
       
 
@@ -251,7 +295,7 @@
     <div class="post-content-entry">
       
         <h3 id="From-Index-to-Another-Route"><a href="#From-Index-to-Another-Route" class="headerlink" title="From Index to Another Route"></a>From Index to Another Route</h3><p>You want your root index route to redirect to another route such as when you are on the index url (root_url) and you need to get to root_url/#/another_route. This may be useful because you wish to use the model information from another_route on initial page load. A downloadable demo is located below.</p>
-<figure class="highlight javascript"><figcaption><span>Index Route to Another Route</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line">App.IndexRoute = Ember.Route.extend(&#123;</span><br><span class="line">  redirect: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-comment">//replace 'guitars' with your specific route name</span></span><br><span class="line">    <span class="hljs-keyword">this</span>.transitionTo(<span class="hljs-string">'guitars'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight javascript"><figcaption><span>Index Route to Another Route</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">App.IndexRoute = Ember.Route.extend(&#123;</span><br><span class="line">  redirect: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-comment">//replace 'guitars' with your specific route name</span></span><br><span class="line">    <span class="hljs-keyword">this</span>.transitionTo(<span class="hljs-string">'guitars'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></div></figure>
 <p><a href="/demos/2013-04-13-ember-routes-redirect.zip">Download Demo</a></p>
 
       
@@ -293,10 +337,10 @@
     <div class="post-content-entry">
       
         <h3 id="CRUD-for-your-rvm-gemset"><a href="#CRUD-for-your-rvm-gemset" class="headerlink" title="CRUD for your rvm gemset"></a>CRUD for your rvm gemset</h3><p>Rvm stands for ruby version manager. It is used to manage ruby environments with something called gemsets. More info can be found <a href="https://rvm.io/" target="_blank" rel="external">here</a>. Rvm comes in handy when your working with <a href="http://www.rubyonrails.org/" target="_blank" rel="external">Rails</a> because you can isolate ruby environments. Here are some snippets for common tasks when dealing with gemsets.</p>
-<figure class="highlight bash"><figcaption><span>Creating a Gemset</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-comment">#Format:</span></span><br><span class="line">rvm gemset create &lt;gemset_name&gt;</span><br><span class="line"><span class="hljs-comment">#fill in gemset name</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">#Example:</span></span><br><span class="line">rvm gemset create rails3.2.13</span><br><span class="line"><span class="hljs-comment">#gemset name is "rails3.2.13"</span></span><br></code></pre></td></tr></table></div></figure>
-<figure class="highlight bash"><figcaption><span>List Current Gemset Being Used</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line">rvm gemset list</span><br></code></pre></td></tr></table></div></figure>
-<figure class="highlight bash"><figcaption><span>Using a Gemset</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-comment">#Format:</span></span><br><span class="line">rvm use &lt;ruby_version_number&gt;@&lt;gemset_name&gt;</span><br><span class="line"><span class="hljs-comment">#fill in ruby version number and gemset name of your choosing</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">#Example:</span></span><br><span class="line"><span class="hljs-comment">#uses ruby 1.9.3 with gemset name of "rails version 3.2.13"</span></span><br><span class="line">rvm use 1.9.3@rails3.2.13 --default</span><br><span class="line"><span class="hljs-comment">#also using a default flag to set the gemset as the default</span></span><br></code></pre></td></tr></table></div></figure>
-<figure class="highlight bash"><figcaption><span>Deleting a Gemset</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-comment">#Format:</span></span><br><span class="line">rvm gemset delete &lt;gemset_name&gt;</span><br><span class="line"><span class="hljs-comment">#fill in gemset name</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">#Example:</span></span><br><span class="line">rvm gemset delete gemset_to_delete</span><br><span class="line"><span class="hljs-comment">#"gemset_to_delete" is the gemset that you want to delete</span></span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight bash"><figcaption><span>Creating a Gemset</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">#Format:</span></span><br><span class="line">rvm gemset create &lt;gemset_name&gt;</span><br><span class="line"><span class="hljs-comment">#fill in gemset name</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">#Example:</span></span><br><span class="line">rvm gemset create rails3.2.13</span><br><span class="line"><span class="hljs-comment">#gemset name is "rails3.2.13"</span></span><br></pre></td></tr></table></div></figure>
+<figure class="highlight bash"><figcaption><span>List Current Gemset Being Used</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rvm gemset list</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight bash"><figcaption><span>Using a Gemset</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">#Format:</span></span><br><span class="line">rvm use &lt;ruby_version_number&gt;@&lt;gemset_name&gt;</span><br><span class="line"><span class="hljs-comment">#fill in ruby version number and gemset name of your choosing</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">#Example:</span></span><br><span class="line"><span class="hljs-comment">#uses ruby 1.9.3 with gemset name of "rails version 3.2.13"</span></span><br><span class="line">rvm use 1.9.3@rails3.2.13 --default</span><br><span class="line"><span class="hljs-comment">#also using a default flag to set the gemset as the default</span></span><br></pre></td></tr></table></div></figure>
+<figure class="highlight bash"><figcaption><span>Deleting a Gemset</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">#Format:</span></span><br><span class="line">rvm gemset delete &lt;gemset_name&gt;</span><br><span class="line"><span class="hljs-comment">#fill in gemset name</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">#Example:</span></span><br><span class="line">rvm gemset delete gemset_to_delete</span><br><span class="line"><span class="hljs-comment">#"gemset_to_delete" is the gemset that you want to delete</span></span><br></pre></td></tr></table></div></figure>
 
       
 
@@ -308,51 +352,6 @@
   <div class="article-tags ym-clearfix">
     <p>Tags: </p>
     <a href="/tags/rails/">rails</a>, <a href="/tags/rvm/">rvm</a>
-  </div>
-</footer>
-
-
-      <div class="dotted-border"></div>
-  </div>
-
-</article>
-
-
-
-
-  
-<article class="post">
-
-  <div class="post-content">
-    <header class="post-content-header">
-      
-        <time class="post-content-time" datetime="2013-04-04T02:45:00.000Z"><a href="/2013/04/03/whole-header-region-clickable/">4/3/2013</a></time>
-      
-      
-  
-    <h2 class="title"><a href="/2013/04/03/whole-header-region-clickable/">Whole Header Region Clickable</a></h2>
-  
-
-    </header>
-    <div class="post-content-entry">
-      
-        <p>##Header Text and Image are Clickable</p>
-<p>On the majority the sites out there, the click on the upper-left hand side where logo and text is situated, will take you to the home page. Take for example <a href="https://trello.com/" target="_blank" rel="external">Trello</a> or <a href="http://www.pcworld.com/" target="_blank" rel="external">PcWorld</a>. However, I do not have a small logo on the upper-left of the site because I want my whole header region to lead to the home page.</p>
-<p>The general idea on how to do this is to make a header tag that will contain all header text and logo along with a link. To illustrate this, I will use my site as an example. If you want to make changes in your Octopress blog, I am modifying my source/_includes/custom/header.html file.</p>
-<figure class="highlight html"><figcaption><span>Header Region</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">title</span>=<span class="hljs-string">"Home is where the heart is."</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"main-header-container"</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"top-header-area"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"main-header"</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">"my-main-logo"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"my-main-logo"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"&#123;&#123; root_url &#125;&#125;/images/logoSmall.png"</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"site-title-header"</span>&gt;</span>&#123;&#123; site.title &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"home-link"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"/"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br></code></pre></td></tr></table></div></figure>
-<p>To make the link work for all browsers, which includes IE, there is an additional css trick.  The A tag needs to have a background color (it does not matter which color) and set the opacity of the A tag to zero.</p>
-<figure class="highlight css"><figcaption><span>Absolute Position the A Tag</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-selector-id">#home-link</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">position</span>: absolute;</span><br><span class="line">  <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>;</span><br><span class="line">  <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;</span><br><span class="line">  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;</span><br><span class="line">  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#fff</span>;</span><br><span class="line">  <span class="hljs-attribute">-ms-filter</span>:<span class="hljs-string">"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"</span>;</span><br><span class="line">  <span class="hljs-attribute">filter</span>: <span class="hljs-built_in">alpha</span>(opacity=0);</span><br><span class="line">  <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></code></pre></td></tr></table></div></figure>
-
-      
-
-
-    </div>
-    
-<footer class="post-content-footer">
-  
-  <div class="article-tags ym-clearfix">
-    <p>Tags: </p>
-    <a href="/tags/css/">css</a>, <a href="/tags/html/">html</a>
   </div>
 </footer>
 
@@ -486,7 +485,11 @@
   <ul class="entry">
     
       <li>
-        <a href="/2016/04/17/nodejs-quick-tips-2/">Nodejs - Quick Tips #2</a>
+        <a href="/2016/07/03/Nodejs-Quick-Tips-6/">Nodejs - Quick Tips #6</a>
+      </li>
+    
+      <li>
+        <a href="/2016/04/17/nodejs-quick-tips-5/">Nodejs - Quick Tips #5</a>
       </li>
     
       <li>
@@ -499,10 +502,6 @@
     
       <li>
         <a href="/2015/03/25/Meteor-Quick-Tips-3/">Meteor - Quick Tips #3</a>
-      </li>
-    
-      <li>
-        <a href="/2015/02/14/Meteor-Quick-Tips-2/">Meteor - Quick Tips #2</a>
       </li>
     
   </ul>

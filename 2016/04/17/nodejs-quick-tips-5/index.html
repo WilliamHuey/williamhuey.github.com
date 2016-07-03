@@ -9,15 +9,15 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Williamful</title>
+    <title>Nodejs - Quick Tips #5 | Williamful</title>
     <meta name="author" content="William Huey">
     
-    <meta name="description" content="Blogging and Beyond">
+    <meta name="description" content="Quick Tips for Nodejs">
     
-    
+    <meta name="keywords" content="javascript nodejs tips process exit time elapse babel webpack eslint boilerplate">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    
+    <meta property="og:title" content="Nodejs - Quick Tips #5"/>
     <meta property="og:site_name" content="Williamful"/>
 
     <meta name="google-site-verification" content="B2mK_j0pDOjJWR2qib5P5KJZ7Dm_D3eakVIvZJ6gME0" />
@@ -144,57 +144,8 @@
 <main id="content">
     <div id="main-col" class="ym-wrapper">
         <div id="main-col-wrapper" class="ym-wbox">
-            
-  
-<article class="post">
-
-  <div class="post-content">
-    <header class="post-content-header">
-      
-        <time class="post-content-time" datetime="2016-07-03T22:08:55.000Z"><a href="/2016/07/03/Nodejs-Quick-Tips-6/">7/3/2016</a></time>
-      
-      
-  
-    <h2 class="title"><a href="/2016/07/03/Nodejs-Quick-Tips-6/">Nodejs - Quick Tips #6</a></h2>
-  
-
-    </header>
-    <div class="post-content-entry">
-      
-        <h3 id="Babel-Requiring-ES2015-File-from-ES5"><a href="#Babel-Requiring-ES2015-File-from-ES5" class="headerlink" title="Babel - Requiring ES2015 File from ES5"></a>Babel - Requiring ES2015 File from ES5</h3><p>In the situation where you desire to use a ES5 file to refer to a ES2015 file, the on-the-fly compilation option of Babel can be one of the ways to do so.</p>
-<p>This case might come up when you are intending to run an init file that you do not want to perform any Babel compilation, but you still want the ES5 file to serve as the entry point for your module.</p>
-<figure class="highlight js"><figcaption><span>On the Fly Compilation</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">require</span>(<span class="hljs-string">'babel-core/register'</span>)(&#123;</span><br><span class="line">  presets: [<span class="hljs-string">'es2015'</span>]</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></div></figure>
-<p>This technique more suited for activities which do not need fast processing time because this method really slows execution down.</p>
-<p>It will be more appropriate for operations that are not frequently run, such as some tests, and it would also not be advisable for initializing a cli node module because the slowdown will be quite evident.</p>
-<p>As a side note for speeding up node cli execution, it is more beneficial to reduce the number of ‘require’ calls as noted <a href="https://github.com/dominictarr/noderify" target="_blank" rel="external">here</a>, which makes for the argument of using webpack to bundle your NPM modules into one file.</p>
-<h3 id="Testing-Command-Line-NPM-Modules"><a href="#Testing-Command-Line-NPM-Modules" class="headerlink" title="Testing Command Line NPM Modules"></a>Testing Command Line NPM Modules</h3><p>Most NPM modules are used programmatically through importing or requiring them into the file you are working on, but for the other times where your NPM module is used as a CLI module, input will need to be taken from the console.</p>
-<p>For the properly testing of these CLI modules, the ‘childProcess.exec’ method can be used. The following example will starts the npm at the entry point</p>
-<figure class="highlight js"><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> childProcess <span class="hljs-keyword">from</span> <span class="hljs-string">'child_process'</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> exec = childProcess.exec;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//Point to the entry point of NPM module</span></span><br><span class="line"><span class="hljs-keyword">const</span> cliEntryFile = <span class="hljs-string">'node '</span> + __dirname +  <span class="hljs-string">'/../bin/my-cli-init.js'</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//Execute the command line with the supplied argument</span></span><br><span class="line">exec(cliEntryFile + <span class="hljs-string">' my-cool-command'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error, stdout, stderr</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-comment">//Rest of command actions</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></div></figure>
-<p>The above shows that node will execute the exact entry file (the ‘main’ key in package.json) with the command of your choice for your test cases.</p>
-
-      
-
-
-    </div>
+            <div id="post-div">
     
-<footer class="post-content-footer">
-  
-  <div class="article-tags ym-clearfix">
-    <p>Tags: </p>
-    <a href="/tags/javascript/">javascript</a>, <a href="/tags/nodejs/">nodejs</a>
-  </div>
-</footer>
-
-
-      <div class="dotted-border"></div>
-  </div>
-
-</article>
-
-
-
-
-  
 <article class="post">
 
   <div class="post-content">
@@ -204,7 +155,7 @@
       
       
   
-    <h2 class="title"><a href="/2016/04/17/nodejs-quick-tips-5/">Nodejs - Quick Tips #5</a></h2>
+    <h2 class="title">Nodejs - Quick Tips #5</h2>
   
 
     </header>
@@ -247,155 +198,55 @@
 </article>
 
 
+<nav class="article-pagination ym-clearfix">
 
-
-  
-<article class="post">
-
-  <div class="post-content">
-    <header class="post-content-header">
-      
-        <time class="post-content-time" datetime="2015-07-21T03:00:07.000Z"><a href="/2015/07/20/Velocityjs-Effects/">7/20/2015</a></time>
-      
-      
-  
-    <h2 class="title"><a href="/2015/07/20/Velocityjs-Effects/">Velocityjs - Effects</a></h2>
-  
-
-    </header>
-    <div class="post-content-entry">
-      
-        <p>For your heavy-duty JavaScript animations, I recommend <a href="http://julian.com/research/velocity/" target="_blank" rel="external">Velocityjs</a>, since it has many features and great documentation. <br> Here are some simple effects that I find useful if you have chosen to use Velocityjs:</p>
-<h3 id="Pulsate-Throb"><a href="#Pulsate-Throb" class="headerlink" title="Pulsate / Throb"></a>Pulsate / Throb</h3><figure class="highlight js"><figcaption><span>Grow and Shrink Element for Five Times</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="hljs-string">'#my-element'</span>).velocity(&#123; scale: <span class="hljs-number">2</span> &#125;, &#123; loop: <span class="hljs-number">5</span>&#125;);</span><br></pre></td></tr></table></div></figure>
-<p><a href="http://jsbin.com/gocinunome/1/" target="_blank" rel="external">Pulsate Demo</a></p>
-<h3 id="Show-and-Rotate"><a href="#Show-and-Rotate" class="headerlink" title="Show and Rotate"></a>Show and Rotate</h3><figure class="highlight js"><figcaption><span>Appear, Spins, and Disappear</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//Complete animation within half a second</span></span><br><span class="line">$(<span class="hljs-string">'#my-element'</span>).velocity(&#123; scale: <span class="hljs-number">3</span>, opacity: <span class="hljs-number">1</span>, rotateZ: <span class="hljs-string">"360deg"</span> &#125;, &#123;duration: <span class="hljs-number">500</span>&#125;);</span><br></pre></td></tr></table></div></figure>
-<p><a href="http://jsbin.com/razexohare/2" target="_blank" rel="external">Spin Demo</a></p>
-<h3 id="Stagger-Elements"><a href="#Stagger-Elements" class="headerlink" title="Stagger Elements"></a>Stagger Elements</h3><figure class="highlight js"><figcaption><span>Group Zoom-in</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//Assumes that the UI Pack (velocity.ui.js) is in place</span></span><br><span class="line">$(<span class="hljs-string">'.group-of-elements'</span>).velocity(<span class="hljs-string">'transition.whirlIn'</span>, &#123;stagger: <span class="hljs-number">500</span>&#125;);</span><br></pre></td></tr></table></div></figure>
-<p><a href="http://jsbin.com/tezofuraqi/2/" target="_blank" rel="external">Stagger Group Demo</a></p>
-
-      
-
-
-    </div>
     
-<footer class="post-content-footer">
-  
-  <div class="article-tags ym-clearfix">
-    <p>Tags: </p>
-    <a href="/tags/javascript/">javascript</a>
-  </div>
-</footer>
-
-
-      <div class="dotted-border"></div>
-  </div>
-
-</article>
-
-
-
-
-  
-<article class="post">
-
-  <div class="post-content">
-    <header class="post-content-header">
-      
-        <time class="post-content-time" datetime="2015-05-16T06:28:01.000Z"><a href="/2015/05/16/Meteor-Quick-Tips-4/">5/16/2015</a></time>
-      
-      
-  
-    <h2 class="title"><a href="/2015/05/16/Meteor-Quick-Tips-4/">Meteor - Quick Tips #4</a></h2>
-  
-
-    </header>
-    <div class="post-content-entry">
-      
-        <h3 id="Filtering-Differences-between-Minimongo-and-Mongo"><a href="#Filtering-Differences-between-Minimongo-and-Mongo" class="headerlink" title="Filtering Differences between Minimongo  and Mongo"></a>Filtering Differences between Minimongo  and Mongo</h3><p>Minimongo is Meteor’s client-side implementation of Mongodb, while Mongodb is refer to as Mongo.</p>
-<p>In Mongo, when limiting the fields of the return documents, there are two parameters. Minimongo also takes two parameters, but the second parameter needs a field wrapper to denote the fields to return.</p>
-<figure class="highlight js"><figcaption><span>Cut Down Documents Field Return</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//Mongodb</span></span><br><span class="line">CollectionName.find(&#123;&#125;, &#123;<span class="hljs-string">'onlyThisField'</span>:<span class="hljs-number">1</span>&#125;);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//Minimongo</span></span><br><span class="line">CollectionName.find(&#123;&#125;, &#123;fields: &#123;<span class="hljs-string">'onlyThisField'</span>:<span class="hljs-number">1</span>&#125;&#125;);</span><br></pre></td></tr></table></div></figure>
-<h3 id="Return-Template-in-Template-Helper"><a href="#Return-Template-in-Template-Helper" class="headerlink" title="Return Template in Template Helper"></a>Return Template in Template Helper</h3><p>Template helpers only return a string when outputting to the templates, so an object output is not possible. The closest thing to rendering a template out to another template is to use Blaze.toHTML. The spacebar template needs to have the triple braces for raw output to convert a string to an actual element.</p>
-<figure class="highlight js"><figcaption><span>Blaze Returns a Html String</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//Rendered</span></span><br><span class="line">Template.blank.onRendered(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">  <span class="hljs-keyword">this</span>.data.rv = <span class="hljs-keyword">new</span> ReactiveVar(<span class="hljs-string">""</span>);</span><br><span class="line">  <span class="hljs-keyword">this</span>.data.rv.set(Blaze.toHTML(Template.postInfo));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//Helpers</span></span><br><span class="line">Template.post.helpers(&#123;</span><br><span class="line">  info: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> Template.instance().data.rv.get();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></div></figure>
-<figure class="highlight html"><figcaption><span>Output the Html String</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"post"</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"reading"</span>&gt;</span>&#123;&#123;&#123;info&#125;&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span><br></pre></td></tr></table></div></figure>
-      
-
-
-    </div>
+    <a href="/2016/07/03/Nodejs-Quick-Tips-6/" class="prev" title="Nodejs - Quick Tips #6">« Nodejs - Quick Tips #6</a>
     
-<footer class="post-content-footer">
-  
-  <div class="article-tags ym-clearfix">
-    <p>Tags: </p>
-    <a href="/tags/javascript/">javascript</a>, <a href="/tags/meteorjs/">meteorjs</a>
-  </div>
-</footer>
-
-
-      <div class="dotted-border"></div>
-  </div>
-
-</article>
-
-
-
-
-  
-<article class="post">
-
-  <div class="post-content">
-    <header class="post-content-header">
-      
-        <time class="post-content-time" datetime="2015-03-25T17:40:12.000Z"><a href="/2015/03/25/Meteor-Quick-Tips-3/">3/25/2015</a></time>
-      
-      
-  
-    <h2 class="title"><a href="/2015/03/25/Meteor-Quick-Tips-3/">Meteor - Quick Tips #3</a></h2>
-  
-
-    </header>
-    <div class="post-content-entry">
-      
-        <h3 id="Template-Helpers-and-Subscriptions"><a href="#Template-Helpers-and-Subscriptions" class="headerlink" title="Template Helpers and Subscriptions"></a>Template Helpers and Subscriptions</h3><p>Templates helpers format data onto your templates, but one must ensure that subscription data is fully loaded before the template helpers have a chance to render.</p>
-<p>With the help of <a href="https://github.com/iron-meteor/iron-router" target="_blank" rel="external">Iron Router</a>, use the ‘this.ready()’ check inside the data option.</p>
-<figure class="highlight js"><figcaption><span>Router.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Router.route(<span class="hljs-string">'/post/:_id'</span>, &#123;</span><br><span class="line">  waitOn: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> Meteor.subscribe(<span class="hljs-string">'post'</span>, <span class="hljs-keyword">this</span>.params._id)</span><br><span class="line">  &#125;,</span><br><span class="line">  data: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123; </span><br><span class="line">    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.ready()) &#123;</span><br><span class="line">      <span class="hljs-keyword">return</span> &#123; </span><br><span class="line">        post: Posts.findOne(&#123;_id: <span class="hljs-keyword">this</span>.params._id&#125;);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;    </span><br><span class="line">  &#125;  </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></div></figure>
-<p>Once the above is in place, a template helper can now safely rendered the subscription data.</p>
-<figure class="highlight js"><figcaption><span>Template.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Template.post.helpers(&#123;</span><br><span class="line">  post: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> Template.currentData().post;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></div></figure>
-<h3 id="Remove-Event-Listeners-From-Blaze-Templates"><a href="#Remove-Event-Listeners-From-Blaze-Templates" class="headerlink" title="Remove Event Listeners From Blaze Templates"></a>Remove Event Listeners From Blaze Templates</h3><p>As of Meteor 1.0.4.2, this can not be done. The <a href="http://docs.meteor.com/#/full/blaze_tohtml" target="_blank" rel="external">Blaze to HTML</a> looked promising, but this only creates static html element from a template, it does not provide the ability to render an active Blaze template inert.</p>
-<p>For example the following template has a click event listener attached, but there is not way to undo or remove the click event listener.</p>
-<figure class="highlight js"><figcaption><span>Click Event Listener</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Template.my-template.events(&#123;</span><br><span class="line">  <span class="hljs-string">"click #container a"</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">evt</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-comment">//do some stuff here</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></div></figure>
-
-      
-
-
-    </div>
     
-<footer class="post-content-footer">
-  
-  <div class="article-tags ym-clearfix">
-    <p>Tags: </p>
-    <a href="/tags/javascript/">javascript</a>, <a href="/tags/meteorjs/">meteorjs</a>
-  </div>
-</footer>
-
-
-      <div class="dotted-border"></div>
-  </div>
-
-</article>
-
-
-
-
-
-<nav id="pagination">
-  <div id="pagination-wrapper" class="ym-clearfix">
-      
-      <span id="pagination-info">Page 1 of 9</span>
-      
-        <a href="/page/2/" class="older">Older »</a>
-      
-  </div>
+    <a href="/2015/07/20/Velocityjs-Effects/" class="next" title="Velocityjs - Effects">Velocityjs - Effects »</a>
+    
 </nav>
+
+
+
+<section id="comment">
+  <h1 class="title">Comments</h1>
+
+  
+<!--
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+-->
+    <div><!-- START: Livefyre Embed -->
+        <div id="livefyre-comments"></div>
+        <script type="text/javascript" src="http://zor.livefyre.com/wjs/v3.0/javascripts/livefyre.js"></script>
+        <script type="text/javascript">
+            (function () {
+                var articleId = fyre.conv.load.makeArticleId(null);
+                fyre.conv.load({}, [{
+                    el: 'livefyre-comments',
+                    network: "livefyre.com",
+                    siteId: "326354",
+                    articleId: articleId,
+                    signed: false,
+                    collectionMeta: {
+                        articleId: articleId,
+                        url: fyre.conv.load.makeCollectionUrl()
+                    }
+                }], function() {});
+            }());
+        </script>
+        <noscript>Please enable JavaScript to view the comments powered by LiveFyre</noscript>
+        <!-- END: Livefyre Embed --></div>
+
+  
+</section>
+
+
+</div>
+
         </div>
     </div>
 </main>

@@ -162,7 +162,7 @@
     <div class="post-content-entry">
       
         <h3 id="From-Index-to-Another-Route"><a href="#From-Index-to-Another-Route" class="headerlink" title="From Index to Another Route"></a>From Index to Another Route</h3><p>You want your root index route to redirect to another route such as when you are on the index url (root_url) and you need to get to root_url/#/another_route. This may be useful because you wish to use the model information from another_route on initial page load. A downloadable demo is located below.</p>
-<figure class="highlight javascript"><figcaption><span>Index Route to Another Route</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line">App.IndexRoute = Ember.Route.extend(&#123;</span><br><span class="line">  redirect: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-comment">//replace 'guitars' with your specific route name</span></span><br><span class="line">    <span class="hljs-keyword">this</span>.transitionTo(<span class="hljs-string">'guitars'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight javascript"><figcaption><span>Index Route to Another Route</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">App.IndexRoute = Ember.Route.extend(&#123;</span><br><span class="line">  redirect: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-comment">//replace 'guitars' with your specific route name</span></span><br><span class="line">    <span class="hljs-keyword">this</span>.transitionTo(<span class="hljs-string">'guitars'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></div></figure>
 <p><a href="/demos/2013-04-13-ember-routes-redirect.zip">Download Demo</a></p>
 
       
@@ -343,7 +343,11 @@
   <ul class="entry">
     
       <li>
-        <a href="/2016/04/17/nodejs-quick-tips-2/">Nodejs - Quick Tips #2</a>
+        <a href="/2016/07/03/Nodejs-Quick-Tips-6/">Nodejs - Quick Tips #6</a>
+      </li>
+    
+      <li>
+        <a href="/2016/04/17/nodejs-quick-tips-5/">Nodejs - Quick Tips #5</a>
       </li>
     
       <li>
@@ -356,10 +360,6 @@
     
       <li>
         <a href="/2015/03/25/Meteor-Quick-Tips-3/">Meteor - Quick Tips #3</a>
-      </li>
-    
-      <li>
-        <a href="/2015/02/14/Meteor-Quick-Tips-2/">Meteor - Quick Tips #2</a>
       </li>
     
   </ul>

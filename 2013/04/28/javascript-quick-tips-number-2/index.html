@@ -162,11 +162,11 @@
     <div class="post-content-entry">
       
         <h3 id="Concatenating-when-Logging-without-the-Plus-Sign"><a href="#Concatenating-when-Logging-without-the-Plus-Sign" class="headerlink" title="Concatenating when Logging without the Plus Sign"></a>Concatenating when Logging without the Plus Sign</h3><p>You can use the comma in place of the plus sign when concatenation is needed.
-<figure class="highlight javascript"><figcaption><span>Give the Comma a Try When Logging</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-keyword">var</span> stuff = <span class="hljs-string">'my stuff'</span>;</span><br><span class="line"><span class="hljs-comment">//the comma acts like the plus to concatenate your strings</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">'some text:'</span>, stuff);</span><br></code></pre></td></tr></table></div></figure></p>
+<figure class="highlight javascript"><figcaption><span>Give the Comma a Try When Logging</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> stuff = <span class="hljs-string">'my stuff'</span>;</span><br><span class="line"><span class="hljs-comment">//the comma acts like the plus to concatenate your strings</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">'some text:'</span>, stuff);</span><br></pre></td></tr></table></div></figure></p>
 <h3 id="Attaching-Properties-to-Non-Object-Objects"><a href="#Attaching-Properties-to-Non-Object-Objects" class="headerlink" title="Attaching Properties to Non-Object Objects"></a>Attaching Properties to Non-Object Objects</h3><p>Usually when you deal with an array you normally do not attach properties to it, but you are allow to do such a thing.</p>
-<figure class="highlight javascript"><figcaption><span>Attaching Property to an Array</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-keyword">var</span> myArray = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];</span><br><span class="line">myArray.aKey = <span class="hljs-string">"myValue"</span>;</span><br><span class="line"><span class="hljs-comment">//outputs "myValue"</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(myArray.akey);</span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight javascript"><figcaption><span>Attaching Property to an Array</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> myArray = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];</span><br><span class="line">myArray.aKey = <span class="hljs-string">"myValue"</span>;</span><br><span class="line"><span class="hljs-comment">//outputs "myValue"</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(myArray.akey);</span><br></pre></td></tr></table></div></figure>
 <p>You can also do the same thing for a function and other non-object objects.</p>
-<figure class="highlight javascript"><figcaption><span>Now Attaching Property to a Function</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-keyword">var</span> myFunction = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;&#125;;</span><br><span class="line"><span class="hljs-comment">//outputs "myValue"</span></span><br><span class="line">myFunction.aKey = <span class="hljs-string">"myValue"</span>;</span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight javascript"><figcaption><span>Now Attaching Property to a Function</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> myFunction = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;&#125;;</span><br><span class="line"><span class="hljs-comment">//outputs "myValue"</span></span><br><span class="line">myFunction.aKey = <span class="hljs-string">"myValue"</span>;</span><br></pre></td></tr></table></div></figure>
 <p>The reason you can do this is because everything in JavaScript is treated like an object. You may want to do this to include meta data on your arrays, functions or other variable types that are not object objects, but do use your discretion when a object is more fitting for the task.</p>
 
       
@@ -347,7 +347,11 @@
   <ul class="entry">
     
       <li>
-        <a href="/2016/04/17/nodejs-quick-tips-2/">Nodejs - Quick Tips #2</a>
+        <a href="/2016/07/03/Nodejs-Quick-Tips-6/">Nodejs - Quick Tips #6</a>
+      </li>
+    
+      <li>
+        <a href="/2016/04/17/nodejs-quick-tips-5/">Nodejs - Quick Tips #5</a>
       </li>
     
       <li>
@@ -360,10 +364,6 @@
     
       <li>
         <a href="/2015/03/25/Meteor-Quick-Tips-3/">Meteor - Quick Tips #3</a>
-      </li>
-    
-      <li>
-        <a href="/2015/02/14/Meteor-Quick-Tips-2/">Meteor - Quick Tips #2</a>
       </li>
     
   </ul>

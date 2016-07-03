@@ -164,11 +164,11 @@
         <h3 id="Cleaning-terminal-history"><a href="#Cleaning-terminal-history" class="headerlink" title="Cleaning terminal history"></a>Cleaning terminal history</h3><p>Whether you want to have some sense of privacy or a sense of cleanliness, working with the terminal leaves a history that you might want to remove.</p>
 <p>Removing the .bash_history upon exiting the terminal is the goal for this post.</p>
 <p>Create a .rm_terminal_history.sh file in the directory that .bashrc file is in.</p>
-<figure class="highlight bash"><figcaption><span>.rm_terminal_history.sh</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-function"><span class="hljs-title">rm_hist</span></span>()&#123;  </span><br><span class="line">  <span class="hljs-keyword">if</span> [ <span class="hljs-_">-f</span> ~/.bash_<span class="hljs-built_in">history</span> ]</span><br><span class="line">  <span class="hljs-keyword">then</span></span><br><span class="line">    rm ~/.bash_<span class="hljs-built_in">history</span></span><br><span class="line">    <span class="hljs-built_in">history</span> -c</span><br><span class="line">    <span class="hljs-built_in">echo</span> <span class="hljs-string">".bash_history removed."</span></span><br><span class="line">    <span class="hljs-built_in">exit</span> 0</span><br><span class="line">  <span class="hljs-keyword">else</span></span><br><span class="line">    <span class="hljs-built_in">echo</span> <span class="hljs-string">".bash_history can not be found."</span></span><br><span class="line">    <span class="hljs-built_in">exit</span> 1</span><br><span class="line">  <span class="hljs-keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">trap</span> rm_hist EXIT</span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight bash"><figcaption><span>.rm_terminal_history.sh</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-title">rm_hist</span></span>()&#123;  </span><br><span class="line">  <span class="hljs-keyword">if</span> [ <span class="hljs-_">-f</span> ~/.bash_<span class="hljs-built_in">history</span> ]</span><br><span class="line">  <span class="hljs-keyword">then</span></span><br><span class="line">    rm ~/.bash_<span class="hljs-built_in">history</span></span><br><span class="line">    <span class="hljs-built_in">history</span> -c</span><br><span class="line">    <span class="hljs-built_in">echo</span> <span class="hljs-string">".bash_history removed."</span></span><br><span class="line">    <span class="hljs-built_in">exit</span> 0</span><br><span class="line">  <span class="hljs-keyword">else</span></span><br><span class="line">    <span class="hljs-built_in">echo</span> <span class="hljs-string">".bash_history can not be found."</span></span><br><span class="line">    <span class="hljs-built_in">exit</span> 1</span><br><span class="line">  <span class="hljs-keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">trap</span> rm_hist EXIT</span><br></pre></td></tr></table></div></figure>
 <p>After the script is created, give it executable privileges.</p>
-<figure class="highlight bash"><figcaption><span>Make Script Executable</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line">chmod +x .rm_terminal_history.sh</span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight bash"><figcaption><span>Make Script Executable</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x .rm_terminal_history.sh</span><br></pre></td></tr></table></div></figure>
 <p>Now add a reference to your .bashrc file for the script to run</p>
-<figure class="highlight bash"><figcaption><span>Add Entry to .bashrc</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs"><span class="line"><span class="hljs-comment">#Add following line to .bashrc</span></span><br><span class="line"><span class="hljs-built_in">source</span> ~/.rm_terminal_history.sh</span><br></code></pre></td></tr></table></div></figure>
+<figure class="highlight bash"><figcaption><span>Add Entry to .bashrc</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">#Add following line to .bashrc</span></span><br><span class="line"><span class="hljs-built_in">source</span> ~/.rm_terminal_history.sh</span><br></pre></td></tr></table></div></figure>
 <p>The .bash_history file will be remove when exiting the terminal at any time.</p>
 
       
@@ -349,7 +349,11 @@
   <ul class="entry">
     
       <li>
-        <a href="/2016/04/17/nodejs-quick-tips-2/">Nodejs - Quick Tips #2</a>
+        <a href="/2016/07/03/Nodejs-Quick-Tips-6/">Nodejs - Quick Tips #6</a>
+      </li>
+    
+      <li>
+        <a href="/2016/04/17/nodejs-quick-tips-5/">Nodejs - Quick Tips #5</a>
       </li>
     
       <li>
@@ -362,10 +366,6 @@
     
       <li>
         <a href="/2015/03/25/Meteor-Quick-Tips-3/">Meteor - Quick Tips #3</a>
-      </li>
-    
-      <li>
-        <a href="/2015/02/14/Meteor-Quick-Tips-2/">Meteor - Quick Tips #2</a>
       </li>
     
   </ul>
