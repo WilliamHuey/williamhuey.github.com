@@ -9,15 +9,15 @@
 <head>
     <meta charset="utf-8">
     
-    <title>jQuery Plugins - Prevent Multiple Instantiations | Williamful</title>
+    <title>Nodejs - Quick Tips #7 | Williamful</title>
     <meta name="author" content="William Huey">
     
-    <meta name="description" content="Script Loading Safety">
+    <meta name="description" content="Quick Tips for Nodejs">
     
-    <meta name="keywords" content="jQuery">
+    <meta name="keywords" content="javascript nodejs tips babel webpack default module.exports transpiled">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta property="og:title" content="jQuery Plugins - Prevent Multiple Instantiations"/>
+    <meta property="og:title" content="Nodejs - Quick Tips #7"/>
     <meta property="og:site_name" content="Williamful"/>
 
     <meta name="google-site-verification" content="B2mK_j0pDOjJWR2qib5P5KJZ7Dm_D3eakVIvZJ6gME0" />
@@ -151,29 +151,22 @@
   <div class="post-content">
     <header class="post-content-header">
       
-        <time class="post-content-time" datetime="2014-06-04T01:19:21.000Z"><a href="/2014/06/03/jquery-plugins---prevent-multiple-instantiations/">6/3/2014</a></time>
+        <time class="post-content-time" datetime="2016-10-16T22:15:43.000Z"><a href="/2016/10/16/nodejs-quick-tips-7/">10/16/2016</a></time>
       
       
   
-    <h2 class="title">jQuery Plugins - Prevent Multiple Instantiations</h2>
+    <h2 class="title">Nodejs - Quick Tips #7</h2>
   
 
     </header>
     <div class="post-content-entry">
       
-        <p>##Script Loading Safety</p>
-<p>The <a href="https://github.com/jquery-boilerplate/jquery-boilerplate" target="_blank" rel="external">jQuery Boilerplate</a> is a popular boilerplate and provides a safety
- net for double instantiation of a jQuery object with this code</p>
-<figure class="highlight js"><figcaption><span>Prevent Double Instantation on jQuery Object</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">if</span> (!$.data(<span class="hljs-keyword">this</span>, <span class="hljs-string">"plugin_"</span> + pluginName)) &#123;</span><br><span class="line">  $.data(<span class="hljs-keyword">this</span>, <span class="hljs-string">"plugin_"</span> + pluginName, <span class="hljs-keyword">new</span> Plugin(<span class="hljs-keyword">this</span>, options));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
-<p>This is good safeguard for your jQuery objects, but what happens if
-your plugin script gets load twice?</p>
-<figure class="highlight html"><figcaption><span>Accidental Reloading of Plugin Script</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>TakeOut<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"assets/vendor/js/jquery-1.11.1.min.js"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"src/TakeOut.js"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"src/TakeOut.js"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span></span><br></pre></td></tr></table></div></figure>
-<p>This is unlikely to happen, but this problem could manifest in more devious or and less apparent ways, such as when project files are minify and concatenated.</p>
-<p>This might cause some unexpected behaviors if the plugin attaches event
-listeners by default. In order to protect your page, do the following</p>
-<figure class="highlight js"><figcaption><span>Attachment Check</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">$, window, document, undefined</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">var</span> pluginName = <span class="hljs-string">"MyMagnificentJQueryPlugin"</span>;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">//Only allow for one instantiation of this script</span></span><br><span class="line">  <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> $.fn[pluginName] !== <span class="hljs-string">'undefined'</span>) &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">//Rest of your jQuery plugin logic here</span></span><br><span class="line">&#125;)(jQuery, <span class="hljs-built_in">window</span>, <span class="hljs-built_in">document</span>);</span><br></pre></td></tr></table></div></figure>
-<p>There is a check in the beginning of the script to see if the plugin
-has already attach itself to the jQuery object.</p>
+        <h3 id="Identify-Streams-Better-when-Logging-Two-or-More-Streams-at-a-Time"><a href="#Identify-Streams-Better-when-Logging-Two-or-More-Streams-at-a-Time" class="headerlink" title="Identify Streams Better when Logging Two or More Streams at a Time"></a>Identify Streams Better when Logging Two or More Streams at a Time</h3><p>Rxjs provides a means of performing a ‘side effect’ without modifying the observable through the observable chain. The ‘do’ command is good candidate for use when there is a need to log out information when specific operations are performed.</p>
+<figure class="highlight js"><figcaption><span>Log Action of an Observable</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//Provide an indication of which interval has action performed</span></span><br><span class="line"><span class="hljs-keyword">const</span> interval1 = Rx.Observable.interval(<span class="hljs-number">1000</span>);</span><br><span class="line"><span class="hljs-keyword">const</span> example1 = interval1.do(val =&gt; <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Early interval, second(s) elapsed! : <span class="hljs-subst">$&#123;val&#125;</span>`</span>));</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> interval = Rx.Observable.interval(<span class="hljs-number">2000</span>);</span><br><span class="line"><span class="hljs-keyword">const</span> example2 = interval.do(val =&gt; <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Later interval, second(s) elapsed! : <span class="hljs-subst">$&#123;val&#125;</span>\n`</span>));</span><br><span class="line"></span><br><span class="line">Observable.merge(</span><br><span class="line">  example1,</span><br><span class="line">  example2</span><br><span class="line">).subscribe((x) =&gt; &#123;&#125;);</span><br></pre></td></tr></table></div></figure>
+<h3 id="No-‘default’-Call-Needed-when-‘requiring’-transpiled-module-from-Babel"><a href="#No-‘default’-Call-Needed-when-‘requiring’-transpiled-module-from-Babel" class="headerlink" title="No ‘default’ Call Needed when ‘requiring’ transpiled module from Babel"></a>No ‘default’ Call Needed when ‘requiring’ transpiled module from Babel</h3><p>The require call in a ES5 transpiled module from ES6 requires you to call the ‘default’ key of the return function value before the actually functionality can be accessed:</p>
+<figure class="highlight js"><figcaption><span>More Boilerplate for 'Requiring' a Module</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> fantasticModule = <span class="hljs-built_in">require</span>(<span class="hljs-string">'my-fantastic-module-name'</span>);</span><br><span class="line">fantasticModule.default();</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//Have to do the above instead of:</span></span><br><span class="line"><span class="hljs-comment">//var fantasticModule = require('my-fantastic-module-name');</span></span><br><span class="line"><span class="hljs-comment">//fantasticModule();</span></span><br></pre></td></tr></table></div></figure>
+<p>To solve this problem use the ‘babel-plugin-add-module-exports’ module from <a href="https://www.npmjs.com/package/babel-plugin-add-module-exports" target="_blank" rel="external">here.</a></p>
+<p>After installing that module, require calls from an ES5 environment will no longer need to make the ‘default’ key access before calling.</p>
 
       
 
@@ -184,7 +177,7 @@ has already attach itself to the jQuery object.</p>
   
   <div class="article-tags ym-clearfix">
     <p>Tags: </p>
-    <a href="/tags/javascript/">javascript</a>, <a href="/tags/jQuery/">jQuery</a>
+    <a href="/tags/javascript/">javascript</a>, <a href="/tags/nodejs/">nodejs</a>
   </div>
 </footer>
 
@@ -198,10 +191,8 @@ has already attach itself to the jQuery object.</p>
 <nav class="article-pagination ym-clearfix">
 
     
-    <a href="/2014/06/20/Typeof-Wrapper/" class="prev" title="Typeof Wrapper">« Typeof Wrapper</a>
     
-    
-    <a href="/2014/05/22/nodejs-quick-tips-1/" class="next" title="Nodejs Quick Tips #1">Nodejs Quick Tips #1 »</a>
+    <a href="/2016/07/03/Nodejs-Quick-Tips-6/" class="next" title="Nodejs - Quick Tips #6">Nodejs - Quick Tips #6 »</a>
     
 </nav>
 

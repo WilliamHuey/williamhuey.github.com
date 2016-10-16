@@ -125,7 +125,7 @@
     <li class="main-nav-li" id="code-li">
         <ul class="ym-clearfix">
             <li class="nav-img">
-                <a id="Code" href="#"></a>
+                <a id="Code" href="/code"></a>
             </li>
             <li class="nav-word">
                 <a href="/code">Code</a>
@@ -145,6 +145,52 @@
     <div id="main-col" class="ym-wrapper">
         <div id="main-col-wrapper" class="ym-wbox">
             
+  
+<article class="post">
+
+  <div class="post-content">
+    <header class="post-content-header">
+      
+        <time class="post-content-time" datetime="2013-12-24T22:02:00.000Z"><a href="/2013/12/24/jquery-performance-tips-number-1/">12/24/2013</a></time>
+      
+      
+  
+    <h2 class="title"><a href="/2013/12/24/jquery-performance-tips-number-1/">jQuery Performance Tips #1</a></h2>
+  
+
+    </header>
+    <div class="post-content-entry">
+      
+        <h3 id="Checking-Visibility"><a href="#Checking-Visibility" class="headerlink" title="Checking Visibility"></a>Checking Visibility</h3><figure class="highlight javascript"><figcaption><span>Visibility Test Cases</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="hljs-string">'#word'</span>).is(<span class="hljs-string">':visible'</span>);</span><br><span class="line">$(<span class="hljs-string">'#word:visible'</span>).length == <span class="hljs-number">1</span> ;</span><br><span class="line">$(<span class="hljs-string">'#word:visible'</span>).length &gt; <span class="hljs-number">0</span> ;</span><br><span class="line">$(<span class="hljs-string">'#word'</span>).css(<span class="hljs-string">'display'</span>) == <span class="hljs-string">'block'</span>;</span><br><span class="line">$(<span class="hljs-string">'#word'</span>).is(<span class="hljs-string">':not(:hidden)'</span>);</span><br><span class="line">!$(<span class="hljs-string">'#word'</span>).is(<span class="hljs-string">':hidden'</span>);</span><br></pre></td></tr></table></div></figure>
+<h3 id="Results"><a href="#Results" class="headerlink" title="#Results"></a>#Results</h3><p><a href="http://jsperf.com/jquery-visiblity-selector" target="_blank" rel="external">http://jsperf.com/jquery-visiblity-selector</a></p>
+<h3 id="Summary"><a href="#Summary" class="headerlink" title="#Summary"></a>#Summary</h3><p>All major browsers perform really well using 4) the css display block, except for Chrome based browsers. 
+The chrome based browsers, Chrome and new Opera, perform the best with 6) ! is :hidden. The comparison, 6) ! is :hidden, looks like the one to use over the 1) .is(‘:visible’).</p>
+<h3 id="Finding-Option-Selected-in-Select-List"><a href="#Finding-Option-Selected-in-Select-List" class="headerlink" title="Finding Option Selected in Select List"></a>Finding Option Selected in Select List</h3><figure class="highlight javascript"><figcaption><span>Find Selected Cases</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="hljs-string">"select"</span>).find(<span class="hljs-string">':selected'</span>); </span><br><span class="line">$(<span class="hljs-string">"select option:selected"</span>);</span><br><span class="line">$(<span class="hljs-string">"select &gt; option"</span>).filter(<span class="hljs-string">":selected"</span>);</span><br><span class="line">$(<span class="hljs-string">"select &gt; option:selected"</span>);</span><br><span class="line">$(<span class="hljs-string">'select'</span>).children(<span class="hljs-string">'option:selected'</span>);</span><br><span class="line">$(<span class="hljs-string">"select &gt; option"</span>).find(<span class="hljs-string">":selected"</span>);</span><br><span class="line">$(<span class="hljs-string">'select'</span>).children(<span class="hljs-string">'option'</span>).filter(<span class="hljs-string">":selected"</span>);</span><br><span class="line">$(<span class="hljs-string">'select'</span>).children().filter(<span class="hljs-string">":selected"</span>);</span><br></pre></td></tr></table></div></figure>
+<h3 id="Results-1"><a href="#Results-1" class="headerlink" title="#Results"></a>#Results</h3><p><a href="http://jsperf.com/select-option-in-list/4" target="_blank" rel="external">http://jsperf.com/select-option-in-list/4</a></p>
+<h3 id="Summary-1"><a href="#Summary-1" class="headerlink" title="#Summary"></a>#Summary</h3><p>All major browsers perform well using the children selectors (5, 7, 8). The best of children filters tend to be 5) .children(‘option:selected’).</p>
+
+      
+
+
+    </div>
+    
+<footer class="post-content-footer">
+  
+  <div class="article-tags ym-clearfix">
+    <p>Tags: </p>
+    <a href="/tags/jQuery/">jQuery</a>
+  </div>
+</footer>
+
+
+      <div class="dotted-border"></div>
+  </div>
+
+</article>
+
+
+
+
   
 <article class="post">
 
@@ -342,49 +388,6 @@
 
 
 
-  
-<article class="post">
-
-  <div class="post-content">
-    <header class="post-content-header">
-      
-        <time class="post-content-time" datetime="2013-08-17T00:59:00.000Z"><a href="/2013/08/16/javascript-quick-tips-number-4/">8/16/2013</a></time>
-      
-      
-  
-    <h2 class="title"><a href="/2013/08/16/javascript-quick-tips-number-4/">JavaScript Quick Tips #4</a></h2>
-  
-
-    </header>
-    <div class="post-content-entry">
-      
-        <h3 id="Prototype-and-This"><a href="#Prototype-and-This" class="headerlink" title="Prototype and This"></a>Prototype and This</h3><p>When attaching a method onto a prototype, the methods can be called from another prototype method using “this”.</p>
-<figure class="highlight javascript"><figcaption><span>Use this for Prototype functions</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> myObject = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line">myObject.prototype.myMethod = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'executed myMethod'</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">myObject.prototype.anotherMethod = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-comment">//no need to run myObject.prototype.myMethod()</span></span><br><span class="line">  <span class="hljs-comment">//to execute myMethod, but use "this" instead</span></span><br><span class="line">  <span class="hljs-keyword">this</span>.myMethod();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//same concept applies here</span></span><br><span class="line">myObject.anotherMethod();</span><br></pre></td></tr></table></div></figure>
-<h3 id="Function-Arguments"><a href="#Function-Arguments" class="headerlink" title="Function Arguments"></a>Function Arguments</h3><p>If your function takes in many arguments, it might be more easy to follow when the parameters are broken up to multiple lines.</p>
-<figure class="highlight javascript"><figcaption><span>Breaking up Function Parameters</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">  <span class="hljs-keyword">var</span> here = <span class="hljs-string">"here"</span>,</span><br><span class="line">    is = <span class="hljs-string">"is"</span>,</span><br><span class="line">    an = <span class="hljs-string">"an"</span>,</span><br><span class="line">    example = <span class="hljs-string">"example"</span>,</span><br><span class="line">    that = <span class="hljs-string">"that"</span>,</span><br><span class="line">    shows = <span class="hljs-string">"shows"</span>,</span><br><span class="line">    lines = <span class="hljs-string">"lines"</span>,</span><br><span class="line">    broken = <span class="hljs-string">"broken"</span>,</span><br><span class="line">    up = <span class="hljs-string">"up"</span>;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">coolFunction</span> (<span class="hljs-params">here, is, an,</span><br><span class="line">    example, that, shows,</span><br><span class="line">    lines, broken, up</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">//also works for logging</span></span><br><span class="line">    <span class="hljs-built_in">console</span>.log([here, is, an, example,</span><br><span class="line">    that, shows, lines, broken, up].join(<span class="hljs-string">" "</span>));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">  coolFunction(here, is, an,</span><br><span class="line">    example, that, shows,</span><br><span class="line">    lines, broken, up);</span><br></pre></td></tr></table></div></figure>
-
-      
-
-
-    </div>
-    
-<footer class="post-content-footer">
-  
-  <div class="article-tags ym-clearfix">
-    <p>Tags: </p>
-    <a href="/tags/javascript/">javascript</a>
-  </div>
-</footer>
-
-
-      <div class="dotted-border"></div>
-  </div>
-
-</article>
-
-
-
-
 
 <nav id="pagination">
   <div id="pagination-wrapper" class="ym-clearfix">
@@ -506,6 +509,10 @@
   <ul class="entry">
     
       <li>
+        <a href="/2016/10/16/nodejs-quick-tips-7/">Nodejs - Quick Tips #7</a>
+      </li>
+    
+      <li>
         <a href="/2016/07/03/Nodejs-Quick-Tips-6/">Nodejs - Quick Tips #6</a>
       </li>
     
@@ -519,10 +526,6 @@
     
       <li>
         <a href="/2015/05/16/Meteor-Quick-Tips-4/">Meteor - Quick Tips #4</a>
-      </li>
-    
-      <li>
-        <a href="/2015/03/25/Meteor-Quick-Tips-3/">Meteor - Quick Tips #3</a>
       </li>
     
   </ul>

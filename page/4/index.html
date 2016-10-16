@@ -125,7 +125,7 @@
     <li class="main-nav-li" id="code-li">
         <ul class="ym-clearfix">
             <li class="nav-img">
-                <a id="Code" href="#"></a>
+                <a id="Code" href="/code"></a>
             </li>
             <li class="nav-word">
                 <a href="/code">Code</a>
@@ -145,6 +145,50 @@
     <div id="main-col" class="ym-wrapper">
         <div id="main-col-wrapper" class="ym-wbox">
             
+  
+<article class="post">
+
+  <div class="post-content">
+    <header class="post-content-header">
+      
+        <time class="post-content-time" datetime="2014-06-20T14:53:03.000Z"><a href="/2014/06/20/Typeof-Wrapper/">6/20/2014</a></time>
+      
+      
+  
+    <h2 class="title"><a href="/2014/06/20/Typeof-Wrapper/">Typeof Wrapper</a></h2>
+  
+
+    </header>
+    <div class="post-content-entry">
+      
+        <h3 id="Robust-Typeof"><a href="#Robust-Typeof" class="headerlink" title="Robust Typeof"></a>Robust Typeof</h3><p>Using typeof in JavaScript does not produce the results that one would expect as explain by many articles found on the <a href="http://tobyho.com/2011/01/28/checking-types-in-javascript/" target="_blank" rel="external">internet</a>.</p>
+<p>This snippet adapts <a href="http://jashkenas.github.io/underscore/" target="_blank" rel="external">underscore’s</a> checking of types in a condense function to provide a more compact and predictable means of checking types in JavaScript.</p>
+<figure class="highlight js"><figcaption><span>Robust Typeof Wrapper Function</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> type = (<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">//Alias the object's prototype</span></span><br><span class="line">  <span class="hljs-keyword">var</span> objProto = <span class="hljs-built_in">Object</span>.prototype.toString;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">//Mapping object for type checking</span></span><br><span class="line">  <span class="hljs-keyword">var</span> typeObj = &#123;</span><br><span class="line">    array: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">obj</span>) </span>&#123;</span><br><span class="line">      <span class="hljs-keyword">return</span> <span class="hljs-built_in">Array</span>.isArray(obj) ||</span><br><span class="line">        objProto.call(obj) == <span class="hljs-string">'[object Array]'</span>;</span><br><span class="line">    &#125;,</span><br><span class="line">    object: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">obj</span>) </span>&#123;</span><br><span class="line">      <span class="hljs-keyword">return</span> obj === <span class="hljs-built_in">Object</span>(obj);</span><br><span class="line">    &#125;,</span><br><span class="line">    boolean: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">obj</span>) </span>&#123;</span><br><span class="line">      <span class="hljs-keyword">return</span> obj === <span class="hljs-literal">true</span> ||</span><br><span class="line">        obj === <span class="hljs-literal">false</span> ||</span><br><span class="line">        objProto.call(obj) == <span class="hljs-string">'[object Boolean]'</span>;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="hljs-literal">null</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">obj</span>) </span>&#123;</span><br><span class="line">      <span class="hljs-keyword">return</span> obj === <span class="hljs-literal">null</span>;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="hljs-literal">undefined</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">obj</span>) </span>&#123;</span><br><span class="line">      <span class="hljs-keyword">return</span> obj === <span class="hljs-keyword">void</span> <span class="hljs-number">0</span>;</span><br><span class="line">    &#125;,</span><br><span class="line">    nan: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">obj</span>) </span>&#123;</span><br><span class="line">      <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.number(obj) &amp;&amp; obj != +obj;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">var</span> commonCompareTypes = [<span class="hljs-string">'function'</span>, <span class="hljs-string">'string'</span>, <span class="hljs-string">'number'</span>, <span class="hljs-string">'date'</span>, <span class="hljs-string">'regexp'</span>];</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; commonCompareTypes.length; i++) &#123;</span><br><span class="line">    (<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">      <span class="hljs-keyword">var</span> currentType = commonCompareTypes[i];</span><br><span class="line"></span><br><span class="line">      <span class="hljs-keyword">var</span> fn = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">obj</span>) </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> objProto.call(obj).slice(<span class="hljs-number">8</span>, <span class="hljs-number">-1</span>).toLowerCase() === fn.type;</span><br><span class="line">      &#125;;</span><br><span class="line">      fn.type = currentType;</span><br><span class="line"></span><br><span class="line">      typeObj[currentType] = fn;</span><br><span class="line">    &#125;)();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">value, type</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> typeObj[type](value);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">&#125;)();</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//Examples</span></span><br><span class="line"><span class="hljs-comment">//Second parameter needs to be in lowercase for function to work</span></span><br><span class="line">type(<span class="hljs-string">'stuff'</span>, <span class="hljs-string">'date'</span>); <span class="hljs-comment">//false</span></span><br><span class="line">type(&#123;&#125;, <span class="hljs-string">'array'</span>);     <span class="hljs-comment">//false</span></span><br><span class="line">type(&#123;&#125;, <span class="hljs-string">'object'</span>);    <span class="hljs-comment">//true</span></span><br><span class="line">type([], <span class="hljs-string">'object'</span>);    <span class="hljs-comment">//true</span></span><br><span class="line">type(<span class="hljs-literal">null</span>, <span class="hljs-string">'null'</span>);    <span class="hljs-comment">//true</span></span><br><span class="line">type(<span class="hljs-literal">NaN</span>, <span class="hljs-string">'nan'</span>);      <span class="hljs-comment">//true</span></span><br><span class="line">type(<span class="hljs-number">123</span>, <span class="hljs-string">'nan'</span>);      <span class="hljs-comment">//false</span></span><br></pre></td></tr></table></div></figure>
+<p>Do note the behaviors of the ‘object’ and ‘nan’ check, as this follows underscore’s checking implementation. Objects and arrays are considered objects.
+The ‘nan’ check is looking for the ‘NaN’ value, and when this condition is not satisfied, false will be returned.</p>
+
+      
+
+
+    </div>
+    
+<footer class="post-content-footer">
+  
+  <div class="article-tags ym-clearfix">
+    <p>Tags: </p>
+    <a href="/tags/javascript/">javascript</a>
+  </div>
+</footer>
+
+
+      <div class="dotted-border"></div>
+  </div>
+
+</article>
+
+
+
+
   
 <article class="post">
 
@@ -346,47 +390,6 @@ them to create the files.</p>
 
 
 
-  
-<article class="post">
-
-  <div class="post-content">
-    <header class="post-content-header">
-      
-        <time class="post-content-time" datetime="2014-04-22T20:49:05.000Z"><a href="/2014/04/22/readable-stream/">4/22/2014</a></time>
-      
-      
-  
-    <h2 class="title"><a href="/2014/04/22/readable-stream/">Readable-stream</a></h2>
-  
-
-    </header>
-    <div class="post-content-entry">
-      
-        <h3 id="Streaming-Consistency"><a href="#Streaming-Consistency" class="headerlink" title="Streaming Consistency"></a>Streaming Consistency</h3><p>Since Node’s streaming api is still changing and is in ‘unstable’ category, writing a npm module using streams may cause some unexpected behaviors on older versions of Node. To ensure that streams are compatible with older versions of Node, a drop-in replacement for stream is available called ‘readable-stream’.</p>
-<p>The following example uses the ‘readable’ event, which is not present on Node versions &lt; 0.10, but the readable-stream module is handling this inconsistency which means that this example will work with Node versions &lt; 0.10.</p>
-<figure class="highlight js"><figcaption><span>Wrapping fs.createReadStream</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>),</span><br><span class="line">  Readable = <span class="hljs-built_in">require</span>(<span class="hljs-string">'readable-stream'</span>).Readable,</span><br><span class="line">  reader = <span class="hljs-keyword">new</span> Readable();</span><br><span class="line"></span><br><span class="line">reader.wrap(fs.createReadStream(<span class="hljs-string">'./test.txt'</span>))</span><br><span class="line">  .on(<span class="hljs-string">'readable'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.read().toString());</span><br><span class="line">  &#125;).on(<span class="hljs-string">'end'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Finished reading stream'</span>);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></div></figure>
-      
-
-
-    </div>
-    
-<footer class="post-content-footer">
-  
-  <div class="article-tags ym-clearfix">
-    <p>Tags: </p>
-    <a href="/tags/javascript/">javascript</a>, <a href="/tags/nodejs/">nodejs</a>
-  </div>
-</footer>
-
-
-      <div class="dotted-border"></div>
-  </div>
-
-</article>
-
-
-
-
 
 <nav id="pagination">
   <div id="pagination-wrapper" class="ym-clearfix">
@@ -508,6 +511,10 @@ them to create the files.</p>
   <ul class="entry">
     
       <li>
+        <a href="/2016/10/16/nodejs-quick-tips-7/">Nodejs - Quick Tips #7</a>
+      </li>
+    
+      <li>
         <a href="/2016/07/03/Nodejs-Quick-Tips-6/">Nodejs - Quick Tips #6</a>
       </li>
     
@@ -521,10 +528,6 @@ them to create the files.</p>
     
       <li>
         <a href="/2015/05/16/Meteor-Quick-Tips-4/">Meteor - Quick Tips #4</a>
-      </li>
-    
-      <li>
-        <a href="/2015/03/25/Meteor-Quick-Tips-3/">Meteor - Quick Tips #3</a>
       </li>
     
   </ul>

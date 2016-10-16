@@ -125,7 +125,7 @@
     <li class="main-nav-li" id="code-li">
         <ul class="ym-clearfix">
             <li class="nav-img">
-                <a id="Code" href="#"></a>
+                <a id="Code" href="/code"></a>
             </li>
             <li class="nav-word">
                 <a href="/code">Code</a>
@@ -145,6 +145,52 @@
     <div id="main-col" class="ym-wrapper">
         <div id="main-col-wrapper" class="ym-wbox">
             
+  
+<article class="post">
+
+  <div class="post-content">
+    <header class="post-content-header">
+      
+        <time class="post-content-time" datetime="2013-04-28T05:18:00.000Z"><a href="/2013/04/28/javascript-quick-tips-number-2/">4/28/2013</a></time>
+      
+      
+  
+    <h2 class="title"><a href="/2013/04/28/javascript-quick-tips-number-2/">JavaScript Quick Tips #2</a></h2>
+  
+
+    </header>
+    <div class="post-content-entry">
+      
+        <h3 id="Concatenating-when-Logging-without-the-Plus-Sign"><a href="#Concatenating-when-Logging-without-the-Plus-Sign" class="headerlink" title="Concatenating when Logging without the Plus Sign"></a>Concatenating when Logging without the Plus Sign</h3><p>You can use the comma in place of the plus sign when concatenation is needed.
+<figure class="highlight javascript"><figcaption><span>Give the Comma a Try When Logging</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> stuff = <span class="hljs-string">'my stuff'</span>;</span><br><span class="line"><span class="hljs-comment">//the comma acts like the plus to concatenate your strings</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">'some text:'</span>, stuff);</span><br></pre></td></tr></table></div></figure></p>
+<h3 id="Attaching-Properties-to-Non-Object-Objects"><a href="#Attaching-Properties-to-Non-Object-Objects" class="headerlink" title="Attaching Properties to Non-Object Objects"></a>Attaching Properties to Non-Object Objects</h3><p>Usually when you deal with an array you normally do not attach properties to it, but you are allow to do such a thing.</p>
+<figure class="highlight javascript"><figcaption><span>Attaching Property to an Array</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> myArray = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];</span><br><span class="line">myArray.aKey = <span class="hljs-string">"myValue"</span>;</span><br><span class="line"><span class="hljs-comment">//outputs "myValue"</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(myArray.akey);</span><br></pre></td></tr></table></div></figure>
+<p>You can also do the same thing for a function and other non-object objects.</p>
+<figure class="highlight javascript"><figcaption><span>Now Attaching Property to a Function</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> myFunction = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;&#125;;</span><br><span class="line"><span class="hljs-comment">//outputs "myValue"</span></span><br><span class="line">myFunction.aKey = <span class="hljs-string">"myValue"</span>;</span><br></pre></td></tr></table></div></figure>
+<p>The reason you can do this is because everything in JavaScript is treated like an object. You may want to do this to include meta data on your arrays, functions or other variable types that are not object objects, but do use your discretion when a object is more fitting for the task.</p>
+
+      
+
+
+    </div>
+    
+<footer class="post-content-footer">
+  
+  <div class="article-tags ym-clearfix">
+    <p>Tags: </p>
+    <a href="/tags/javascript/">javascript</a>
+  </div>
+</footer>
+
+
+      <div class="dotted-border"></div>
+  </div>
+
+</article>
+
+
+
+
   
 <article class="post">
 
@@ -320,50 +366,6 @@
 
 
 
-  
-<article class="post">
-
-  <div class="post-content">
-    <header class="post-content-header">
-      
-        <time class="post-content-time" datetime="2013-04-11T04:00:00.000Z"><a href="/2013/04/11/basic-gemset-management/">4/11/2013</a></time>
-      
-      
-  
-    <h2 class="title"><a href="/2013/04/11/basic-gemset-management/">Basic Gemset Management</a></h2>
-  
-
-    </header>
-    <div class="post-content-entry">
-      
-        <h3 id="CRUD-for-your-rvm-gemset"><a href="#CRUD-for-your-rvm-gemset" class="headerlink" title="CRUD for your rvm gemset"></a>CRUD for your rvm gemset</h3><p>Rvm stands for ruby version manager. It is used to manage ruby environments with something called gemsets. More info can be found <a href="https://rvm.io/" target="_blank" rel="external">here</a>. Rvm comes in handy when your working with <a href="http://www.rubyonrails.org/" target="_blank" rel="external">Rails</a> because you can isolate ruby environments. Here are some snippets for common tasks when dealing with gemsets.</p>
-<figure class="highlight bash"><figcaption><span>Creating a Gemset</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">#Format:</span></span><br><span class="line">rvm gemset create &lt;gemset_name&gt;</span><br><span class="line"><span class="hljs-comment">#fill in gemset name</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">#Example:</span></span><br><span class="line">rvm gemset create rails3.2.13</span><br><span class="line"><span class="hljs-comment">#gemset name is "rails3.2.13"</span></span><br></pre></td></tr></table></div></figure>
-<figure class="highlight bash"><figcaption><span>List Current Gemset Being Used</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rvm gemset list</span><br></pre></td></tr></table></div></figure>
-<figure class="highlight bash"><figcaption><span>Using a Gemset</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">#Format:</span></span><br><span class="line">rvm use &lt;ruby_version_number&gt;@&lt;gemset_name&gt;</span><br><span class="line"><span class="hljs-comment">#fill in ruby version number and gemset name of your choosing</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">#Example:</span></span><br><span class="line"><span class="hljs-comment">#uses ruby 1.9.3 with gemset name of "rails version 3.2.13"</span></span><br><span class="line">rvm use 1.9.3@rails3.2.13 --default</span><br><span class="line"><span class="hljs-comment">#also using a default flag to set the gemset as the default</span></span><br></pre></td></tr></table></div></figure>
-<figure class="highlight bash"><figcaption><span>Deleting a Gemset</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">#Format:</span></span><br><span class="line">rvm gemset delete &lt;gemset_name&gt;</span><br><span class="line"><span class="hljs-comment">#fill in gemset name</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">#Example:</span></span><br><span class="line">rvm gemset delete gemset_to_delete</span><br><span class="line"><span class="hljs-comment">#"gemset_to_delete" is the gemset that you want to delete</span></span><br></pre></td></tr></table></div></figure>
-
-      
-
-
-    </div>
-    
-<footer class="post-content-footer">
-  
-  <div class="article-tags ym-clearfix">
-    <p>Tags: </p>
-    <a href="/tags/rails/">rails</a>, <a href="/tags/rvm/">rvm</a>
-  </div>
-</footer>
-
-
-      <div class="dotted-border"></div>
-  </div>
-
-</article>
-
-
-
-
 
 <nav id="pagination">
   <div id="pagination-wrapper" class="ym-clearfix">
@@ -485,6 +487,10 @@
   <ul class="entry">
     
       <li>
+        <a href="/2016/10/16/nodejs-quick-tips-7/">Nodejs - Quick Tips #7</a>
+      </li>
+    
+      <li>
         <a href="/2016/07/03/Nodejs-Quick-Tips-6/">Nodejs - Quick Tips #6</a>
       </li>
     
@@ -498,10 +504,6 @@
     
       <li>
         <a href="/2015/05/16/Meteor-Quick-Tips-4/">Meteor - Quick Tips #4</a>
-      </li>
-    
-      <li>
-        <a href="/2015/03/25/Meteor-Quick-Tips-3/">Meteor - Quick Tips #3</a>
       </li>
     
   </ul>

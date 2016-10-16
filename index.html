@@ -125,7 +125,7 @@
     <li class="main-nav-li" id="code-li">
         <ul class="ym-clearfix">
             <li class="nav-img">
-                <a id="Code" href="#"></a>
+                <a id="Code" href="/code"></a>
             </li>
             <li class="nav-word">
                 <a href="/code">Code</a>
@@ -145,6 +145,51 @@
     <div id="main-col" class="ym-wrapper">
         <div id="main-col-wrapper" class="ym-wbox">
             
+  
+<article class="post">
+
+  <div class="post-content">
+    <header class="post-content-header">
+      
+        <time class="post-content-time" datetime="2016-10-16T22:15:43.000Z"><a href="/2016/10/16/nodejs-quick-tips-7/">10/16/2016</a></time>
+      
+      
+  
+    <h2 class="title"><a href="/2016/10/16/nodejs-quick-tips-7/">Nodejs - Quick Tips #7</a></h2>
+  
+
+    </header>
+    <div class="post-content-entry">
+      
+        <h3 id="Identify-Streams-Better-when-Logging-Two-or-More-Streams-at-a-Time"><a href="#Identify-Streams-Better-when-Logging-Two-or-More-Streams-at-a-Time" class="headerlink" title="Identify Streams Better when Logging Two or More Streams at a Time"></a>Identify Streams Better when Logging Two or More Streams at a Time</h3><p>Rxjs provides a means of performing a ‘side effect’ without modifying the observable through the observable chain. The ‘do’ command is good candidate for use when there is a need to log out information when specific operations are performed.</p>
+<figure class="highlight js"><figcaption><span>Log Action of an Observable</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//Provide an indication of which interval has action performed</span></span><br><span class="line"><span class="hljs-keyword">const</span> interval1 = Rx.Observable.interval(<span class="hljs-number">1000</span>);</span><br><span class="line"><span class="hljs-keyword">const</span> example1 = interval1.do(val =&gt; <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Early interval, second(s) elapsed! : <span class="hljs-subst">$&#123;val&#125;</span>`</span>));</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> interval = Rx.Observable.interval(<span class="hljs-number">2000</span>);</span><br><span class="line"><span class="hljs-keyword">const</span> example2 = interval.do(val =&gt; <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Later interval, second(s) elapsed! : <span class="hljs-subst">$&#123;val&#125;</span>\n`</span>));</span><br><span class="line"></span><br><span class="line">Observable.merge(</span><br><span class="line">  example1,</span><br><span class="line">  example2</span><br><span class="line">).subscribe((x) =&gt; &#123;&#125;);</span><br></pre></td></tr></table></div></figure>
+<h3 id="No-‘default’-Call-Needed-when-‘requiring’-transpiled-module-from-Babel"><a href="#No-‘default’-Call-Needed-when-‘requiring’-transpiled-module-from-Babel" class="headerlink" title="No ‘default’ Call Needed when ‘requiring’ transpiled module from Babel"></a>No ‘default’ Call Needed when ‘requiring’ transpiled module from Babel</h3><p>The require call in a ES5 transpiled module from ES6 requires you to call the ‘default’ key of the return function value before the actually functionality can be accessed:</p>
+<figure class="highlight js"><figcaption><span>More Boilerplate for 'Requiring' a Module</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> fantasticModule = <span class="hljs-built_in">require</span>(<span class="hljs-string">'my-fantastic-module-name'</span>);</span><br><span class="line">fantasticModule.default();</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//Have to do the above instead of:</span></span><br><span class="line"><span class="hljs-comment">//var fantasticModule = require('my-fantastic-module-name');</span></span><br><span class="line"><span class="hljs-comment">//fantasticModule();</span></span><br></pre></td></tr></table></div></figure>
+<p>To solve this problem use the ‘babel-plugin-add-module-exports’ module from <a href="https://www.npmjs.com/package/babel-plugin-add-module-exports" target="_blank" rel="external">here.</a></p>
+<p>After installing that module, require calls from an ES5 environment will no longer need to make the ‘default’ key access before calling.</p>
+
+      
+
+
+    </div>
+    
+<footer class="post-content-footer">
+  
+  <div class="article-tags ym-clearfix">
+    <p>Tags: </p>
+    <a href="/tags/javascript/">javascript</a>, <a href="/tags/nodejs/">nodejs</a>
+  </div>
+</footer>
+
+
+      <div class="dotted-border"></div>
+  </div>
+
+</article>
+
+
+
+
   
 <article class="post">
 
@@ -339,53 +384,6 @@
 
 
 
-  
-<article class="post">
-
-  <div class="post-content">
-    <header class="post-content-header">
-      
-        <time class="post-content-time" datetime="2015-03-25T17:40:12.000Z"><a href="/2015/03/25/Meteor-Quick-Tips-3/">3/25/2015</a></time>
-      
-      
-  
-    <h2 class="title"><a href="/2015/03/25/Meteor-Quick-Tips-3/">Meteor - Quick Tips #3</a></h2>
-  
-
-    </header>
-    <div class="post-content-entry">
-      
-        <h3 id="Template-Helpers-and-Subscriptions"><a href="#Template-Helpers-and-Subscriptions" class="headerlink" title="Template Helpers and Subscriptions"></a>Template Helpers and Subscriptions</h3><p>Templates helpers format data onto your templates, but one must ensure that subscription data is fully loaded before the template helpers have a chance to render.</p>
-<p>With the help of <a href="https://github.com/iron-meteor/iron-router" target="_blank" rel="external">Iron Router</a>, use the ‘this.ready()’ check inside the data option.</p>
-<figure class="highlight js"><figcaption><span>Router.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Router.route(<span class="hljs-string">'/post/:_id'</span>, &#123;</span><br><span class="line">  waitOn: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> Meteor.subscribe(<span class="hljs-string">'post'</span>, <span class="hljs-keyword">this</span>.params._id)</span><br><span class="line">  &#125;,</span><br><span class="line">  data: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123; </span><br><span class="line">    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.ready()) &#123;</span><br><span class="line">      <span class="hljs-keyword">return</span> &#123; </span><br><span class="line">        post: Posts.findOne(&#123;_id: <span class="hljs-keyword">this</span>.params._id&#125;);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;    </span><br><span class="line">  &#125;  </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></div></figure>
-<p>Once the above is in place, a template helper can now safely rendered the subscription data.</p>
-<figure class="highlight js"><figcaption><span>Template.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Template.post.helpers(&#123;</span><br><span class="line">  post: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> Template.currentData().post;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></div></figure>
-<h3 id="Remove-Event-Listeners-From-Blaze-Templates"><a href="#Remove-Event-Listeners-From-Blaze-Templates" class="headerlink" title="Remove Event Listeners From Blaze Templates"></a>Remove Event Listeners From Blaze Templates</h3><p>As of Meteor 1.0.4.2, this can not be done. The <a href="http://docs.meteor.com/#/full/blaze_tohtml" target="_blank" rel="external">Blaze to HTML</a> looked promising, but this only creates static html element from a template, it does not provide the ability to render an active Blaze template inert.</p>
-<p>For example the following template has a click event listener attached, but there is not way to undo or remove the click event listener.</p>
-<figure class="highlight js"><figcaption><span>Click Event Listener</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Template.my-template.events(&#123;</span><br><span class="line">  <span class="hljs-string">"click #container a"</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">evt</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-comment">//do some stuff here</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></div></figure>
-
-      
-
-
-    </div>
-    
-<footer class="post-content-footer">
-  
-  <div class="article-tags ym-clearfix">
-    <p>Tags: </p>
-    <a href="/tags/javascript/">javascript</a>, <a href="/tags/meteorjs/">meteorjs</a>
-  </div>
-</footer>
-
-
-      <div class="dotted-border"></div>
-  </div>
-
-</article>
-
-
-
-
 
 <nav id="pagination">
   <div id="pagination-wrapper" class="ym-clearfix">
@@ -505,6 +503,10 @@
   <ul class="entry">
     
       <li>
+        <a href="/2016/10/16/nodejs-quick-tips-7/">Nodejs - Quick Tips #7</a>
+      </li>
+    
+      <li>
         <a href="/2016/07/03/Nodejs-Quick-Tips-6/">Nodejs - Quick Tips #6</a>
       </li>
     
@@ -518,10 +520,6 @@
     
       <li>
         <a href="/2015/05/16/Meteor-Quick-Tips-4/">Meteor - Quick Tips #4</a>
-      </li>
-    
-      <li>
-        <a href="/2015/03/25/Meteor-Quick-Tips-3/">Meteor - Quick Tips #3</a>
       </li>
     
   </ul>

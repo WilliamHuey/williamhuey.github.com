@@ -125,7 +125,7 @@
     <li class="main-nav-li" id="code-li">
         <ul class="ym-clearfix">
             <li class="nav-img">
-                <a id="Code" href="#"></a>
+                <a id="Code" href="/code"></a>
             </li>
             <li class="nav-word">
                 <a href="/code">Code</a>
@@ -145,6 +145,53 @@
     <div id="main-col" class="ym-wrapper">
         <div id="main-col-wrapper" class="ym-wbox">
             
+  
+<article class="post">
+
+  <div class="post-content">
+    <header class="post-content-header">
+      
+        <time class="post-content-time" datetime="2015-03-25T17:40:12.000Z"><a href="/2015/03/25/Meteor-Quick-Tips-3/">3/25/2015</a></time>
+      
+      
+  
+    <h2 class="title"><a href="/2015/03/25/Meteor-Quick-Tips-3/">Meteor - Quick Tips #3</a></h2>
+  
+
+    </header>
+    <div class="post-content-entry">
+      
+        <h3 id="Template-Helpers-and-Subscriptions"><a href="#Template-Helpers-and-Subscriptions" class="headerlink" title="Template Helpers and Subscriptions"></a>Template Helpers and Subscriptions</h3><p>Templates helpers format data onto your templates, but one must ensure that subscription data is fully loaded before the template helpers have a chance to render.</p>
+<p>With the help of <a href="https://github.com/iron-meteor/iron-router" target="_blank" rel="external">Iron Router</a>, use the ‘this.ready()’ check inside the data option.</p>
+<figure class="highlight js"><figcaption><span>Router.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Router.route(<span class="hljs-string">'/post/:_id'</span>, &#123;</span><br><span class="line">  waitOn: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> Meteor.subscribe(<span class="hljs-string">'post'</span>, <span class="hljs-keyword">this</span>.params._id)</span><br><span class="line">  &#125;,</span><br><span class="line">  data: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123; </span><br><span class="line">    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.ready()) &#123;</span><br><span class="line">      <span class="hljs-keyword">return</span> &#123; </span><br><span class="line">        post: Posts.findOne(&#123;_id: <span class="hljs-keyword">this</span>.params._id&#125;);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;    </span><br><span class="line">  &#125;  </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></div></figure>
+<p>Once the above is in place, a template helper can now safely rendered the subscription data.</p>
+<figure class="highlight js"><figcaption><span>Template.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Template.post.helpers(&#123;</span><br><span class="line">  post: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> Template.currentData().post;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></div></figure>
+<h3 id="Remove-Event-Listeners-From-Blaze-Templates"><a href="#Remove-Event-Listeners-From-Blaze-Templates" class="headerlink" title="Remove Event Listeners From Blaze Templates"></a>Remove Event Listeners From Blaze Templates</h3><p>As of Meteor 1.0.4.2, this can not be done. The <a href="http://docs.meteor.com/#/full/blaze_tohtml" target="_blank" rel="external">Blaze to HTML</a> looked promising, but this only creates static html element from a template, it does not provide the ability to render an active Blaze template inert.</p>
+<p>For example the following template has a click event listener attached, but there is not way to undo or remove the click event listener.</p>
+<figure class="highlight js"><figcaption><span>Click Event Listener</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Template.my-template.events(&#123;</span><br><span class="line">  <span class="hljs-string">"click #container a"</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">evt</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-comment">//do some stuff here</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></div></figure>
+
+      
+
+
+    </div>
+    
+<footer class="post-content-footer">
+  
+  <div class="article-tags ym-clearfix">
+    <p>Tags: </p>
+    <a href="/tags/javascript/">javascript</a>, <a href="/tags/meteorjs/">meteorjs</a>
+  </div>
+</footer>
+
+
+      <div class="dotted-border"></div>
+  </div>
+
+</article>
+
+
+
+
   
 <article class="post">
 
@@ -328,54 +375,6 @@ However, the input content will always be string when performing a check on an i
 
 
 
-  
-<article class="post">
-
-  <div class="post-content">
-    <header class="post-content-header">
-      
-        <time class="post-content-time" datetime="2014-10-29T00:59:34.000Z"><a href="/2014/10/28/Bash-Clear-History-Upon-Exiting-Terminal/">10/28/2014</a></time>
-      
-      
-  
-    <h2 class="title"><a href="/2014/10/28/Bash-Clear-History-Upon-Exiting-Terminal/">Bash - Clear History Upon Exiting Terminal</a></h2>
-  
-
-    </header>
-    <div class="post-content-entry">
-      
-        <h3 id="Cleaning-terminal-history"><a href="#Cleaning-terminal-history" class="headerlink" title="Cleaning terminal history"></a>Cleaning terminal history</h3><p>Whether you want to have some sense of privacy or a sense of cleanliness, working with the terminal leaves a history that you might want to remove.</p>
-<p>Removing the .bash_history upon exiting the terminal is the goal for this post.</p>
-<p>Create a .rm_terminal_history.sh file in the directory that .bashrc file is in.</p>
-<figure class="highlight bash"><figcaption><span>.rm_terminal_history.sh</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-title">rm_hist</span></span>()&#123;  </span><br><span class="line">  <span class="hljs-keyword">if</span> [ <span class="hljs-_">-f</span> ~/.bash_<span class="hljs-built_in">history</span> ]</span><br><span class="line">  <span class="hljs-keyword">then</span></span><br><span class="line">    rm ~/.bash_<span class="hljs-built_in">history</span></span><br><span class="line">    <span class="hljs-built_in">history</span> -c</span><br><span class="line">    <span class="hljs-built_in">echo</span> <span class="hljs-string">".bash_history removed."</span></span><br><span class="line">    <span class="hljs-built_in">exit</span> 0</span><br><span class="line">  <span class="hljs-keyword">else</span></span><br><span class="line">    <span class="hljs-built_in">echo</span> <span class="hljs-string">".bash_history can not be found."</span></span><br><span class="line">    <span class="hljs-built_in">exit</span> 1</span><br><span class="line">  <span class="hljs-keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">trap</span> rm_hist EXIT</span><br></pre></td></tr></table></div></figure>
-<p>After the script is created, give it executable privileges.</p>
-<figure class="highlight bash"><figcaption><span>Make Script Executable</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x .rm_terminal_history.sh</span><br></pre></td></tr></table></div></figure>
-<p>Now add a reference to your .bashrc file for the script to run</p>
-<figure class="highlight bash"><figcaption><span>Add Entry to .bashrc</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">#Add following line to .bashrc</span></span><br><span class="line"><span class="hljs-built_in">source</span> ~/.rm_terminal_history.sh</span><br></pre></td></tr></table></div></figure>
-<p>The .bash_history file will be remove when exiting the terminal at any time.</p>
-
-      
-
-
-    </div>
-    
-<footer class="post-content-footer">
-  
-  <div class="article-tags ym-clearfix">
-    <p>Tags: </p>
-    <a href="/tags/shell/">shell</a>
-  </div>
-</footer>
-
-
-      <div class="dotted-border"></div>
-  </div>
-
-</article>
-
-
-
-
 
 <nav id="pagination">
   <div id="pagination-wrapper" class="ym-clearfix">
@@ -497,6 +496,10 @@ However, the input content will always be string when performing a check on an i
   <ul class="entry">
     
       <li>
+        <a href="/2016/10/16/nodejs-quick-tips-7/">Nodejs - Quick Tips #7</a>
+      </li>
+    
+      <li>
         <a href="/2016/07/03/Nodejs-Quick-Tips-6/">Nodejs - Quick Tips #6</a>
       </li>
     
@@ -510,10 +513,6 @@ However, the input content will always be string when performing a check on an i
     
       <li>
         <a href="/2015/05/16/Meteor-Quick-Tips-4/">Meteor - Quick Tips #4</a>
-      </li>
-    
-      <li>
-        <a href="/2015/03/25/Meteor-Quick-Tips-3/">Meteor - Quick Tips #3</a>
       </li>
     
   </ul>
