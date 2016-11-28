@@ -151,6 +151,67 @@
   <div class="post-content">
     <header class="post-content-header">
       
+        <time class="post-content-time" datetime="2014-05-01T19:34:05.000Z"><a href="/2014/05/01/pubsub-lists/">5/1/2014</a></time>
+      
+      
+  
+    <h2 class="title"><a href="/2014/05/01/pubsub-lists/">Pubsub Lists</a></h2>
+  
+
+    </header>
+    <div class="post-content-entry">
+      
+        <h3 id="Publish-and-Subscribe"><a href="#Publish-and-Subscribe" class="headerlink" title="Publish and Subscribe"></a>Publish and Subscribe</h3><p>One way of emitting events is by using trigger on a jQuery element.</p>
+<figure class="highlight js"><figcaption><span>Event Emitting from Element</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="hljs-string">'#my-element-id'</span>).trigger(<span class="hljs-string">'my-beautiful-event'</span>);</span><br></pre></td></tr></table></div></figure>
+<p>This is okay if we only wanted to trigger an event from a specific element, but what happens if we want a generic way of doing things, such as without referring to an element when triggering?</p>
+<p>The way to do this is to use <a href="https://api.jquery.com/jQuery.Callbacks/" target="_blank" rel="external">jQuery.Callbacks()</a> to create a pubsub system.</p>
+<p>An instance of jQuery.Callbacks accumulates functions, and runs one functions after another when the “fire” method is call upon. The property of jQuery.Callbacks that is of interest in the pubsub system, is the ability to fire(call) the functions when needed, whereas the ability to accumulate multiple functions is not as critical to the pubsub system.</p>
+<p>To demonstrate pubsub, our example will have three select lists, where each subscribes and publishes to one another.</p>
+<p>The code from the jQuery api page will be used</p>
+<figure class="highlight js"><figcaption><span>Pubsub</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//Adapted from jQuery api page (only variable renames)</span></span><br><span class="line"><span class="hljs-comment">//https://api.jquery.com/jQuery.Callbacks/</span></span><br><span class="line"><span class="hljs-keyword">var</span> classGroups = &#123;&#125;;</span><br><span class="line"><span class="hljs-keyword">var</span> pubsubNameSpace = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">id</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> callbacks,</span><br><span class="line">    classGroup = id &amp;&amp; classGroups[id];</span><br><span class="line">  <span class="hljs-keyword">if</span> (!classGroup) &#123;</span><br><span class="line">    callbacks = $.Callbacks();</span><br><span class="line">    classGroup = &#123;</span><br><span class="line">      publish: callbacks.fire,</span><br><span class="line">      subscribe: callbacks.add,</span><br><span class="line">      unsubscribe: callbacks.remove</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="hljs-keyword">if</span> (id) &#123;</span><br><span class="line">      classGroups[id] = classGroup;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">return</span> classGroup;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></div></figure>
+<p>The main point of this code, is that ‘pubsubNameSpace’ will create a namespace for a string that is passed in as ‘id’. The ‘id’ is a key in the ‘classGroups’ object. The ‘classGroup’ is an object that is the return value of ‘pubsubNameSpace’ which has a ‘publish’, ‘subscribe’, and ‘unsubscribe’ key that refer to the jQuery Callbacks methods.</p>
+<p>Once we have this code, the following can be called like so</p>
+<figure class="highlight js"><figcaption><span>Pubsub Usage</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//Create a namespace</span></span><br><span class="line"><span class="hljs-keyword">var</span> ns = pubsubNameSpace(<span class="hljs-string">'my-creative-namespace-name'</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//Subscribe to the Namespace</span></span><br><span class="line">ns.subscribe(myFunction);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//Publish within the Namespace</span></span><br><span class="line">ns.publish(&#123;</span><br><span class="line">  data: <span class="hljs-string">'just-a-string'</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//Subscribe's function</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">myFunction</span>(<span class="hljs-params"></span>)  </span>&#123;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">arguments</span>[<span class="hljs-number">0</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+<p>When publishing, one can pass in any data, but with the subscribe call, a function must be use as a funnel for the data that has been published.</p>
+<p>To start the example, the initial variable declarations:</p>
+<figure class="highlight js"><figcaption><span>Select List New Namespace</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> $select = $(<span class="hljs-string">'select.classy'</span>),</span><br><span class="line">  className = $select.prop(<span class="hljs-string">'class'</span>),</span><br><span class="line">  ns = pubsubNameSpace(className),</span><br><span class="line">  $info = $(<span class="hljs-string">'#info'</span>);</span><br></pre></td></tr></table></div></figure>
+<p>The class name of the select lists is used as the name space for the pubsub. ‘$info’ is the div for displaying messages.</p>
+<p>The main logic for publishing and subscribing for the select lists.</p>
+<figure class="highlight js"><figcaption><span>Select Lists Pubsub</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> id = <span class="hljs-number">-1</span>;</span><br><span class="line">$select.each(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-comment">//To id each select list</span></span><br><span class="line">  id++;</span><br><span class="line">  <span class="hljs-keyword">var</span> $<span class="hljs-keyword">this</span> = $(<span class="hljs-keyword">this</span>);</span><br><span class="line">  $<span class="hljs-keyword">this</span>.data(<span class="hljs-string">'id'</span>, id);</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">//Reset each list</span></span><br><span class="line">  $<span class="hljs-keyword">this</span>.prop(<span class="hljs-string">'selectedIndex'</span>, <span class="hljs-number">0</span>);</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">//Listen to the selection changes for each list</span></span><br><span class="line">  $<span class="hljs-keyword">this</span>.on(<span class="hljs-string">'change'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">var</span> $selected = $<span class="hljs-keyword">this</span>.children(<span class="hljs-string">'option:selected'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">//Tell all members of the same class of change</span></span><br><span class="line">    ns.publish(&#123;</span><br><span class="line">      selected: $selected.text(),</span><br><span class="line">      id: $<span class="hljs-keyword">this</span>.data(<span class="hljs-string">'id'</span>)</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">//Listen for changes within the same class</span></span><br><span class="line">  ns.subscribe($.proxy(explain, $<span class="hljs-keyword">this</span>));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></div></figure>
+<p>Iterate through each select list and associate them with an id. Attach a ‘change’ event handler to each list and within it, publish the selected value with the select list id. Also subscribe to messages from the same class.</p>
+<p>Now finally for subscribe’s function</p>
+<figure class="highlight js"><figcaption><span>Logging Function</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//Log info for subscribe function</span></span><br><span class="line"><span class="hljs-keyword">var</span> explain = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.data(<span class="hljs-string">'id'</span>) !== <span class="hljs-built_in">arguments</span>[<span class="hljs-number">0</span>].id) &#123;</span><br><span class="line">    <span class="hljs-comment">//Display the info in div</span></span><br><span class="line">    <span class="hljs-keyword">var</span> msg = <span class="hljs-string">'List '</span> + <span class="hljs-keyword">this</span>.data(<span class="hljs-string">'id'</span>) +</span><br><span class="line">      <span class="hljs-string">' heard from List '</span> + <span class="hljs-built_in">arguments</span>[<span class="hljs-number">0</span>].id +</span><br><span class="line">      <span class="hljs-string">'. The value selected was '</span> + <span class="hljs-string">'"'</span> +</span><br><span class="line">      <span class="hljs-built_in">arguments</span>[<span class="hljs-number">0</span>].selected + <span class="hljs-string">'"'</span>;</span><br><span class="line">    $info.prepend(<span class="hljs-string">'&lt;p&gt;'</span> + msg + <span class="hljs-string">'&lt;/p&gt;'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></div></figure>
+<p>Note that there needs to be a check for whether or not the published data id is the same as the current list element’s id to ensure that our list does not listen to its own published message. This is because all select lists listens subscribe to the same class namespace.</p>
+<p><a href="http://jsbin.com/yexiseke/1" target="_blank" rel="external">Online Demo</a> | <a href="/demos/2014-05-01-pubsub-lists.zip">Offline Demo</a></p>
+
+      
+
+
+    </div>
+    
+<footer class="post-content-footer">
+  
+  <div class="article-tags ym-clearfix">
+    <p>Tags: </p>
+    <a href="/tags/javascript/">javascript</a>, <a href="/tags/jQuery/">jQuery</a>
+  </div>
+</footer>
+
+
+      <div class="dotted-border"></div>
+  </div>
+
+</article>
+
+
+
+
+  
+<article class="post">
+
+  <div class="post-content">
+    <header class="post-content-header">
+      
         <time class="post-content-time" datetime="2014-04-22T20:49:05.000Z"><a href="/2014/04/22/readable-stream/">4/22/2014</a></time>
       
       
@@ -342,51 +403,6 @@ almost all modules misreport the line count. The last line on both the json and 
 
 
 
-  
-<article class="post">
-
-  <div class="post-content">
-    <header class="post-content-header">
-      
-        <time class="post-content-time" datetime="2014-01-13T23:38:00.000Z"><a href="/2014/01/13/removing-stylesheet-rules/">1/13/2014</a></time>
-      
-      
-  
-    <h2 class="title"><a href="/2014/01/13/removing-stylesheet-rules/">Removing Stylesheet Rules</a></h2>
-  
-
-    </header>
-    <div class="post-content-entry">
-      
-        <h3 id="Off-with-the-Rule"><a href="#Off-with-the-Rule" class="headerlink" title="Off with the Rule"></a>Off with the Rule</h3><p>Most of the time css rules are overridden to get a different style, but some rules need to be outright removed. For example, if a hover effect is in place when javascript is disabled, but the rule might interfere with the javascript code when javascript is enabled. This might happen when using a jQuery plugin for menu creation or text effect.</p>
-<p>The following code will demonstrate the removal of a :hover selector from a ‘p’ tag.</p>
-<figure class="highlight html"><figcaption><span>Example Layout</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"utf-8"</span> /&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Removing Stylesheet Rules<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"mainStyles"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"mainStyles.css"</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> /&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"RemovingStyleSheetRules.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"paragraph-is-orange-when-hover"</span>&gt;</span></span><br><span class="line">    This paragraph should be still be black when hover over.</span><br><span class="line">  <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></span><br></pre></td></tr></table></div></figure>
-<figure class="highlight css"><figcaption><span>mainStyles</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-id">#paragraph-is-orange-when-hover</span><span class="hljs-selector-pseudo">:hover</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">color</span>: orange;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
-<figure class="highlight javascript"><figcaption><span>RemovingStyleSheetRules.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//Retrieve sheet from css dom element</span></span><br><span class="line"><span class="hljs-keyword">var</span> mainStylesHtml = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'mainStyles'</span>),</span><br><span class="line">  mainStyles;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">if</span> (mainStylesHtml.sheet) &#123;</span><br><span class="line">  mainStyles = mainStylesHtml.sheet</span><br><span class="line">&#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (mainStylesHtml.styleSheet) &#123;</span><br><span class="line">  mainStyles = mainStylesHtml.styleSheet</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//Get rules off the sheet object</span></span><br><span class="line"><span class="hljs-keyword">var</span> mainRules;</span><br><span class="line"><span class="hljs-keyword">if</span> (mainStyles.cssRules) &#123;</span><br><span class="line">  mainRules = mainStyles.cssRules;</span><br><span class="line">&#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (mainStyles.rules) &#123;</span><br><span class="line">  mainRules = mainStyles.rules;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//Notes for Rules</span></span><br><span class="line"><span class="hljs-comment">//http://help.dottoro.com/ljnefpqb.php</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//Iterate through the stylesheet rules</span></span><br><span class="line"><span class="hljs-keyword">var</span> theKey;</span><br><span class="line"><span class="hljs-keyword">for</span> (key <span class="hljs-keyword">in</span> mainRules) &#123;</span><br><span class="line">  <span class="hljs-comment">//Make sure key is valid</span></span><br><span class="line">  <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> mainRules[key].selectorText != <span class="hljs-string">'undefined'</span>) &#123;</span><br><span class="line">    <span class="hljs-comment">//The string will be the name of the selector that is to be removed</span></span><br><span class="line">    <span class="hljs-keyword">if</span> (<span class="hljs-string">"#paragraph-is-orange-when-hover:hover"</span> == (mainRules[key].selectorText)) &#123;</span><br><span class="line">      <span class="hljs-comment">//Coercing the string key to a number key</span></span><br><span class="line">      theKey = key * <span class="hljs-number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//Remove the rule</span></span><br><span class="line"><span class="hljs-keyword">if</span> (mainStyles.deleteRule) &#123;</span><br><span class="line">  mainStyles.deleteRule(theKey);</span><br><span class="line">&#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">  mainStyles.removeRule(theKey);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//Notes for Deleting Rules</span></span><br><span class="line"><span class="hljs-comment">//deleteRule: http://help.dottoro.com/ljcihbgl.php</span></span><br><span class="line"><span class="hljs-comment">//removeRule: http://help.dottoro.com/ljdupbal.php</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//Note: Chrome-based browser only allow stylesheet manipulation</span></span><br><span class="line"><span class="hljs-comment">//if the parameter "--allow-file-access-from-files" is set for local file access</span></span><br><span class="line"><span class="hljs-comment">//http://www.chrome-allow-file-access-from-file.com/</span></span><br></pre></td></tr></table></div></figure>
-<p><a href="/demos/2014-01-13-removing-stylesheet-rules.zip">Offline Demo</a></p>
-
-      
-
-
-    </div>
-    
-<footer class="post-content-footer">
-  
-  <div class="article-tags ym-clearfix">
-    <p>Tags: </p>
-    <a href="/tags/javascript/">javascript</a>
-  </div>
-</footer>
-
-
-      <div class="dotted-border"></div>
-  </div>
-
-</article>
-
-
-
-
 
 <nav id="pagination">
   <div id="pagination-wrapper" class="ym-clearfix">
@@ -508,6 +524,10 @@ almost all modules misreport the line count. The last line on both the json and 
   <ul class="entry">
     
       <li>
+        <a href="/2016/11/27/Nodejs-Asynchronous-File-Operations-with-Try-Catch/">Nodejs - Asynchronous File Operations with Try-Catch</a>
+      </li>
+    
+      <li>
         <a href="/2016/10/16/nodejs-quick-tips-7/">Nodejs - Quick Tips #7</a>
       </li>
     
@@ -521,10 +541,6 @@ almost all modules misreport the line count. The last line on both the json and 
     
       <li>
         <a href="/2015/07/20/Velocityjs-Effects/">Velocityjs - Effects</a>
-      </li>
-    
-      <li>
-        <a href="/2015/05/16/Meteor-Quick-Tips-4/">Meteor - Quick Tips #4</a>
       </li>
     
   </ul>

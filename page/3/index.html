@@ -151,6 +151,55 @@
   <div class="post-content">
     <header class="post-content-header">
       
+        <time class="post-content-time" datetime="2014-11-27T04:04:35.000Z"><a href="/2014/11/26/WordPress-Mixed-Content-Warning/">11/26/2014</a></time>
+      
+      
+  
+    <h2 class="title"><a href="/2014/11/26/WordPress-Mixed-Content-Warning/">WordPress - Mixed Content Warning</a></h2>
+  
+
+    </header>
+    <div class="post-content-entry">
+      
+        <h3 id="Insecured-Content"><a href="#Insecured-Content" class="headerlink" title="Insecured Content"></a>Insecured Content</h3><p>Recently, when working with WordPress, I noticed that when using the <a href="https://wordpress.org/plugins/master-slider/" target="_blank" rel="external">Master Slider</a> plugin, a content slider/carousel plugin, Firefox was complaining about mixed content from the images. I was using ssl on the site.</p>
+<p>Initially I thought this was the wrongdoing of the plugin, but looking through the support pages for the plugin did not yield any immediate answers. The source did not yield any obvious error.</p>
+<p>While trying to figure out the problem with the slider, I also notice the warning of the mixed content from the media library of WordPress.</p>
+<p>This lead me to think that it may not be the plugin’s fault, and there might be something wrong with WordPress or with the configuration at least.</p>
+<p>Looking further into the situation lead me to figure out that I have forgotten to change the url settings in WordPress.</p>
+<p>To solve my problem I navigated to</p>
+<figure class="highlight plain"><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Settings &gt; General</span><br></pre></td></tr></table></div></figure>
+<p>Then changing </p>
+<figure class="highlight plain"><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">WordPress URL</span><br><span class="line">Site Address URL</span><br></pre></td></tr></table></div></figure>
+<p>values to use https for the domain to solve the problem.</p>
+
+      
+
+
+    </div>
+    
+<footer class="post-content-footer">
+  
+  <div class="article-tags ym-clearfix">
+    <p>Tags: </p>
+    <a href="/tags/cms/">cms</a>
+  </div>
+</footer>
+
+
+      <div class="dotted-border"></div>
+  </div>
+
+</article>
+
+
+
+
+  
+<article class="post">
+
+  <div class="post-content">
+    <header class="post-content-header">
+      
         <time class="post-content-time" datetime="2014-10-29T00:59:34.000Z"><a href="/2014/10/28/Bash-Clear-History-Upon-Exiting-Terminal/">10/28/2014</a></time>
       
       
@@ -368,47 +417,6 @@ Note that the ‘ForwardedTo’ may not be the same as your ‘administrator’ 
 
 
 
-  
-<article class="post">
-
-  <div class="post-content">
-    <header class="post-content-header">
-      
-        <time class="post-content-time" datetime="2014-07-10T15:47:26.000Z"><a href="/2014/07/10/File-Streams-Nth-Line/">7/10/2014</a></time>
-      
-      
-  
-    <h2 class="title"><a href="/2014/07/10/File-Streams-Nth-Line/">File Stream&#39;s Nth Line</a></h2>
-  
-
-    </header>
-    <div class="post-content-entry">
-      
-        <h3 id="Nth-Line"><a href="#Nth-Line" class="headerlink" title="Nth Line"></a>Nth Line</h3><p>In nodejs, when reading a stream from a file, the process of getting the nth line requires reading (nth - 1) lines. A filestream’s data comes as it is ready and in order, but there is <a href="http://stackoverflow.com/questions/6394951/read-nth-line-of-file-in-nodejs" target="_blank" rel="external">no means of jumping</a> to a specific nth line of the stream.</p>
-<p>This is a inconvenience but this required behavior of ‘iterating through the lines until the desired line is found’ is also present in <a href="http://rosettacode.org/wiki/Read_a_specific_line_from_a_file" target="_blank" rel="external">many other programming languages</a>.</p>
-
-      
-
-
-    </div>
-    
-<footer class="post-content-footer">
-  
-  <div class="article-tags ym-clearfix">
-    <p>Tags: </p>
-    <a href="/tags/javascript/">javascript</a>, <a href="/tags/nodejs/">nodejs</a>
-  </div>
-</footer>
-
-
-      <div class="dotted-border"></div>
-  </div>
-
-</article>
-
-
-
-
 
 <nav id="pagination">
   <div id="pagination-wrapper" class="ym-clearfix">
@@ -530,6 +538,10 @@ Note that the ‘ForwardedTo’ may not be the same as your ‘administrator’ 
   <ul class="entry">
     
       <li>
+        <a href="/2016/11/27/Nodejs-Asynchronous-File-Operations-with-Try-Catch/">Nodejs - Asynchronous File Operations with Try-Catch</a>
+      </li>
+    
+      <li>
         <a href="/2016/10/16/nodejs-quick-tips-7/">Nodejs - Quick Tips #7</a>
       </li>
     
@@ -543,10 +555,6 @@ Note that the ‘ForwardedTo’ may not be the same as your ‘administrator’ 
     
       <li>
         <a href="/2015/07/20/Velocityjs-Effects/">Velocityjs - Effects</a>
-      </li>
-    
-      <li>
-        <a href="/2015/05/16/Meteor-Quick-Tips-4/">Meteor - Quick Tips #4</a>
       </li>
     
   </ul>

@@ -151,6 +151,55 @@
   <div class="post-content">
     <header class="post-content-header">
       
+        <time class="post-content-time" datetime="2016-11-28T01:55:13.000Z"><a href="/2016/11/27/Nodejs-Asynchronous-File-Operations-with-Try-Catch/">11/27/2016</a></time>
+      
+      
+  
+    <h2 class="title"><a href="/2016/11/27/Nodejs-Asynchronous-File-Operations-with-Try-Catch/">Nodejs - Asynchronous File Operations with Try-Catch</a></h2>
+  
+
+    </header>
+    <div class="post-content-entry">
+      
+        <h3 id="Handle-Situation-When-File-Does-Not-Exist-in-Directory"><a href="#Handle-Situation-When-File-Does-Not-Exist-in-Directory" class="headerlink" title="Handle Situation When File Does Not Exist in Directory"></a>Handle Situation When File Does Not Exist in Directory</h3><p>Performing a file reading operation to check whether or not a file exists before operating might cause a
+race condition as stated in the Nodejs section on fs.stat:</p>
+<blockquote>
+<p>“Using fs.stat() to check for the existence of a file before calling fs.open(), fs.readFile() or fs.writeFile() is not recommended. Instead, user code should open/read/write the file directly and handle the error raised if the file is not available.”</p>
+</blockquote>
+<p>In order to make it safer when using an asynchronous file read operation,
+a try-catch block should always wrap the
+async file operation because it will allow one to handle the situation when a file is indeed non-existent.</p>
+<p>Here is an example where the library ‘co’ and ‘fs-extra-promises’ are used to show safe operation with the try-catch block on async operations:</p>
+<figure class="highlight js"><figcaption><span>Generators and Try-catch</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> &#123; statAsync &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'fs-extra-promise'</span>;</span><br><span class="line"><span class="hljs-keyword">import</span> co <span class="hljs-keyword">from</span> <span class="hljs-string">'co'</span>;</span><br><span class="line"></span><br><span class="line">co(<span class="hljs-function"><span class="hljs-keyword">function</span>* <span class="hljs-title">fileCheck</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">yield</span> co.wrap(<span class="hljs-function"><span class="hljs-keyword">function</span>* (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">try</span> &#123;</span><br><span class="line">      <span class="hljs-comment">//statAsync is the promise version of fs.stat</span></span><br><span class="line">      <span class="hljs-keyword">const</span> fileExists = <span class="hljs-keyword">yield</span> statAsync(<span class="hljs-string">'a/path/that/does/not/exists'</span>);</span><br><span class="line"></span><br><span class="line">      <span class="hljs-comment">//Check if is a file type of folder type</span></span><br><span class="line">      <span class="hljs-comment">//Do stuff when the path does exist</span></span><br><span class="line">      <span class="hljs-comment">//fileExists.isFile() || fileExists.isDirectory()</span></span><br><span class="line">    &#125; <span class="hljs-keyword">catch</span> (e) &#123;</span><br><span class="line"></span><br><span class="line">      <span class="hljs-comment">//Errors out here because the path stated does not exists</span></span><br><span class="line"></span><br><span class="line">      <span class="hljs-comment">//Do stuff here where there is an error</span></span><br><span class="line">      <span class="hljs-comment">///...</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></div></figure>
+
+      
+
+
+    </div>
+    
+<footer class="post-content-footer">
+  
+  <div class="article-tags ym-clearfix">
+    <p>Tags: </p>
+    <a href="/tags/javascript/">javascript</a>, <a href="/tags/nodejs/">nodejs</a>
+  </div>
+</footer>
+
+
+      <div class="dotted-border"></div>
+  </div>
+
+</article>
+
+
+
+
+  
+<article class="post">
+
+  <div class="post-content">
+    <header class="post-content-header">
+      
         <time class="post-content-time" datetime="2016-10-16T22:15:43.000Z"><a href="/2016/10/16/nodejs-quick-tips-7/">10/16/2016</a></time>
       
       
@@ -340,50 +389,6 @@
 
 
 
-  
-<article class="post">
-
-  <div class="post-content">
-    <header class="post-content-header">
-      
-        <time class="post-content-time" datetime="2015-05-16T06:28:01.000Z"><a href="/2015/05/16/Meteor-Quick-Tips-4/">5/16/2015</a></time>
-      
-      
-  
-    <h2 class="title"><a href="/2015/05/16/Meteor-Quick-Tips-4/">Meteor - Quick Tips #4</a></h2>
-  
-
-    </header>
-    <div class="post-content-entry">
-      
-        <h3 id="Filtering-Differences-between-Minimongo-and-Mongo"><a href="#Filtering-Differences-between-Minimongo-and-Mongo" class="headerlink" title="Filtering Differences between Minimongo  and Mongo"></a>Filtering Differences between Minimongo  and Mongo</h3><p>Minimongo is Meteor’s client-side implementation of Mongodb, while Mongodb is refer to as Mongo.</p>
-<p>In Mongo, when limiting the fields of the return documents, there are two parameters. Minimongo also takes two parameters, but the second parameter needs a field wrapper to denote the fields to return.</p>
-<figure class="highlight js"><figcaption><span>Cut Down Documents Field Return</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//Mongodb</span></span><br><span class="line">CollectionName.find(&#123;&#125;, &#123;<span class="hljs-string">'onlyThisField'</span>:<span class="hljs-number">1</span>&#125;);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//Minimongo</span></span><br><span class="line">CollectionName.find(&#123;&#125;, &#123;fields: &#123;<span class="hljs-string">'onlyThisField'</span>:<span class="hljs-number">1</span>&#125;&#125;);</span><br></pre></td></tr></table></div></figure>
-<h3 id="Return-Template-in-Template-Helper"><a href="#Return-Template-in-Template-Helper" class="headerlink" title="Return Template in Template Helper"></a>Return Template in Template Helper</h3><p>Template helpers only return a string when outputting to the templates, so an object output is not possible. The closest thing to rendering a template out to another template is to use Blaze.toHTML. The spacebar template needs to have the triple braces for raw output to convert a string to an actual element.</p>
-<figure class="highlight js"><figcaption><span>Blaze Returns a Html String</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//Rendered</span></span><br><span class="line">Template.blank.onRendered(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">  <span class="hljs-keyword">this</span>.data.rv = <span class="hljs-keyword">new</span> ReactiveVar(<span class="hljs-string">""</span>);</span><br><span class="line">  <span class="hljs-keyword">this</span>.data.rv.set(Blaze.toHTML(Template.postInfo));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//Helpers</span></span><br><span class="line">Template.post.helpers(&#123;</span><br><span class="line">  info: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> Template.instance().data.rv.get();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></div></figure>
-<figure class="highlight html"><figcaption><span>Output the Html String</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"post"</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"reading"</span>&gt;</span>&#123;&#123;&#123;info&#125;&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span><br></pre></td></tr></table></div></figure>
-      
-
-
-    </div>
-    
-<footer class="post-content-footer">
-  
-  <div class="article-tags ym-clearfix">
-    <p>Tags: </p>
-    <a href="/tags/javascript/">javascript</a>, <a href="/tags/meteorjs/">meteorjs</a>
-  </div>
-</footer>
-
-
-      <div class="dotted-border"></div>
-  </div>
-
-</article>
-
-
-
-
 
 <nav id="pagination">
   <div id="pagination-wrapper" class="ym-clearfix">
@@ -503,6 +508,10 @@
   <ul class="entry">
     
       <li>
+        <a href="/2016/11/27/Nodejs-Asynchronous-File-Operations-with-Try-Catch/">Nodejs - Asynchronous File Operations with Try-Catch</a>
+      </li>
+    
+      <li>
         <a href="/2016/10/16/nodejs-quick-tips-7/">Nodejs - Quick Tips #7</a>
       </li>
     
@@ -516,10 +525,6 @@
     
       <li>
         <a href="/2015/07/20/Velocityjs-Effects/">Velocityjs - Effects</a>
-      </li>
-    
-      <li>
-        <a href="/2015/05/16/Meteor-Quick-Tips-4/">Meteor - Quick Tips #4</a>
       </li>
     
   </ul>
