@@ -9,15 +9,15 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Meteor - Quick Tips #4 | Williamful</title>
+    <title>README.md Reuse | Williamful</title>
     <meta name="author" content="William Huey">
     
-    <meta name="description" content="Meteor - Quick Tips">
+    <meta name="description" content="README.md Reuse">
     
-    <meta name="keywords" content="meteorjs quick tips filtering fields differences projection client server mongo minimongo Blaze return template helper raw">
+    <meta name="keywords" content="javascript, nodejs, npm, github, module, CLI, help, text, reuse, README.md, ansimd, webpack">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta property="og:title" content="Meteor - Quick Tips #4"/>
+    <meta property="og:title" content="README.md Reuse"/>
     <meta property="og:site_name" content="Williamful"/>
 
     <meta name="google-site-verification" content="B2mK_j0pDOjJWR2qib5P5KJZ7Dm_D3eakVIvZJ6gME0" />
@@ -151,22 +151,27 @@
   <div class="post-content">
     <header class="post-content-header">
       
-        <time class="post-content-time" datetime="2015-05-16T06:28:01.000Z"><a href="/2015/05/16/Meteor-Quick-Tips-4/">5/16/2015</a></time>
+        <time class="post-content-time" datetime="2016-12-06T05:04:01.000Z"><a href="/2016/12/06/README-md-Reuse/">12/6/2016</a></time>
       
       
   
-    <h2 class="title">Meteor - Quick Tips #4</h2>
+    <h2 class="title">README.md Reuse</h2>
   
 
     </header>
     <div class="post-content-entry">
       
-        <h3 id="Filtering-Differences-between-Minimongo-and-Mongo"><a href="#Filtering-Differences-between-Minimongo-and-Mongo" class="headerlink" title="Filtering Differences between Minimongo  and Mongo"></a>Filtering Differences between Minimongo  and Mongo</h3><p>Minimongo is Meteor’s client-side implementation of Mongodb, while Mongodb is refer to as Mongo.</p>
-<p>In Mongo, when limiting the fields of the return documents, there are two parameters. Minimongo also takes two parameters, but the second parameter needs a field wrapper to denote the fields to return.</p>
-<figure class="highlight js"><figcaption><span>Cut Down Documents Field Return</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//Mongodb</span></span><br><span class="line">CollectionName.find(&#123;&#125;, &#123;<span class="hljs-string">'onlyThisField'</span>:<span class="hljs-number">1</span>&#125;);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//Minimongo</span></span><br><span class="line">CollectionName.find(&#123;&#125;, &#123;fields: &#123;<span class="hljs-string">'onlyThisField'</span>:<span class="hljs-number">1</span>&#125;&#125;);</span><br></pre></td></tr></table></div></figure>
-<h3 id="Return-Template-in-Template-Helper"><a href="#Return-Template-in-Template-Helper" class="headerlink" title="Return Template in Template Helper"></a>Return Template in Template Helper</h3><p>Template helpers only return a string when outputting to the templates, so an object output is not possible. The closest thing to rendering a template out to another template is to use Blaze.toHTML. The spacebar template needs to have the triple braces for raw output to convert a string to an actual element.</p>
-<figure class="highlight js"><figcaption><span>Blaze Returns a Html String</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//Rendered</span></span><br><span class="line">Template.blank.onRendered(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">  <span class="hljs-keyword">this</span>.data.rv = <span class="hljs-keyword">new</span> ReactiveVar(<span class="hljs-string">""</span>);</span><br><span class="line">  <span class="hljs-keyword">this</span>.data.rv.set(Blaze.toHTML(Template.postInfo));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//Helpers</span></span><br><span class="line">Template.post.helpers(&#123;</span><br><span class="line">  info: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> Template.instance().data.rv.get();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></div></figure>
-<figure class="highlight html"><figcaption><span>Output the Html String</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"post"</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"reading"</span>&gt;</span>&#123;&#123;&#123;info&#125;&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span><br></pre></td></tr></table></div></figure>
+        <h3 id="Common-Help-Information"><a href="#Common-Help-Information" class="headerlink" title="Common Help Information"></a>Common Help Information</h3><p>All NPM and Github repos have README.md as the primary means of communicating the purpose of a specific module or project. In some situations, such as a CLI module, there is almost always a command to
+list help for the module’s use.</p>
+<p>Since there is an overlap of providing information in the module and CLI output, it would be beneficial if one can leverage the README.md to display the help text on the console for CLI modules.</p>
+<p>One of the ways that this can be done is to use the <a href="https://www.npmjs.com/package/ansimd" target="_blank" rel="external">ansimd</a> module. This module takes raw markdown input and converts it into an ansi format that is suitable for displaying on the console.</p>
+<p>When used with Webpack, this code example will show
+how ansimd handles markdown for console output:</p>
+<p>One will need to use the <a href="https://www.npmjs.com/package/raw-loader" target="_blank" rel="external">raw-loader</a> module because ansimd operates on raw markdown text.</p>
+<figure class="highlight js"><figcaption><span>webpack.config.js: Loaders Section</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//...</span></span><br><span class="line">test: <span class="hljs-regexp">/\.md/</span>,</span><br><span class="line">loader: <span class="hljs-string">'raw-loader'</span></span><br><span class="line"><span class="hljs-comment">//...</span></span><br></pre></td></tr></table></div></figure>
+<p>In your specific JavaScript file to display output:</p>
+<figure class="highlight js"><figcaption><span>Console ANSI Output</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> ansimd <span class="hljs-keyword">from</span> <span class="hljs-string">'ansimd'</span>;</span><br><span class="line"><span class="hljs-keyword">import</span> helpText <span class="hljs-keyword">from</span> <span class="hljs-string">'../README.md'</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(ansimd(helpText));</span><br></pre></td></tr></table></div></figure>
+
       
 
 
@@ -176,7 +181,7 @@
   
   <div class="article-tags ym-clearfix">
     <p>Tags: </p>
-    <a href="/tags/javascript/">javascript</a>, <a href="/tags/meteorjs/">meteorjs</a>
+    <a href="/tags/javascript/">javascript</a>, <a href="/tags/nodejs/">nodejs</a>
   </div>
 </footer>
 
@@ -190,10 +195,8 @@
 <nav class="article-pagination ym-clearfix">
 
     
-    <a href="/2015/07/20/Velocityjs-Effects/" class="prev" title="Velocityjs - Effects">« Velocityjs - Effects</a>
     
-    
-    <a href="/2015/03/25/Meteor-Quick-Tips-3/" class="next" title="Meteor - Quick Tips #3">Meteor - Quick Tips #3 »</a>
+    <a href="/2016/11/27/Nodejs-Asynchronous-File-Operations-with-Try-Catch/" class="next" title="Nodejs - Asynchronous File Operations with Try-Catch">Nodejs - Asynchronous File Operations with Try-Catch »</a>
     
 </nav>
 

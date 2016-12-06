@@ -151,6 +151,79 @@
   <div class="post-content">
     <header class="post-content-header">
       
+        <time class="post-content-time" datetime="2014-07-29T20:49:14.000Z"><a href="/2014/07/29/Namecheap-SSL-and-Nginx/">7/29/2014</a></time>
+      
+      
+  
+    <h2 class="title"><a href="/2014/07/29/Namecheap-SSL-and-Nginx/">Namecheap SSL and Nginx</a></h2>
+  
+
+    </header>
+    <div class="post-content-entry">
+      
+        <h3 id="Namecheap-PositiveSSL"><a href="#Namecheap-PositiveSSL" class="headerlink" title="Namecheap PositiveSSL"></a>Namecheap PositiveSSL</h3><p>This post will explain the process of setting up your nginx-powered site to used namecheap’s comodo positivessl certificate.</p>
+<p>Navigate to a safe location where your nginx.conf file is able to reference the to-be-generated ssl key.</p>
+<p>Generate your site’s key in the safe location</p>
+<figure class="highlight bash"><figcaption><span>SSL Certificates</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl req -nodes -newkey rsa:2048 -keyout mydomain_com.key -out mydomain_com.csr</span><br></pre></td></tr></table></div></figure>
+<p>You will be prompted to enter some information. Do make sure to fill out this important information.</p>
+<figure class="highlight plain"><figcaption><span>Additional Information</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Country:       mycountry</span><br><span class="line">State:         mystate</span><br><span class="line">Email:         myemail@myemailprovider.com</span><br><span class="line">Common Name:   mydomain_com</span><br><span class="line">Organisation:  mycompanyname</span><br></pre></td></tr></table></div></figure>
+<p>Skip entering a ‘challenge password’, as it does not add to security.</p>
+<h3 id="Login-to-your-Namecheap-Account"><a href="#Login-to-your-Namecheap-Account" class="headerlink" title="Login to your Namecheap Account"></a>Login to your Namecheap Account</h3><p>Navigate to ‘Manage Domains’ and select your domain that will require the ssl certificate.</p>
+<p>Ensure that the namecheap dns servers are used or else your choice of forwarding email address can not be used to verify the confirmation email.
+You can tell if you are using another dns if you can see ‘Transfer DNS back’ on the left sidebar (do select that option if you see it).</p>
+<p>Now for the ssl configuration</p>
+<p>For the server, choose ‘apache2’ and then enter the contents of your ‘mydomain_com.csr’ into the textarea.</p>
+<p>On the second page, the confirmation email is required to confirm a ssl issuance.</p>
+<p>Do this by setting up the forwarding email that you can access</p>
+<p>Navigate to ‘Email Forwarding Setup’ and change ‘USER NAME’ to ‘admin’</p>
+<figure class="highlight plain"><figcaption><span>Confirmation Email</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">UserName:        admin</span><br><span class="line">ForwardedTo:     myemail@myemailprovider.com</span><br></pre></td></tr></table></div></figure>
+<p>As for the forward email, try to not use a gmail account as I found out that there were some problems receiving emails.</p>
+<p>Fill in the ‘administrator’ account information if not complete.</p>
+<h3 id="Receiving-Confirmation-Email"><a href="#Receiving-Confirmation-Email" class="headerlink" title="Receiving Confirmation Email"></a>Receiving Confirmation Email</h3><p>A Comodo security services email will be delivered shortly to your ‘ForwardedTo’ email account. Once you receive that, confirm with the link by the validation code that was sent in that email.</p>
+<p>The zip file containing your certificates will go to your ‘administrator’ account, the account that you sign up with namecheap.
+Note that the ‘ForwardedTo’ may not be the same as your ‘administrator’ account email, if you configured it that way.</p>
+<h3 id="Unzip-Certificates"><a href="#Unzip-Certificates" class="headerlink" title="Unzip Certificates"></a>Unzip Certificates</h3><p>Unzip the file to a temp directory and combine the three files into one. The order is important.</p>
+<figure class="highlight bash"><figcaption><span>Combine Certificates</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cat MyDomain_com.crt COMODORSADomainValidationSecureServerCA.crt \</span><br><span class="line">    COMODORSAAddTrustCA.crt &gt; comdo-certs.combined</span><br></pre></td></tr></table></div></figure>
+<h3 id="Setup-Nginx"><a href="#Setup-Nginx" class="headerlink" title="Setup Nginx"></a>Setup Nginx</h3><p>Copy or move the ‘comodo-certs.combined’ file to the same folder as your ‘mydomain_com.key’ file.</p>
+<p>Add or modify the following in your nginx.conf file</p>
+<figure class="highlight plain"><figcaption><span>Nginx.conf</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">  listen 80;</span><br><span class="line">  server_name .my_domain.com;</span><br><span class="line">  rewrite ^ https://$host$request_uri permanent;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">  listen 443;</span><br><span class="line"></span><br><span class="line">  ssl on;</span><br><span class="line"></span><br><span class="line">  ssl_protocols TLSv1 TLSv1.1 TLSv1.2;</span><br><span class="line">  ssl_ciphers &apos;ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:ECDHE-RSA-RC4-SHA:ECDHE-ECDSA-RC4-SHA:RC4-SHA:HIGH:!aNULL:!eNULL:!EXPORT:!DES:!3DES:!MD5:!PSK&apos;;</span><br><span class="line"></span><br><span class="line">  ssl_prefer_server_ciphers on;</span><br><span class="line"></span><br><span class="line">  ssl_certificate /path/where/nginx/references/comodo-certs.combined;</span><br><span class="line">  ssl_certificate_key /path/where/nginx/references/mydomain_com.key;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+<p>The first server block will redirect all variants of non-secured versions of your site to the secured version.</p>
+<p>All the following</p>
+<figure class="highlight plain"><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">www.my_domain.com</span><br><span class="line">my_domain.com</span><br><span class="line">http://my_domain.com</span><br><span class="line">http://www.my_domain.com</span><br></pre></td></tr></table></div></figure>
+<p>will be redirected to</p>
+<figure class="highlight plain"><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.my_domain.com</span><br></pre></td></tr></table></div></figure>
+<p>Now to test the changes made to nginx by</p>
+<figure class="highlight bash"><figcaption><span>Test First</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service nginx configtest</span><br></pre></td></tr></table></div></figure>
+<p>Finally, start or restart your nginx server to apply the changes.</p>
+<figure class="highlight bash"><figcaption><span>Now for Liftoff</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service nginx reload</span><br></pre></td></tr></table></div></figure>
+      
+
+
+    </div>
+    
+<footer class="post-content-footer">
+  
+  <div class="article-tags ym-clearfix">
+    <p>Tags: </p>
+    <a href="/tags/server/">server</a>
+  </div>
+</footer>
+
+
+      <div class="dotted-border"></div>
+  </div>
+
+</article>
+
+
+
+
+  
+<article class="post">
+
+  <div class="post-content">
+    <header class="post-content-header">
+      
         <time class="post-content-time" datetime="2014-07-10T15:47:26.000Z"><a href="/2014/07/10/File-Streams-Nth-Line/">7/10/2014</a></time>
       
       
@@ -326,50 +399,6 @@ them to create the files.</p>
 
 
 
-  
-<article class="post">
-
-  <div class="post-content">
-    <header class="post-content-header">
-      
-        <time class="post-content-time" datetime="2014-05-06T19:01:51.000Z"><a href="/2014/05/06/private-instance-method-variables/">5/6/2014</a></time>
-      
-      
-  
-    <h2 class="title"><a href="/2014/05/06/private-instance-method-variables/">Private Instance Method Variables</a></h2>
-  
-
-    </header>
-    <div class="post-content-entry">
-      
-        <h3 id="Instances-Methods-and-Their-Personal-State"><a href="#Instances-Methods-and-Their-Personal-State" class="headerlink" title="Instances Methods and Their Personal State"></a>Instances Methods and Their Personal State</h3><p>This post is for intended for JavaScript (not Java).</p>
-<p>One may put instance method variables within an instance method to provide encapsulation, but what do you do when you want to maintain a private state for each instance method on each instance method execution?</p>
-<p>The technique in achieving such a task involves wrapping an instance method and its variable within a function as shown below. The result will produce instance method variables that are truly private to the instance method.</p>
-<p>The instance method gets attached to the constructor by using the ‘this’ reference to the constructor.</p>
-<p>Each instance function is then placed into an internal array and the array is looped over to execute and initialize each wrapper function and its corresponding static methods and variables.</p>
-<figure class="highlight js"><figcaption><span>Instance Variables</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> Time = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-comment">//Reference the context</span></span><br><span class="line">  <span class="hljs-keyword">var</span> _this = <span class="hljs-keyword">this</span>;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">//Internal array which houses all instance methods</span></span><br><span class="line">  <span class="hljs-comment">//Wrapping all instance methods in a function to</span></span><br><span class="line">  <span class="hljs-comment">//contain its private variables for instance methods</span></span><br><span class="line">  <span class="hljs-keyword">var</span> _time = [</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">      <span class="hljs-comment">//Private variables for instance</span></span><br><span class="line">      <span class="hljs-keyword">var</span> privateStaticVar = <span class="hljs-string">'Time in milliseconds is '</span>;</span><br><span class="line"></span><br><span class="line">      <span class="hljs-comment">//A instance method of the Time constructor</span></span><br><span class="line">      _this.getTimeInMilliseconds = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> privateStaticVar + <span class="hljs-built_in">Date</span>.now();</span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-comment">//Add more functions within this array</span></span><br><span class="line">    <span class="hljs-comment">//for other instance methods</span></span><br><span class="line">  ];</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">//Initialize all instance methods</span></span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; _time.length; i++) &#123;</span><br><span class="line">    _time[i]();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">var</span> time = <span class="hljs-keyword">new</span> Time();</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(time.getTimeInMilliseconds());</span><br></pre></td></tr></table></div></figure>
-      
-
-
-    </div>
-    
-<footer class="post-content-footer">
-  
-  <div class="article-tags ym-clearfix">
-    <p>Tags: </p>
-    <a href="/tags/javascript/">javascript</a>
-  </div>
-</footer>
-
-
-      <div class="dotted-border"></div>
-  </div>
-
-</article>
-
-
-
-
 
 <nav id="pagination">
   <div id="pagination-wrapper" class="ym-clearfix">
@@ -491,6 +520,10 @@ them to create the files.</p>
   <ul class="entry">
     
       <li>
+        <a href="/2016/12/06/README-md-Reuse/">README.md Reuse</a>
+      </li>
+    
+      <li>
         <a href="/2016/11/27/Nodejs-Asynchronous-File-Operations-with-Try-Catch/">Nodejs - Asynchronous File Operations with Try-Catch</a>
       </li>
     
@@ -504,10 +537,6 @@ them to create the files.</p>
     
       <li>
         <a href="/2016/04/17/nodejs-quick-tips-5/">Nodejs - Quick Tips #5</a>
-      </li>
-    
-      <li>
-        <a href="/2015/07/20/Velocityjs-Effects/">Velocityjs - Effects</a>
       </li>
     
   </ul>

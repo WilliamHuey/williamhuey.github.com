@@ -151,6 +151,55 @@
   <div class="post-content">
     <header class="post-content-header">
       
+        <time class="post-content-time" datetime="2016-12-06T05:04:01.000Z"><a href="/2016/12/06/README-md-Reuse/">12/6/2016</a></time>
+      
+      
+  
+    <h2 class="title"><a href="/2016/12/06/README-md-Reuse/">README.md Reuse</a></h2>
+  
+
+    </header>
+    <div class="post-content-entry">
+      
+        <h3 id="Common-Help-Information"><a href="#Common-Help-Information" class="headerlink" title="Common Help Information"></a>Common Help Information</h3><p>All NPM and Github repos have README.md as the primary means of communicating the purpose of a specific module or project. In some situations, such as a CLI module, there is almost always a command to
+list help for the module’s use.</p>
+<p>Since there is an overlap of providing information in the module and CLI output, it would be beneficial if one can leverage the README.md to display the help text on the console for CLI modules.</p>
+<p>One of the ways that this can be done is to use the <a href="https://www.npmjs.com/package/ansimd" target="_blank" rel="external">ansimd</a> module. This module takes raw markdown input and converts it into an ansi format that is suitable for displaying on the console.</p>
+<p>When used with Webpack, this code example will show
+how ansimd handles markdown for console output:</p>
+<p>One will need to use the <a href="https://www.npmjs.com/package/raw-loader" target="_blank" rel="external">raw-loader</a> module because ansimd operates on raw markdown text.</p>
+<figure class="highlight js"><figcaption><span>webpack.config.js: Loaders Section</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//...</span></span><br><span class="line">test: <span class="hljs-regexp">/\.md/</span>,</span><br><span class="line">loader: <span class="hljs-string">'raw-loader'</span></span><br><span class="line"><span class="hljs-comment">//...</span></span><br></pre></td></tr></table></div></figure>
+<p>In your specific JavaScript file to display output:</p>
+<figure class="highlight js"><figcaption><span>Console ANSI Output</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> ansimd <span class="hljs-keyword">from</span> <span class="hljs-string">'ansimd'</span>;</span><br><span class="line"><span class="hljs-keyword">import</span> helpText <span class="hljs-keyword">from</span> <span class="hljs-string">'../README.md'</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(ansimd(helpText));</span><br></pre></td></tr></table></div></figure>
+
+      
+
+
+    </div>
+    
+<footer class="post-content-footer">
+  
+  <div class="article-tags ym-clearfix">
+    <p>Tags: </p>
+    <a href="/tags/javascript/">javascript</a>, <a href="/tags/nodejs/">nodejs</a>
+  </div>
+</footer>
+
+
+      <div class="dotted-border"></div>
+  </div>
+
+</article>
+
+
+
+
+  
+<article class="post">
+
+  <div class="post-content">
+    <header class="post-content-header">
+      
         <time class="post-content-time" datetime="2016-11-28T01:55:13.000Z"><a href="/2016/11/27/Nodejs-Asynchronous-File-Operations-with-Try-Catch/">11/27/2016</a></time>
       
       
@@ -343,52 +392,6 @@ async file operation because it will allow one to handle the situation when a fi
 
 
 
-  
-<article class="post">
-
-  <div class="post-content">
-    <header class="post-content-header">
-      
-        <time class="post-content-time" datetime="2015-07-21T03:00:07.000Z"><a href="/2015/07/20/Velocityjs-Effects/">7/20/2015</a></time>
-      
-      
-  
-    <h2 class="title"><a href="/2015/07/20/Velocityjs-Effects/">Velocityjs - Effects</a></h2>
-  
-
-    </header>
-    <div class="post-content-entry">
-      
-        <p>For your heavy-duty JavaScript animations, I recommend <a href="http://julian.com/research/velocity/" target="_blank" rel="external">Velocityjs</a>, since it has many features and great documentation. <br> Here are some simple effects that I find useful if you have chosen to use Velocityjs:</p>
-<h3 id="Pulsate-Throb"><a href="#Pulsate-Throb" class="headerlink" title="Pulsate / Throb"></a>Pulsate / Throb</h3><figure class="highlight js"><figcaption><span>Grow and Shrink Element for Five Times</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="hljs-string">'#my-element'</span>).velocity(&#123; scale: <span class="hljs-number">2</span> &#125;, &#123; loop: <span class="hljs-number">5</span>&#125;);</span><br></pre></td></tr></table></div></figure>
-<p><a href="http://jsbin.com/gocinunome/1/" target="_blank" rel="external">Pulsate Demo</a></p>
-<h3 id="Show-and-Rotate"><a href="#Show-and-Rotate" class="headerlink" title="Show and Rotate"></a>Show and Rotate</h3><figure class="highlight js"><figcaption><span>Appear, Spins, and Disappear</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//Complete animation within half a second</span></span><br><span class="line">$(<span class="hljs-string">'#my-element'</span>).velocity(&#123; scale: <span class="hljs-number">3</span>, opacity: <span class="hljs-number">1</span>, rotateZ: <span class="hljs-string">"360deg"</span> &#125;, &#123;duration: <span class="hljs-number">500</span>&#125;);</span><br></pre></td></tr></table></div></figure>
-<p><a href="http://jsbin.com/razexohare/2" target="_blank" rel="external">Spin Demo</a></p>
-<h3 id="Stagger-Elements"><a href="#Stagger-Elements" class="headerlink" title="Stagger Elements"></a>Stagger Elements</h3><figure class="highlight js"><figcaption><span>Group Zoom-in</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//Assumes that the UI Pack (velocity.ui.js) is in place</span></span><br><span class="line">$(<span class="hljs-string">'.group-of-elements'</span>).velocity(<span class="hljs-string">'transition.whirlIn'</span>, &#123;stagger: <span class="hljs-number">500</span>&#125;);</span><br></pre></td></tr></table></div></figure>
-<p><a href="http://jsbin.com/tezofuraqi/2/" target="_blank" rel="external">Stagger Group Demo</a></p>
-
-      
-
-
-    </div>
-    
-<footer class="post-content-footer">
-  
-  <div class="article-tags ym-clearfix">
-    <p>Tags: </p>
-    <a href="/tags/javascript/">javascript</a>
-  </div>
-</footer>
-
-
-      <div class="dotted-border"></div>
-  </div>
-
-</article>
-
-
-
-
 
 <nav id="pagination">
   <div id="pagination-wrapper" class="ym-clearfix">
@@ -508,6 +511,10 @@ async file operation because it will allow one to handle the situation when a fi
   <ul class="entry">
     
       <li>
+        <a href="/2016/12/06/README-md-Reuse/">README.md Reuse</a>
+      </li>
+    
+      <li>
         <a href="/2016/11/27/Nodejs-Asynchronous-File-Operations-with-Try-Catch/">Nodejs - Asynchronous File Operations with Try-Catch</a>
       </li>
     
@@ -521,10 +528,6 @@ async file operation because it will allow one to handle the situation when a fi
     
       <li>
         <a href="/2016/04/17/nodejs-quick-tips-5/">Nodejs - Quick Tips #5</a>
-      </li>
-    
-      <li>
-        <a href="/2015/07/20/Velocityjs-Effects/">Velocityjs - Effects</a>
       </li>
     
   </ul>
